@@ -138,22 +138,99 @@
         .whatsapp-btn { position: fixed; bottom: 40px; right: 40px; width: 80px; height: 80px; background: var(--sage); border: 10px solid var(--black); box-shadow: 12px 12px 0 var(--black); display: flex; justify-content: center; align-items: center; z-index: 100000; }
         .whatsapp-btn svg { width: 40px; height: 40px; fill: var(--black); }
 
+        /* MOBILE OPTIMIZATION: NO SHRINKING, FULL SCREEN EXPERIENCE */
         @media (max-width: 768px) {
             .nav-logo { display: none; }
             .nav-links { display: none; }
-            .nav-cta a { margin-left: 0; }
+            .nav-cta a { display: none; }
+            .hamburger { display: flex; margin-left: auto; }
+            .mobile-menu { display: flex; }
+            #contact.section { height: auto; min-height: 100vh; min-height: 100dvh; overflow: visible; align-items: flex-start; padding: 110px 16px 60px; }
             .contact-shell { grid-template-columns: 1fr; height: auto; gap: 20px; }
+            .map-side { height: 220px; }
             .form-side { padding: 30px; }
             .gate-title { font-size: 15vw; }
             .gate-btn { font-size: 1rem; padding: 15px 25px; }
             .food-ticker-item { font-size: 2rem; padding: 0 25px; }
             .gate-frame { width: 90vmin; height: 90vmin; }
             .copyright { font-size: 0.9rem; }
+            .art-frame { width: 100%; height: 100%; }
+            .bleed-type { font-size: 25vw; }
+        }
+
+        /* HAMBURGER MENU (Mobile Only) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 100001;
+        }
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            background: var(--sage);
+            transition: 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+        /* Mobile Menu Dropdown */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 90px;
+            right: 0;
+            width: 100%;
+            background: rgba(5, 5, 5, 0.98);
+            border-bottom: 6px solid var(--sage);
+            z-index: 100000;
+            padding: 30px;
+            flex-direction: column;
+            gap: 20px;
+            transform: translateY(-150%);
+            transition: transform 0.5s var(--ease-tycoon);
+            backdrop-filter: blur(10px);
+        }
+        .mobile-menu.active { transform: translateY(0); }
+        .mobile-menu a {
+            color: var(--sage);
+            text-decoration: none;
+            font-family: 'Caveat', cursive;
+            font-size: 2.5rem;
+            font-weight: 700;
+            transform: rotate(-2deg);
+            text-align: center;
+        }
+        .mobile-menu a:hover { color: var(--white); }
+        .mobile-cta {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .mobile-cta a {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.2rem;
+            color: var(--black);
+            background: var(--sage);
+            border: 4px solid var(--white);
+            padding: 10px 25px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            transform: rotate(0deg);
         }
     </style>
 </head>
 <body>
     <div id="cursor"></div>
+
+    <!-- FIXED WHITE LOGO IN TOP RIGHT CORNER (Hero Only) -->
+    <img src="logo.png" class="hero-corner-logo" alt="Hotel Bostan Logo">
 
     <div id="audioGate" onclick="startAudio()">
         <div class="gate-backdrop">BOSTAN</div>
@@ -177,7 +254,24 @@
             <a href="#contact">Visit</a>
         </div>
         <div class="nav-cta"><a href="tel:+917045043161">CALL NOW</a></div>
+
+        <!-- Mobile Hamburger -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
+
+    <!-- MOBILE MENU DROPDOWN -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#hero">Home</a>
+        <a href="#story">Story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Visit</a>
+        <div class="mobile-cta"><a href="tel:+917045043161">CALL NOW</a></div>
+    </div>
 
     <header id="hero" class="section">
         <h1 class="bleed-type">REOPENING</h1>
@@ -382,6 +476,22 @@
                 }, 250);
             }, 500);
         }
+
+        // HAMBURGER MENU TOGGLE (Mobile)
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // CLOSE MOBILE MENU ON CLICK
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section:not(#hero)');
