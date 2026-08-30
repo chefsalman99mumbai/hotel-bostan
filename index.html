@@ -96,13 +96,15 @@
         .nav-cta a:hover { background: var(--white); color: var(--black); }
 
         /* SECTIONS */
-        .section { position: relative; width: 100vw; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; animation: heavyPulse var(--dance-beat) infinite; z-index: 1; }
+        .section { position: relative; width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; display: flex; justify-content: center; align-items: center; animation: heavyPulse var(--dance-beat) infinite; z-index: 1; }
         .iron-gate { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--black); z-index: 50; transform: translateX(-100%); transition: transform 1.5s; }
         .section.in-view .iron-gate { transform: translateX(100%); }
         .iron-gate::after { content: ''; position: absolute; top: 0; right: 0; width: 30px; height: 100%; background: var(--sage); }
 
         .art-frame { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; height: 90%; object-fit: contain; z-index: 1; filter: contrast(1.15) saturate(1.2); }
-        .bleed-type { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 20vw; z-index: 0; pointer-events: none; white-space: nowrap; text-align: center; width: 100%; opacity: 0.6; animation: nightBlink var(--dance-beat) infinite; }
+        
+        /* FIXED FOR ANDROID: Dancing text now sits on top of image */
+        .bleed-type { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 20vw; z-index: 5; pointer-events: none; white-space: nowrap; text-align: center; width: 100%; opacity: 0.45; animation: nightBlink var(--dance-beat) infinite; }
 
         /* FOOD MENU TICKER STRIP: ROMANTIC PAINT PENCIL STYLE */
         .food-ticker { position: relative; width: 100%; height: 80px; background: var(--off-white); border-top: 5px solid var(--black); border-bottom: 5px solid var(--black); overflow: hidden; display: flex; align-items: center; z-index: 100; }
@@ -130,7 +132,7 @@
         footer img { width: 300px; filter: drop-shadow(0px 0px 10px rgba(126, 172, 105, 0.8)); }
         .footer-info { font-family: 'Space Mono'; font-weight: 700; line-height: 2; font-size: 1.5rem; }
         
-        /* FOOTER COPYRIGHT - REPLACED WITH EXACT TEXT */
+        /* FOOTER COPYRIGHT */
         .copyright { 
             font-family: 'Space Mono', monospace; 
             font-size: 1.2rem; 
@@ -167,12 +169,8 @@
         <div class="gate-frame"></div>
         <img src="logo.png" class="gate-logo" alt="Hotel Bostan Logo">
         <div class="gate-title">ENTER BOSTAN</div>
-        <div class="gate-btn">CLICK TO UNLEASH THE RHYTHM</div>
+        <div class="gate-btn">ENTER BOSTAN</div>
     </div>
-
-    <audio id="bgMusic" loop>
-        <source src="lola_lola_ricky_martin.mp3" type="audio/mpeg">
-    </audio>
 
     <nav id="mainNav">
         <div class="nav-logo"><img src="logo.png" alt="Hotel Bostan"></div>
@@ -361,7 +359,6 @@
             <p>+91-7045043161</p>
             <p>@the_hotel_bostan</p>
         </div>
-        <!-- EXACT REPLACEMENT -->
         <div class="copyright">© 2026 Hotel Bostan</div>
     </footer>
 
@@ -377,11 +374,8 @@
         });
 
         const audioGate = document.getElementById('audioGate');
-        const bgMusic = document.getElementById('bgMusic');
         
         function startAudio() {
-            bgMusic.volume = 0.9; 
-            bgMusic.play();
             audioGate.classList.add('hidden');
             setTimeout(() => {
                 document.getElementById('mainNav').classList.add('active');
