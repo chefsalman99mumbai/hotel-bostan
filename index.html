@@ -73,7 +73,7 @@
         @keyframes btnHeave { 0%, 100% { transform: scale(1); box-shadow: 10px 10px 0 rgba(126, 172, 105, 0.5); } 10% { transform: scale(1.1); box-shadow: 15px 15px 0 rgba(126, 172, 105, 0.8); } 20% { transform: scale(1); box-shadow: 10px 10px 0 rgba(126, 172, 105, 0.5); } 30% { transform: scale(1.05); box-shadow: 12px 12px 0 rgba(126, 172, 105, 0.6); } 40% { transform: scale(1); box-shadow: 10px 10px 0 rgba(126, 172, 105, 0.5); } }
         .gate-btn:hover { background: var(--sage); color: var(--black); border-color: var(--white); transform: scale(1.1) !important; box-shadow: 0px 0px 50px rgba(126, 172, 105, 1); }
 
-        /* RESTORED TOP NAV - FONT STYLE CHANGED TO PAINT PENCIL, COLOR UNTOUCHED (SAGE GREEN) */
+        /* RESTORED TOP NAV */
         nav { position: fixed; top: 0; left: 0; width: 100vw; height: 90px; background: var(--black); border-bottom: 6px solid var(--sage); z-index: 100000; display: flex; align-items: center; padding: 0 50px; transform: translateY(-100%); transition: transform 1s; }
         nav.active { transform: translateY(0); }
         .nav-logo { margin-right: auto; }
@@ -102,11 +102,11 @@
         .iron-gate::after { content: ''; position: absolute; top: 0; right: 0; width: 30px; height: 100%; background: var(--sage); }
 
         .art-frame { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; height: 90%; object-fit: contain; z-index: 1; filter: contrast(1.15) saturate(1.2); }
-        
-        /* FIXED FOR ANDROID: Dancing text now sits on top of image */
+
+        /* EXACT ORIGINAL FIX: Dancing text sits ON TOP of the image, NOT hidden */
         .bleed-type { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 20vw; z-index: 5; pointer-events: none; white-space: nowrap; text-align: center; width: 100%; opacity: 0.45; animation: nightBlink var(--dance-beat) infinite; }
 
-        /* FOOD MENU TICKER STRIP: ROMANTIC PAINT PENCIL STYLE */
+        /* FOOD MENU TICKER STRIP */
         .food-ticker { position: relative; width: 100%; height: 80px; background: var(--off-white); border-top: 5px solid var(--black); border-bottom: 5px solid var(--black); overflow: hidden; display: flex; align-items: center; z-index: 100; }
         .food-ticker-track { display: flex; white-space: nowrap; animation: tickerScroll 20s linear infinite; }
         .food-ticker-item { display: inline-block; padding: 0 50px; font-family: 'Caveat', cursive; font-size: 3rem; font-weight: 700; color: var(--charcoal); background: linear-gradient(145deg, #2b2b2b 0%, #1a1a1a 40%, #444444 50%, #1a1a1a 60%, #0a0a0a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; transform: rotate(-2deg); }
@@ -132,16 +132,7 @@
         footer img { width: 300px; filter: drop-shadow(0px 0px 10px rgba(126, 172, 105, 0.8)); }
         .footer-info { font-family: 'Space Mono'; font-weight: 700; line-height: 2; font-size: 1.5rem; }
         
-        /* FOOTER COPYRIGHT */
-        .copyright { 
-            font-family: 'Space Mono', monospace; 
-            font-size: 1.2rem; 
-            color: var(--sage);
-            border: 3px solid var(--sage); 
-            padding: 10px 15px; 
-            text-transform: none;
-            letter-spacing: 1px;
-        }
+        .copyright { font-family: 'Space Mono', monospace; font-size: 1.2rem; color: var(--sage); border: 3px solid var(--sage); padding: 10px 15px; text-transform: none; letter-spacing: 1px; }
 
         /* WHATSAPP */
         .whatsapp-btn { position: fixed; bottom: 40px; right: 40px; width: 80px; height: 80px; background: var(--sage); border: 10px solid var(--black); box-shadow: 12px 12px 0 var(--black); display: flex; justify-content: center; align-items: center; z-index: 100000; }
@@ -171,6 +162,10 @@
         <div class="gate-title">ENTER BOSTAN</div>
         <div class="gate-btn">ENTER BOSTAN</div>
     </div>
+
+    <audio id="bgMusic" loop>
+        <source src="lola_lola_ricky_martin.mp3" type="audio/mpeg">
+    </audio>
 
     <nav id="mainNav">
         <div class="nav-logo"><img src="logo.png" alt="Hotel Bostan"></div>
@@ -374,8 +369,11 @@
         });
 
         const audioGate = document.getElementById('audioGate');
+        const bgMusic = document.getElementById('bgMusic');
         
         function startAudio() {
+            bgMusic.volume = 0.9; 
+            bgMusic.play();
             audioGate.classList.add('hidden');
             setTimeout(() => {
                 document.getElementById('mainNav').classList.add('active');
