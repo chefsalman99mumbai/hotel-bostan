@@ -1,440 +1,4708 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE HOTEL BOSTAN | Maximum City's Nightclub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --sage: #7EAC69;
-            --black: #050505;
-            --white: #f0f0f0;
-            --off-white: #f0ede6;
-            --charcoal: #1a1a1a;
-            --dance-beat: 0.85s;
-        }
+<meta charset="UTF-8">
 
-        * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; cursor: none; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--black); font-family: 'IBM Plex Mono', monospace; overflow-x: hidden; }
-        h1, h2, h3, button { font-family: 'Archivo Black', sans-serif; text-transform: uppercase; letter-spacing: -2px; margin: 0; }
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-        @keyframes nightBlink {
-            0%, 100% { color: #2a2a2a; opacity: 0.6; text-shadow: 6px 6px 0 #000000; }
-            20% { color: #4d4d4d; opacity: 0.6; text-shadow: 6px 6px 0 #1a1a1a; }
-            40% { color: #2f4f2f; opacity: 0.6; text-shadow: 6px 6px 0 #000000; }
-            60% { color: #333333; opacity: 0.6; text-shadow: 6px 6px 0 #0a0a0a; }
-            80% { color: #3a3a3a; opacity: 0.6; text-shadow: 6px 6px 0 #000000; }
-            100% { color: #2a2a2a; opacity: 0.6; text-shadow: 6px 6px 0 #000000; }
-        }
+<title>HOTEL BOSTAN — Eat Slow</title>
 
-        @keyframes heavyPulse {
-            0%, 100% { transform: scale(1); }
-            10% { transform: scale(1.01); }
-            20% { transform: scale(1); }
-            30% { transform: scale(1.005); }
-            40% { transform: scale(1); }
-        }
+<meta
+  name="description"
+  content="Hotel Bostan — rooms, dining, nights, experiences and long afternoons."
+>
 
-        #cursor { position: fixed; top: 0; left: 0; width: 40px; height: 40px; background: var(--sage); z-index: 999999; pointer-events: none; transform: translate(-50%, -50%); mix-blend-mode: difference; transition: width 0.2s, height 0.2s; }
-        #cursor.hovering { width: 70px; height: 70px; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        /* --- ENTRY GATE & MUSIC --- */
-        #audioGate { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; background: var(--black); overflow: hidden; animation: gateStrobe var(--dance-beat) infinite linear; }
-        #audioGate.hidden { opacity: 0; pointer-events: none; transition: opacity 1s; }
-        @keyframes gateStrobe { 0%, 100% { background-color: var(--black); } 50% { background-color: #111; } }
-        .gate-backdrop { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 25vw; font-family: 'Archivo Black', sans-serif; color: transparent; -webkit-text-stroke: 2px var(--sage); opacity: 0.3; white-space: nowrap; animation: backdropGlitch 3s infinite steps(1); z-index: 1; pointer-events: none; }
-        @keyframes backdropGlitch { 0%, 100% { transform: translate(-50%, -50%); -webkit-text-stroke: 2px var(--sage); opacity: 0.3; } 92% { transform: translate(-52%, -48%); -webkit-text-stroke: 2px var(--white); opacity: 0.5; } 94% { transform: translate(-48%, -52%); -webkit-text-stroke: 2px var(--sage); opacity: 0.2; } 96% { transform: translate(-50%, -50%); -webkit-text-stroke: 2px var(--white); opacity: 0.4; } }
-        .gate-frame { position: absolute; top: 50%; left: 50%; width: 80vmin; height: 80vmin; transform: translate(-50%, -50%); border: 5px solid var(--sage); animation: frameSpin 15s linear infinite; z-index: 2; pointer-events: none; }
-        .gate-frame::before, .gate-frame::after { content: ''; position: absolute; top: -15px; left: 50%; width: 30px; height: 30px; background: var(--sage); transform: translateX(-50%) rotate(45deg); }
-        .gate-frame::after { top: auto; bottom: -15px; background: var(--white); }
-        @keyframes frameSpin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
-        .gate-logo { position: relative; z-index: 10; width: 60vw; max-width: 550px; margin-bottom: 40px; filter: drop-shadow(0 0 30px rgba(126, 172, 105, 0.5)); animation: logoDrop 1.2s cubic-bezier(0.9, 0, 0.1, 1) forwards, logoFloat 4s ease-in-out infinite 1.2s; }
-        @keyframes logoDrop { 0% { transform: translateY(-150vh) rotate(-30deg); opacity: 0; } 60% { transform: translateY(20px) rotate(5deg); opacity: 1; } 80% { transform: translateY(-10px) rotate(-2deg); opacity: 1; } 100% { transform: translateY(0) rotate(0deg); opacity: 1; } }
-        @keyframes logoFloat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(-2deg); } }
-        .gate-title { position: relative; z-index: 10; font-size: 9vw; color: var(--white); text-shadow: 6px 6px 0 var(--sage); letter-spacing: 5px; animation: titleGlitch 4s infinite steps(1); margin-bottom: 50px; }
-        @keyframes titleGlitch { 0%, 100% { transform: translateX(0); text-shadow: 6px 6px 0 var(--sage); } 92% { transform: translateX(-10px); text-shadow: 8px 8px 0 var(--white); } 94% { transform: translateX(10px); text-shadow: -6px -6px 0 var(--sage); } 96% { transform: translateX(0); text-shadow: 6px 6px 0 var(--white); } }
-        .gate-btn { position: relative; z-index: 10; color: var(--sage); font-size: 1.4rem; letter-spacing: 3px; font-weight: 700; border: 6px solid var(--sage); padding: 20px 40px; background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px); animation: btnHeave var(--dance-beat) infinite; transition: background 0.2s, color 0.2s, transform 0.2s, border-color 0.2s; }
-        @keyframes btnHeave { 0%, 100% { transform: scale(1); box-shadow: 10px 10px 0 rgba(126, 172, 105, 0.5); } 10% { transform: scale(1.1); box-shadow: 15px 15px 0 rgba(126, 172, 105, 0.8); } 20% { transform: scale(1); box-shadow: 10px 10px 0 rgba(126, 172, 105, 0.5); } 30% { transform: scale(1.05); box-shadow: 12px 12px 0 rgba(126, 172, 105, 0.6); } 40% { transform: scale(1); box-shadow: 10px 10px 0 rgba(126, 172, 105, 0.5); } }
-        .gate-btn:hover { background: var(--sage); color: var(--black); border-color: var(--white); transform: scale(1.1) !important; box-shadow: 0px 0px 50px rgba(126, 172, 105, 1); }
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+  rel="stylesheet"
+>
 
-        /* NAV */
-        nav { position: fixed; top: 0; left: 0; width: 100vw; height: 90px; background: var(--black); border-bottom: 6px solid var(--sage); z-index: 100000; display: flex; align-items: center; padding: 0 50px; transform: translateY(-100%); transition: transform 1s; }
-        nav.active { transform: translateY(0); }
-        .nav-logo { margin-right: auto; }
-        .nav-logo img { width: 130px; filter: invert(1); }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: var(--sage); text-decoration: none; font-family: 'Caveat', cursive; font-size: 2rem; font-weight: 700; letter-spacing: 0px; transform: rotate(-2deg); display: inline-block; transition: color 0.3s, transform 0.3s; }
-        .nav-links a:hover { color: var(--white); transform: rotate(0deg) translateY(-2px); }
-        .nav-cta a { margin-left: 30px; text-decoration: none; color: var(--black); background: var(--sage); border: 4px solid var(--white); padding: 10px 25px; font-size: 1.2rem; font-family: 'Archivo Black', sans-serif; text-transform: uppercase; font-weight: bold; }
-        .nav-cta a:hover { background: var(--white); color: var(--black); }
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 
-        /* HAMBURGER & MOBILE MENU (FOR MOBILE ONLY) */
-        .hamburger { display: none; flex-direction: column; justify-content: center; gap: 6px; width: 40px; height: 40px; cursor: pointer; z-index: 100001; margin-left: auto; }
-        .hamburger span { display: block; width: 100%; height: 4px; background: var(--sage); transition: 0.3s; }
-        .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
-        
-        .mobile-menu { display: none; position: fixed; top: 90px; right: 0; width: 100%; background: rgba(5, 5, 5, 0.98); border-bottom: 6px solid var(--sage); z-index: 100000; padding: 30px; flex-direction: column; gap: 20px; transform: translateY(-150%); transition: transform 0.5s; backdrop-filter: blur(10px); }
-        .mobile-menu.active { transform: translateY(0); }
-        .mobile-menu a { color: var(--sage); text-decoration: none; font-family: 'Caveat', cursive; font-size: 2.5rem; font-weight: 700; transform: rotate(-2deg); text-align: center; }
-        .mobile-menu a:hover { color: var(--white); }
-        .mobile-cta { text-align: center; margin-top: 10px; }
-        .mobile-cta a { font-family: 'Archivo Black', sans-serif; font-size: 1.2rem; color: var(--black); background: var(--sage); border: 4px solid var(--white); padding: 10px 25px; text-transform: uppercase; text-decoration: none; display: inline-block; transform: rotate(0deg); }
+<style>
 
-        /* SECTIONS */
-        .section { position: relative; width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; display: flex; justify-content: center; align-items: center; animation: heavyPulse var(--dance-beat) infinite; z-index: 1; }
-        .iron-gate { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--black); z-index: 50; transform: translateX(-100%); transition: transform 1.5s; }
-        .section.in-view .iron-gate { transform: translateX(100%); }
-        .iron-gate::after { content: ''; position: absolute; top: 0; right: 0; width: 30px; height: 100%; background: var(--sage); }
+/* =========================================================
+   ROOT
+========================================================= */
 
-        .art-frame { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; height: 90%; object-fit: contain; z-index: 1; filter: contrast(1.15) saturate(1.2); }
-        .bleed-type { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 20vw; z-index: 5; pointer-events: none; white-space: nowrap; text-align: center; width: 100%; opacity: 0.45; animation: nightBlink var(--dance-beat) infinite; }
+:root {
 
-        /* FOOD MENU TICKER */
-        .food-ticker { position: relative; width: 100%; height: 80px; background: var(--off-white); border-top: 5px solid var(--black); border-bottom: 5px solid var(--black); overflow: hidden; display: flex; align-items: center; z-index: 100; }
-        .food-ticker-track { display: flex; white-space: nowrap; animation: tickerScroll 20s linear infinite; }
-        .food-ticker-item { display: inline-block; padding: 0 50px; font-family: 'Caveat', cursive; font-size: 3rem; font-weight: 700; color: var(--charcoal); background: linear-gradient(145deg, #2b2b2b 0%, #1a1a1a 40%, #444444 50%, #1a1a1a 60%, #0a0a0a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; transform: rotate(-2deg); }
-        .food-ticker-item::after { content: '~'; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 2rem; background: linear-gradient(145deg, #2b2b2b, #0a0a0a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  --crimson: #C8102E;
 
-        /* CONTACT */
-        .contact-shell { position: relative; z-index: 20; width: 90%; height: 85%; background: transparent; display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
-        .map-side { position: relative; height: 100%; }
-        .map-side img { width: 100%; height: 100%; object-fit: contain; filter: contrast(1.2) saturate(1.2); }
-        .form-side { background: rgba(5, 5, 5, 0.95); border: 8px solid var(--sage); box-shadow: 12px 12px 0 var(--black); padding: 50px; height: auto; max-height: 90%; animation: heavyPulse var(--dance-beat) infinite; }
-        .form-side h2 { font-size: 5vw; color: var(--sage); text-shadow: 5px 5px 0 var(--black); margin-bottom: 40px; animation: nightBlink var(--dance-beat) infinite; }
-        form { display: grid; gap: 20px; }
-        label { font-family: 'Space Mono'; font-weight: bold; font-size: 1.2rem; color: var(--sage); }
-        input { font-family: 'IBM Plex Mono'; font-size: 1.2rem; padding: 20px; background: rgba(126, 172, 105, 0.1); border: 4px solid var(--sage); color: var(--white); transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
-        input:focus { outline: none; background: var(--black); border-color: var(--white); box-shadow: 6px 6px 0 var(--white); transform: translate(-3px, -3px); }
-        input::placeholder { color: rgba(240, 240, 240, 0.4); }
-        button { background: var(--sage); color: var(--black); padding: 25px; border: 6px solid var(--white); box-shadow: 8px 8px 0 var(--black); font-size: 1.8rem; cursor: pointer; margin-top: 20px; font-family: 'Archivo Black', sans-serif; transition: transform 0.3s, box-shadow 0.3s; }
-        button:hover { background: var(--white); color: var(--black); transform: translate(6px, 6px); box-shadow: 2px 2px 0 var(--black); }
-        
-        /* FOOTER */
-        footer { background: var(--black); color: var(--sage); padding: 80px; border-top: 12px solid var(--sage); display: flex; justify-content: space-between; align-items: center; }
-        footer img { width: 300px; filter: drop-shadow(0px 0px 10px rgba(126, 172, 105, 0.8)); }
-        .footer-info { font-family: 'Space Mono'; font-weight: 700; line-height: 2; font-size: 1.5rem; }
-        .copyright { font-family: 'Space Mono', monospace; font-size: 1.2rem; color: var(--sage); border: 3px solid var(--sage); padding: 10px 15px; text-transform: none; letter-spacing: 1px; }
+  --crimson-dark: #97091F;
 
-        /* WHATSAPP */
-        .whatsapp-btn { position: fixed; bottom: 40px; right: 40px; width: 80px; height: 80px; background: var(--sage); border: 10px solid var(--black); box-shadow: 12px 12px 0 var(--black); display: flex; justify-content: center; align-items: center; z-index: 100000; }
-        .whatsapp-btn svg { width: 40px; height: 40px; fill: var(--black); }
+  --crimson-deep: #780817;
 
-        /* MOBILE PERFECTION: FULL WIDTH & HAMBURGER VISIBILITY */
-        @media (max-width: 768px) {
-            nav { padding: 0 20px; }
-            .nav-logo { display: none; }
-            .nav-links { display: none; }
-            .nav-cta a { display: none; }
-            .hamburger { display: flex; }
-            .mobile-menu { display: flex; }
-            .art-frame { width: 100% !important; height: 100% !important; object-fit: cover !important; top: 0 !important; left: 0 !important; transform: none !important; }
-            .bleed-type { font-size: 25vw; width: 100%; top: 50%; left: 0; transform: translateY(-50%); text-align: center; }
-            .contact-shell { width: 100%; height: auto; grid-template-columns: 1fr; gap: 20px; padding: 0; }
-            .map-side { height: 250px; width: 100%; }
-            .form-side { padding: 30px; width: 100%; }
-            .gate-title { font-size: 15vw; }
-            .gate-btn { font-size: 1rem; padding: 15px 25px; }
-            .food-ticker-item { font-size: 2rem; padding: 0 25px; }
-            .gate-frame { width: 90vmin; height: 90vmin; }
-            .copyright { font-size: 0.9rem; }
-            footer { padding: 40px 20px; flex-direction: column; text-align: center; gap: 20px; }
-            #contact.section { height: auto; min-height: 100vh; min-height: 100dvh; overflow: visible; align-items: flex-start; padding: 110px 0 40px; }
-        }
-    </style>
+  --electric: #D7FF00;
+
+  --white: #FFFDF7;
+
+  --black: #080808;
+
+  --black-soft: #111111;
+
+  --line: rgba(255,253,247,.2);
+
+  --ease: cubic-bezier(.76,0,.24,1);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+
+  background:
+    var(--crimson);
+
+  scroll-behavior: auto;
+}
+
+body {
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+
+  background:
+    var(--crimson);
+
+  color:
+    var(--white);
+
+  font-family:
+    "DM Sans",
+    sans-serif;
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  text-rendering:
+    optimizeLegibility;
+}
+
+body.loading {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+video {
+  display: block;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 99999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    var(--crimson);
+
+  color:
+    var(--white);
+}
+
+.loader-inner {
+  text-align: center;
+}
+
+.loader-logo {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(2.2rem,5vw,5rem);
+
+  line-height:
+    .85;
+
+  letter-spacing:
+    -.05em;
+}
+
+.loader-sub {
+
+  margin-top:
+    18px;
+
+  font-size:
+    9px;
+
+  letter-spacing:
+    .3em;
+
+  text-transform:
+    uppercase;
+}
+
+.loader-line {
+
+  width:
+    0;
+
+  height:
+    2px;
+
+  margin:
+    20px auto 0;
+
+  background:
+    var(--electric);
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  z-index: 9000;
+
+  width: 100%;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  padding:
+    27px 42px;
+
+  color:
+    var(--white);
+
+  transition:
+    padding .45s ease,
+    background .45s ease,
+    color .45s ease;
+
+}
+
+.nav.scrolled {
+
+  padding-top:
+    16px;
+
+  padding-bottom:
+    16px;
+
+  background:
+    rgba(8,8,8,.84);
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+}
+
+.nav-logo {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    11px;
+
+  font-size:
+    12px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .19em;
+}
+
+.logo-symbol {
+
+  width:
+    9px;
+
+  height:
+    9px;
+
+  background:
+    var(--electric);
+
+  border-radius:
+    50%;
+}
+
+.nav-links {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    29px;
+
+  font-size:
+    9px;
+
+  letter-spacing:
+    .18em;
+
+  text-transform:
+    uppercase;
+}
+
+.nav-links a {
+
+  position:
+    relative;
+
+  opacity:
+    .75;
+
+  transition:
+    opacity .25s ease;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.nav-links a::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    0;
+
+  bottom:
+    -7px;
+
+  width:
+    0;
+
+  height:
+    1px;
+
+  background:
+    var(--electric);
+
+  transition:
+    width .3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-book {
+
+  padding:
+    11px 17px;
+
+  background:
+    var(--electric);
+
+  color:
+    var(--black);
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .16em;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    transform .3s ease;
+}
+
+.nav-book:hover {
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+  position:
+    relative;
+
+  height:
+    550vh;
+
+  background:
+    var(--crimson);
+}
+
+.hero-pin {
+
+  position:
+    sticky;
+
+  top:
+    0;
+
+  width:
+    100%;
+
+  height:
+    100vh;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--crimson);
+}
+
+.video-container {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--black);
+}
+
+#heroVideo {
+
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  left:
+    50%;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+
+  object-position:
+    center center;
+
+  transform:
+    translate3d(-50%,-50%,0)
+    scale(1.02);
+
+  transform-origin:
+    center center;
+
+  will-change:
+    transform;
+
+  pointer-events:
+    none;
+}
+
+.video-red {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(200,16,46,.15),
+      rgba(0,0,0,.02) 40%,
+      rgba(200,16,46,.2) 100%
+    );
+
+  mix-blend-mode:
+    multiply;
+
+  pointer-events:
+    none;
+}
+
+.video-dark {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.45),
+      transparent 42%,
+      rgba(0,0,0,.65)
+    );
+
+  pointer-events:
+    none;
+}
+
+.video-error {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    100;
+
+  display:
+    none;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    var(--crimson);
+
+  text-align:
+    center;
+}
+
+.video-error.active {
+  display:
+    flex;
+}
+
+.video-error h2 {
+
+  margin:
+    0 0 15px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    50px;
+
+  font-weight:
+    400;
+}
+
+.video-error p {
+
+  margin:
+    0;
+
+  font-size:
+    12px;
+
+  opacity:
+    .7;
+}
+
+
+/* =========================================================
+   HERO TYPOGRAPHY
+========================================================= */
+
+.hero-copy {
+
+  position:
+    absolute;
+
+  left:
+    7vw;
+
+  bottom:
+    10vh;
+
+  z-index:
+    30;
+
+  width:
+    min(900px,85vw);
+
+  pointer-events:
+    none;
+}
+
+.hero-kicker {
+
+  margin-bottom:
+    18px;
+
+  color:
+    var(--electric);
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .27em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    0;
+
+  transform:
+    translateX(-100px);
+}
+
+.hero-title {
+
+  margin:
+    0;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(5rem,13vw,13rem);
+
+  font-weight:
+    400;
+
+  line-height:
+    .76;
+
+  letter-spacing:
+    -.075em;
+
+  color:
+    var(--white);
+
+  opacity:
+    0;
+
+  transform:
+    translateX(-130px);
+}
+
+.hero-title em {
+  color:
+    var(--electric);
+
+  font-style:
+    italic;
+}
+
+.hero-description {
+
+  width:
+    min(440px,90vw);
+
+  margin-top:
+    35px;
+
+  color:
+    var(--white);
+
+  font-size:
+    13px;
+
+  line-height:
+    1.8;
+
+  opacity:
+    0;
+
+  transform:
+    translateX(-80px);
+}
+
+
+/* =========================================================
+   HERO SCROLL
+========================================================= */
+
+.hero-scroll {
+
+  position:
+    absolute;
+
+  bottom:
+    28px;
+
+  left:
+    50%;
+
+  z-index:
+    40;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    14px;
+
+  transform:
+    translateX(-50%);
+
+  color:
+    var(--white);
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    .25em;
+
+  text-transform:
+    uppercase;
+}
+
+.scroll-line {
+
+  width:
+    75px;
+
+  height:
+    2px;
+
+  overflow:
+    hidden;
+
+  background:
+    rgba(255,255,255,.3);
+}
+
+.scroll-line::after {
+
+  content:
+    "";
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  background:
+    var(--electric);
+
+  animation:
+    scrollLine 1.7s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+/* =========================================================
+   HERO PROGRESS
+========================================================= */
+
+.hero-progress {
+
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  right:
+    28px;
+
+  z-index:
+    40;
+
+  width:
+    2px;
+
+  height:
+    110px;
+
+  transform:
+    translateY(-50%);
+
+  background:
+    rgba(255,255,255,.2);
+}
+
+.hero-progress-fill {
+
+  width:
+    100%;
+
+  height:
+    0;
+
+  background:
+    var(--electric);
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.page {
+
+  position:
+    relative;
+
+  min-height:
+    100vh;
+
+  overflow:
+    hidden;
+}
+
+.page-red {
+
+  background:
+    var(--crimson);
+
+  color:
+    var(--white);
+}
+
+.page-black {
+
+  background:
+    var(--black);
+
+  color:
+    var(--white);
+}
+
+.page-red-dark {
+
+  background:
+    var(--crimson-dark);
+
+  color:
+    var(--white);
+}
+
+.page-white {
+
+  background:
+    var(--white);
+
+  color:
+    var(--black);
+}
+
+.page-electric {
+
+  background:
+    var(--electric);
+
+  color:
+    var(--black);
+}
+
+.page-padding {
+
+  padding:
+    140px 7vw;
+}
+
+.eyebrow {
+
+  margin-bottom:
+    24px;
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .24em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    .55;
+}
+
+.red-eyebrow {
+  color:
+    var(--electric);
+
+  opacity:
+    1;
+}
+
+.page-title {
+
+  margin:
+    0;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(4rem,9vw,10rem);
+
+  font-weight:
+    400;
+
+  line-height:
+    .83;
+
+  letter-spacing:
+    -.065em;
+}
+
+.page-title em {
+  font-style:
+    italic;
+}
+
+.page-copy {
+
+  font-size:
+    14px;
+
+  line-height:
+    1.9;
+
+  opacity:
+    .7;
+}
+
+.electric {
+  color:
+    var(--electric);
+}
+
+
+/* =========================================================
+   PAGE 02 — PHILOSOPHY
+========================================================= */
+
+.philosophy {
+
+  min-height:
+    110vh;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1.2fr .8fr;
+
+  align-items:
+    center;
+
+  gap:
+    10vw;
+}
+
+.philosophy-title {
+
+  opacity:
+    0;
+
+  transform:
+    translateX(-120px);
+}
+
+.philosophy-right {
+
+  max-width:
+    470px;
+
+  opacity:
+    0;
+
+  transform:
+    translateY(70px);
+}
+
+.philosophy-statement {
+
+  margin-top:
+    55px;
+
+  padding-top:
+    25px;
+
+  border-top:
+    1px solid rgba(255,255,255,.25);
+}
+
+.philosophy-statement strong {
+
+  display:
+    block;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    3rem;
+
+  font-weight:
+    400;
+
+  line-height:
+    .95;
+}
+
+
+/* =========================================================
+   PAGE 03 — ROOMS
+========================================================= */
+
+.rooms {
+
+  min-height:
+    120vh;
+
+  padding:
+    130px 7vw;
+}
+
+.rooms-head {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    flex-end;
+
+  gap:
+    50px;
+
+  margin-bottom:
+    90px;
+}
+
+.rooms-intro {
+
+  max-width:
+    380px;
+}
+
+.rooms-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    2px;
+}
+
+.room-card {
+
+  position:
+    relative;
+
+  min-height:
+    620px;
+
+  padding:
+    35px;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--black);
+}
+
+.room-card.large {
+  min-height:
+    720px;
+}
+
+.room-card::before {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 25%,
+      rgba(0,0,0,.8)
+    );
+
+  z-index:
+    2;
+}
+
+.room-card::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background:
+    var(--crimson);
+
+  opacity:
+    0;
+
+  mix-blend-mode:
+    multiply;
+
+  transition:
+    opacity .5s ease;
+}
+
+.room-card:hover::after {
+  opacity:
+    .55;
+}
+
+.room-content {
+
+  position:
+    absolute;
+
+  left:
+    35px;
+
+  right:
+    35px;
+
+  bottom:
+    35px;
+
+  z-index:
+    4;
+}
+
+.room-number {
+
+  margin-bottom:
+    12px;
+
+  color:
+    var(--electric);
+
+  font-size:
+    9px;
+
+  letter-spacing:
+    .2em;
+}
+
+.room-name {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(2.5rem,5vw,5rem);
+
+  line-height:
+    .85;
+}
+
+.room-meta {
+
+  margin-top:
+    18px;
+
+  font-size:
+    10px;
+
+  letter-spacing:
+    .12em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    .65;
+}
+
+.room-graphic {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--crimson),
+      var(--crimson-dark)
+    );
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(6rem,15vw,16rem);
+
+  color:
+    rgba(255,255,255,.08);
+
+  transform:
+    scale(1);
+
+  transition:
+    transform .8s var(--ease);
+}
+
+.room-card:hover .room-graphic {
+  transform:
+    scale(1.1);
+}
+
+
+/* =========================================================
+   PAGE 04 — DINING
+========================================================= */
+
+.dining {
+
+  min-height:
+    120vh;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    .8fr 1.2fr;
+
+  gap:
+    10vw;
+
+  align-items:
+    center;
+}
+
+.dining-left {
+  position:
+    relative;
+}
+
+.dining-circle {
+
+  width:
+    min(32vw,420px);
+
+  aspect-ratio:
+    1;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--electric);
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  color:
+    var(--black);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(3rem,7vw,7rem);
+
+  line-height:
+    .8;
+
+  text-align:
+    center;
+
+  transform:
+    rotate(-8deg);
+}
+
+.dining-right {
+  max-width:
+    750px;
+}
+
+.dining-menu {
+
+  margin-top:
+    60px;
+
+  border-top:
+    1px solid rgba(255,255,255,.25);
+}
+
+.dining-row {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    80px 1fr 100px;
+
+  gap:
+    20px;
+
+  padding:
+    27px 0;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.2);
+}
+
+.dining-index {
+
+  color:
+    var(--electric);
+
+  font-size:
+    9px;
+}
+
+.dining-name {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    1.7rem;
+}
+
+.dining-detail {
+
+  margin-top:
+    5px;
+
+  font-size:
+    10px;
+
+  opacity:
+    .5;
+}
+
+.dining-price {
+
+  text-align:
+    right;
+
+  font-size:
+    10px;
+
+  opacity:
+    .6;
+}
+
+
+/* =========================================================
+   PAGE 05 — BAR
+========================================================= */
+
+.bar {
+
+  min-height:
+    110vh;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  text-align:
+    center;
+}
+
+.bar-inner {
+  width:
+    min(1100px,90vw);
+}
+
+.bar-title {
+
+  font-size:
+    clamp(5rem,13vw,14rem);
+}
+
+.bar-sub {
+
+  max-width:
+    500px;
+
+  margin:
+    40px auto 0;
+
+  font-size:
+    13px;
+
+  line-height:
+    1.8;
+
+  opacity:
+    .65;
+}
+
+.bar-pills {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    10px;
+
+  margin-top:
+    50px;
+}
+
+.bar-pill {
+
+  padding:
+    12px 18px;
+
+  border:
+    1px solid rgba(255,255,255,.3);
+
+  font-size:
+    9px;
+
+  letter-spacing:
+    .15em;
+
+  text-transform:
+    uppercase;
+}
+
+.bar-pill.active {
+
+  background:
+    var(--electric);
+
+  border-color:
+    var(--electric);
+
+  color:
+    var(--black);
+}
+
+
+/* =========================================================
+   PAGE 06 — EXPERIENCES
+========================================================= */
+
+.experiences {
+
+  min-height:
+    120vh;
+}
+
+.experience-header {
+
+  max-width:
+    900px;
+
+  margin-bottom:
+    90px;
+}
+
+.experience-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:
+    2px;
+}
+
+.experience {
+
+  position:
+    relative;
+
+  min-height:
+    500px;
+
+  padding:
+    32px;
+
+  background:
+    var(--crimson-dark);
+
+  overflow:
+    hidden;
+
+  transition:
+    background .5s ease;
+}
+
+.experience:nth-child(2) {
+  background:
+    var(--crimson);
+}
+
+.experience:nth-child(3) {
+  background:
+    var(--black);
+}
+
+.experience:hover {
+  background:
+    var(--electric);
+
+  color:
+    var(--black);
+}
+
+.experience-number {
+
+  font-size:
+    9px;
+
+  opacity:
+    .5;
+}
+
+.experience-name {
+
+  position:
+    absolute;
+
+  left:
+    32px;
+
+  bottom:
+    100px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    3rem;
+
+  line-height:
+    .9;
+}
+
+.experience-text {
+
+  position:
+    absolute;
+
+  left:
+    32px;
+
+  right:
+    32px;
+
+  bottom:
+    32px;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.6;
+
+  opacity:
+    .6;
+}
+
+
+/* =========================================================
+   PAGE 07 — JOURNAL / EVENTS
+========================================================= */
+
+.journal {
+
+  min-height:
+    120vh;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    2px;
+
+  padding:
+    2px;
+
+  background:
+    var(--black);
+}
+
+.journal-column {
+
+  padding:
+    120px 7vw;
+
+  background:
+    var(--white);
+
+  color:
+    var(--black);
+}
+
+.journal-column.dark-column {
+
+  background:
+    var(--crimson);
+
+  color:
+    var(--white);
+}
+
+.journal-list {
+  margin-top:
+    65px;
+}
+
+.journal-item {
+
+  padding:
+    25px 0;
+
+  border-top:
+    1px solid rgba(0,0,0,.2);
+}
+
+.dark-column .journal-item {
+  border-color:
+    rgba(255,255,255,.2);
+}
+
+.journal-date {
+
+  margin-bottom:
+    9px;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    .18em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    .5;
+}
+
+.journal-title {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    2rem;
+
+  line-height:
+    1;
+}
+
+
+/* =========================================================
+   PAGE 08 — RESERVATION
+========================================================= */
+
+.reservation {
+
+  min-height:
+    110vh;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  align-items:
+    center;
+
+  gap:
+    10vw;
+}
+
+.reservation-title {
+  font-size:
+    clamp(4rem,8vw,9rem);
+}
+
+.reservation-note {
+
+  max-width:
+    430px;
+
+  margin-top:
+    35px;
+
+  font-size:
+    13px;
+
+  line-height:
+    1.8;
+
+  opacity:
+    .65;
+}
+
+.reservation-form {
+
+  max-width:
+    520px;
+}
+
+.form-row {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    20px;
+}
+
+.field {
+  margin-bottom:
+    25px;
+}
+
+.field label {
+
+  display:
+    block;
+
+  margin-bottom:
+    9px;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    .18em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    .5;
+}
+
+.field input,
+.field select,
+.field textarea {
+
+  width:
+    100%;
+
+  padding:
+    14px 0;
+
+  background:
+    transparent;
+
+  color:
+    var(--white);
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.3);
+
+  outline:
+    none;
+
+  border-radius:
+    0;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color:
+    var(--electric);
+}
+
+.field select option {
+  color:
+    var(--black);
+}
+
+.submit {
+
+  margin-top:
+    10px;
+
+  padding:
+    16px 28px;
+
+  background:
+    var(--electric);
+
+  color:
+    var(--black);
+
+  border:
+    0;
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .18em;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    transform .3s ease;
+}
+
+.submit:hover {
+  transform:
+    translateY(-3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+  padding:
+    90px 7vw 30px;
+
+  background:
+    var(--black);
+
+  color:
+    var(--white);
+}
+
+.footer-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1.6fr 1fr 1fr 1fr;
+
+  gap:
+    50px;
+
+  padding-bottom:
+    80px;
+}
+
+.footer-logo {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(4rem,8vw,9rem);
+
+  line-height:
+    .76;
+
+  letter-spacing:
+    -.07em;
+}
+
+.footer-heading {
+
+  margin-bottom:
+    20px;
+
+  color:
+    var(--electric);
+
+  font-size:
+    8px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .2em;
+
+  text-transform:
+    uppercase;
+}
+
+.footer-column p,
+.footer-column a {
+
+  display:
+    block;
+
+  margin:
+    0 0 10px;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.6;
+
+  opacity:
+    .65;
+}
+
+.footer-column a:hover {
+  color:
+    var(--electric);
+
+  opacity:
+    1;
+}
+
+.footer-bottom {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  gap:
+    20px;
+
+  padding-top:
+    25px;
+
+  border-top:
+    1px solid rgba(255,255,255,.15);
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    .14em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    .4;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal-left {
+
+  opacity:
+    0;
+
+  transform:
+    translateX(-100px);
+}
+
+.reveal-up {
+
+  opacity:
+    0;
+
+  transform:
+    translateY(80px);
+}
+
+.reveal-right {
+
+  opacity:
+    0;
+
+  transform:
+    translateX(100px);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .nav {
+    padding:
+      20px 22px;
+  }
+
+  .nav.scrolled {
+    padding:
+      14px 22px;
+  }
+
+  .nav-links {
+    display:
+      none;
+  }
+
+  .hero {
+    height:
+      470vh;
+  }
+
+  .hero-copy {
+
+    left:
+      22px;
+
+    bottom:
+      11vh;
+
+    width:
+      calc(100% - 44px);
+  }
+
+  .hero-title {
+
+    font-size:
+      clamp(4.5rem,22vw,8rem);
+  }
+
+  .hero-progress {
+    right:
+      12px;
+  }
+
+  .page-padding {
+    padding:
+      105px 22px;
+  }
+
+  .philosophy {
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      70px;
+  }
+
+  .rooms {
+    padding:
+      105px 22px;
+  }
+
+  .rooms-head {
+
+    display:
+      block;
+
+    margin-bottom:
+      55px;
+  }
+
+  .rooms-intro {
+    margin-top:
+      30px;
+  }
+
+  .rooms-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  .room-card,
+  .room-card.large {
+    min-height:
+      500px;
+  }
+
+  .dining {
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      70px;
+  }
+
+  .dining-circle {
+
+    width:
+      min(65vw,360px);
+  }
+
+  .experience-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  .experience {
+
+    min-height:
+      400px;
+  }
+
+  .journal {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  .reservation {
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      70px;
+  }
+
+  .footer {
+    padding:
+      70px 22px 25px;
+  }
+
+  .footer-grid {
+
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .footer-logo {
+    grid-column:
+      1 / -1;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .hero {
+    height:
+      440vh;
+  }
+
+  #heroVideo {
+    object-position:
+      center center;
+  }
+
+  .hero-kicker {
+    font-size:
+      8px;
+  }
+
+  .hero-title {
+    font-size:
+      clamp(4.3rem,23vw,7rem);
+  }
+
+  .hero-description {
+    font-size:
+      12px;
+  }
+
+  .hero-progress {
+    display:
+      none;
+  }
+
+  .page-title {
+    font-size:
+      clamp(3.5rem,17vw,6rem);
+  }
+
+  .dining-row {
+
+    grid-template-columns:
+      35px 1fr 55px;
+
+    gap:
+      10px;
+  }
+
+  .dining-name {
+    font-size:
+      1.35rem;
+  }
+
+  .form-row {
+    grid-template-columns:
+      1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .footer-logo {
+    grid-column:
+      auto;
+  }
+
+  .footer-bottom {
+
+    flex-direction:
+      column;
+  }
+}
+
+</style>
 </head>
-<body>
-    <div id="cursor"></div>
 
-    <div id="audioGate" onclick="startAudio()">
-        <div class="gate-backdrop">BOSTAN</div>
-        <div class="gate-frame"></div>
-        <img src="logo.png" class="gate-logo" alt="Hotel Bostan Logo">
-        <div class="gate-title">ENTER BOSTAN</div>
-        <div class="gate-btn">ENTER BOSTAN</div>
+
+<body class="loading">
+
+
+<!-- =========================================================
+     LOADER
+========================================================= -->
+
+<div class="loader" id="loader">
+
+  <div class="loader-inner">
+
+    <div class="loader-logo">
+      Hotel Bostan.
     </div>
 
-    <!-- MUSIC -->
-    <audio id="bgMusic" loop>
-        <source src="lola_lola_ricky_martin.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- NAV -->
-    <nav id="mainNav">
-        <div class="nav-logo"><img src="logo.png" alt="Hotel Bostan"></div>
-        <div class="nav-links">
-            <a href="#hero">Home</a>
-            <a href="#story">Story</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#menu">Menu</a>
-            <a href="#contact">Visit</a>
-        </div>
-        <div class="nav-cta"><a href="tel:+917045043161">CALL NOW</a></div>
-
-        <!-- HAMBURGER MENU -->
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-
-    <!-- MOBILE MENU DROPDOWN -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#hero">Home</a>
-        <a href="#story">Story</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#menu">Menu</a>
-        <a href="#contact">Visit</a>
-        <div class="mobile-cta"><a href="tel:+917045043161">CALL NOW</a></div>
+    <div class="loader-sub">
+      Eat slow.
     </div>
 
-    <header id="hero" class="section">
-        <h1 class="bleed-type">REOPENING</h1>
-        <img src="A.jpg" class="art-frame" alt="Hero">
-        <div class="iron-gate"></div>
-    </header>
+    <div
+      class="loader-line"
+      id="loaderLine"
+    ></div>
 
-    <!-- FOOD TICKERS -->
-    <div class="food-ticker">
-        <div class="food-ticker-track">
-            <span class="food-ticker-item">Butter Chicken</span>
-            <span class="food-ticker-item">Dal Makhani</span>
-            <span class="food-ticker-item">Hakka Noodles</span>
-            <span class="food-ticker-item">Chilli Paneer</span>
-            <span class="food-ticker-item">Biryani</span>
-            <span class="food-ticker-item">Tandoori Platter</span>
-            <span class="food-ticker-item">Butter Chicken</span>
-            <span class="food-ticker-item">Dal Makhani</span>
-            <span class="food-ticker-item">Hakka Noodles</span>
-            <span class="food-ticker-item">Chilli Paneer</span>
-            <span class="food-ticker-item">Biryani</span>
-            <span class="food-ticker-item">Tandoori Platter</span>
-        </div>
-    </div>
+  </div>
 
-    <section id="story" class="section">
-        <h1 class="bleed-type">BOMBAY</h1>
-        <img src="B.jpg" class="art-frame" alt="Story">
-        <div class="iron-gate"></div>
-    </section>
+</div>
 
-    <!-- FOOD TICKERS -->
-    <div class="food-ticker">
-        <div class="food-ticker-track">
-            <span class="food-ticker-item">Paneer Tikka</span>
-            <span class="food-ticker-item">Kung Pao Chicken</span>
-            <span class="food-ticker-item">Garlic Naan</span>
-            <span class="food-ticker-item">Veg Manchurian</span>
-            <span class="food-ticker-item">Rogan Josh</span>
-            <span class="food-ticker-item">Schezwan Fried Rice</span>
-            <span class="food-ticker-item">Paneer Tikka</span>
-            <span class="food-ticker-item">Kung Pao Chicken</span>
-            <span class="food-ticker-item">Garlic Naan</span>
-            <span class="food-ticker-item">Veg Manchurian</span>
-            <span class="food-ticker-item">Rogan Josh</span>
-            <span class="food-ticker-item">Schezwan Fried Rice</span>
-        </div>
-    </div>
 
-    <section id="gallery" class="section">
-        <h1 class="bleed-type">ARCHES</h1>
-        <img src="C.jpg" class="art-frame" alt="Iron Arches">
-        <div class="iron-gate"></div>
-    </section>
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-    <!-- FOOD TICKERS -->
-    <div class="food-ticker">
-        <div class="food-ticker-track">
-            <span class="food-ticker-item">Chicken 65</span>
-            <span class="food-ticker-item">Gobi Manchurian</span>
-            <span class="food-ticker-item">Lamb Seekh Kebab</span>
-            <span class="food-ticker-item">American Chopsuey</span>
-            <span class="food-ticker-item">Palak Paneer</span>
-            <span class="food-ticker-item">Chilli Garlic Noodles</span>
-            <span class="food-ticker-item">Chicken 65</span>
-            <span class="food-ticker-item">Gobi Manchurian</span>
-            <span class="food-ticker-item">Lamb Seekh Kebab</span>
-            <span class="food-ticker-item">American Chopsuey</span>
-            <span class="food-ticker-item">Palak Paneer</span>
-            <span class="food-ticker-item">Chilli Garlic Noodles</span>
-        </div>
-    </div>
+<header class="nav" id="nav">
 
-    <section id="saturday" class="section">
-        <h1 class="bleed-type">EVE</h1>
-        <img src="D.jpg" class="art-frame" alt="Saturday Eve">
-        <div class="iron-gate"></div>
-    </section>
+  <a
+    href="#home"
+    class="nav-logo"
+  >
 
-    <!-- FOOD TICKERS -->
-    <div class="food-ticker">
-        <div class="food-ticker-track">
-            <span class="food-ticker-item">Chicken 65</span>
-            <span class="food-ticker-item">Gobi Manchurian</span>
-            <span class="food-ticker-item">Lamb Seekh Kebab</span>
-            <span class="food-ticker-item">American Chopsuey</span>
-            <span class="food-ticker-item">Palak Paneer</span>
-            <span class="food-ticker-item">Chilli Garlic Noodles</span>
-            <span class="food-ticker-item">Chicken 65</span>
-            <span class="food-ticker-item">Gobi Manchurian</span>
-            <span class="food-ticker-item">Lamb Seekh Kebab</span>
-            <span class="food-ticker-item">American Chopsuey</span>
-            <span class="food-ticker-item">Palak Paneer</span>
-            <span class="food-ticker-item">Chilli Garlic Noodles</span>
-        </div>
-    </div>
+    <span class="logo-symbol"></span>
 
-    <section id="menu" class="section">
-        <h1 class="bleed-type">BOWL</h1>
-        <img src="E.jpg" class="art-frame" alt="Marine Bowl">
-        <div class="iron-gate"></div>
-    </section>
+    HOTEL BOSTAN
 
-    <!-- FOOD TICKERS -->
-    <div class="food-ticker">
-        <div class="food-ticker-track">
-            <span class="food-ticker-item">Mutton Rogan Josh</span>
-            <span class="food-ticker-item">Honey Chilli Potato</span>
-            <span class="food-ticker-item">Butter Naan</span>
-            <span class="food-ticker-item">Crispy Chilli Beef</span>
-            <span class="food-ticker-item">Jeera Rice</span>
-            <span class="food-ticker-item">Kadai Chicken</span>
-            <span class="food-ticker-item">Mutton Rogan Josh</span>
-            <span class="food-ticker-item">Honey Chilli Potato</span>
-            <span class="food-ticker-item">Butter Naan</span>
-            <span class="food-ticker-item">Crispy Chilli Beef</span>
-            <span class="food-ticker-item">Jeera Rice</span>
-            <span class="food-ticker-item">Kadai Chicken</span>
-        </div>
-    </div>
+  </a>
 
-    <section id="drinks" class="section">
-        <h1 class="bleed-type">HUSH</h1>
-        <img src="F.jpg" class="art-frame" alt="Halal Hush">
-        <div class="iron-gate"></div>
-    </section>
 
-    <!-- FOOD TICKERS -->
-    <div class="food-ticker">
-        <div class="food-ticker-track">
-            <span class="food-ticker-item">Masala Chai</span>
-            <span class="food-ticker-item">Fresh Lime Soda</span>
-            <span class="food-ticker-item">Sweet Lassi</span>
-            <span class="food-ticker-item">Cold Coffee</span>
-            <span class="food-ticker-item">Jaljeera</span>
-            <span class="food-ticker-item">Rose Milk</span>
-            <span class="food-ticker-item">Masala Chai</span>
-            <span class="food-ticker-item">Fresh Lime Soda</span>
-            <span class="food-ticker-item">Sweet Lassi</span>
-            <span class="food-ticker-item">Cold Coffee</span>
-            <span class="food-ticker-item">Jaljeera</span>
-            <span class="food-ticker-item">Rose Milk</span>
-        </div>
-    </div>
+  <nav class="nav-links">
 
-    <section id="contact" class="section">
-        <div class="contact-shell">
-            <div class="map-side"><img src="G.jpg" alt="Map"></div>
-            <div class="form-side">
-                <h2>RESERVE<br>NOW</h2>
-                <form id="resForm">
-                    <label for="name">NAME</label>
-                    <input type="text" id="name" placeholder="ENTER NAME" required>
-                    <label for="phone">PHONE</label>
-                    <input type="tel" id="phone" placeholder="ENTER NUMBER" required>
-                    <label for="date">DATE</label>
-                    <input type="date" id="date" required>
-                    <label for="time">TIME</label>
-                    <input type="time" id="time" required>
-                    <label for="guests">GUESTS</label>
-                    <input type="number" id="guests" min="1" max="20" value="2" required>
-                    <button type="submit">BOOK VIA WHATSAPP</button>
-                </form>
-            </div>
-        </div>
-        <div class="iron-gate"></div>
-    </section>
-
-    <footer>
-        <img src="logo.png" alt="Logo">
-        <div class="footer-info">
-            <p>THE HOTEL BOSTAN</p>
-            <p>S.V. ROAD, JOGESHWARI WEST, MUMBAI</p>
-            <p>+91-7045043161</p>
-            <p>@the_hotel_bostan</p>
-        </div>
-        <div class="copyright">© 2026 Hotel Bostan</div>
-    </footer>
-
-    <a href="https://wa.me/917045043161" target="_blank" class="whatsapp-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <a href="#philosophy">
+      Philosophy
     </a>
 
-    <script>
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+    <a href="#rooms">
+      Rooms
+    </a>
 
-        const audioGate = document.getElementById('audioGate');
-        const bgMusic = document.getElementById('bgMusic');
-        
-        function startAudio() {
-            bgMusic.volume = 0.9; 
-            bgMusic.play();
-            audioGate.classList.add('hidden');
-            setTimeout(() => {
-                document.getElementById('mainNav').classList.add('active');
-                setTimeout(() => {
-                    document.getElementById('hero').classList.add('in-view');
-                }, 250);
-            }, 500);
+    <a href="#dining">
+      Dining
+    </a>
+
+    <a href="#bar">
+      Bar
+    </a>
+
+    <a href="#experiences">
+      Experiences
+    </a>
+
+    <a href="#journal">
+      Journal
+    </a>
+
+  </nav>
+
+
+  <a
+    href="#reservation"
+    class="nav-book"
+  >
+    Book
+  </a>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================================================
+     PAGE 01 — HOME
+========================================================= -->
+
+<section
+  class="hero"
+  id="home"
+>
+
+  <div class="hero-pin">
+
+    <div class="video-container">
+
+      <!-- ===================================================
+           EXACT VIDEO FILE
+           hero.mp4
+      ==================================================== -->
+
+      <video
+        id="heroVideo"
+        muted
+        playsinline
+        webkit-playsinline
+        preload="auto"
+      >
+
+        <source
+          src="./hero.mp4"
+          type="video/mp4"
+        >
+
+      </video>
+
+
+      <div class="video-red"></div>
+
+      <div class="video-dark"></div>
+
+
+      <div
+        class="video-error"
+        id="videoError"
+      >
+
+        <div>
+
+          <h2>
+            Hotel Bostan
+          </h2>
+
+          <p>
+            The cinematic video could not be loaded.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-copy">
+
+      <div
+        class="hero-kicker"
+        id="heroKicker"
+      >
+        Restaurant · Café · Hotel Bostan
+      </div>
+
+
+      <h1
+        class="hero-title"
+        id="heroTitle"
+      >
+        Eat<br>
+        <em>slow.</em>
+      </h1>
+
+
+      <p
+        class="hero-description"
+        id="heroDescription"
+      >
+        A hotel for long lunches,
+        late coffees, slow mornings
+        and nights that refuse to hurry.
+      </p>
+
+    </div>
+
+
+    <div
+      class="hero-scroll"
+      id="heroScroll"
+    >
+
+      <span>
+        Scroll to enter
+      </span>
+
+      <span class="scroll-line"></span>
+
+    </div>
+
+
+    <div class="hero-progress">
+
+      <div
+        class="hero-progress-fill"
+        id="heroProgress"
+      ></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 02 — PHILOSOPHY
+========================================================= -->
+
+<section
+  class="page page-red page-padding philosophy"
+  id="philosophy"
+>
+
+  <div>
+
+    <div class="eyebrow red-eyebrow">
+      02 — Philosophy
+    </div>
+
+
+    <h2
+      class="page-title philosophy-title"
+      id="philosophyTitle"
+    >
+      Good food.<br>
+      Good company.<br>
+      <em>No hurry.</em>
+    </h2>
+
+  </div>
+
+
+  <div
+    class="philosophy-right"
+    id="philosophyRight"
+  >
+
+    <p class="page-copy">
+
+      Hotel Bostan was created around a
+      deliberately simple philosophy:
+
+      <br><br>
+
+      Don't rush breakfast.
+      Don't shorten lunch.
+      Don't leave after one drink.
+
+      <br><br>
+
+      Stay.
+
+    </p>
+
+
+    <div class="philosophy-statement">
+
+      <strong>
+        The best memories
+        take their time.
+      </strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 03 — ROOMS
+========================================================= -->
+
+<section
+  class="page page-black rooms"
+  id="rooms"
+>
+
+  <div class="rooms-head">
+
+    <div>
+
+      <div class="eyebrow electric">
+        03 — Stay
+      </div>
+
+      <h2 class="page-title">
+        Rooms<br>
+        with <em>character.</em>
+      </h2>
+
+    </div>
+
+
+    <p class="page-copy rooms-intro">
+
+      Quiet spaces, deep beds,
+      considered details and mornings
+      with nowhere to be.
+
+    </p>
+
+  </div>
+
+
+  <div class="rooms-grid">
+
+
+    <article class="room-card large">
+
+      <div class="room-graphic">
+        I
+      </div>
+
+      <div class="room-content">
+
+        <div class="room-number">
+          01 — SIGNATURE
+        </div>
+
+        <div class="room-name">
+          The Bostan
+        </div>
+
+        <div class="room-meta">
+          King · City View · 48 m²
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <article class="room-card">
+
+      <div class="room-graphic">
+        II
+      </div>
+
+      <div class="room-content">
+
+        <div class="room-number">
+          02 — DELUXE
+        </div>
+
+        <div class="room-name">
+          Crimson
+        </div>
+
+        <div class="room-meta">
+          King · Garden View · 39 m²
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <article class="room-card">
+
+      <div class="room-graphic">
+        III
+      </div>
+
+      <div class="room-content">
+
+        <div class="room-number">
+          03 — STUDIO
+        </div>
+
+        <div class="room-name">
+          Afterglow
+        </div>
+
+        <div class="room-meta">
+          Queen · Courtyard · 32 m²
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <article class="room-card large">
+
+      <div class="room-graphic">
+        IV
+      </div>
+
+      <div class="room-content">
+
+        <div class="room-number">
+          04 — PENTHOUSE
+        </div>
+
+        <div class="room-name">
+          Bostan No. 4
+        </div>
+
+        <div class="room-meta">
+          Suite · Terrace · 78 m²
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 04 — DINING
+========================================================= -->
+
+<section
+  class="page page-red-dark page-padding dining"
+  id="dining"
+>
+
+  <div class="dining-left">
+
+    <div class="dining-circle">
+      Eat.<br>
+      Drink.<br>
+      Repeat.
+    </div>
+
+  </div>
+
+
+  <div class="dining-right">
+
+    <div class="eyebrow electric">
+      04 — Dining
+    </div>
+
+    <h2 class="page-title">
+      The kitchen<br>
+      never <em>hurries.</em>
+    </h2>
+
+
+    <p class="page-copy">
+
+      Seasonal ingredients,
+      generous plates and food
+      designed for the middle
+      of the table.
+
+    </p>
+
+
+    <div class="dining-menu">
+
+
+      <div class="dining-row">
+
+        <div class="dining-index">
+          01
+        </div>
+
+        <div>
+
+          <div class="dining-name">
+            Bostan Breakfast
+          </div>
+
+          <div class="dining-detail">
+            Eggs · Sourdough · Seasonal produce
+          </div>
+
+        </div>
+
+        <div class="dining-price">
+          ₹480
+        </div>
+
+      </div>
+
+
+      <div class="dining-row">
+
+        <div class="dining-index">
+          02
+        </div>
+
+        <div>
+
+          <div class="dining-name">
+            Burrata & Tomatoes
+          </div>
+
+          <div class="dining-detail">
+            Burrata · Basil · Olive oil
+          </div>
+
+        </div>
+
+        <div class="dining-price">
+          ₹620
+        </div>
+
+      </div>
+
+
+      <div class="dining-row">
+
+        <div class="dining-index">
+          03
+        </div>
+
+        <div>
+
+          <div class="dining-name">
+            Truffle Pasta
+          </div>
+
+          <div class="dining-detail">
+            Fresh pasta · Parmesan · Truffle
+          </div>
+
+        </div>
+
+        <div class="dining-price">
+          ₹790
+        </div>
+
+      </div>
+
+
+      <div class="dining-row">
+
+        <div class="dining-index">
+          04
+        </div>
+
+        <div>
+
+          <div class="dining-name">
+            Bostan Burger
+          </div>
+
+          <div class="dining-detail">
+            Charred beef · Aged cheese
+          </div>
+
+        </div>
+
+        <div class="dining-price">
+          ₹680
+        </div>
+
+      </div>
+
+
+      <div class="dining-row">
+
+        <div class="dining-index">
+          05
+        </div>
+
+        <div>
+
+          <div class="dining-name">
+            Burnt Cheesecake
+          </div>
+
+          <div class="dining-detail">
+            Vanilla · Sea salt · Fruit
+          </div>
+
+        </div>
+
+        <div class="dining-price">
+          ₹420
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 05 — BAR
+========================================================= -->
+
+<section
+  class="page page-black bar"
+  id="bar"
+>
+
+  <div class="bar-inner">
+
+    <div class="eyebrow electric">
+      05 — After Dark
+    </div>
+
+    <h2 class="page-title bar-title">
+      Stay<br>
+      <em>late.</em>
+    </h2>
+
+    <p class="bar-sub">
+
+      The lights go down.
+      The music comes up.
+      The second drink somehow becomes
+      the fourth.
+
+    </p>
+
+
+    <div class="bar-pills">
+
+      <span class="bar-pill active">
+        Cocktails
+      </span>
+
+      <span class="bar-pill">
+        Natural Wine
+      </span>
+
+      <span class="bar-pill">
+        Vinyl
+      </span>
+
+      <span class="bar-pill">
+        Late Kitchen
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 06 — EXPERIENCES
+========================================================= -->
+
+<section
+  class="page page-red experiences page-padding"
+  id="experiences"
+>
+
+  <div class="experience-header">
+
+    <div class="eyebrow red-eyebrow">
+      06 — Experiences
+    </div>
+
+    <h2 class="page-title">
+      More than<br>
+      a <em>stay.</em>
+    </h2>
+
+  </div>
+
+
+  <div class="experience-grid">
+
+
+    <article class="experience">
+
+      <div class="experience-number">
+        01
+      </div>
+
+      <div class="experience-name">
+        Slow<br>
+        Mornings
+      </div>
+
+      <div class="experience-text">
+        Breakfast in bed.
+        Fresh coffee.
+        No alarms.
+      </div>
+
+    </article>
+
+
+    <article class="experience">
+
+      <div class="experience-number">
+        02
+      </div>
+
+      <div class="experience-name">
+        Long<br>
+        Lunch
+      </div>
+
+      <div class="experience-text">
+        Three courses.
+        Two bottles.
+        One afternoon.
+      </div>
+
+    </article>
+
+
+    <article class="experience">
+
+      <div class="experience-number">
+        03
+      </div>
+
+      <div class="experience-name">
+        Late<br>
+        Nights
+      </div>
+
+      <div class="experience-text">
+        Music.
+        Cocktails.
+        One more song.
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 07 — JOURNAL + EVENTS
+========================================================= -->
+
+<section
+  class="journal"
+  id="journal"
+>
+
+
+  <div class="journal-column">
+
+    <div class="eyebrow">
+      07 — Journal
+    </div>
+
+    <h2 class="page-title">
+      Notes<br>
+      from <em>Bostan.</em>
+    </h2>
+
+
+    <div class="journal-list">
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          06.10.26
+        </div>
+
+        <div class="journal-title">
+          Why slow mornings
+          matter.
+        </div>
+
+      </article>
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          29.09.26
+        </div>
+
+        <div class="journal-title">
+          The ingredients
+          behind our kitchen.
+        </div>
+
+      </article>
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          17.09.26
+        </div>
+
+        <div class="journal-title">
+          Four cocktails
+          for four moods.
+        </div>
+
+      </article>
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          04.09.26
+        </div>
+
+        <div class="journal-title">
+          Inside the
+          Bostan room.
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+
+  <div class="journal-column dark-column">
+
+    <div class="eyebrow">
+      Private Events
+    </div>
+
+    <h2 class="page-title">
+      Make it<br>
+      <em>yours.</em>
+    </h2>
+
+
+    <p
+      class="page-copy"
+      style="margin-top:40px;"
+    >
+
+      Intimate dinners.
+      Private celebrations.
+      Brand gatherings.
+      Long-table occasions.
+
+      <br><br>
+
+      Hotel Bostan can become
+      whatever the evening needs.
+
+    </p>
+
+
+    <div
+      class="journal-list"
+      style="margin-top:60px;"
+    >
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          EVENT 01
+        </div>
+
+        <div class="journal-title">
+          Long Table
+        </div>
+
+      </article>
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          EVENT 02
+        </div>
+
+        <div class="journal-title">
+          Private Dining
+        </div>
+
+      </article>
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          EVENT 03
+        </div>
+
+        <div class="journal-title">
+          Full Buyout
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 08 — RESERVATION
+========================================================= -->
+
+<section
+  class="page page-black page-padding reservation"
+  id="reservation"
+>
+
+  <div>
+
+    <div class="eyebrow electric">
+      08 — Reservation
+    </div>
+
+    <h2 class="page-title reservation-title">
+      Come<br>
+      <em>stay.</em>
+    </h2>
+
+    <p class="reservation-note">
+
+      Whether it is breakfast for two,
+      a long lunch, a weekend away,
+      or a night that runs much later
+      than expected — we'll keep a table
+      and a room ready.
+
+    </p>
+
+  </div>
+
+
+  <form
+    class="reservation-form"
+    id="reservationForm"
+  >
+
+
+    <div class="form-row">
+
+      <div class="field">
+
+        <label>
+          Name
+        </label>
+
+        <input
+          type="text"
+          placeholder="Your name"
+          required
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Guests
+        </label>
+
+        <select required>
+
+          <option value="">
+            Select
+          </option>
+
+          <option>
+            1 guest
+          </option>
+
+          <option>
+            2 guests
+          </option>
+
+          <option>
+            3 guests
+          </option>
+
+          <option>
+            4 guests
+          </option>
+
+          <option>
+            5 guests
+          </option>
+
+          <option>
+            6+ guests
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <div class="form-row">
+
+      <div class="field">
+
+        <label>
+          Date
+        </label>
+
+        <input
+          type="date"
+          required
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Time
+        </label>
+
+        <input
+          type="time"
+          required
+        >
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Email
+      </label>
+
+      <input
+        type="email"
+        placeholder="you@example.com"
+        required
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Message
+      </label>
+
+      <textarea
+        rows="3"
+        placeholder="Tell us anything we should know."
+      ></textarea>
+
+    </div>
+
+
+    <button
+      class="submit"
+      type="submit"
+    >
+      Request a reservation
+    </button>
+
+
+  </form>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+  <div class="footer-grid">
+
+
+    <div class="footer-logo">
+
+      Hotel<br>
+      Bostan.
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <div class="footer-heading">
+        Hotel
+      </div>
+
+      <p>
+        Rooms
+      </p>
+
+      <p>
+        Suites
+      </p>
+
+      <p>
+        Experiences
+      </p>
+
+      <p>
+        Private Events
+      </p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <div class="footer-heading">
+        Dining
+      </div>
+
+      <p>
+        Restaurant
+      </p>
+
+      <p>
+        Bar
+      </p>
+
+      <p>
+        Late Kitchen
+      </p>
+
+      <p>
+        Reservations
+      </p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <div class="footer-heading">
+        Contact
+      </div>
+
+      <p>
+        Hotel Bostan
+      </p>
+
+      <p>
+        India
+      </p>
+
+      <a href="mailto:hello@hotelbostan.com">
+        hello@hotelbostan.com
+      </a>
+
+      <a href="tel:+910000000000">
+        +91 00000 00000
+      </a>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
+      © 2026 Hotel Bostan
+    </span>
+
+    <span>
+      Eat slow.
+    </span>
+
+    <span>
+      Restaurant · Café · Hotel
+    </span>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   GSAP
+========================================================= */
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const video =
+  document.getElementById("heroVideo");
+
+const hero =
+  document.getElementById("home");
+
+const nav =
+  document.getElementById("nav");
+
+const loader =
+  document.getElementById("loader");
+
+const loaderLine =
+  document.getElementById("loaderLine");
+
+const videoError =
+  document.getElementById("videoError");
+
+const heroProgress =
+  document.getElementById("heroProgress");
+
+const heroScroll =
+  document.getElementById("heroScroll");
+
+const heroKicker =
+  document.getElementById("heroKicker");
+
+const heroTitle =
+  document.getElementById("heroTitle");
+
+const heroDescription =
+  document.getElementById("heroDescription");
+
+
+/* =========================================================
+   VIDEO STATE
+========================================================= */
+
+let videoDuration = 0;
+
+let videoReady = false;
+
+let videoUnlocked = false;
+
+let requestedTime = 0;
+
+let seekFrame = 0;
+
+
+/* =========================================================
+   VIDEO SEEK
+========================================================= */
+
+function requestVideoTime(time) {
+
+  if (!videoReady) {
+    return;
+  }
+
+  requestedTime =
+    Math.max(
+      0,
+      Math.min(
+        videoDuration - .02,
+        time
+      )
+    );
+
+
+  if (!seekFrame) {
+
+    seekFrame =
+      requestAnimationFrame(
+        applyVideoTime
+      );
+
+  }
+
+}
+
+
+function applyVideoTime() {
+
+  seekFrame = 0;
+
+  if (!videoReady) {
+    return;
+  }
+
+  if (video.readyState >= 2) {
+
+    const difference =
+      Math.abs(
+        video.currentTime -
+        requestedTime
+      );
+
+    if (difference > .006) {
+
+      try {
+
+        video.currentTime =
+          requestedTime;
+
+      } catch (error) {
+
+        console.warn(
+          "Video seeking delayed.",
+          error
+        );
+
+      }
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   VIDEO UNLOCK
+========================================================= */
+
+async function unlockVideo() {
+
+  if (videoUnlocked) {
+    return;
+  }
+
+  try {
+
+    video.muted =
+      true;
+
+    const playback =
+      video.play();
+
+    if (playback) {
+      await playback;
+    }
+
+    video.pause();
+
+    video.currentTime =
+      0;
+
+    videoUnlocked =
+      true;
+
+  } catch (error) {
+
+    videoUnlocked =
+      true;
+
+    try {
+      video.currentTime =
+        0;
+    } catch (e) {}
+
+  }
+
+}
+
+
+/* =========================================================
+   VIDEO SCROLL ENGINE
+========================================================= */
+
+function buildHeroScroll() {
+
+  if (!videoReady) {
+    return;
+  }
+
+
+  requestVideoTime(0);
+
+
+  const timeline = {
+    progress: 0
+  };
+
+
+  gsap.to(
+    timeline,
+    {
+
+      progress:
+        1,
+
+      ease:
+        "none",
+
+      scrollTrigger: {
+
+        trigger:
+          hero,
+
+        start:
+          "top top",
+
+        end:
+          "bottom bottom",
+
+        scrub:
+          .12,
+
+        invalidateOnRefresh:
+          true,
+
+        onUpdate:
+          function(self) {
+
+            const p =
+              Math.max(
+                0,
+                Math.min(
+                  1,
+                  self.progress
+                )
+              );
+
+
+            const targetTime =
+              p *
+              Math.max(
+                videoDuration - .03,
+                0
+              );
+
+
+            requestVideoTime(
+              targetTime
+            );
+
+
+            heroProgress.style.height =
+              (p * 100) + "%";
+
+          }
+
+      },
+
+
+      onUpdate:
+        function() {
+
+          const p =
+            timeline.progress;
+
+
+          const targetTime =
+            p *
+            Math.max(
+              videoDuration - .03,
+              0
+            );
+
+
+          requestVideoTime(
+            targetTime
+          );
+
         }
 
-        // Mobile Hamburger Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
+    }
+  );
 
-        // Close mobile menu when a link is clicked
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            });
-        });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section:not(#hero)');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                    }
-                });
-            }, { threshold: 0.2 });
-            sections.forEach(section => observer.observe(section));
+  /* =======================================================
+     CINEMATIC ZOOM
+  ======================================================= */
 
-            document.getElementById('resForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const name = document.getElementById('name').value;
-                const phone = document.getElementById('phone').value;
-                const date = document.getElementById('date').value;
-                const time = document.getElementById('time').value;
-                const guests = document.getElementById('guests').value;
-                const message = `**THE HOTEL BOSTAN RESERVATION**%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Date:* ${date}%0A*Time:* ${time}%0A*Guests:* ${guests}%0A%0APlease confirm my booking.`;
-                window.open(`https://wa.me/917045043161?text=${message}`, '_blank');
-            });
-        });
-    </script>
+  gsap.to(
+    video,
+    {
+
+      scale:
+        1.10,
+
+      ease:
+        "none",
+
+      scrollTrigger: {
+
+        trigger:
+          hero,
+
+        start:
+          "top top",
+
+        end:
+          "bottom bottom",
+
+        scrub:
+          .35
+
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     HERO TEXT
+  ======================================================= */
+
+  const heroText =
+    gsap.timeline({
+
+      scrollTrigger: {
+
+        trigger:
+          hero,
+
+        start:
+          "top top",
+
+        end:
+          "bottom bottom",
+
+        scrub:
+          1
+
+      }
+
+    });
+
+
+  heroText
+
+    .to(
+      heroKicker,
+      {
+        x: 0,
+        opacity: 1,
+        duration: .14,
+        ease: "power3.out"
+      },
+      .07
+    )
+
+    .to(
+      heroTitle,
+      {
+        x: 0,
+        opacity: 1,
+        duration: .20,
+        ease: "power3.out"
+      },
+      .10
+    )
+
+    .to(
+      heroDescription,
+      {
+        x: 0,
+        opacity: 1,
+        duration: .15,
+        ease: "power3.out"
+      },
+      .18
+    )
+
+    .to(
+      heroKicker,
+      {
+        x: -80,
+        opacity: 0,
+        duration: .10
+      },
+      .70
+    )
+
+    .to(
+      heroTitle,
+      {
+        x: -120,
+        opacity: 0,
+        duration: .12
+      },
+      .72
+    )
+
+    .to(
+      heroDescription,
+      {
+        x: -90,
+        opacity: 0,
+        duration: .10
+      },
+      .73
+    );
+
+
+  /* =======================================================
+     SCROLL INDICATOR
+  ======================================================= */
+
+  gsap.to(
+    heroScroll,
+    {
+
+      opacity:
+        0,
+
+      scrollTrigger: {
+
+        trigger:
+          hero,
+
+        start:
+          "top top",
+
+        end:
+          "18% top",
+
+        scrub:
+          true
+
+      }
+
+    }
+  );
+
+
+  ScrollTrigger.refresh();
+
+}
+
+
+/* =========================================================
+   VIDEO READY
+========================================================= */
+
+function videoReadyHandler() {
+
+  if (
+    !Number.isFinite(video.duration) ||
+    video.duration <= 0
+  ) {
+    return;
+  }
+
+  if (videoReady) {
+    return;
+  }
+
+  videoDuration =
+    video.duration;
+
+  videoReady =
+    true;
+
+
+  unlockVideo().then(
+    buildHeroScroll
+  );
+
+}
+
+
+video.addEventListener(
+  "loadedmetadata",
+  videoReadyHandler
+);
+
+video.addEventListener(
+  "durationchange",
+  videoReadyHandler
+);
+
+video.addEventListener(
+  "loadeddata",
+  videoReadyHandler
+);
+
+video.addEventListener(
+  "canplay",
+  videoReadyHandler
+);
+
+video.addEventListener(
+  "canplaythrough",
+  videoReadyHandler
+);
+
+
+/* =========================================================
+   VIDEO ERROR
+========================================================= */
+
+video.addEventListener(
+  "error",
+  function() {
+
+    console.error(
+      "Unable to load ./hero.mp4",
+      video.error
+    );
+
+    videoError.classList.add(
+      "active"
+    );
+
+  }
+);
+
+
+/* =========================================================
+   LOAD VIDEO
+========================================================= */
+
+video.load();
+
+
+/* =========================================================
+   METADATA FALLBACK
+========================================================= */
+
+let metadataChecks =
+  0;
+
+const metadataTimer =
+  setInterval(
+    function() {
+
+      metadataChecks++;
+
+      if (
+        !videoReady &&
+        Number.isFinite(video.duration) &&
+        video.duration > 0
+      ) {
+
+        videoReadyHandler();
+
+      }
+
+      if (
+        videoReady ||
+        metadataChecks > 120
+      ) {
+
+        clearInterval(
+          metadataTimer
+        );
+
+      }
+
+    },
+    100
+  );
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+gsap.to(
+  loaderLine,
+  {
+
+    width:
+      "100%",
+
+    duration:
+      1.4,
+
+    ease:
+      "power2.inOut"
+
+  }
+);
+
+
+function removeLoader() {
+
+  gsap.to(
+    loader,
+    {
+
+      opacity:
+        0,
+
+      duration:
+        .7,
+
+      ease:
+        "power2.out",
+
+      onComplete:
+        function() {
+
+          loader.style.display =
+            "none";
+
+          document.body.classList.remove(
+            "loading"
+          );
+
+          ScrollTrigger.refresh();
+
+        }
+
+    }
+  );
+
+}
+
+
+window.addEventListener(
+  "load",
+  removeLoader,
+  { once: true }
+);
+
+
+setTimeout(
+  removeLoader,
+  3500
+);
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+window.addEventListener(
+  "scroll",
+  function() {
+
+    if (window.scrollY > 40) {
+
+      nav.classList.add(
+        "scrolled"
+      );
+
+    } else {
+
+      nav.classList.remove(
+        "scrolled"
+      );
+
+    }
+
+  },
+  {
+    passive:
+      true
+  }
+);
+
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+
+gsap.to(
+  "#philosophyTitle",
+  {
+
+    x:
+      0,
+
+    opacity:
+      1,
+
+    duration:
+      1.2,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#philosophy",
+
+      start:
+        "top 70%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+gsap.to(
+  "#philosophyRight",
+  {
+
+    y:
+      0,
+
+    opacity:
+      1,
+
+    duration:
+      1.1,
+
+    delay:
+      .12,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#philosophy",
+
+      start:
+        "top 65%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   ROOMS
+========================================================= */
+
+gsap.from(
+  ".room-card",
+  {
+
+    y:
+      100,
+
+    opacity:
+      0,
+
+    duration:
+      1,
+
+    stagger:
+      .12,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        ".rooms-grid",
+
+      start:
+        "top 80%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   DINING
+========================================================= */
+
+gsap.from(
+  ".dining-circle",
+  {
+
+    rotation:
+      -35,
+
+    scale:
+      .65,
+
+    opacity:
+      0,
+
+    duration:
+      1.3,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#dining",
+
+      start:
+        "top 70%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+gsap.from(
+  ".dining-row",
+  {
+
+    x:
+      80,
+
+    opacity:
+      0,
+
+    duration:
+      .75,
+
+    stagger:
+      .09,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        ".dining-menu",
+
+      start:
+        "top 80%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   BAR
+========================================================= */
+
+gsap.from(
+  ".bar-title",
+  {
+
+    y:
+      100,
+
+    opacity:
+      0,
+
+    duration:
+      1.2,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#bar",
+
+      start:
+        "top 70%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   EXPERIENCES
+========================================================= */
+
+gsap.from(
+  ".experience",
+  {
+
+    y:
+      100,
+
+    opacity:
+      0,
+
+    duration:
+      1,
+
+    stagger:
+      .12,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        ".experience-grid",
+
+      start:
+        "top 78%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   JOURNAL
+========================================================= */
+
+gsap.from(
+  ".journal-column",
+  {
+
+    y:
+      80,
+
+    opacity:
+      0,
+
+    duration:
+      1,
+
+    stagger:
+      .15,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#journal",
+
+      start:
+        "top 75%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   RESERVATION
+========================================================= */
+
+gsap.from(
+  ".reservation > div:first-child",
+  {
+
+    x:
+      -100,
+
+    opacity:
+      0,
+
+    duration:
+      1.1,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#reservation",
+
+      start:
+        "top 70%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+gsap.from(
+  ".reservation-form",
+  {
+
+    x:
+      100,
+
+    opacity:
+      0,
+
+    duration:
+      1.1,
+
+    delay:
+      .12,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#reservation",
+
+      start:
+        "top 70%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   RESERVATION FORM
+========================================================= */
+
+document
+  .getElementById("reservationForm")
+  .addEventListener(
+    "submit",
+    function(event) {
+
+      event.preventDefault();
+
+      const button =
+        this.querySelector(
+          ".submit"
+        );
+
+      const original =
+        button.textContent;
+
+      button.textContent =
+        "Reservation requested";
+
+      button.disabled =
+        true;
+
+      setTimeout(
+        function() {
+
+          button.textContent =
+            original;
+
+          button.disabled =
+            false;
+
+        },
+        2400
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   SMOOTH ANCHORS
+========================================================= */
+
+document
+  .querySelectorAll(
+    'a[href^="#"]'
+  )
+  .forEach(
+    function(link) {
+
+      link.addEventListener(
+        "click",
+        function(event) {
+
+          const targetID =
+            this.getAttribute(
+              "href"
+            );
+
+          const target =
+            document.querySelector(
+              targetID
+            );
+
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior:
+              "smooth",
+
+            block:
+              "start"
+          });
+
+        }
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+let resizeTimer;
+
+window.addEventListener(
+  "resize",
+  function() {
+
+    clearTimeout(
+      resizeTimer
+    );
+
+    resizeTimer =
+      setTimeout(
+        function() {
+
+          ScrollTrigger.refresh();
+
+        },
+        250
+      );
+
+  },
+  {
+    passive:
+      true
+  }
+);
+
+
+/* =========================================================
+   FINAL REFRESH
+========================================================= */
+
+window.addEventListener(
+  "load",
+  function() {
+
+    setTimeout(
+      function() {
+
+        ScrollTrigger.refresh();
+
+      },
+      600
+    );
+
+  },
+  {
+    once:
+      true
+  }
+);
+
+</script>
+
 </body>
 </html>
