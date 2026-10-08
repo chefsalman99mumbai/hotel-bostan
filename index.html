@@ -20,7 +20,7 @@ nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:5;dis
 nav .logo{font:300 24px/1 var(--serif);font-variation-settings:"opsz" 144}
 nav div{display:flex;gap:28px}
 section{position:relative;z-index:1}
-.idea{min-height:140svh;padding:0 var(--pad);display:flex;align-items:center}
+.idea{min-height:100svh;padding:0 var(--pad);display:flex;align-items:center}
 .idea p{font:200 clamp(32px,6.4vw,100px)/1.06 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.03em;max-width:15em;margin-left:auto}
 .idea .w{display:inline-block;opacity:.12}
 .mq{overflow:hidden;padding:6vh 0;white-space:nowrap}
@@ -77,42 +77,19 @@ section{position:relative;z-index:1}
     radial-gradient(130% 100% at 50% 42%,rgba(0,0,0,0) 34%,rgba(6,5,8,.62) 100%),
     linear-gradient(to bottom,rgba(6,5,8,.55),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 55%,rgba(6,5,8,.82))}
 .jhud{position:absolute;top:calc(84px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);
-  display:flex;justify-content:space-between;font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  display:flex;justify-content:flex-end;font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
   color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55);font-variant-numeric:tabular-nums}
-.jhint{position:absolute;left:50%;bottom:calc(11vh + env(safe-area-inset-bottom,0px));transform:translateX(-50%);
-  font:italic 300 clamp(15px,1.6vw,20px)/1.4 var(--serif);color:#F7F5F0;text-shadow:0 2px 20px rgba(0,0,0,.6);
-  letter-spacing:.02em;opacity:.85;white-space:nowrap;animation:bob 2.6s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
 .jprog{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(5vh + env(safe-area-inset-bottom,0px));
   height:2px;background:rgba(255,255,255,.2);overflow:hidden}
 .jprog b{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left;will-change:transform}
 @media(max-width:700px){.journey{height:440vh;height:440svh}}
-
-/* ============ TEMP: local MP4 uploader ============ */
-#uploadBtn{position:fixed;left:var(--pad);bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:40;
-  display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:99px;
-  background:rgba(20,18,16,.72);color:#F7F5F0;border:1px solid rgba(255,255,255,.28);
-  font:500 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  box-shadow:0 10px 30px rgba(0,0,0,.35);transition:background .3s,border-color .3s,transform .3s}
-#uploadBtn:hover{background:rgba(40,36,32,.88);border-color:rgba(255,255,255,.5);transform:translateY(-1px)}
-#uploadBtn svg{width:14px;height:14px;flex:none}
 </style>
 </head>
 <body>
 
 <div id="cur" aria-hidden="true"></div>
 
-<!-- TEMP: local MP4 uploader -->
-<label id="uploadBtn" for="uploadInput" title="Temporary: load a local MP4">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M12 16V4M12 4l-4 4M12 4l4 4M4 20h16"/>
-  </svg>
-  <span>Load&nbsp;MP4</span>
-</label>
-<input id="uploadInput" type="file" accept="video/mp4,video/quicktime,video/*" hidden>
-
-<nav><a class="logo" href="#top">Bostan</a><div><a href="#menu">Menu</a><a href="#garden">Garden</a><a href="#book">Reserve</a></div></nav>
+<nav><a class="logo" href="#top">Bostan</a><div><a href="#menu">Menu</a></div></nav>
 <main id="top">
 
   <!-- ==================== SCROLL-SCRUBBED FILM — NOW FIRST ==================== -->
@@ -125,10 +102,8 @@ section{position:relative;z-index:1}
              aria-hidden="true"></video>
       <div class="jveil" aria-hidden="true"></div>
       <div class="jhud" aria-hidden="true">
-        <span>Bostan &mdash; a film</span>
         <span id="filmPct">00%</span>
       </div>
-      <div class="jhint" aria-hidden="true">Scroll to play the film</div>
       <div class="jprog" aria-hidden="true"><b id="filmBar"></b></div>
     </div>
   </section>
@@ -185,7 +160,10 @@ if(fine&&!reduce){var qx=gsap.quickTo(dot,'x',{duration:.45,ease:'power3'}),qy=g
  document.addEventListener('pointerover',function(e){gsap.to(dot,{scale:e.target.closest('a,button,label')?3.2:1,duration:.5,ease:'expo.out'})})}
 addEventListener('resize',function(){ScrollTrigger.refresh()});
 $$('section[data-t]').forEach(function(s){ScrollTrigger.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:function(x){if(x.isActive)theme(s.dataset.t)}})});
-var iw=words($('#idea'));gsap.to(iw,{opacity:1,stagger:.12,ease:'none',scrollTrigger:{trigger:'.idea',start:'top 60%',end:'bottom 70%',scrub:.6}});
+/* Idea text — appears promptly as soon as the film ends */
+var iw=words($('#idea'));
+gsap.set(iw,{opacity:.12});
+gsap.to(iw,{opacity:1,stagger:.06,ease:'none',scrollTrigger:{trigger:'.idea',start:'top 90%',end:'top 30%',scrub:.4}});
 var mq=gsap.to('#mq',{xPercent:-50,ease:'none',duration:30,repeat:-1}),sk=gsap.quickSetter('#mq','skewX','deg');
 ScrollTrigger.create({onUpdate:function(s){var v=gsap.utils.clamp(-12,12,s.getVelocity()/-120);sk(v);gsap.to(mq,{timeScale:s.direction*(1+Math.abs(v)*.8),duration:.4,overwrite:true})}});
 var D=[['Raw','Cured sea bass, pomegranate','Cold as a first glance, bright as pomegranate in morning light.',19,'cream'],
@@ -239,11 +217,9 @@ var fmt=new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',timeZon
 gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigger:{trigger:'.book',start:'top 60%'}});
 
 /* =====================================================================
-   SCROLL-SCRUBBED FILM — bost-hero.mp4 — now the very first thing.
+   SCROLL-SCRUBBED FILM — bost-hero.mp4
    Forward scroll  → video plays forward
    Reverse scroll  → video plays in reverse
-   Exposes window.__heroFilm.loadSource(url) so the temp uploader
-   can drop in a local MP4 without touching this code.
    ===================================================================== */
 (function heroFilm(){
   var v   = document.getElementById('heroVid');
@@ -252,15 +228,13 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
 
   var barEl = document.getElementById('filmBar');
   var pctEl = document.getElementById('filmPct');
-  var hintEl = sec.querySelector('.jhint');
 
-  var proxy = { p: 0 };            // 0..1 film progress, driven by scroll
+  var proxy = { p: 0 };
   var dur = 0, ready = false, dead = false;
   var lastSeek = -1, pending = null;
 
   function fail(){ dead = true; }
 
-  /* ---- seek with decoder guard (prevents dropped frames on rapid scrub) ---- */
   function seek(t){
     if (!ready || dead) return;
     if (t < 0) t = 0;
@@ -277,7 +251,6 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
     }
   });
 
-  /* ---- iOS / autoplay policy: play once, pause, then scrub forever ---- */
   function primeVideo(){
     if (!ready || dead) return;
     try {
@@ -313,7 +286,6 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
   v.addEventListener('loadedmetadata', onMeta);
   if (v.readyState >= 1) onMeta();
 
-  /* ---- the scrub ---- */
   gsap.to(proxy, {
     p: 1,
     ease: 'none',
@@ -327,52 +299,13 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
         var pr = self.progress;
         if (barEl) barEl.style.transform = 'scaleX(' + pr.toFixed(4) + ')';
         if (pctEl) pctEl.textContent = String(Math.round(pr * 100)).padStart(2,'0') + '%';
-        if (hintEl) hintEl.style.opacity = String(Math.max(0, 0.85 - pr * 6));
       }
     },
     onUpdate: function(){ seek(proxy.p * dur); },
     onComplete: function(){ seek(dur - 0.001); }
   });
 
-  /* ---- public API for the temporary uploader ---- */
-  window.__heroFilm = {
-    loadSource: function(url){
-      ready = false; dead = false; dur = 0; lastSeek = -1; pending = null;
-      v.src = url;
-      try { v.load(); } catch(e){}
-    },
-    el: v
-  };
-
   addEventListener('load', function(){ ScrollTrigger.refresh(); });
-})();
-/* ===================================================================== */
-
-/* =====================================================================
-   TEMP: local MP4 uploader — drop a file in, it swaps into the film.
-   Delete this block (and #uploadBtn + #uploadInput in the HTML) when
-   you no longer need it.
-   ===================================================================== */
-(function tempUploader(){
-  var input = document.getElementById('uploadInput');
-  var btn   = document.getElementById('uploadBtn');
-  if (!input) return;
-  var lastUrl = null;
-  input.addEventListener('change', function(){
-    var f = input.files && input.files[0];
-    if (!f) return;
-    if (lastUrl) { try { URL.revokeObjectURL(lastUrl); } catch(e){} }
-    lastUrl = URL.createObjectURL(f);
-    if (window.__heroFilm) window.__heroFilm.loadSource(lastUrl);
-    else {
-      var v = document.getElementById('heroVid');
-      if (v) { v.src = lastUrl; v.load(); }
-    }
-    if (btn) {
-      var span = btn.querySelector('span');
-      if (span) span.textContent = f.name.length > 18 ? f.name.slice(0,15) + '…' : f.name;
-    }
-  });
 })();
 /* ===================================================================== */
 
