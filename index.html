@@ -1,1 +1,4709 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>HOTEL BOSTAN — Eat Slow</title>
+
+<meta
+  name="description"
+  content="Hotel Bostan — rooms, dining, nights, experiences and long afternoons."
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+  rel="stylesheet"
+>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+  --crimson: #C8102E;
+
+  --crimson-dark: #97091F;
+
+  --crimson-deep: #780817;
+
+  --electric: #D7FF00;
+
+  --white: #FFFDF7;
+
+  --black: #080808;
+
+  --black-soft: #111111;
+
+  --line: rgba(255,253,247,.2);
+
+  --ease: cubic-bezier(.76,0,.24,1);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+
+  background:
+    var(--crimson);
+
+  scroll-behavior: auto;
+}
+
+body {
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+
+  background:
+    var(--crimson);
+
+  color:
+    var(--white);
+
+  font-family:
+    "DM Sans",
+    sans-serif;
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  text-rendering:
+    optimizeLegibility;
+}
+
+body.loading {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+video {
+  display: block;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 99999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    var(--crimson);
+
+  color:
+    var(--white);
+}
+
+.loader-inner {
+  text-align: center;
+}
+
+.loader-logo {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(2.2rem,5vw,5rem);
+
+  line-height:
+    .85;
+
+  letter-spacing:
+    -.05em;
+}
+
+.loader-sub {
+
+  margin-top:
+    18px;
+
+  font-size:
+    9px;
+
+  letter-spacing:
+    .3em;
+
+  text-transform:
+    uppercase;
+}
+
+.loader-line {
+
+  width:
+    0;
+
+  height:
+    2px;
+
+  margin:
+    20px auto 0;
+
+  background:
+    var(--electric);
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  z-index: 9000;
+
+  width: 100%;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  padding:
+    27px 42px;
+
+  color:
+    var(--white);
+
+  transition:
+    padding .45s ease,
+    background .45s ease,
+    color .45s ease;
+
+}
+
+.nav.scrolled {
+
+  padding-top:
+    16px;
+
+  padding-bottom:
+    16px;
+
+  background:
+    rgba(8,8,8,.84);
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+}
+
+.nav-logo {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    11px;
+
+  font-size:
+    12px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .19em;
+}
+
+.logo-symbol {
+
+  width:
+    9px;
+
+  height:
+    9px;
+
+  background:
+    var(--electric);
+
+  border-radius:
+    50%;
+}
+
+.nav-links {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    29px;
+
+  font-size:
+    9px;
+
+  letter-spacing:
+    .18em;
+
+  text-transform:
+    uppercase;
+}
+
+.nav-links a {
+
+  position:
+    relative;
+
+  opacity:
+    .75;
+
+  transition:
+    opacity .25s ease;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+.nav-links a::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    0;
+
+  bottom:
+    -7px;
+
+  width:
+    0;
+
+  height:
+    1px;
+
+  background:
+    var(--electric);
+
+  transition:
+    width .3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-book {
+
+  padding:
+    11px 17px;
+
+  background:
+    var(--electric);
+
+  color:
+    var(--black);
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .16em;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    transform .3s ease;
+}
+
+.nav-book:hover {
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+  position:
+    relative;
+
+  height:
+    550vh;
+
+  background:
+    var(--crimson);
+}
+
+.hero-pin {
+
+  position:
+    sticky;
+
+  top:
+    0;
+
+  width:
+    100%;
+
+  height:
+    100vh;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--crimson);
+}
+
+.video-container {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--black);
+}
+
+#heroVideo {
+
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  left:
+    50%;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+
+  object-position:
+    center center;
+
+  transform:
+    translate3d(-50%,-50%,0)
+    scale(1.02);
+
+  transform-origin:
+    center center;
+
+  will-change:
+    transform;
+
+  pointer-events:
+    none;
+}
+
+.video-red {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(200,16,46,.15),
+      rgba(0,0,0,.02) 40%,
+      rgba(200,16,46,.2) 100%
+    );
+
+  mix-blend-mode:
+    multiply;
+
+  pointer-events:
+    none;
+}
+
+.video-dark {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.45),
+      transparent 42%,
+      rgba(0,0,0,.65)
+    );
+
+  pointer-events:
+    none;
+}
+
+.video-error {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    100;
+
+  display:
+    none;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    var(--crimson);
+
+  text-align:
+    center;
+}
+
+.video-error.active {
+  display:
+    flex;
+}
+
+.video-error h2 {
+
+  margin:
+    0 0 15px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    50px;
+
+  font-weight:
+    400;
+}
+
+.video-error p {
+
+  margin:
+    0;
+
+  font-size:
+    12px;
+
+  opacity:
+    .7;
+}
+
+
+/* =========================================================
+   HERO TYPOGRAPHY
+========================================================= */
+
+.hero-copy {
+
+  position:
+    absolute;
+
+  left:
+    7vw;
+
+  bottom:
+    10vh;
+
+  z-index:
+    30;
+
+  width:
+    min(900px,85vw);
+
+  pointer-events:
+    none;
+}
+
+.hero-kicker {
+
+  margin-bottom:
+    18px;
+
+  color:
+    var(--electric);
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .27em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    0;
+
+  transform:
+    translateX(-100px);
+}
+
+.hero-title {
+
+  margin:
+    0;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(5rem,13vw,13rem);
+
+  font-weight:
+    400;
+
+  line-height:
+    .76;
+
+  letter-spacing:
+    -.075em;
+
+  color:
+    var(--white);
+
+  opacity:
+    0;
+
+  transform:
+    translateX(-130px);
+}
+
+.hero-title em {
+  color:
+    var(--electric);
+
+  font-style:
+    italic;
+}
+
+.hero-description {
+
+  width:
+    min(440px,90vw);
+
+  margin-top:
+    35px;
+
+  color:
+    var(--white);
+
+  font-size:
+    13px;
+
+  line-height:
+    1.8;
+
+  opacity:
+    0;
+
+  transform:
+    translateX(-80px);
+}
+
+
+/* =========================================================
+   HERO SCROLL
+========================================================= */
+
+.hero-scroll {
+
+  position:
+    absolute;
+
+  bottom:
+    28px;
+
+  left:
+    50%;
+
+  z-index:
+    40;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    14px;
+
+  transform:
+    translateX(-50%);
+
+  color:
+    var(--white);
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    .25em;
+
+  text-transform:
+    uppercase;
+}
+
+.scroll-line {
+
+  width:
+    75px;
+
+  height:
+    2px;
+
+  overflow:
+    hidden;
+
+  background:
+    rgba(255,255,255,.3);
+}
+
+.scroll-line::after {
+
+  content:
+    "";
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  background:
+    var(--electric);
+
+  animation:
+    scrollLine 1.7s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+/* =========================================================
+   HERO PROGRESS
+========================================================= */
+
+.hero-progress {
+
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  right:
+    28px;
+
+  z-index:
+    40;
+
+  width:
+    2px;
+
+  height:
+    110px;
+
+  transform:
+    translateY(-50%);
+
+  background:
+    rgba(255,255,255,.2);
+}
+
+.hero-progress-fill {
+
+  width:
+    100%;
+
+  height:
+    0;
+
+  background:
+    var(--electric);
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.page {
+
+  position:
+    relative;
+
+  min-height:
+    100vh;
+
+  overflow:
+    hidden;
+}
+
+.page-red {
+
+  background:
+    var(--crimson);
+
+  color:
+    var(--white);
+}
+
+.page-black {
+
+  background:
+    var(--black);
+
+  color:
+    var(--white);
+}
+
+.page-red-dark {
+
+  background:
+    var(--crimson-dark);
+
+  color:
+    var(--white);
+}
+
+.page-white {
+
+  background:
+    var(--white);
+
+  color:
+    var(--black);
+}
+
+.page-electric {
+
+  background:
+    var(--electric);
+
+  color:
+    var(--black);
+}
+
+.page-padding {
+
+  padding:
+    140px 7vw;
+}
+
+.eyebrow {
+
+  margin-bottom:
+    24px;
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .24em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    .55;
+}
+
+.red-eyebrow {
+  color:
+    var(--electric);
+
+  opacity:
+    1;
+}
+
+.page-title {
+
+  margin:
+    0;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(4rem,9vw,10rem);
+
+  font-weight:
+    400;
+
+  line-height:
+    .83;
+
+  letter-spacing:
+    -.065em;
+}
+
+.page-title em {
+  font-style:
+    italic;
+}
+
+.page-copy {
+
+  font-size:
+    14px;
+
+  line-height:
+    1.9;
+
+  opacity:
+    .7;
+}
+
+.electric {
+  color:
+    var(--electric);
+}
+
+
+/* =========================================================
+   PAGE 02 — PHILOSOPHY
+========================================================= */
+
+.philosophy {
+
+  min-height:
+    110vh;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1.2fr .8fr;
+
+  align-items:
+    center;
+
+  gap:
+    10vw;
+}
+
+.philosophy-title {
+
+  opacity:
+    0;
+
+  transform:
+    translateX(-120px);
+}
+
+.philosophy-right {
+
+  max-width:
+    470px;
+
+  opacity:
+    0;
+
+  transform:
+    translateY(70px);
+}
+
+.philosophy-statement {
+
+  margin-top:
+    55px;
+
+  padding-top:
+    25px;
+
+  border-top:
+    1px solid rgba(255,255,255,.25);
+}
+
+.philosophy-statement strong {
+
+  display:
+    block;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    3rem;
+
+  font-weight:
+    400;
+
+  line-height:
+    .95;
+}
+
+
+/* =========================================================
+   PAGE 03 — ROOMS
+========================================================= */
+
+.rooms {
+
+  min-height:
+    120vh;
+
+  padding:
+    130px 7vw;
+}
+
+.rooms-head {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    flex-end;
+
+  gap:
+    50px;
+
+  margin-bottom:
+    90px;
+}
+
+.rooms-intro {
+
+  max-width:
+    380px;
+}
+
+.rooms-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    2px;
+}
+
+.room-card {
+
+  position:
+    relative;
+
+  min-height:
+    620px;
+
+  padding:
+    35px;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--black);
+}
+
+.room-card.large {
+  min-height:
+    720px;
+}
+
+.room-card::before {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 25%,
+      rgba(0,0,0,.8)
+    );
+
+  z-index:
+    2;
+}
+
+.room-card::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background:
+    var(--crimson);
+
+  opacity:
+    0;
+
+  mix-blend-mode:
+    multiply;
+
+  transition:
+    opacity .5s ease;
+}
+
+.room-card:hover::after {
+  opacity:
+    .55;
+}
+
+.room-content {
+
+  position:
+    absolute;
+
+  left:
+    35px;
+
+  right:
+    35px;
+
+  bottom:
+    35px;
+
+  z-index:
+    4;
+}
+
+.room-number {
+
+  margin-bottom:
+    12px;
+
+  color:
+    var(--electric);
+
+  font-size:
+    9px;
+
+  letter-spacing:
+    .2em;
+}
+
+.room-name {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(2.5rem,5vw,5rem);
+
+  line-height:
+    .85;
+}
+
+.room-meta {
+
+  margin-top:
+    18px;
+
+  font-size:
+    10px;
+
+  letter-spacing:
+    .12em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    .65;
+}
+
+.room-graphic {
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--crimson),
+      var(--crimson-dark)
+    );
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(6rem,15vw,16rem);
+
+  color:
+    rgba(255,255,255,.08);
+
+  transform:
+    scale(1);
+
+  transition:
+    transform .8s var(--ease);
+}
+
+.room-card:hover .room-graphic {
+  transform:
+    scale(1.1);
+}
+
+
+/* =========================================================
+   PAGE 04 — DINING
+========================================================= */
+
+.dining {
+
+  min-height:
+    120vh;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    .8fr 1.2fr;
+
+  gap:
+    10vw;
+
+  align-items:
+    center;
+}
+
+.dining-left {
+  position:
+    relative;
+}
+
+.dining-circle {
+
+  width:
+    min(32vw,420px);
+
+  aspect-ratio:
+    1;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--electric);
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  color:
+    var(--black);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(3rem,7vw,7rem);
+
+  line-height:
+    .8;
+
+  text-align:
+    center;
+
+  transform:
+    rotate(-8deg);
+}
+
+.dining-right {
+  max-width:
+    750px;
+}
+
+.dining-menu {
+
+  margin-top:
+    60px;
+
+  border-top:
+    1px solid rgba(255,255,255,.25);
+}
+
+.dining-row {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    80px 1fr 100px;
+
+  gap:
+    20px;
+
+  padding:
+    27px 0;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.2);
+}
+
+.dining-index {
+
+  color:
+    var(--electric);
+
+  font-size:
+    9px;
+}
+
+.dining-name {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    1.7rem;
+}
+
+.dining-detail {
+
+  margin-top:
+    5px;
+
+  font-size:
+    10px;
+
+  opacity:
+    .5;
+}
+
+.dining-price {
+
+  text-align:
+    right;
+
+  font-size:
+    10px;
+
+  opacity:
+    .6;
+}
+
+
+/* =========================================================
+   PAGE 05 — BAR
+========================================================= */
+
+.bar {
+
+  min-height:
+    110vh;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  text-align:
+    center;
+}
+
+.bar-inner {
+  width:
+    min(1100px,90vw);
+}
+
+.bar-title {
+
+  font-size:
+    clamp(5rem,13vw,14rem);
+}
+
+.bar-sub {
+
+  max-width:
+    500px;
+
+  margin:
+    40px auto 0;
+
+  font-size:
+    13px;
+
+  line-height:
+    1.8;
+
+  opacity:
+    .65;
+}
+
+.bar-pills {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    10px;
+
+  margin-top:
+    50px;
+}
+
+.bar-pill {
+
+  padding:
+    12px 18px;
+
+  border:
+    1px solid rgba(255,255,255,.3);
+
+  font-size:
+    9px;
+
+  letter-spacing:
+    .15em;
+
+  text-transform:
+    uppercase;
+}
+
+.bar-pill.active {
+
+  background:
+    var(--electric);
+
+  border-color:
+    var(--electric);
+
+  color:
+    var(--black);
+}
+
+
+/* =========================================================
+   PAGE 06 — EXPERIENCES
+========================================================= */
+
+.experiences {
+
+  min-height:
+    120vh;
+}
+
+.experience-header {
+
+  max-width:
+    900px;
+
+  margin-bottom:
+    90px;
+}
+
+.experience-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:
+    2px;
+}
+
+.experience {
+
+  position:
+    relative;
+
+  min-height:
+    500px;
+
+  padding:
+    32px;
+
+  background:
+    var(--crimson-dark);
+
+  overflow:
+    hidden;
+
+  transition:
+    background .5s ease;
+}
+
+.experience:nth-child(2) {
+  background:
+    var(--crimson);
+}
+
+.experience:nth-child(3) {
+  background:
+    var(--black);
+}
+
+.experience:hover {
+  background:
+    var(--electric);
+
+  color:
+    var(--black);
+}
+
+.experience-number {
+
+  font-size:
+    9px;
+
+  opacity:
+    .5;
+}
+
+.experience-name {
+
+  position:
+    absolute;
+
+  left:
+    32px;
+
+  bottom:
+    100px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    3rem;
+
+  line-height:
+    .9;
+}
+
+.experience-text {
+
+  position:
+    absolute;
+
+  left:
+    32px;
+
+  right:
+    32px;
+
+  bottom:
+    32px;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.6;
+
+  opacity:
+    .6;
+}
+
+
+/* =========================================================
+   PAGE 07 — JOURNAL / EVENTS
+========================================================= */
+
+.journal {
+
+  min-height:
+    120vh;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    2px;
+
+  padding:
+    2px;
+
+  background:
+    var(--black);
+}
+
+.journal-column {
+
+  padding:
+    120px 7vw;
+
+  background:
+    var(--white);
+
+  color:
+    var(--black);
+}
+
+.journal-column.dark-column {
+
+  background:
+    var(--crimson);
+
+  color:
+    var(--white);
+}
+
+.journal-list {
+  margin-top:
+    65px;
+}
+
+.journal-item {
+
+  padding:
+    25px 0;
+
+  border-top:
+    1px solid rgba(0,0,0,.2);
+}
+
+.dark-column .journal-item {
+  border-color:
+    rgba(255,255,255,.2);
+}
+
+.journal-date {
+
+  margin-bottom:
+    9px;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    .18em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    .5;
+}
+
+.journal-title {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    2rem;
+
+  line-height:
+    1;
+}
+
+
+/* =========================================================
+   PAGE 08 — RESERVATION
+========================================================= */
+
+.reservation {
+
+  min-height:
+    110vh;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  align-items:
+    center;
+
+  gap:
+    10vw;
+}
+
+.reservation-title {
+  font-size:
+    clamp(4rem,8vw,9rem);
+}
+
+.reservation-note {
+
+  max-width:
+    430px;
+
+  margin-top:
+    35px;
+
+  font-size:
+    13px;
+
+  line-height:
+    1.8;
+
+  opacity:
+    .65;
+}
+
+.reservation-form {
+
+  max-width:
+    520px;
+}
+
+.form-row {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    20px;
+}
+
+.field {
+  margin-bottom:
+    25px;
+}
+
+.field label {
+
+  display:
+    block;
+
+  margin-bottom:
+    9px;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    .18em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    .5;
+}
+
+.field input,
+.field select,
+.field textarea {
+
+  width:
+    100%;
+
+  padding:
+    14px 0;
+
+  background:
+    transparent;
+
+  color:
+    var(--white);
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.3);
+
+  outline:
+    none;
+
+  border-radius:
+    0;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color:
+    var(--electric);
+}
+
+.field select option {
+  color:
+    var(--black);
+}
+
+.submit {
+
+  margin-top:
+    10px;
+
+  padding:
+    16px 28px;
+
+  background:
+    var(--electric);
+
+  color:
+    var(--black);
+
+  border:
+    0;
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .18em;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    transform .3s ease;
+}
+
+.submit:hover {
+  transform:
+    translateY(-3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+  padding:
+    90px 7vw 30px;
+
+  background:
+    var(--black);
+
+  color:
+    var(--white);
+}
+
+.footer-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1.6fr 1fr 1fr 1fr;
+
+  gap:
+    50px;
+
+  padding-bottom:
+    80px;
+}
+
+.footer-logo {
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(4rem,8vw,9rem);
+
+  line-height:
+    .76;
+
+  letter-spacing:
+    -.07em;
+}
+
+.footer-heading {
+
+  margin-bottom:
+    20px;
+
+  color:
+    var(--electric);
+
+  font-size:
+    8px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    .2em;
+
+  text-transform:
+    uppercase;
+}
+
+.footer-column p,
+.footer-column a {
+
+  display:
+    block;
+
+  margin:
+    0 0 10px;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.6;
+
+  opacity:
+    .65;
+}
+
+.footer-column a:hover {
+  color:
+    var(--electric);
+
+  opacity:
+    1;
+}
+
+.footer-bottom {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  gap:
+    20px;
+
+  padding-top:
+    25px;
+
+  border-top:
+    1px solid rgba(255,255,255,.15);
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    .14em;
+
+  text-transform:
+    uppercase;
+
+  opacity:
+    .4;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal-left {
+
+  opacity:
+    0;
+
+  transform:
+    translateX(-100px);
+}
+
+.reveal-up {
+
+  opacity:
+    0;
+
+  transform:
+    translateY(80px);
+}
+
+.reveal-right {
+
+  opacity:
+    0;
+
+  transform:
+    translateX(100px);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .nav {
+    padding:
+      20px 22px;
+  }
+
+  .nav.scrolled {
+    padding:
+      14px 22px;
+  }
+
+  .nav-links {
+    display:
+      none;
+  }
+
+  .hero {
+    height:
+      470vh;
+  }
+
+  .hero-copy {
+
+    left:
+      22px;
+
+    bottom:
+      11vh;
+
+    width:
+      calc(100% - 44px);
+  }
+
+  .hero-title {
+
+    font-size:
+      clamp(4.5rem,22vw,8rem);
+  }
+
+  .hero-progress {
+    right:
+      12px;
+  }
+
+  .page-padding {
+    padding:
+      105px 22px;
+  }
+
+  .philosophy {
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      70px;
+  }
+
+  .rooms {
+    padding:
+      105px 22px;
+  }
+
+  .rooms-head {
+
+    display:
+      block;
+
+    margin-bottom:
+      55px;
+  }
+
+  .rooms-intro {
+    margin-top:
+      30px;
+  }
+
+  .rooms-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  .room-card,
+  .room-card.large {
+    min-height:
+      500px;
+  }
+
+  .dining {
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      70px;
+  }
+
+  .dining-circle {
+
+    width:
+      min(65vw,360px);
+  }
+
+  .experience-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  .experience {
+
+    min-height:
+      400px;
+  }
+
+  .journal {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  .reservation {
+
+    grid-template-columns:
+      1fr;
+
+    gap:
+      70px;
+  }
+
+  .footer {
+    padding:
+      70px 22px 25px;
+  }
+
+  .footer-grid {
+
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .footer-logo {
+    grid-column:
+      1 / -1;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .hero {
+    height:
+      440vh;
+  }
+
+  #heroVideo {
+    object-position:
+      center center;
+  }
+
+  .hero-kicker {
+    font-size:
+      8px;
+  }
+
+  .hero-title {
+    font-size:
+      clamp(4.3rem,23vw,7rem);
+  }
+
+  .hero-description {
+    font-size:
+      12px;
+  }
+
+  .hero-progress {
+    display:
+      none;
+  }
+
+  .page-title {
+    font-size:
+      clamp(3.5rem,17vw,6rem);
+  }
+
+  .dining-row {
+
+    grid-template-columns:
+      35px 1fr 55px;
+
+    gap:
+      10px;
+  }
+
+  .dining-name {
+    font-size:
+      1.35rem;
+  }
+
+  .form-row {
+    grid-template-columns:
+      1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .footer-logo {
+    grid-column:
+      auto;
+  }
+
+  .footer-bottom {
+
+    flex-direction:
+      column;
+  }
+}
+
+</style>
+</head>
+
+
+<body class="loading">
+
+
+<!-- =========================================================
+     LOADER
+========================================================= -->
+
+<div class="loader" id="loader">
+
+  <div class="loader-inner">
+
+    <div class="loader-logo">
+      Hotel Bostan.
+    </div>
+
+    <div class="loader-sub">
+      Eat slow.
+    </div>
+
+    <div
+      class="loader-line"
+      id="loaderLine"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="nav" id="nav">
+
+  <a
+    href="#home"
+    class="nav-logo"
+  >
+
+    <span class="logo-symbol"></span>
+
+    HOTEL BOSTAN
+
+  </a>
+
+
+  <nav class="nav-links">
+
+    <a href="#philosophy">
+      Philosophy
+    </a>
+
+    <a href="#rooms">
+      Rooms
+    </a>
+
+    <a href="#dining">
+      Dining
+    </a>
+
+    <a href="#bar">
+      Bar
+    </a>
+
+    <a href="#experiences">
+      Experiences
+    </a>
+
+    <a href="#journal">
+      Journal
+    </a>
+
+  </nav>
+
+
+  <a
+    href="#reservation"
+    class="nav-book"
+  >
+    Book
+  </a>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================================================
+     PAGE 01 — HOME
+========================================================= -->
+
+<section
+  class="hero"
+  id="home"
+>
+
+  <div class="hero-pin">
+
+    <div class="video-container">
+
+      <!-- ===================================================
+           EXACT VIDEO FILE
+           hero.mp4
+      ==================================================== -->
+
+      <video
+        id="heroVideo"
+        muted
+        playsinline
+        webkit-playsinline
+        preload="auto"
+      >
+
+        <source
+          src="./hero.mp4"
+          type="video/mp4"
+        >
+
+      </video>
+
+
+      <div class="video-red"></div>
+
+      <div class="video-dark"></div>
+
+
+      <div
+        class="video-error"
+        id="videoError"
+      >
+
+        <div>
+
+          <h2>
+            Hotel Bostan
+          </h2>
+
+          <p>
+            The cinematic video could not be loaded.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-copy">
+
+      <div
+        class="hero-kicker"
+        id="heroKicker"
+      >
+        Restaurant · Café · Hotel Bostan
+      </div>
+
+
+      <h1
+        class="hero-title"
+        id="heroTitle"
+      >
+        Eat<br>
+        <em>slow.</em>
+      </h1>
+
+
+      <p
+        class="hero-description"
+        id="heroDescription"
+      >
+        A hotel for long lunches,
+        late coffees, slow mornings
+        and nights that refuse to hurry.
+      </p>
+
+    </div>
+
+
+    <div
+      class="hero-scroll"
+      id="heroScroll"
+    >
+
+      <span>
+        Scroll to enter
+      </span>
+
+      <span class="scroll-line"></span>
+
+    </div>
+
+
+    <div class="hero-progress">
+
+      <div
+        class="hero-progress-fill"
+        id="heroProgress"
+      ></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 02 — PHILOSOPHY
+========================================================= -->
+
+<section
+  class="page page-red page-padding philosophy"
+  id="philosophy"
+>
+
+  <div>
+
+    <div class="eyebrow red-eyebrow">
+      02 — Philosophy
+    </div>
+
+
+    <h2
+      class="page-title philosophy-title"
+      id="philosophyTitle"
+    >
+      Good food.<br>
+      Good company.<br>
+      <em>No hurry.</em>
+    </h2>
+
+  </div>
+
+
+  <div
+    class="philosophy-right"
+    id="philosophyRight"
+  >
+
+    <p class="page-copy">
+
+      Hotel Bostan was created around a
+      deliberately simple philosophy:
+
+      <br><br>
+
+      Don't rush breakfast.
+      Don't shorten lunch.
+      Don't leave after one drink.
+
+      <br><br>
+
+      Stay.
+
+    </p>
+
+
+    <div class="philosophy-statement">
+
+      <strong>
+        The best memories
+        take their time.
+      </strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 03 — ROOMS
+========================================================= -->
+
+<section
+  class="page page-black rooms"
+  id="rooms"
+>
+
+  <div class="rooms-head">
+
+    <div>
+
+      <div class="eyebrow electric">
+        03 — Stay
+      </div>
+
+      <h2 class="page-title">
+        Rooms<br>
+        with <em>character.</em>
+      </h2>
+
+    </div>
+
+
+    <p class="page-copy rooms-intro">
+
+      Quiet spaces, deep beds,
+      considered details and mornings
+      with nowhere to be.
+
+    </p>
+
+  </div>
+
+
+  <div class="rooms-grid">
+
+
+    <article class="room-card large">
+
+      <div class="room-graphic">
+        I
+      </div>
+
+      <div class="room-content">
+
+        <div class="room-number">
+          01 — SIGNATURE
+        </div>
+
+        <div class="room-name">
+          The Bostan
+        </div>
+
+        <div class="room-meta">
+          King · City View · 48 m²
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <article class="room-card">
+
+      <div class="room-graphic">
+        II
+      </div>
+
+      <div class="room-content">
+
+        <div class="room-number">
+          02 — DELUXE
+        </div>
+
+        <div class="room-name">
+          Crimson
+        </div>
+
+        <div class="room-meta">
+          King · Garden View · 39 m²
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <article class="room-card">
+
+      <div class="room-graphic">
+        III
+      </div>
+
+      <div class="room-content">
+
+        <div class="room-number">
+          03 — STUDIO
+        </div>
+
+        <div class="room-name">
+          Afterglow
+        </div>
+
+        <div class="room-meta">
+          Queen · Courtyard · 32 m²
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <article class="room-card large">
+
+      <div class="room-graphic">
+        IV
+      </div>
+
+      <div class="room-content">
+
+        <div class="room-number">
+          04 — PENTHOUSE
+        </div>
+
+        <div class="room-name">
+          Bostan No. 4
+        </div>
+
+        <div class="room-meta">
+          Suite · Terrace · 78 m²
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 04 — DINING
+========================================================= -->
+
+<section
+  class="page page-red-dark page-padding dining"
+  id="dining"
+>
+
+  <div class="dining-left">
+
+    <div class="dining-circle">
+      Eat.<br>
+      Drink.<br>
+      Repeat.
+    </div>
+
+  </div>
+
+
+  <div class="dining-right">
+
+    <div class="eyebrow electric">
+      04 — Dining
+    </div>
+
+    <h2 class="page-title">
+      The kitchen<br>
+      never <em>hurries.</em>
+    </h2>
+
+
+    <p class="page-copy">
+
+      Seasonal ingredients,
+      generous plates and food
+      designed for the middle
+      of the table.
+
+    </p>
+
+
+    <div class="dining-menu">
+
+
+      <div class="dining-row">
+
+        <div class="dining-index">
+          01
+        </div>
+
+        <div>
+
+          <div class="dining-name">
+            Bostan Breakfast
+          </div>
+
+          <div class="dining-detail">
+            Eggs · Sourdough · Seasonal produce
+          </div>
+
+        </div>
+
+        <div class="dining-price">
+          ₹480
+        </div>
+
+      </div>
+
+
+      <div class="dining-row">
+
+        <div class="dining-index">
+          02
+        </div>
+
+        <div>
+
+          <div class="dining-name">
+            Burrata & Tomatoes
+          </div>
+
+          <div class="dining-detail">
+            Burrata · Basil · Olive oil
+          </div>
+
+        </div>
+
+        <div class="dining-price">
+          ₹620
+        </div>
+
+      </div>
+
+
+      <div class="dining-row">
+
+        <div class="dining-index">
+          03
+        </div>
+
+        <div>
+
+          <div class="dining-name">
+            Truffle Pasta
+          </div>
+
+          <div class="dining-detail">
+            Fresh pasta · Parmesan · Truffle
+          </div>
+
+        </div>
+
+        <div class="dining-price">
+          ₹790
+        </div>
+
+      </div>
+
+
+      <div class="dining-row">
+
+        <div class="dining-index">
+          04
+        </div>
+
+        <div>
+
+          <div class="dining-name">
+            Bostan Burger
+          </div>
+
+          <div class="dining-detail">
+            Charred beef · Aged cheese
+          </div>
+
+        </div>
+
+        <div class="dining-price">
+          ₹680
+        </div>
+
+      </div>
+
+
+      <div class="dining-row">
+
+        <div class="dining-index">
+          05
+        </div>
+
+        <div>
+
+          <div class="dining-name">
+            Burnt Cheesecake
+          </div>
+
+          <div class="dining-detail">
+            Vanilla · Sea salt · Fruit
+          </div>
+
+        </div>
+
+        <div class="dining-price">
+          ₹420
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 05 — BAR
+========================================================= -->
+
+<section
+  class="page page-black bar"
+  id="bar"
+>
+
+  <div class="bar-inner">
+
+    <div class="eyebrow electric">
+      05 — After Dark
+    </div>
+
+    <h2 class="page-title bar-title">
+      Stay<br>
+      <em>late.</em>
+    </h2>
+
+    <p class="bar-sub">
+
+      The lights go down.
+      The music comes up.
+      The second drink somehow becomes
+      the fourth.
+
+    </p>
+
+
+    <div class="bar-pills">
+
+      <span class="bar-pill active">
+        Cocktails
+      </span>
+
+      <span class="bar-pill">
+        Natural Wine
+      </span>
+
+      <span class="bar-pill">
+        Vinyl
+      </span>
+
+      <span class="bar-pill">
+        Late Kitchen
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 06 — EXPERIENCES
+========================================================= -->
+
+<section
+  class="page page-red experiences page-padding"
+  id="experiences"
+>
+
+  <div class="experience-header">
+
+    <div class="eyebrow red-eyebrow">
+      06 — Experiences
+    </div>
+
+    <h2 class="page-title">
+      More than<br>
+      a <em>stay.</em>
+    </h2>
+
+  </div>
+
+
+  <div class="experience-grid">
+
+
+    <article class="experience">
+
+      <div class="experience-number">
+        01
+      </div>
+
+      <div class="experience-name">
+        Slow<br>
+        Mornings
+      </div>
+
+      <div class="experience-text">
+        Breakfast in bed.
+        Fresh coffee.
+        No alarms.
+      </div>
+
+    </article>
+
+
+    <article class="experience">
+
+      <div class="experience-number">
+        02
+      </div>
+
+      <div class="experience-name">
+        Long<br>
+        Lunch
+      </div>
+
+      <div class="experience-text">
+        Three courses.
+        Two bottles.
+        One afternoon.
+      </div>
+
+    </article>
+
+
+    <article class="experience">
+
+      <div class="experience-number">
+        03
+      </div>
+
+      <div class="experience-name">
+        Late<br>
+        Nights
+      </div>
+
+      <div class="experience-text">
+        Music.
+        Cocktails.
+        One more song.
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 07 — JOURNAL + EVENTS
+========================================================= -->
+
+<section
+  class="journal"
+  id="journal"
+>
+
+
+  <div class="journal-column">
+
+    <div class="eyebrow">
+      07 — Journal
+    </div>
+
+    <h2 class="page-title">
+      Notes<br>
+      from <em>Bostan.</em>
+    </h2>
+
+
+    <div class="journal-list">
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          06.10.26
+        </div>
+
+        <div class="journal-title">
+          Why slow mornings
+          matter.
+        </div>
+
+      </article>
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          29.09.26
+        </div>
+
+        <div class="journal-title">
+          The ingredients
+          behind our kitchen.
+        </div>
+
+      </article>
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          17.09.26
+        </div>
+
+        <div class="journal-title">
+          Four cocktails
+          for four moods.
+        </div>
+
+      </article>
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          04.09.26
+        </div>
+
+        <div class="journal-title">
+          Inside the
+          Bostan room.
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+
+  <div class="journal-column dark-column">
+
+    <div class="eyebrow">
+      Private Events
+    </div>
+
+    <h2 class="page-title">
+      Make it<br>
+      <em>yours.</em>
+    </h2>
+
+
+    <p
+      class="page-copy"
+      style="margin-top:40px;"
+    >
+
+      Intimate dinners.
+      Private celebrations.
+      Brand gatherings.
+      Long-table occasions.
+
+      <br><br>
+
+      Hotel Bostan can become
+      whatever the evening needs.
+
+    </p>
+
+
+    <div
+      class="journal-list"
+      style="margin-top:60px;"
+    >
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          EVENT 01
+        </div>
+
+        <div class="journal-title">
+          Long Table
+        </div>
+
+      </article>
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          EVENT 02
+        </div>
+
+        <div class="journal-title">
+          Private Dining
+        </div>
+
+      </article>
+
+
+      <article class="journal-item">
+
+        <div class="journal-date">
+          EVENT 03
+        </div>
+
+        <div class="journal-title">
+          Full Buyout
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PAGE 08 — RESERVATION
+========================================================= -->
+
+<section
+  class="page page-black page-padding reservation"
+  id="reservation"
+>
+
+  <div>
+
+    <div class="eyebrow electric">
+      08 — Reservation
+    </div>
+
+    <h2 class="page-title reservation-title">
+      Come<br>
+      <em>stay.</em>
+    </h2>
+
+    <p class="reservation-note">
+
+      Whether it is breakfast for two,
+      a long lunch, a weekend away,
+      or a night that runs much later
+      than expected — we'll keep a table
+      and a room ready.
+
+    </p>
+
+  </div>
+
+
+  <form
+    class="reservation-form"
+    id="reservationForm"
+  >
+
+
+    <div class="form-row">
+
+      <div class="field">
+
+        <label>
+          Name
+        </label>
+
+        <input
+          type="text"
+          placeholder="Your name"
+          required
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Guests
+        </label>
+
+        <select required>
+
+          <option value="">
+            Select
+          </option>
+
+          <option>
+            1 guest
+          </option>
+
+          <option>
+            2 guests
+          </option>
+
+          <option>
+            3 guests
+          </option>
+
+          <option>
+            4 guests
+          </option>
+
+          <option>
+            5 guests
+          </option>
+
+          <option>
+            6+ guests
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <div class="form-row">
+
+      <div class="field">
+
+        <label>
+          Date
+        </label>
+
+        <input
+          type="date"
+          required
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Time
+        </label>
+
+        <input
+          type="time"
+          required
+        >
+
+      </div>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Email
+      </label>
+
+      <input
+        type="email"
+        placeholder="you@example.com"
+        required
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Message
+      </label>
+
+      <textarea
+        rows="3"
+        placeholder="Tell us anything we should know."
+      ></textarea>
+
+    </div>
+
+
+    <button
+      class="submit"
+      type="submit"
+    >
+      Request a reservation
+    </button>
+
+
+  </form>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+  <div class="footer-grid">
+
+
+    <div class="footer-logo">
+
+      Hotel<br>
+      Bostan.
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <div class="footer-heading">
+        Hotel
+      </div>
+
+      <p>
+        Rooms
+      </p>
+
+      <p>
+        Suites
+      </p>
+
+      <p>
+        Experiences
+      </p>
+
+      <p>
+        Private Events
+      </p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <div class="footer-heading">
+        Dining
+      </div>
+
+      <p>
+        Restaurant
+      </p>
+
+      <p>
+        Bar
+      </p>
+
+      <p>
+        Late Kitchen
+      </p>
+
+      <p>
+        Reservations
+      </p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <div class="footer-heading">
+        Contact
+      </div>
+
+      <p>
+        Hotel Bostan
+      </p>
+
+      <p>
+        India
+      </p>
+
+      <a href="mailto:hello@hotelbostan.com">
+        hello@hotelbostan.com
+      </a>
+
+      <a href="tel:+910000000000">
+        +91 00000 00000
+      </a>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
+      © 2026 Hotel Bostan
+    </span>
+
+    <span>
+      Eat slow.
+    </span>
+
+    <span>
+      Restaurant · Café · Hotel
+    </span>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   GSAP
+========================================================= */
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const video =
+  document.getElementById("heroVideo");
+
+const hero =
+  document.getElementById("home");
+
+const nav =
+  document.getElementById("nav");
+
+const loader =
+  document.getElementById("loader");
+
+const loaderLine =
+  document.getElementById("loaderLine");
+
+const videoError =
+  document.getElementById("videoError");
+
+const heroProgress =
+  document.getElementById("heroProgress");
+
+const heroScroll =
+  document.getElementById("heroScroll");
+
+const heroKicker =
+  document.getElementById("heroKicker");
+
+const heroTitle =
+  document.getElementById("heroTitle");
+
+const heroDescription =
+  document.getElementById("heroDescription");
+
+
+/* =========================================================
+   VIDEO STATE
+========================================================= */
+
+let videoDuration = 0;
+
+let videoReady = false;
+
+let videoUnlocked = false;
+
+let requestedTime = 0;
+
+let seekFrame = 0;
+
+
+/* =========================================================
+   VIDEO SEEK
+========================================================= */
+
+function requestVideoTime(time) {
+
+  if (!videoReady) {
+    return;
+  }
+
+  requestedTime =
+    Math.max(
+      0,
+      Math.min(
+        videoDuration - .02,
+        time
+      )
+    );
+
+
+  if (!seekFrame) {
+
+    seekFrame =
+      requestAnimationFrame(
+        applyVideoTime
+      );
+
+  }
+
+}
+
+
+function applyVideoTime() {
+
+  seekFrame = 0;
+
+  if (!videoReady) {
+    return;
+  }
+
+  if (video.readyState >= 2) {
+
+    const difference =
+      Math.abs(
+        video.currentTime -
+        requestedTime
+      );
+
+    if (difference > .006) {
+
+      try {
+
+        video.currentTime =
+          requestedTime;
+
+      } catch (error) {
+
+        console.warn(
+          "Video seeking delayed.",
+          error
+        );
+
+      }
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   VIDEO UNLOCK
+========================================================= */
+
+async function unlockVideo() {
+
+  if (videoUnlocked) {
+    return;
+  }
+
+  try {
+
+    video.muted =
+      true;
+
+    const playback =
+      video.play();
+
+    if (playback) {
+      await playback;
+    }
+
+    video.pause();
+
+    video.currentTime =
+      0;
+
+    videoUnlocked =
+      true;
+
+  } catch (error) {
+
+    videoUnlocked =
+      true;
+
+    try {
+      video.currentTime =
+        0;
+    } catch (e) {}
+
+  }
+
+}
+
+
+/* =========================================================
+   VIDEO SCROLL ENGINE
+========================================================= */
+
+function buildHeroScroll() {
+
+  if (!videoReady) {
+    return;
+  }
+
+
+  requestVideoTime(0);
+
+
+  const timeline = {
+    progress: 0
+  };
+
+
+  gsap.to(
+    timeline,
+    {
+
+      progress:
+        1,
+
+      ease:
+        "none",
+
+      scrollTrigger: {
+
+        trigger:
+          hero,
+
+        start:
+          "top top",
+
+        end:
+          "bottom bottom",
+
+        scrub:
+          .12,
+
+        invalidateOnRefresh:
+          true,
+
+        onUpdate:
+          function(self) {
+
+            const p =
+              Math.max(
+                0,
+                Math.min(
+                  1,
+                  self.progress
+                )
+              );
+
+
+            const targetTime =
+              p *
+              Math.max(
+                videoDuration - .03,
+                0
+              );
+
+
+            requestVideoTime(
+              targetTime
+            );
+
+
+            heroProgress.style.height =
+              (p * 100) + "%";
+
+          }
+
+      },
+
+
+      onUpdate:
+        function() {
+
+          const p =
+            timeline.progress;
+
+
+          const targetTime =
+            p *
+            Math.max(
+              videoDuration - .03,
+              0
+            );
+
+
+          requestVideoTime(
+            targetTime
+          );
+
+        }
+
+    }
+  );
+
+
+  /* =======================================================
+     CINEMATIC ZOOM
+  ======================================================= */
+
+  gsap.to(
+    video,
+    {
+
+      scale:
+        1.10,
+
+      ease:
+        "none",
+
+      scrollTrigger: {
+
+        trigger:
+          hero,
+
+        start:
+          "top top",
+
+        end:
+          "bottom bottom",
+
+        scrub:
+          .35
+
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     HERO TEXT
+  ======================================================= */
+
+  const heroText =
+    gsap.timeline({
+
+      scrollTrigger: {
+
+        trigger:
+          hero,
+
+        start:
+          "top top",
+
+        end:
+          "bottom bottom",
+
+        scrub:
+          1
+
+      }
+
+    });
+
+
+  heroText
+
+    .to(
+      heroKicker,
+      {
+        x: 0,
+        opacity: 1,
+        duration: .14,
+        ease: "power3.out"
+      },
+      .07
+    )
+
+    .to(
+      heroTitle,
+      {
+        x: 0,
+        opacity: 1,
+        duration: .20,
+        ease: "power3.out"
+      },
+      .10
+    )
+
+    .to(
+      heroDescription,
+      {
+        x: 0,
+        opacity: 1,
+        duration: .15,
+        ease: "power3.out"
+      },
+      .18
+    )
+
+    .to(
+      heroKicker,
+      {
+        x: -80,
+        opacity: 0,
+        duration: .10
+      },
+      .70
+    )
+
+    .to(
+      heroTitle,
+      {
+        x: -120,
+        opacity: 0,
+        duration: .12
+      },
+      .72
+    )
+
+    .to(
+      heroDescription,
+      {
+        x: -90,
+        opacity: 0,
+        duration: .10
+      },
+      .73
+    );
+
+
+  /* =======================================================
+     SCROLL INDICATOR
+  ======================================================= */
+
+  gsap.to(
+    heroScroll,
+    {
+
+      opacity:
+        0,
+
+      scrollTrigger: {
+
+        trigger:
+          hero,
+
+        start:
+          "top top",
+
+        end:
+          "18% top",
+
+        scrub:
+          true
+
+      }
+
+    }
+  );
+
+
+  ScrollTrigger.refresh();
+
+}
+
+
+/* =========================================================
+   VIDEO READY
+========================================================= */
+
+function videoReadyHandler() {
+
+  if (
+    !Number.isFinite(video.duration) ||
+    video.duration <= 0
+  ) {
+    return;
+  }
+
+  if (videoReady) {
+    return;
+  }
+
+  videoDuration =
+    video.duration;
+
+  videoReady =
+    true;
+
+
+  unlockVideo().then(
+    buildHeroScroll
+  );
+
+}
+
+
+video.addEventListener(
+  "loadedmetadata",
+  videoReadyHandler
+);
+
+video.addEventListener(
+  "durationchange",
+  videoReadyHandler
+);
+
+video.addEventListener(
+  "loadeddata",
+  videoReadyHandler
+);
+
+video.addEventListener(
+  "canplay",
+  videoReadyHandler
+);
+
+video.addEventListener(
+  "canplaythrough",
+  videoReadyHandler
+);
+
+
+/* =========================================================
+   VIDEO ERROR
+========================================================= */
+
+video.addEventListener(
+  "error",
+  function() {
+
+    console.error(
+      "Unable to load ./hero.mp4",
+      video.error
+    );
+
+    videoError.classList.add(
+      "active"
+    );
+
+  }
+);
+
+
+/* =========================================================
+   LOAD VIDEO
+========================================================= */
+
+video.load();
+
+
+/* =========================================================
+   METADATA FALLBACK
+========================================================= */
+
+let metadataChecks =
+  0;
+
+const metadataTimer =
+  setInterval(
+    function() {
+
+      metadataChecks++;
+
+      if (
+        !videoReady &&
+        Number.isFinite(video.duration) &&
+        video.duration > 0
+      ) {
+
+        videoReadyHandler();
+
+      }
+
+      if (
+        videoReady ||
+        metadataChecks > 120
+      ) {
+
+        clearInterval(
+          metadataTimer
+        );
+
+      }
+
+    },
+    100
+  );
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+gsap.to(
+  loaderLine,
+  {
+
+    width:
+      "100%",
+
+    duration:
+      1.4,
+
+    ease:
+      "power2.inOut"
+
+  }
+);
+
+
+function removeLoader() {
+
+  gsap.to(
+    loader,
+    {
+
+      opacity:
+        0,
+
+      duration:
+        .7,
+
+      ease:
+        "power2.out",
+
+      onComplete:
+        function() {
+
+          loader.style.display =
+            "none";
+
+          document.body.classList.remove(
+            "loading"
+          );
+
+          ScrollTrigger.refresh();
+
+        }
+
+    }
+  );
+
+}
+
+
+window.addEventListener(
+  "load",
+  removeLoader,
+  { once: true }
+);
+
+
+setTimeout(
+  removeLoader,
+  3500
+);
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+window.addEventListener(
+  "scroll",
+  function() {
+
+    if (window.scrollY > 40) {
+
+      nav.classList.add(
+        "scrolled"
+      );
+
+    } else {
+
+      nav.classList.remove(
+        "scrolled"
+      );
+
+    }
+
+  },
+  {
+    passive:
+      true
+  }
+);
+
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+
+gsap.to(
+  "#philosophyTitle",
+  {
+
+    x:
+      0,
+
+    opacity:
+      1,
+
+    duration:
+      1.2,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#philosophy",
+
+      start:
+        "top 70%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+gsap.to(
+  "#philosophyRight",
+  {
+
+    y:
+      0,
+
+    opacity:
+      1,
+
+    duration:
+      1.1,
+
+    delay:
+      .12,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#philosophy",
+
+      start:
+        "top 65%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   ROOMS
+========================================================= */
+
+gsap.from(
+  ".room-card",
+  {
+
+    y:
+      100,
+
+    opacity:
+      0,
+
+    duration:
+      1,
+
+    stagger:
+      .12,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        ".rooms-grid",
+
+      start:
+        "top 80%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   DINING
+========================================================= */
+
+gsap.from(
+  ".dining-circle",
+  {
+
+    rotation:
+      -35,
+
+    scale:
+      .65,
+
+    opacity:
+      0,
+
+    duration:
+      1.3,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#dining",
+
+      start:
+        "top 70%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+gsap.from(
+  ".dining-row",
+  {
+
+    x:
+      80,
+
+    opacity:
+      0,
+
+    duration:
+      .75,
+
+    stagger:
+      .09,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        ".dining-menu",
+
+      start:
+        "top 80%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   BAR
+========================================================= */
+
+gsap.from(
+  ".bar-title",
+  {
+
+    y:
+      100,
+
+    opacity:
+      0,
+
+    duration:
+      1.2,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#bar",
+
+      start:
+        "top 70%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   EXPERIENCES
+========================================================= */
+
+gsap.from(
+  ".experience",
+  {
+
+    y:
+      100,
+
+    opacity:
+      0,
+
+    duration:
+      1,
+
+    stagger:
+      .12,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        ".experience-grid",
+
+      start:
+        "top 78%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   JOURNAL
+========================================================= */
+
+gsap.from(
+  ".journal-column",
+  {
+
+    y:
+      80,
+
+    opacity:
+      0,
+
+    duration:
+      1,
+
+    stagger:
+      .15,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#journal",
+
+      start:
+        "top 75%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   RESERVATION
+========================================================= */
+
+gsap.from(
+  ".reservation > div:first-child",
+  {
+
+    x:
+      -100,
+
+    opacity:
+      0,
+
+    duration:
+      1.1,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#reservation",
+
+      start:
+        "top 70%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+gsap.from(
+  ".reservation-form",
+  {
+
+    x:
+      100,
+
+    opacity:
+      0,
+
+    duration:
+      1.1,
+
+    delay:
+      .12,
+
+    ease:
+      "power3.out",
+
+    scrollTrigger: {
+
+      trigger:
+        "#reservation",
+
+      start:
+        "top 70%",
+
+      toggleActions:
+        "play none none reverse"
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   RESERVATION FORM
+========================================================= */
+
+document
+  .getElementById("reservationForm")
+  .addEventListener(
+    "submit",
+    function(event) {
+
+      event.preventDefault();
+
+      const button =
+        this.querySelector(
+          ".submit"
+        );
+
+      const original =
+        button.textContent;
+
+      button.textContent =
+        "Reservation requested";
+
+      button.disabled =
+        true;
+
+      setTimeout(
+        function() {
+
+          button.textContent =
+            original;
+
+          button.disabled =
+            false;
+
+        },
+        2400
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   SMOOTH ANCHORS
+========================================================= */
+
+document
+  .querySelectorAll(
+    'a[href^="#"]'
+  )
+  .forEach(
+    function(link) {
+
+      link.addEventListener(
+        "click",
+        function(event) {
+
+          const targetID =
+            this.getAttribute(
+              "href"
+            );
+
+          const target =
+            document.querySelector(
+              targetID
+            );
+
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior:
+              "smooth",
+
+            block:
+              "start"
+          });
+
+        }
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+let resizeTimer;
+
+window.addEventListener(
+  "resize",
+  function() {
+
+    clearTimeout(
+      resizeTimer
+    );
+
+    resizeTimer =
+      setTimeout(
+        function() {
+
+          ScrollTrigger.refresh();
+
+        },
+        250
+      );
+
+  },
+  {
+    passive:
+      true
+  }
+);
+
+
+/* =========================================================
+   FINAL REFRESH
+========================================================= */
+
+window.addEventListener(
+  "load",
+  function() {
+
+    setTimeout(
+      function() {
+
+        ScrollTrigger.refresh();
+
+      },
+      600
+    );
+
+  },
+  {
+    once:
+      true
+  }
+);
+
+</script>
+
+</body>
+</html>
