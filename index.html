@@ -98,6 +98,30 @@ h1 .m{overflow:hidden;display:block;padding-bottom:.1em;margin-bottom:-.1em}
 .jcap h2 i{font-style:italic}
 .jcap p{font:italic 300 clamp(15px,1.5vw,20px)/1.4 var(--serif);margin-top:12px;opacity:.85;max-width:32ch}
 @media(max-width:700px){.journey{height:230svh}.iview{bottom:calc(13vh + env(safe-area-inset-bottom,0px))}}
+
+/* ============ HERO FILM (scroll-scrubbed video) ============ */
+.film{position:relative;z-index:2;height:300vh;height:300svh;background:#0b0a09}
+.film-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0b0a09}
+.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;
+  transform:translateZ(0);backface-visibility:hidden}
+.film-veil{position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(130% 100% at 50% 42%,rgba(0,0,0,0) 34%,rgba(6,5,8,.62) 100%),
+    linear-gradient(to bottom,rgba(6,5,8,.55),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 55%,rgba(6,5,8,.82))}
+.film-grain{position:absolute;inset:0;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
+  background-image:radial-gradient(rgba(255,255,255,.5) 1px,transparent 1px);background-size:3px 3px}
+.film-hud{position:absolute;top:calc(84px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);
+  display:flex;justify-content:space-between;font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55);font-variant-numeric:tabular-nums}
+.film-cap{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(11vh + env(safe-area-inset-bottom,0px));
+  max-width:34ch;color:#F7F5F0;opacity:0}
+.film-cap .k{color:#fff;opacity:.65;margin-bottom:10px}
+.film-cap p{font:italic 300 clamp(19px,2.2vw,30px)/1.35 var(--serif)}
+.film-prog{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(5vh + env(safe-area-inset-bottom,0px));
+  height:2px;background:rgba(255,255,255,.2);overflow:hidden}
+.film-prog b{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left;will-change:transform}
+.film.is-dead{display:none}
+@media(max-width:700px){.film{height:260vh;height:260svh}}
 </style>
 </head>
 <body>
@@ -116,6 +140,30 @@ h1 .m{overflow:hidden;display:block;padding-bottom:.1em;margin-bottom:-.1em}
 <nav><a class="logo" href="#top">Bostan</a><div><a href="#menu">Menu</a><a href="#garden">Garden</a><a href="#book">Reserve</a></div></nav>
 <main id="top">
 <section class="hero" data-t="dark"><h1 aria-label="Bostan"><span class="m" id="h1">Bostan</span></h1><div class="sub"><p>A garden table in the middle of Lisbon.</p><div class="scroll" aria-hidden="true"></div></div></section>
+
+<!-- ==================== NEW: SCROLL-SCRUBBED HERO FILM ==================== -->
+<section class="film" id="film" data-t="dark">
+  <div class="film-stick">
+    <video id="heroVid"
+           src="bost-hero.mp4"
+           muted playsinline preload="auto"
+           disablepictureinpicture disableremoteplayback
+           aria-hidden="true"></video>
+    <div class="film-veil" aria-hidden="true"></div>
+    <div class="film-grain" aria-hidden="true"></div>
+    <div class="film-hud" aria-hidden="true">
+      <span>Bostan &mdash; a film</span>
+      <span id="filmPct">00%</span>
+    </div>
+    <div class="film-cap" id="filmCap" aria-hidden="true">
+      <span class="k" id="filmK">01 &mdash; The street</span>
+      <p id="filmT">Nine steps off a Lisbon street.</p>
+    </div>
+    <div class="film-prog" aria-hidden="true"><b id="filmBar"></b></div>
+  </div>
+</section>
+<!-- ======================================================================== -->
+
 <section class="idea" data-t="dark"><p id="idea">Bostan means garden. We cook what a garden gives, with fire, salt and patience, and serve it slowly.</p></section>
 <section class="mq" data-t="dark" aria-hidden="true"><div id="mq"><span>Hotel Bostan</span><span>Lisbon</span><span>Hotel Bostan</span><span>Lisbon</span></div></section>
 <section class="journey" id="journey" data-t="dark">
@@ -262,6 +310,129 @@ $('#gm').onclick=function(){g=Math.max(1,g-1);upd()};$('#gp').onclick=function()
 $$('#chips button').forEach(function(b){b.onclick=function(){$$('#chips button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');tm=b.textContent;upd()}});
 var fmt=new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Lisbon'});function clk(){$('#tm').textContent=fmt.format(new Date())}clk();setInterval(clk,20000);
 gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigger:{trigger:'.book',start:'top 60%'}});
+
+/* =====================================================================
+   HERO FILM — scroll-scrubbed video  (bost-hero.mp4)
+   Scroll forward  -> video plays forward
+   Scroll backward -> video plays in reverse
+   ===================================================================== */
+(function heroFilm(){
+  var v    = document.getElementById('heroVid');
+  var sec  = document.getElementById('film');
+  if (!v || !sec) return;
+
+  var barEl = document.getElementById('filmBar');
+  var pctEl = document.getElementById('filmPct');
+  var capEl = document.getElementById('filmCap');
+  var capK  = document.getElementById('filmK');
+  var capT  = document.getElementById('filmT');
+
+  var proxy   = {p: 0};      // 0..1 timeline position, driven by scroll
+  var dur     = 0;
+  var ready   = false;
+  var dead    = false;
+  var lastSeek = -1;
+  var pending  = null;
+  var curCap   = -1;
+
+  var CAPS = [
+    {a:0.00, b:0.20, k:'01 \u2014 The street', t:'Nine steps off a Lisbon street.'},
+    {a:0.20, b:0.42, k:'02 \u2014 The door',   t:'A brass handle, still warm from the day.'},
+    {a:0.42, b:0.64, k:'03 \u2014 The room',   t:'Stone, light, and the smell of woodsmoke.'},
+    {a:0.64, b:0.86, k:'04 \u2014 The table',  t:'A garden table, set for the evening.'},
+    {a:0.86, b:1.01, k:'05 \u2014 The fire',   t:'And then the embers take over.'}
+  ];
+
+  function fail(){
+    if (dead) return;
+    dead = true;
+    sec.classList.add('is-dead');
+    ScrollTrigger.refresh();
+  }
+
+  /* ---- seek guard: never queue more seeks than the decoder can eat ---- */
+  function seek(t){
+    if (!ready || dead) return;
+    if (t < 0) t = 0;
+    if (t > dur - 0.001) t = dur - 0.001;
+    if (Math.abs(t - lastSeek) < 0.0025) return;   // ignore micro-jitter
+    lastSeek = t;
+    if (v.seeking) { pending = t; return; }        // wait for current seek
+    try { v.currentTime = t; } catch(e){}
+  }
+  v.addEventListener('seeked', function(){
+    if (pending !== null){
+      var p = pending; pending = null; lastSeek = p;
+      try { v.currentTime = p; } catch(e){}
+    }
+  });
+
+  /* ---- iOS / autoplay-policy unlock: play once, then pause ---- */
+  function primeVideo(){
+    if (!ready || dead) return;
+    try {
+      var pr = v.play();
+      if (pr && pr.then) pr.then(function(){ v.pause(); v.currentTime = Math.max(0, lastSeek); }).catch(function(){});
+      else v.pause();
+    } catch(e){}
+  }
+  addEventListener('touchstart', primeVideo, {passive:true, once:true});
+  addEventListener('pointerdown', primeVideo, {once:true});
+
+  function onMeta(){
+    if (v.duration && isFinite(v.duration) && v.duration > 0){
+      dur = v.duration;
+      ready = true;
+      primeVideo();                 // warm the decoder so scrubbing is instant
+      seek(proxy.p * dur);          // catch up if user already scrolled
+    } else {
+      fail();
+    }
+  }
+  v.addEventListener('error', fail);
+  v.addEventListener('loadedmetadata', onMeta);
+  if (v.readyState >= 1) onMeta();
+
+  /* ---- caption swap ---- */
+  function setCap(p){
+    var i = -1;
+    for (var j = 0; j < CAPS.length; j++){ if (p >= CAPS[j].a && p < CAPS[j].b){ i = j; break; } }
+    if (i === curCap) return;
+    curCap = i;
+    if (i < 0){ gsap.to(capEl, {opacity:0, duration:.35, overwrite:true}); return; }
+    gsap.to(capEl, {opacity:0, y:12, duration:.22, overwrite:true, onComplete:function(){
+      capK.textContent = CAPS[i].k;
+      capT.textContent = CAPS[i].t;
+      gsap.to(capEl, {opacity:1, y:0, duration:.6, ease:'expo.out'});
+    }});
+  }
+
+  /* ---- the GSAP scrub ---- */
+  gsap.to(proxy, {
+    p: 1,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: sec,
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: reduce ? true : 0.45,     // smoothing = buttery scrubbing
+      invalidateOnRefresh: true,
+      onUpdate: function(self){
+        var pr = self.progress;
+        if (barEl) barEl.style.transform = 'scaleX(' + pr.toFixed(4) + ')';
+        if (pctEl) pctEl.textContent = String(Math.round(pr * 100)).padStart(2,'0') + '%';
+        setCap(pr);
+      }
+    },
+    onUpdate: function(){ seek(proxy.p * dur); },
+    onComplete: function(){ seek(dur - 0.001); }
+  });
+
+  /* keep ScrollTrigger honest once the video's real duration is known */
+  addEventListener('load', function(){ ScrollTrigger.refresh(); });
+})();
+/* ===================================================================== */
+
 })();
 </script>
 
@@ -402,7 +573,6 @@ const floorM=new THREE.MeshStandardMaterial({color:0x241A14,roughness:0.16,metal
 const linenM=new THREE.MeshStandardMaterial({color:0xF3EDE0,roughness:0.96});
 const burgM=new THREE.MeshStandardMaterial({color:0x5A2E2A,roughness:0.85});
 
-/* *** ARRAYS DECLARED EARLY (fix) *** */
 const chefs = [];
 const steamSprites = [];
 const diners = [];
@@ -713,7 +883,6 @@ function createChef(x0,x1,z,seed){
   inside.add(root); chefs.push(root);
 }
 
-/* ---- alcove with seated diners ---- */
 (function alcove(){
   const cx=14,czz=-124;
   const rug=new THREE.Mesh(new THREE.BoxGeometry(4.0,0.03,11),burgM); rug.position.set(cx,0.02,czz); rug.receiveShadow=true; inside.add(rug);
@@ -747,7 +916,6 @@ function createChef(x0,x1,z,seed){
   const al=new THREE.PointLight(0xffb066,22,18,2); al.position.set(cx,2.6,czz); inside.add(al);
 })();
 
-/* ---- kitchen with chefs ---- */
 (function kitchen(){
   const KX0=-23,KX1=-HW,KZ0=-116,KZ1=-148;
   const kcx=(KX0+KX1)/2,kcz=(KZ0+KZ1)/2,kw=KX1-KX0,kd=KZ0-KZ1;
@@ -781,7 +949,6 @@ function createChef(x0,x1,z,seed){
   const ka=new THREE.PointLight(0xffb066,14,20,2); ka.position.set(kcx,3.5,kcz); inside.add(ka);
 })();
 
-/* ---- dining tables with seated diners ---- */
 (function tablesAndDiners(){
   const topM=new THREE.MeshStandardMaterial({color:0xFBF6EA,roughness:0.8});
   const clothM=new THREE.MeshStandardMaterial({color:0xF3EDE0,roughness:0.95});
@@ -836,7 +1003,6 @@ function createChef(x0,x1,z,seed){
   layout.forEach(([x,z])=>table(x,z,1.0,3));
 })();
 
-/* ---- hearth ---- */
 (function hearth(){
   const zz=Z1+0.5;
   const breast=new THREE.Mesh(new THREE.BoxGeometry(9.5,H,0.9),stoneM); breast.position.set(0,H/2,zz); breast.castShadow=true; breast.receiveShadow=true; inside.add(breast);
@@ -864,7 +1030,8 @@ const _camPos=new THREE.Vector3(),_camLook=new THREE.Vector3();
 let camT=0,camP=0,jT=0,jP=0,introK=0,stageO=1;
 if(window.ScrollTrigger){
   gsap.registerPlugin(ScrollTrigger);
-  ScrollTrigger.create({trigger:'#top',start:'top top',endTrigger:'#journey',end:'bottom bottom',onUpdate:s=>{camT=s.progress;}});
+  /* camera starts moving once the hero film has fully scrolled away */
+  ScrollTrigger.create({trigger:'#film',start:'bottom bottom',endTrigger:'#journey',end:'bottom bottom',onUpdate:s=>{camT=s.progress;}});
   ScrollTrigger.create({trigger:'#journey',start:'top top',end:'bottom bottom',onUpdate:s=>{jT=s.progress;}});
 }
 const caps=[...document.querySelectorAll('.jcap')].map(el=>({el,a:parseFloat(el.dataset.a),b:parseFloat(el.dataset.b)}));
