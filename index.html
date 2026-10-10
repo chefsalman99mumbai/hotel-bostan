@@ -92,10 +92,12 @@ section{position:relative;z-index:1}
 .foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:28px;margin-top:14vh;font-size:15px;border-top:1px solid rgba(128,128,128,.35);padding-top:28px}
 .foot span{display:block;opacity:.6}
 
-/* ============ FOOTER FILM ============ */
+/* ============ FOOTER FILM (now IMAGE) ============ */
 .endfilm{position:relative;z-index:2;background:#0b0a09;color:#F7F5F0}
 .endbg{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;pointer-events:none}
-.endbg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:translateZ(0);backface-visibility:hidden}
+.endbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  transform:translateZ(0) scale(1.02);backface-visibility:hidden;
+  filter:saturate(.92) contrast(1.02) brightness(.94)}
 .endveil{position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(120% 90% at 50% 60%,rgba(0,0,0,0) 30%,rgba(6,5,8,.7) 100%),
     linear-gradient(to bottom,rgba(6,5,8,.75),rgba(6,5,8,.35) 42%,rgba(6,5,8,.92))}
@@ -261,15 +263,15 @@ section{position:relative;z-index:1}
 }
 @media(hover:none),(pointer:coarse){#cur{display:none}}
 
-/* ============ TEMP uploader ============ */
-#swapMp4{position:fixed;right:var(--pad);bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:40;
-  display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:99px;
+/* ============ TEMP uploaders ============ */
+#tempbar{position:fixed;right:var(--pad);bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+#swapMp4,#swapFoot{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:99px;
   background:rgba(20,18,16,.72);color:#F7F5F0;border:1px solid rgba(255,255,255,.28);
   font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   box-shadow:0 10px 30px rgba(0,0,0,.35);transition:background .3s,border-color .3s,transform .3s}
-#swapMp4:hover{background:rgba(40,36,32,.9);border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
-#swapMp4 svg{width:13px;height:13px;flex:none}
+#swapMp4:hover,#swapFoot:hover{background:rgba(40,36,32,.9);border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
+#swapMp4 svg,#swapFoot svg{width:13px;height:13px;flex:none}
 
 /* ============ HERO FILM ============ */
 .journey{position:relative;z-index:2;height:500vh;height:500svh;background:#0b0a09}
@@ -302,13 +304,25 @@ section{position:relative;z-index:1}
 
 <div id="cur" aria-hidden="true"></div>
 
-<label id="swapMp4" for="swapMp4Input" title="Temporary: swap the MP4 in hero &amp; footer">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M12 16V4M12 4l-4 4M12 4l4 4M4 20h16"/>
-  </svg>
-  <span>Test&nbsp;MP4</span>
-</label>
-<input id="swapMp4Input" type="file" accept="video/mp4,video/quicktime,video/*" hidden>
+<div id="tempbar">
+  <label id="swapFoot" for="swapFootInput" title="Temporary: swap the footer image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <path d="M21 15l-5-5L5 21"/>
+    </svg>
+    <span>Test&nbsp;Footer</span>
+  </label>
+  <input id="swapFootInput" type="file" accept="image/*" hidden>
+
+  <label id="swapMp4" for="swapMp4Input" title="Temporary: swap the hero MP4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 16V4M12 4l-4 4M12 4l4 4M4 20h16"/>
+    </svg>
+    <span>Test&nbsp;Hero</span>
+  </label>
+  <input id="swapMp4Input" type="file" accept="video/mp4,video/quicktime,video/*" hidden>
+</div>
 
 <nav><a class="logo" href="#top">Bostan</a><div><a href="#menu">Menu</a></div></nav>
 <main id="top">
@@ -372,10 +386,12 @@ section{position:relative;z-index:1}
     </div>
   </section>
 
+  <!-- ==================== FOOTER (now IMAGE) ==================== -->
   <section class="endfilm" id="endfilm" data-t="dark">
     <div class="endbg">
-      <video id="endVid" src="bost-hero.mp4" muted playsinline loop preload="auto"
-             disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+      <img id="footImg" src="bost-hero.jpg"
+           alt="The room at Bostan — candlelight, brick, and the long table after service."
+           loading="lazy" decoding="async">
       <div class="endveil" aria-hidden="true"></div>
       <div class="endhud" aria-hidden="true">
         <span>The end &mdash; Lisbon</span>
@@ -393,6 +409,7 @@ section{position:relative;z-index:1}
       </div>
     </div>
   </section>
+  <!-- ======================================================== -->
 
   <!-- ==================== EXHIBITION FLYER ==================== -->
   <section class="closing" id="closing" data-t="dark">
@@ -563,22 +580,15 @@ ScrollTrigger.create({onUpdate:function(s){var v=gsap.utils.clamp(-12,12,s.getVe
    MENU — 24 dishes: old horses + 2026 signatures
    ================================================================= */
 var D=[
-// ===== OPENERS =====
 ['Opener','Paya Soup','Slow-simmered trotters, a Mughlai classic. 65 votes. Served with butter naan.',220,'cream'],
 ['Opener','Chicken Manchow Soup','Sichuan in a Mughlai house. Noodles, chicken, a whisper of heat. Under every competitor.',160,'sage'],
-
-// ===== STARTERS =====
 ['Starter','Chicken Tikka','Six pieces, tandoor-kissed, smoke still rising. ₹115 cheaper than Gulshan E Iran, ₹229 cheaper than Persia Darbar.',220,'pink'],
 ['Starter','Hot Honey Chicken Tikka','Kashmiri chilli honey glaze on tandoor-charred tikka. Sweet, spicy, sticky. The 2026 swicy wave.',249,'sage'],
 ['Starter','Paneer Tikka','Six pieces, charred, bright with spices. The vegetarian anchor.',240,'offw'],
 ['Starter','Chicken Seekh Kabab','Minced, spiced, grilled on skewers. Six pieces at ₹200—better value per piece than Gulshan\'s three at ₹180.',200,'dark'],
 ['Starter','Champaran Mutton Seekh','Bihar\'s legendary Champaran style. Slow-cooked, hand-pressed, finished on the grill. Regional, premium, unforgettable.',279,'pink'],
 ['Starter','Gunpowder Chicken 65','Andhra gunpowder tossed with crispy Chicken 65. Crunchy, fiery, made for sharing.',229,'cream'],
-
-// ===== SIGNATURE =====
 ['Signature','Chicken Special Bostan','Red gravy, seekh kabab, the house hero. 17 votes. This is our Raan moment.',270,'sage'],
-
-// ===== MAINS =====
 ['Main','Butter Chicken','100 votes. Shahi red gravy. ₹5 cheaper than Gulshan E Iran, ₹209 cheaper than Persia Darbar.',240,'pink'],
 ['Main','Truffle Butter Chicken','The classic, finished with truffle oil. Familiar dish, luxury upgrade. High margin, low ingredient cost.',299,'offw'],
 ['Main','Chicken Tikka Masala','Boneless tikka in red gravy. ₹109 cheaper than Gulshan, ₹219 cheaper than Persia.',230,'dark'],
@@ -588,16 +598,10 @@ var D=[
 ['Main','Chicken Kolhapuri','7 votes. Spicy, bold. The heat gap in our menu, filled.',250,'offw'],
 ['Main','Mutton Rogan Josh','Kashmiri classic, slow-cooked. ₹70 cheaper than Gulshan, ₹219 cheaper than Persia.',230,'dark'],
 ['Main','Mutton Bhuna','Slow-roasted, deeply spiced. The highest-margin mutton on the menu.',340,'cream'],
-
-// ===== CHINESE =====
 ['Chinese','Chicken Lollipop','46 votes. Frenched wings, fried until crisp. ₹65 cheaper than Gulshan, ₹149 cheaper than Persia.',200,'sage'],
 ['Chinese','Chicken Crispy','15 votes. Golden, crunchy, 500ml. ₹70 cheaper than Gulshan, ₹269 cheaper than Persia.',280,'pink'],
-
-// ===== RICE & BREAD =====
 ['Rice','Chicken Tikka Biryani','35 votes. Layered with charred tikka. ₹45 cheaper than Gulshan, ₹248 cheaper than Persia.',250,'offw'],
 ['Bread','Butter Naan','Essential for gravy dishes. ₹14–₹24 cheaper than every competitor.',45,'dark'],
-
-// ===== SWEETS =====
 ['Sweet','Caramel Custard','18 votes. Lisbon\'s oldest love song, sweetened with petals. The only one with a story.',70,'cream'],
 ['Sweet','Matcha Rasmalai','Japanese matcha meets Indian rasmalai. The inter-caste marriage dessert of 2026. Photographs beautifully.',99,'sage']
 ];
@@ -661,18 +665,15 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
   addEventListener('load',function(){ScrollTrigger.refresh()});
 })();
 
-/* ============ FOOTER FILM — looping bookend ============ */
-(function endFilm(){
-  var v=document.getElementById('endVid'),sec=document.getElementById('endfilm');
-  if(!v||!sec) return;
-  v.playbackRate=0.55;
-  function tryPlay(){try{var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}}
-  function tryPause(){try{v.pause()}catch(e){}}
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)tryPlay();else tryPause()})},{threshold:0.12});
-    io.observe(sec);
-  } else { tryPlay() }
-  addEventListener('touchstart',function(){if(!v.paused)return;tryPlay()},{passive:true,once:true});
+/* ============ FOOTER (image) — gentle parallax + credits drift ============ */
+(function endImage(){
+  var sec=document.getElementById('endfilm');
+  if(!sec) return;
+  var img=document.getElementById('footImg');
+  if(img&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    gsap.fromTo(img,{yPercent:-4,scale:1.06},{yPercent:4,scale:1.02,ease:'none',
+      scrollTrigger:{trigger:sec,start:'top bottom',end:'bottom top',scrub:true}});
+  }
   var credits=sec.querySelector('.credits');
   if(credits&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
     gsap.fromTo(credits,{yPercent:8,opacity:0.6},{yPercent:-8,opacity:1,ease:'none',
@@ -715,7 +716,7 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
   });
 })();
 
-/* ============ TEMP: single MP4 uploader — swaps BOTH films ============ */
+/* ============ TEMP: Hero MP4 uploader ============ */
 (function swapMp4(){
   var input=document.getElementById('swapMp4Input'),btn=document.getElementById('swapMp4');
   if(!input) return;
@@ -727,10 +728,22 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
     lastUrl=URL.createObjectURL(f);
     var hero=document.getElementById('heroVid');
     if(hero){hero.src=lastUrl;try{hero.load()}catch(e){}}
-    var end=document.getElementById('endVid');
-    if(end){var wasPlaying=!end.paused;end.src=lastUrl;try{end.load()}catch(e){}
-      end.addEventListener('loadedmetadata',function once(){end.removeEventListener('loadedmetadata',once);end.playbackRate=0.55;if(wasPlaying){try{end.play()}catch(e){}}});
-    }
+    if(btn){var span=btn.querySelector('span');if(span) span.textContent=f.name.length>16?f.name.slice(0,13)+'…':f.name}
+  });
+})();
+
+/* ============ TEMP: Footer image uploader ============ */
+(function swapFoot(){
+  var input=document.getElementById('swapFootInput'),btn=document.getElementById('swapFoot');
+  if(!input) return;
+  var lastUrl=null;
+  input.addEventListener('change',function(){
+    var f=input.files&&input.files[0];
+    if(!f) return;
+    if(lastUrl){try{URL.revokeObjectURL(lastUrl)}catch(e){}}
+    lastUrl=URL.createObjectURL(f);
+    var img=document.getElementById('footImg');
+    if(img){img.src=lastUrl}
     if(btn){var span=btn.querySelector('span');if(span) span.textContent=f.name.length>16?f.name.slice(0,13)+'…':f.name}
   });
 })();
