@@ -54,6 +54,7 @@ section{position:relative;z-index:1}
 .dark{--bg:var(--c);--fg:var(--o)}.cream{--bg:var(--iv);--fg:var(--c)}.sage{--bg:var(--sg);--fg:var(--c)}.pink{--bg:var(--pk);--fg:var(--c)}.offw{--bg:var(--o);--fg:var(--c)}
 .p h2,.p h3{font:200 clamp(54px,10.5vw,190px)/.92 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.045em;max-width:11em;will-change:transform}
 .p h3{font-size:clamp(46px,9vw,160px)}
+.p h3.long{font-size:clamp(36px,6.4vw,116px)}
 .k{font:400 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:20px}
 .note{display:flex;justify-content:space-between;align-items:baseline;gap:clamp(20px,4vw,64px);padding-top:18px;position:relative;max-width:min(100%,1100px)}
 .note:before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:currentColor;opacity:.3}
@@ -120,11 +121,9 @@ section{position:relative;z-index:1}
 .closing{position:relative;z-index:2;background:#0b0a09;color:#F7F5F0;
   padding:clamp(56px,7vh,88px) 0 clamp(48px,6vh,72px);
   overflow:hidden}
-/* paper grain / dotted registry texture */
 .closing:before{content:"";position:absolute;inset:0;pointer-events:none;
   background-image:radial-gradient(rgba(247,245,240,.055) 1px,transparent 1px);
   background-size:22px 22px;z-index:0}
-/* paper crease — vertical */
 .closing:after{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;
   background:linear-gradient(to bottom,transparent,rgba(255,255,255,.045) 18%,rgba(255,255,255,.045) 82%,transparent);
   pointer-events:none;z-index:0}
@@ -134,7 +133,6 @@ section{position:relative;z-index:1}
   padding:0 clamp(22px,4.6vw,64px);
   display:flex;flex-direction:column}
 
-/* crop marks in four corners */
 .flyer .cm{position:absolute;width:16px;height:16px;pointer-events:none;opacity:.36}
 .flyer .cm:before,.flyer .cm:after{content:"";position:absolute;background:#F7F5F0}
 .flyer .cm:before{width:100%;height:1px;top:0;left:0}
@@ -144,7 +142,6 @@ section{position:relative;z-index:1}
 .flyer .cm.bl{bottom:-8px;left:-8px;transform:scaleY(-1)}
 .flyer .cm.br{bottom:-8px;right:-8px;transform:scale(-1,-1)}
 
-/* top bar */
 .f-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
   padding:14px 0 16px;border-top:1px solid rgba(247,245,240,.28);
   border-bottom:1px solid rgba(247,245,240,.14);
@@ -153,7 +150,6 @@ section{position:relative;z-index:1}
 .f-top .f-top-r{display:flex;gap:26px;flex-wrap:wrap}
 .f-top .dot-sep{opacity:.4}
 
-/* body: side + main */
 .f-body{display:grid;grid-template-columns:34px 1fr;gap:clamp(28px,4.5vw,64px);
   padding:clamp(42px,6vh,74px) 0 clamp(46px,6vh,80px);
   border-bottom:1px solid rgba(247,245,240,.14)}
@@ -187,7 +183,6 @@ section{position:relative;z-index:1}
 .f-sub{font:italic 300 clamp(16px,1.5vw,21px)/1.45 var(--serif);
   color:rgba(247,245,240,.72);max-width:34ch}
 
-/* rotating stamp — pinned to the right */
 .f-stamp{position:absolute;right:0;top:clamp(20px,4vh,50px);
   width:clamp(96px,11vw,140px);height:clamp(96px,11vw,140px);
   color:rgba(247,245,240,.72);pointer-events:none}
@@ -197,7 +192,6 @@ section{position:relative;z-index:1}
   font:italic 200 clamp(20px,2.4vw,32px)/1 var(--serif);
   color:#EBCFC8;letter-spacing:-.02em}
 
-/* acts index */
 .f-acts{padding:clamp(40px,5.5vh,72px) 0 clamp(44px,6vh,76px);
   border-bottom:1px solid rgba(247,245,240,.14)}
 .f-acts-head{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
@@ -219,7 +213,6 @@ section{position:relative;z-index:1}
 .acts .d{font:italic 300 clamp(14px,1.15vw,17px)/1.4 var(--serif);
   color:rgba(247,245,240,.55)}
 
-/* info grid */
 .f-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
   gap:clamp(26px,4vw,56px);
   padding:clamp(38px,5vh,66px) 0;border-bottom:1px solid rgba(247,245,240,.14)}
@@ -232,7 +225,6 @@ section{position:relative;z-index:1}
   transition:border-color .35s ease,color .35s ease}
 .f-col a:hover{border-color:#EBCFC8;color:#EBCFC8}
 
-/* bottom bar — legal + barcode */
 .f-foot{display:flex;justify-content:space-between;align-items:center;
   gap:20px;flex-wrap:wrap;padding-top:clamp(24px,3vh,36px);
   font:400 10px/1.5 var(--sans);letter-spacing:.28em;text-transform:uppercase;
@@ -262,6 +254,7 @@ section{position:relative;z-index:1}
   .idea-p{margin:0;max-width:100%}
   .note{flex-direction:column;gap:10px}
   .p h3{font-size:clamp(40px,12.5vw,90px)}
+  .p h3.long{font-size:clamp(30px,8.6vw,70px)}
   nav div{gap:18px}
   .idea-foot{flex-direction:column;gap:8px}
   .endinner{padding-top:52vh;padding-bottom:20vh}
@@ -351,7 +344,7 @@ section{position:relative;z-index:1}
   <section class="mq" data-t="dark" aria-hidden="true"><div id="mq"><span>Hotel Bostan</span><span>Lisbon</span><span>Hotel Bostan</span><span>Lisbon</span></div></section>
 
   <section class="menu" id="menu">
-    <div class="hud" aria-hidden="true"><span>The menu</span><span><span id="cn">01</span> / 18</span></div>
+    <div class="hud" aria-hidden="true"><span>The menu</span><span><span id="cn">01</span> / 25</span></div>
     <div class="track" id="track"></div>
     <div class="bar" aria-hidden="true"><b id="bar"></b></div>
   </section>
@@ -363,7 +356,7 @@ section{position:relative;z-index:1}
   </section>
   <section class="fx" id="stats" data-t="sage">
     <h2 class="big" style="margin-bottom:clamp(40px,8vh,90px)">In numbers,<br><i>slowly.</i></h2>
-    <div class="stats"><div><b class="n" data-n="18">0</b><span>plates, made to share</span></div><div><b class="n" data-n="6">0</b><span>nights a week, Tuesday to Sunday</span></div><div><b class="n" data-n="19">0</b><span>o'clock, when the embers are ready</span></div><div><b class="n" data-n="100">0</b><span>percent seasonal, always</span></div></div>
+    <div class="stats"><div><b class="n" data-n="24">0</b><span>plates, made to share</span></div><div><b class="n" data-n="6">0</b><span>nights a week, Tuesday to Sunday</span></div><div><b class="n" data-n="19">0</b><span>o'clock, when the embers are ready</span></div><div><b class="n" data-n="100">0</b><span>percent seasonal, always</span></div></div>
   </section>
   <section class="book" id="book" data-t="dark">
     <div>
@@ -410,7 +403,6 @@ section{position:relative;z-index:1}
       <span class="cm bl" aria-hidden="true"></span>
       <span class="cm br" aria-hidden="true"></span>
 
-      <!-- top bar -->
       <div class="f-top">
         <span>Exh. 001 / Hotel Bostan</span>
         <span class="f-top-r">
@@ -422,7 +414,6 @@ section{position:relative;z-index:1}
         </span>
       </div>
 
-      <!-- body: side + main -->
       <div class="f-body">
         <div class="f-side" aria-hidden="true">
           <span>An ongoing exhibition in six acts</span>
@@ -456,7 +447,6 @@ section{position:relative;z-index:1}
         </div>
       </div>
 
-      <!-- index of works -->
       <div class="f-acts">
         <div class="f-acts-head">
           <span>Index of works &mdash; six acts, served nightly</span>
@@ -496,7 +486,6 @@ section{position:relative;z-index:1}
         </ul>
       </div>
 
-      <!-- info grid -->
       <div class="f-info">
         <div class="f-col">
           <span class="k">When</span>
@@ -516,7 +505,6 @@ section{position:relative;z-index:1}
         </div>
       </div>
 
-      <!-- bottom bar -->
       <div class="f-foot">
         <span>&copy; MMXXIV Hotel Bostan</span>
         <span class="pt">N&atilde;o se apresse.</span>
@@ -571,26 +559,51 @@ $$('section[data-t]').forEach(function(s){ScrollTrigger.create({trigger:s,start:
 var mq=gsap.to('#mq',{xPercent:-50,ease:'none',duration:30,repeat:-1}),sk=gsap.quickSetter('#mq','skewX','deg');
 ScrollTrigger.create({onUpdate:function(s){var v=gsap.utils.clamp(-12,12,s.getVelocity()/-120);sk(v);gsap.to(mq,{timeScale:s.direction*(1+Math.abs(v)*.8),duration:.4,overwrite:true})}});
 
-var D=[['Raw','Cured sea bass, pomegranate','Cold as a first glance, bright as pomegranate in morning light.',19,'cream'],
-['Raw','Heirloom tomato, fig leaf','Sun-warmed secrets of the garden, whispered in fig-leaf oil.',14,'sage'],
-['Raw','Oyster, cucumber, lime leaf','A tide in a shell, cooled with green water and a whisper of lime.',12,'pink'],
-['Raw','Scallop crudo, citrus, dill','Sweet as the first warm day, sharpened by sunlit citrus.',18,'offw'],
-['Garden','Charred carrots, labneh','Kissed by ember, softened with cloud-white labneh.',13,'sage'],
-['Garden','Baby leeks, romesco','Tender things, held close by smoke and hazelnut.',14,'cream'],
-['Garden','Fava beans, mint, sheep cheese','Spring in a bowl, folded with cool mint and a pinch of salt.',12,'pink'],
-['Garden','Roasted beetroot, goat curd','Deep as a secret, softened by something cloud-light.',13,'sage'],
-['Sea','Grilled octopus, smoked paprika','The Atlantic\'s slow embrace, finished over open flame.',24,'offw'],
-['Sea','Clams, coriander, coastal broth','Pulled from the cold, steamed in green herbs and moonlight.',19,'cream'],
-['Sea','Sardine, tomato, grilled bread','Summer on a plate, fast and unashamed.',14,'sage'],
-['Fire','Black rice, cuttlefish','Midnight ink and saffron, shared by candlelight.',26,'pink'],
-['Fire','Lamb shoulder, quince','Hours of patience, honeyed by autumn fruit.',32,'offw'],
-['Fire','Whole turbot, brown butter','Slow flames, golden butter, and a table gone quiet.',48,'sage'],
-['Fire','Veal cheek, sweet potato','Tender as a slow goodbye, sweetened by embers.',27,'cream'],
-['Sweet','Pastel de nata, rose','Lisbon\'s oldest love song, sweetened with petals.',8,'pink'],
-['Sweet','Fig leaf ice cream, olive oil','A last cold kiss, salted and golden.',9,'sage'],
-['Sweet','Orange blossom custard, almond','A small bowl of late afternoon light.',9,'offw']];
+/* =================================================================
+   MENU — 24 dishes: old horses + 2026 signatures
+   ================================================================= */
+var D=[
+// ===== OPENERS =====
+['Opener','Paya Soup','Slow-simmered trotters, a Mughlai classic. 65 votes. Served with butter naan.',220,'cream'],
+['Opener','Chicken Manchow Soup','Sichuan in a Mughlai house. Noodles, chicken, a whisper of heat. Under every competitor.',160,'sage'],
+
+// ===== STARTERS =====
+['Starter','Chicken Tikka','Six pieces, tandoor-kissed, smoke still rising. ₹115 cheaper than Gulshan E Iran, ₹229 cheaper than Persia Darbar.',220,'pink'],
+['Starter','Hot Honey Chicken Tikka','Kashmiri chilli honey glaze on tandoor-charred tikka. Sweet, spicy, sticky. The 2026 swicy wave.',249,'sage'],
+['Starter','Paneer Tikka','Six pieces, charred, bright with spices. The vegetarian anchor.',240,'offw'],
+['Starter','Chicken Seekh Kabab','Minced, spiced, grilled on skewers. Six pieces at ₹200—better value per piece than Gulshan\'s three at ₹180.',200,'dark'],
+['Starter','Champaran Mutton Seekh','Bihar\'s legendary Champaran style. Slow-cooked, hand-pressed, finished on the grill. Regional, premium, unforgettable.',279,'pink'],
+['Starter','Gunpowder Chicken 65','Andhra gunpowder tossed with crispy Chicken 65. Crunchy, fiery, made for sharing.',229,'cream'],
+
+// ===== SIGNATURE =====
+['Signature','Chicken Special Bostan','Red gravy, seekh kabab, the house hero. 17 votes. This is our Raan moment.',270,'sage'],
+
+// ===== MAINS =====
+['Main','Butter Chicken','100 votes. Shahi red gravy. ₹5 cheaper than Gulshan E Iran, ₹209 cheaper than Persia Darbar.',240,'pink'],
+['Main','Truffle Butter Chicken','The classic, finished with truffle oil. Familiar dish, luxury upgrade. High margin, low ingredient cost.',299,'offw'],
+['Main','Chicken Tikka Masala','Boneless tikka in red gravy. ₹109 cheaper than Gulshan, ₹219 cheaper than Persia.',230,'dark'],
+['Main','Dilli-6 Murgh Korma','Awadhi korma reimagined: cashew-almond base, rose water finish, tender chicken. Royal flavours, contemporary plating.',259,'cream'],
+['Main','Chicken Afghani Boneless','Creamy, mild, boneless. 16 votes. ₹25 cheaper than Gulshan. The white-gravy hero.',220,'sage'],
+['Main','Chicken Kheema','Gulshan E Iran\'s most-praised dish. Minced, spiced, slow-cooked. Now at Bostan.',210,'pink'],
+['Main','Chicken Kolhapuri','7 votes. Spicy, bold. The heat gap in our menu, filled.',250,'offw'],
+['Main','Mutton Rogan Josh','Kashmiri classic, slow-cooked. ₹70 cheaper than Gulshan, ₹219 cheaper than Persia.',230,'dark'],
+['Main','Mutton Bhuna','Slow-roasted, deeply spiced. The highest-margin mutton on the menu.',340,'cream'],
+
+// ===== CHINESE =====
+['Chinese','Chicken Lollipop','46 votes. Frenched wings, fried until crisp. ₹65 cheaper than Gulshan, ₹149 cheaper than Persia.',200,'sage'],
+['Chinese','Chicken Crispy','15 votes. Golden, crunchy, 500ml. ₹70 cheaper than Gulshan, ₹269 cheaper than Persia.',280,'pink'],
+
+// ===== RICE & BREAD =====
+['Rice','Chicken Tikka Biryani','35 votes. Layered with charred tikka. ₹45 cheaper than Gulshan, ₹248 cheaper than Persia.',250,'offw'],
+['Bread','Butter Naan','Essential for gravy dishes. ₹14–₹24 cheaper than every competitor.',45,'dark'],
+
+// ===== SWEETS =====
+['Sweet','Caramel Custard','18 votes. Lisbon\'s oldest love song, sweetened with petals. The only one with a story.',70,'cream'],
+['Sweet','Matcha Rasmalai','Japanese matcha meets Indian rasmalai. The inter-caste marriage dessert of 2026. Photographs beautifully.',99,'sage']
+];
+
 var tr=$('#track'),names=['dark'].concat(D.map(function(d){return d[4]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
-tr.innerHTML='<div class="p dark"><div><h2>The table</h2><p class="hint">Eighteen plates, made to be shared. Slide through.</p></div></div>'+D.map(function(d,i){return '<div class="p '+d[4]+'"><div><div class="k">'+d[0]+' &middot; '+(i<9?'0':'')+(i+1)+'</div><h3>'+d[1]+'</h3></div><div class="note"><p>'+d[2]+'</p><b class="pr">&euro;'+d[3]+'</b></div></div>'}).join('');
+tr.innerHTML='<div class="p dark"><div><h2>The table</h2><p class="hint">Twenty-four plates, made to be shared. Slide through.</p></div></div>'+D.map(function(d,i){return '<div class="p '+d[4]+'"><div><div class="k">'+d[0]+' &middot; '+(i<9?'0':'')+(i+1)+'</div><h3'+(d[1].length>20?' class="long"':'')+'>'+d[1]+'</h3></div><div class="note"><p>'+d[2]+'</p><b class="pr">&euro;'+d[3]+'</b></div></div>'}).join('');
 tr.style.width=N*100+'vw';
 var h=gsap.to(tr,{x:function(){return -(tr.scrollWidth-innerWidth)},ease:'none',scrollTrigger:{trigger:'#menu',pin:true,scrub:1.2,anticipatePin:1,invalidateOnRefresh:true,
  end:function(){return '+='+(tr.scrollWidth-innerWidth)},
@@ -671,7 +684,6 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
 (function flyerReveal(){
   if(reduce) return;
 
-  // title rows — rise up from baseline, staggered
   var rows = $$('#flyerTitle .row > i');
   gsap.set(rows, { yPercent: 118 });
   gsap.to(rows, {
@@ -679,13 +691,11 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
     scrollTrigger: { trigger: '#flyerTitle', start: 'top 84%' }
   });
 
-  // eyebrow, subtitle, side text, stamp — soft cascade
   gsap.from('.f-eyebrow, .f-sub, .f-side span, .f-stamp', {
     opacity: 0, y: 22, duration: 1.1, stagger: 0.09, ease: 'expo.out',
     scrollTrigger: { trigger: '.f-body', start: 'top 74%' }
   });
 
-  // top bar, acts, info, footer — successive fades
   gsap.from('.f-top', { opacity: 0, y: -14, duration: 1.2, ease: 'expo.out',
     scrollTrigger: { trigger: '.closing', start: 'top 82%' } });
 
