@@ -205,9 +205,8 @@ section{position:relative;z-index:1}
 .sf-group a:hover:before{color:var(--pk);transform:translateX(3px)}
 
 .sf-social{display:flex;gap:10px;margin-top:22px}
-.sf-social a{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(247,245,240,.20);border-radius:50%;color:rgba(247,245,240,.72);transition:border-color .3s,color .3s,transform .3s,background .3s}
-.sf-social a:hover,.sf-social a:focus-visible{border-color:var(--pk);color:var(--pk);transform:translateY(-2px)}
-.sf-social svg{width:16px;height:16px}
+.sf-social-icon{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(247,245,240,.20);border-radius:50%;color:rgba(247,245,240,.72);cursor:default}
+.sf-social-icon svg{width:16px;height:16px}
 
 .sf-news h4{font:500 10px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:rgba(247,245,240,.42);margin-bottom:20px}
 .sf-news p{font:italic 300 clamp(15px,1.3vw,17px)/1.5 var(--serif);color:rgba(247,245,240,.6);margin-bottom:18px;max-width:34ch}
@@ -522,18 +521,18 @@ section{position:relative;z-index:1}
       <a href="#top" class="sf-brand">Bostan</a>
       <p class="sf-tag">A garden table in the middle of Mumbai. Purely Halal since 1980.</p>
       <div class="sf-social">
-        <a href="https://instagram.com/hotelbostan" target="_blank" rel="noopener" aria-label="Hotel Bostan on Instagram">
+        <span class="sf-social-icon" role="img" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="3" width="18" height="18" rx="5"/>
             <circle cx="12" cy="12" r="4"/>
             <circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/>
           </svg>
-        </a>
-        <a href="https://facebook.com/hotelbostan" target="_blank" rel="noopener" aria-label="Hotel Bostan on Facebook">
+        </span>
+        <span class="sf-social-icon" role="img" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.7-1.6h1.5V4.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.7H7.5V14h2.8v8h3.2z"/>
           </svg>
-        </a>
+        </span>
       </div>
     </div>
 
