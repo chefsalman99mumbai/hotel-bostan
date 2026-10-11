@@ -41,7 +41,7 @@ section{position:relative;z-index:1}
 /* ============ MENU slider ============ */
 .menu{height:100svh;overflow:hidden}
 .track{display:flex;height:100%}
-.p{flex:none;width:100vw;height:100%;padding:0 var(--pad) calc(9vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(16px,3vh,32px);overflow:hidden;background:var(--bg);color:var(--fg)}
+.p{position:relative;flex:none;width:100vw;height:100%;padding:0 var(--pad) calc(9vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(16px,3vh,32px);overflow:hidden;background:var(--bg);color:var(--fg)}
 .dark{--bg:var(--c);--fg:var(--o)}.cream{--bg:var(--iv);--fg:var(--c)}.sage{--bg:var(--sg);--fg:var(--c)}.pink{--bg:var(--pk);--fg:var(--c)}.offw{--bg:var(--o);--fg:var(--c)}
 .p h2,.p h3{font:200 clamp(54px,10.5vw,190px)/.92 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.045em;max-width:11em;will-change:transform}
 .p h3{font-size:clamp(46px,9vw,160px)}
@@ -52,6 +52,11 @@ section{position:relative;z-index:1}
 .note p{max-width:36ch;font:italic 300 clamp(17px,1.6vw,22px)/1.4 var(--serif)}
 .pr{font:300 clamp(26px,3vw,44px)/1 var(--serif);letter-spacing:-.02em;white-space:nowrap}
 .mk{display:inline-block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em;vertical-align:top}.mk i{display:inline-block;font-style:inherit}
+
+/* dish image inside slider panel */
+.p-img{position:absolute;top:11vh;left:0;right:0;height:54vh;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+.p-img img{max-width:min(52vw,640px);max-height:100%;width:auto;height:auto;object-fit:contain;display:block;pointer-events:none;will-change:transform,opacity}
+
 .hud{position:absolute;z-index:3;top:calc(86px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-variant-numeric:tabular-nums;mix-blend-mode:difference;color:#fff}
 .bar{position:absolute;z-index:3;left:var(--pad);right:var(--pad);bottom:calc(4vh + env(safe-area-inset-bottom,0px));height:2px;background:rgba(128,128,128,.3)}
 .bar b{position:absolute;inset:0;background:#fff;mix-blend-mode:difference;transform:scaleX(0);transform-origin:left}
@@ -132,7 +137,7 @@ section{position:relative;z-index:1}
 .stats b{display:block;font:200 clamp(64px,9vw,150px)/1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.04em}
 .stats span{font-size:15px;opacity:.8}
 
-/* ============ BOOK (now centered, no foot grid) ============ */
+/* ============ BOOK ============ */
 .book{min-height:100svh;padding:20vh var(--pad) calc(20vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:center}
 .pick{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-bottom:clamp(20px,4vh,40px);font-size:15px}
 .step{display:flex;align-items:center;gap:14px;border:1.5px solid currentColor;border-radius:99px;padding:6px 8px}
@@ -142,7 +147,7 @@ section{position:relative;z-index:1}
 .cta{display:inline;font:200 clamp(52px,11vw,200px)/1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.045em;background:linear-gradient(var(--y),var(--y)) 0 100%/0 100% no-repeat;transition:background-size .8s cubic-bezier(.16,1,.3,1),color .5s;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .cta:hover,.cta:focus-visible{background-size:100% 100%;color:var(--c)}
 
-/* ============ ENDFILM — THE DETAILS ============ */
+/* ============ ENDFILM ============ */
 .endfilm{position:relative;z-index:2;background:#0b0a09;color:#F7F5F0}
 .endbg{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;pointer-events:none}
 .endbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:translateZ(0) scale(1.02);backface-visibility:hidden;filter:saturate(.92) contrast(1.02) brightness(.94)}
@@ -161,7 +166,7 @@ section{position:relative;z-index:1}
 .credit-meta a{border-bottom:1px solid rgba(247,245,240,.22);transition:border-color .3s,color .3s}
 .credit-meta a:hover{border-color:var(--pk);color:var(--pk)}
 
-/* ============ CLOSING — exhibition flyer ============ */
+/* ============ CLOSING ============ */
 .closing{position:relative;z-index:2;background:#0b0a09;color:#F7F5F0;padding:clamp(56px,7vh,88px) 0 clamp(48px,6vh,72px);overflow:hidden}
 .closing:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(247,245,240,.055) 1px,transparent 1px);background-size:22px 22px;z-index:0}
 .closing:after{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.045) 18%,rgba(255,255,255,.045) 82%,transparent);pointer-events:none;z-index:0}
@@ -239,14 +244,16 @@ section{position:relative;z-index:1}
   .idea-foot{flex-direction:column;gap:8px}
   .endinner{padding-top:52vh;padding-bottom:20vh}
   .sf-links{grid-template-columns:1fr 1fr}
+  .p-img{top:13vh;height:44vh}
+  .p-img img{max-width:82vw}
 }
 @media(hover:none),(pointer:coarse){#cur{display:none}}
 
 /* ============ TEMP uploaders ============ */
 #tempbar{position:fixed;right:var(--pad);bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
-#swapMp4,#swapFoot{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:99px;background:rgba(20,18,16,.72);color:#F7F5F0;border:1px solid rgba(255,255,255,.28);font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.35);transition:background .3s,border-color .3s,transform .3s}
-#swapMp4:hover,#swapFoot:hover{background:rgba(40,36,32,.9);border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
-#swapMp4 svg,#swapFoot svg{width:13px;height:13px;flex:none}
+#swapMp4,#swapFoot,#swapDish{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:99px;background:rgba(20,18,16,.72);color:#F7F5F0;border:1px solid rgba(255,255,255,.28);font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.35);transition:background .3s,border-color .3s,transform .3s}
+#swapMp4:hover,#swapFoot:hover,#swapDish:hover{background:rgba(40,36,32,.9);border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
+#swapMp4 svg,#swapFoot svg,#swapDish svg{width:13px;height:13px;flex:none}
 
 /* ============ HERO FILM ============ */
 .journey{position:relative;z-index:2;height:500vh;height:500svh;background:#0b0a09}
@@ -269,6 +276,16 @@ section{position:relative;z-index:1}
 <div id="cur" aria-hidden="true"></div>
 
 <div id="tempbar">
+  <label id="swapDish" for="swapDishInput" title="Temporary: swap the slider dish images (multi-select)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <path d="M21 15l-5-5L5 21"/>
+    </svg>
+    <span>Test&nbsp;Dishes</span>
+  </label>
+  <input id="swapDishInput" type="file" accept="image/*" multiple hidden>
+
   <label id="swapFoot" for="swapFootInput" title="Temporary: swap the footer image">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -321,7 +338,7 @@ section{position:relative;z-index:1}
   <section class="mq" data-t="dark" aria-hidden="true"><div id="mq"><span>Hotel Bostan</span><span>Lisbon</span><span>Hotel Bostan</span><span>Lisbon</span></div></section>
 
   <section class="menu" id="menu">
-    <div class="hud" aria-hidden="true"><span>The menu &mdash; five hero plates</span><span><span id="cn">01</span> / 06</span></div>
+    <div class="hud" aria-hidden="true"><span>The menu &mdash; five cuisines</span><span><span id="cn">01</span> / 06</span></div>
     <div class="track" id="track"></div>
     <div class="bar" aria-hidden="true"><b id="bar"></b></div>
   </section>
@@ -337,7 +354,6 @@ section{position:relative;z-index:1}
     <div class="stats"><div><b class="n" data-n="24">0</b><span>plates, made to share</span></div><div><b class="n" data-n="6">0</b><span>nights a week, Tuesday to Sunday</span></div><div><b class="n" data-n="19">0</b><span>o'clock, when the embers are ready</span></div><div><b class="n" data-n="100">0</b><span>percent seasonal, always</span></div></div>
   </section>
 
-  <!-- BOOK — picker and CTA only; contact details live in The Details section below -->
   <section class="book" id="book" data-t="dark">
     <div>
       <div class="pick"><div class="step"><button id="gm" aria-label="Fewer guests">&minus;</button><span id="sum" aria-live="polite"></span><button id="gp" aria-label="More guests">+</button></div>
@@ -346,7 +362,6 @@ section{position:relative;z-index:1}
     </div>
   </section>
 
-  <!-- THE DETAILS — single source of practical info -->
   <section class="endfilm" id="endfilm" data-t="dark">
     <div class="endbg">
       <img id="footImg" src="bost-hero.jpg" alt="The room at Bostan — candlelight, brick, and the long table after service." loading="lazy" decoding="async">
@@ -388,7 +403,6 @@ section{position:relative;z-index:1}
     </div>
   </section>
 
-  <!-- CLOSING — pure exhibition poster; no repeat of hours/address/contact -->
   <section class="closing" id="closing" data-t="dark">
     <div class="flyer">
       <span class="cm tl" aria-hidden="true"></span>
@@ -697,25 +711,43 @@ $$('section[data-t]').forEach(function(s){ScrollTrigger.create({trigger:s,start:
 var mq=gsap.to('#mq',{xPercent:-50,ease:'none',duration:30,repeat:-1}),sk=gsap.quickSetter('#mq','skewX','deg');
 ScrollTrigger.create({onUpdate:function(s){var v=gsap.utils.clamp(-12,12,s.getVelocity()/-120);sk(v);gsap.to(mq,{timeScale:s.direction*(1+Math.abs(v)*.8),duration:.4,overwrite:true})}});
 
+/* ============================================================
+   MENU SLIDER — five cuisines, five dishes, five platters
+   ============================================================ */
 var D=[
-['Opener','Paya Soup','Slow-simmered trotters, a Mughlai classic. Served with butter naan.',220,'cream'],
-['Starter','Chicken Tikka','Six pieces, tandoor-kissed, smoke still rising.',220,'pink'],
-['Signature','Chicken Special Bostan','Red gravy, seekh kabab, the house hero. Our Raan moment.',270,'sage'],
-['Main','Butter Chicken','The classic. Shahi red gravy, fenugreek, cream.',240,'offw'],
-['Sweet','Matcha Rasmalai','Japanese matcha meets Indian rasmalai. Photographs beautifully.',99,'sage']
+['North-Indian','Rogan Josh','Slow-cooked Kashmiri classic. Tender lamb in a deep red gravy, whole spices, patience.',230,'cream','rogan-josh.png'],
+['Mughlai','Murgh Musallam','Whole chicken, slow-roasted, stuffed with spiced mince. The royal Mughlai centrepiece.',340,'pink','murgh-musallam.png'],
+['Chinese','Hakka Noodles','Wok-tossed, glossy. Julienned peppers, spring onion, a whisper of soy.',200,'sage','hakka-noodles.png'],
+['Mexican','Rosa Mexicano','Loaded tortilla, pink chipotle crema, cotija, coriander. Named for the blush of the plate.',220,'offw','rosa-mexicano.png'],
+['Desserts','Matcha Rasmalai','Japanese matcha meets Indian rasmalai. Cool, green, photographs beautifully.',99,'sage','matcha-platter.png']
 ];
 
-var tr=$('#track'),names=['dark'].concat(D.map(function(d){return d[4]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
-tr.innerHTML='<div class="p dark"><div><h2>The table</h2><p class="hint">Five hero plates. Tap Menu above for the full list.</p></div></div>'+D.map(function(d,i){return '<div class="p '+d[4]+'"><div><div class="k">'+d[0]+' &middot; '+(i<9?'0':'')+(i+1)+'</div><h3'+(d[1].length>20?' class="long"':'')+'>'+d[1]+'</h3></div><div class="note"><p>'+d[2]+'</p><b class="pr">&euro;'+d[3]+'</b></div></div>'}).join('');
+var tr=$('#track'),names=['dark'].concat(D.map(function(d){return d[5]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
+tr.innerHTML='<div class="p dark"><div><h2>The table</h2><p class="hint">Five cuisines. Tap Menu above for the full list.</p></div></div>'+D.map(function(d,i){
+  return '<div class="p '+d[5]+'">'
+    +'<div class="p-img"><img src="'+d[6]+'" alt="'+d[1]+' — '+d[0]+'" loading="lazy" decoding="async"></div>'
+    +'<div><div class="k">'+d[0]+' &middot; '+(i<9?'0':'')+(i+2)+'</div>'
+    +'<h3'+(d[1].length>20?' class="long"':'')+'>'+d[1]+'</h3></div>'
+    +'<div class="note"><p>'+d[2]+'</p><b class="pr">&euro;'+d[3]+'</b></div>'
+  +'</div>'
+}).join('');
 tr.style.width=N*100+'vw';
 var h=gsap.to(tr,{x:function(){return -(tr.scrollWidth-innerWidth)},ease:'none',scrollTrigger:{trigger:'#menu',pin:true,scrub:1.2,anticipatePin:1,invalidateOnRefresh:true,
  end:function(){return '+='+(tr.scrollWidth-innerWidth)},
- onUpdate:function(s){bar(s.progress);var i=Math.round(s.progress*(N-1));cn.textContent=String(Math.max(1,i)).padStart(2,'0');theme(names[i])}}});
+ onUpdate:function(s){bar(s.progress);var i=Math.round(s.progress*(N-1));cn.textContent=String(Math.max(1,i+1)).padStart(2,'0');theme(names[i])}}});
 $$('.p h2,.p h3').forEach(function(el){var rows=mask(el);
  gsap.fromTo(el,{xPercent:18},{xPercent:-6,ease:'none',scrollTrigger:{trigger:el.parentNode.parentNode,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
  if(!reduce){gsap.set(rows,{yPercent:112});gsap.to(rows,{yPercent:0,duration:1.4,stagger:.07,ease:'expo.out',scrollTrigger:{trigger:el.parentNode.parentNode,containerAnimation:h,start:'left 70%',toggleActions:'play none none reverse'}})}});
 $$('.note').forEach(function(l){var p=l.parentNode;gsap.fromTo(l,{xPercent:5},{xPercent:-2,ease:'none',scrollTrigger:{trigger:p,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
  if(!reduce){gsap.set(l.children,{opacity:0,y:30});gsap.to(l.children,{opacity:1,y:0,duration:1.3,stagger:.12,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 65%',toggleActions:'play none none reverse'}})}});
+/* dish image reveal + subtle parallax */
+$$('.p-img img').forEach(function(img){
+  var p=img.closest('.p');
+  if(reduce) return;
+  gsap.set(img,{opacity:0,y:26,scale:0.96});
+  gsap.to(img,{opacity:1,y:0,scale:1,duration:1.5,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 72%',toggleActions:'play none none reverse'}});
+  gsap.fromTo(img,{xPercent:5},{xPercent:-5,ease:'none',scrollTrigger:{trigger:p,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
+});
 
 var field=$('#garden'),fls=[],cs=[SG,PK,C];
 function plant(x,y){var f=document.createElement('div'),pc=cs[Math.floor(Math.random()*3)],cc=cs[(cs.indexOf(pc)+1+Math.floor(Math.random()*2))%3],i,s='';f.className='fl';
@@ -828,6 +860,49 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
     var img=document.getElementById('footImg');
     if(img){img.src=lastUrl}
     if(btn){var span=btn.querySelector('span');if(span) span.textContent=f.name.length>16?f.name.slice(0,13)+'…':f.name}
+  });
+})();
+
+/* ============================================================
+   TEMP — swap the five slider dish images (multi-select)
+   Match by filename (base, lowercased):
+     rogan-josh, murgh-musallam, hakka-noodles, rosa-mexicano, matcha-platter
+   Falls back to keyword matching so "matcha platter.png" etc. still work.
+   ============================================================ */
+(function swapDishes(){
+  var input=document.getElementById('swapDishInput'),btn=document.getElementById('swapDish');
+  if(!input) return;
+  var urls=[];
+  function pickIndex(base){
+    var exact={'rogan-josh':0,'rogan josh':0,'murgh-musallam':1,'murgh musallam':1,'hakka-noodles':2,'hakka noodles':2,'rosa-mexicano':3,'rosa mexicano':3,'matcha-platter':4,'matcha platter':4,'matcha-rasmalai':4,'matcha rasmalai':4};
+    if(exact[base]!=null) return exact[base];
+    if(/rogan/.test(base)) return 0;
+    if(/musallam|murgh/.test(base)) return 1;
+    if(/hakka|noodle/.test(base)) return 2;
+    if(/rosa|mexican|mexicano/.test(base)) return 3;
+    if(/matcha|rasmalai/.test(base)) return 4;
+    return null;
+  }
+  input.addEventListener('change',function(){
+    var files=input.files; if(!files||!files.length) return;
+    urls.forEach(function(u){try{URL.revokeObjectURL(u)}catch(e){}});
+    urls=[];
+    var imgs=document.querySelectorAll('.p-img img');
+    var loaded=0,names=[];
+    for(var i=0;i<files.length;i++){
+      var f=files[i];
+      var base=f.name.replace(/\.[^.]+$/,'').toLowerCase();
+      var idx=pickIndex(base);
+      if(idx==null) continue;
+      var url=URL.createObjectURL(f);
+      urls.push(url);
+      if(imgs[idx]){imgs[idx].src=url; imgs[idx].style.display='block';}
+      loaded++; names.push(f.name);
+    }
+    if(btn){
+      var span=btn.querySelector('span');
+      if(span) span.textContent = loaded ? (loaded+' loaded') : 'Test Dishes';
+    }
   });
 })();
 
