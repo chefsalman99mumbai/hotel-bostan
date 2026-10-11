@@ -53,9 +53,46 @@ section{position:relative;z-index:1}
 .pr{font:300 clamp(26px,3vw,44px)/1 var(--serif);letter-spacing:-.02em;white-space:nowrap}
 .mk{display:inline-block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em;vertical-align:top}.mk i{display:inline-block;font-style:inherit}
 
-/* dish image inside slider panel */
-.p-img{position:absolute;top:11vh;left:0;right:0;height:54vh;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1}
-.p-img img{max-width:min(52vw,640px);max-height:100%;width:auto;height:auto;object-fit:contain;display:block;pointer-events:none;will-change:transform,opacity}
+/* ============================================================
+   DISH IMAGE
+   - Default (non-rotated, non-drink): cover crop, square box.
+   - .rot: rotated -90°, contain, wider box (for landscape platters).
+   - .drink: portrait glass, contain, taller box so the tall
+     coupe fills the space at a comparable visual height to the
+     platters without being cropped.
+   ============================================================ */
+.p-img{
+  position:absolute;
+  top:7vh;
+  left:0;
+  right:0;
+  margin:0 auto;
+  width:min(46vh, 46vw, 560px);
+  aspect-ratio:1 / 1;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:1;
+}
+.p-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+  pointer-events:none;
+  will-change:transform,opacity;
+}
+.p-img.rot{
+  top:3vh;
+  width:min(54vh, 54vw, 660px);
+  transform:rotate(-90deg);
+}
+.p-img.rot img{object-fit:contain}
+.p-img.drink{
+  top:5vh;
+  width:min(50vh, 50vw, 600px);
+}
+.p-img.drink img{object-fit:contain;object-position:center bottom}
 
 .hud{position:absolute;z-index:3;top:calc(86px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-variant-numeric:tabular-nums;mix-blend-mode:difference;color:#fff}
 .bar{position:absolute;z-index:3;left:var(--pad);right:var(--pad);bottom:calc(4vh + env(safe-area-inset-bottom,0px));height:2px;background:rgba(128,128,128,.3)}
@@ -244,8 +281,9 @@ section{position:relative;z-index:1}
   .idea-foot{flex-direction:column;gap:8px}
   .endinner{padding-top:52vh;padding-bottom:20vh}
   .sf-links{grid-template-columns:1fr 1fr}
-  .p-img{top:13vh;height:44vh}
-  .p-img img{max-width:82vw}
+  .p-img{top:11vh;width:min(40vh, 78vw, 400px)}
+  .p-img.rot{top:7vh;width:min(48vh, 88vw, 480px)}
+  .p-img.drink{top:11vh;width:min(42vh, 82vw, 460px)}
 }
 @media(hover:none),(pointer:coarse){#cur{display:none}}
 
@@ -479,6 +517,7 @@ section{position:relative;z-index:1}
         <button class="fm-tab" role="tab" aria-selected="false" data-filter="mains">Mains</button>
         <button class="fm-tab" role="tab" aria-selected="false" data-filter="chinese">Chinese</button>
         <button class="fm-tab" role="tab" aria-selected="false" data-filter="sweet">Sweet</button>
+        <button class="fm-tab" role="tab" aria-selected="false" data-filter="coolers">Coolers</button>
       </div>
       <div class="fm-hero">
         <img src="bost-hero.jpg" alt="The table at Bostan — candlelight, brick and the long table." loading="lazy">
@@ -550,7 +589,13 @@ section{position:relative;z-index:1}
         <h3 class="fm-heading">Sweet</h3>
         <div class="fm-grid">
           <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Caramel Custard</span><span class="fm-dleader"></span><span class="fm-dprice">70</span></div><p class="fm-ddesc">18 votes. Lisbon&rsquo;s oldest love song, sweetened with petals. The only one with a story.</p></div>
-          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Matcha Rasmalai</span><span class="fm-dleader"></span><span class="fm-dprice">99</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Japanese matcha meets Indian rasmalai. The inter-caste marriage dessert of 2026. Photographs beautifully.</p></div>
+        </div>
+      </section>
+
+      <section class="fm-section" data-tab="coolers">
+        <h3 class="fm-heading">Coolers</h3>
+        <div class="fm-grid">
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Bostan Matcha</span><span class="fm-dleader"></span><span class="fm-dprice">99</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.</p></div>
         </div>
       </section>
 
@@ -656,12 +701,13 @@ function mask(el){var t=el.textContent;el.setAttribute('aria-label',t);el.textCo
   });
 
   var tabMap = {
-    all:      ['openers','starters','signature','mains','chinese','rice','sweet'],
+    all:      ['openers','starters','signature','mains','chinese','rice','sweet','coolers'],
     openers:  ['openers'],
     starters: ['starters','signature'],
     mains:    ['mains','chinese','rice'],
     chinese:  ['chinese'],
-    sweet:    ['sweet']
+    sweet:    ['sweet'],
+    coolers:  ['coolers']
   };
   function applyFilter(key){
     var allowed = tabMap[key] || tabMap.all;
@@ -712,20 +758,26 @@ var mq=gsap.to('#mq',{xPercent:-50,ease:'none',duration:30,repeat:-1}),sk=gsap.q
 ScrollTrigger.create({onUpdate:function(s){var v=gsap.utils.clamp(-12,12,s.getVelocity()/-120);sk(v);gsap.to(mq,{timeScale:s.direction*(1+Math.abs(v)*.8),duration:.4,overwrite:true})}});
 
 /* ============================================================
-   MENU SLIDER — five cuisines, five dishes, five platters
+   MENU SLIDER
+   Row: [cuisine, dish, note, price, colourClass, imagePath, rotationDeg]
+   rotationDeg: 0 = upright, -90 = rotated left 90°, +90 = rotated right 90°
+   `.drink` modifier on the .p-img wrapper signals a portrait glass
+   that should use object-fit:contain in a tall box (no crop).
    ============================================================ */
 var D=[
-['North-Indian','Rogan Josh','Slow-cooked Kashmiri classic. Tender lamb in a deep red gravy, whole spices, patience.',230,'cream','rogan-josh.png'],
-['Mughlai','Murgh Musallam','Whole chicken, slow-roasted, stuffed with spiced mince. The royal Mughlai centrepiece.',340,'pink','murgh-musallam.png'],
-['Chinese','Hakka Noodles','Wok-tossed, glossy. Julienned peppers, spring onion, a whisper of soy.',200,'sage','hakka-noodles.png'],
-['Mexican','Rosa Mexicano','Loaded tortilla, pink chipotle crema, cotija, coriander. Named for the blush of the plate.',220,'offw','rosa-mexicano.png'],
-['Desserts','Matcha Rasmalai','Japanese matcha meets Indian rasmalai. Cool, green, photographs beautifully.',99,'sage','matcha-platter.png']
+['North-Indian','Rogan Josh','Slow-cooked Kashmiri classic. Tender lamb in a deep red gravy, whole spices, patience.',230,'cream','rogan-josh.png',0],
+['Mughlai','Murgh Musallam','Whole chicken, slow-roasted, stuffed with spiced mince. The royal Mughlai centrepiece.',340,'pink','murgh-musallam.png',0],
+['Chinese','Hakka Noodles','Wok-tossed, glossy. Julienned peppers, spring onion, a whisper of soy.',200,'sage','hakka-noodles.png',0],
+['Mexican','Rosa Mexicano','Loaded tortilla, pink chipotle crema, cotija, coriander. Named for the blush of the plate.',220,'offw','rosa-mexicano.png',-90],
+['Coolers','Bostan Matcha','Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.',99,'sage','bostan-matcha.png',0]
 ];
 
-var tr=$('#track'),names=['dark'].concat(D.map(function(d){return d[5]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
+var tr=$('#track'),names=['dark'].concat(D.map(function(d){return d[4]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
 tr.innerHTML='<div class="p dark"><div><h2>The table</h2><p class="hint">Five cuisines. Tap Menu above for the full list.</p></div></div>'+D.map(function(d,i){
-  return '<div class="p '+d[5]+'">'
-    +'<div class="p-img"><img src="'+d[6]+'" alt="'+d[1]+' — '+d[0]+'" loading="lazy" decoding="async"></div>'
+  var rotCls = d[6] ? ' rot' : '';
+  var drinkCls = /bostan-matcha/i.test(d[5]) ? ' drink' : '';
+  return '<div class="p '+d[4]+'">'
+    +'<div class="p-img'+rotCls+drinkCls+'"><img src="'+d[5]+'" alt="'+d[1]+' — '+d[0]+'" loading="lazy" decoding="async"></div>'
     +'<div><div class="k">'+d[0]+' &middot; '+(i<9?'0':'')+(i+2)+'</div>'
     +'<h3'+(d[1].length>20?' class="long"':'')+'>'+d[1]+'</h3></div>'
     +'<div class="note"><p>'+d[2]+'</p><b class="pr">&euro;'+d[3]+'</b></div>'
@@ -740,13 +792,13 @@ $$('.p h2,.p h3').forEach(function(el){var rows=mask(el);
  if(!reduce){gsap.set(rows,{yPercent:112});gsap.to(rows,{yPercent:0,duration:1.4,stagger:.07,ease:'expo.out',scrollTrigger:{trigger:el.parentNode.parentNode,containerAnimation:h,start:'left 70%',toggleActions:'play none none reverse'}})}});
 $$('.note').forEach(function(l){var p=l.parentNode;gsap.fromTo(l,{xPercent:5},{xPercent:-2,ease:'none',scrollTrigger:{trigger:p,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
  if(!reduce){gsap.set(l.children,{opacity:0,y:30});gsap.to(l.children,{opacity:1,y:0,duration:1.3,stagger:.12,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 65%',toggleActions:'play none none reverse'}})}});
-/* dish image reveal + subtle parallax */
+/* dish image reveal + very subtle parallax */
 $$('.p-img img').forEach(function(img){
   var p=img.closest('.p');
   if(reduce) return;
   gsap.set(img,{opacity:0,y:26,scale:0.96});
   gsap.to(img,{opacity:1,y:0,scale:1,duration:1.5,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 72%',toggleActions:'play none none reverse'}});
-  gsap.fromTo(img,{xPercent:5},{xPercent:-5,ease:'none',scrollTrigger:{trigger:p,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
+  gsap.fromTo(img,{xPercent:3},{xPercent:-3,ease:'none',scrollTrigger:{trigger:p,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
 });
 
 var field=$('#garden'),fls=[],cs=[SG,PK,C];
@@ -865,22 +917,19 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
 
 /* ============================================================
    TEMP — swap the five slider dish images (multi-select)
-   Match by filename (base, lowercased):
-     rogan-josh, murgh-musallam, hakka-noodles, rosa-mexicano, matcha-platter
-   Falls back to keyword matching so "matcha platter.png" etc. still work.
    ============================================================ */
 (function swapDishes(){
   var input=document.getElementById('swapDishInput'),btn=document.getElementById('swapDish');
   if(!input) return;
   var urls=[];
   function pickIndex(base){
-    var exact={'rogan-josh':0,'rogan josh':0,'murgh-musallam':1,'murgh musallam':1,'hakka-noodles':2,'hakka noodles':2,'rosa-mexicano':3,'rosa mexicano':3,'matcha-platter':4,'matcha platter':4,'matcha-rasmalai':4,'matcha rasmalai':4};
+    var exact={'rogan-josh':0,'rogan josh':0,'murgh-musallam':1,'murgh musallam':1,'hakka-noodles':2,'hakka noodles':2,'rosa-mexicano':3,'rosa mexicano':3,'bostan-matcha':4,'bostan matcha':4,'matcha-platter':4,'matcha platter':4,'matcha-rasmalai':4,'matcha rasmalai':4};
     if(exact[base]!=null) return exact[base];
     if(/rogan/.test(base)) return 0;
     if(/musallam|murgh/.test(base)) return 1;
     if(/hakka|noodle/.test(base)) return 2;
     if(/rosa|mexican|mexicano/.test(base)) return 3;
-    if(/matcha|rasmalai/.test(base)) return 4;
+    if(/bostan-matcha|matcha|rasmalai/.test(base)) return 4;
     return null;
   }
   input.addEventListener('change',function(){
@@ -888,7 +937,7 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
     urls.forEach(function(u){try{URL.revokeObjectURL(u)}catch(e){}});
     urls=[];
     var imgs=document.querySelectorAll('.p-img img');
-    var loaded=0,names=[];
+    var loaded=0;
     for(var i=0;i<files.length;i++){
       var f=files[i];
       var base=f.name.replace(/\.[^.]+$/,'').toLowerCase();
@@ -897,7 +946,7 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
       var url=URL.createObjectURL(f);
       urls.push(url);
       if(imgs[idx]){imgs[idx].src=url; imgs[idx].style.display='block';}
-      loaded++; names.push(f.name);
+      loaded++;
     }
     if(btn){
       var span=btn.querySelector('span');
