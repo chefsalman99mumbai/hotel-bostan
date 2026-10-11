@@ -41,39 +41,38 @@ section{position:relative;z-index:1}
 /* ============ MENU slider ============ */
 .menu{height:100svh;overflow:hidden}
 .track{display:flex;height:100%}
-.p{position:relative;flex:none;width:100vw;height:100%;padding:0 var(--pad) calc(5vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(16px,3vh,32px);overflow:hidden;background:var(--bg);color:var(--fg)}
+.p{position:relative;flex:none;width:100vw;height:100%;padding:0 var(--pad) calc(7vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(16px,3vh,32px);overflow:hidden;background:var(--bg);color:var(--fg)}
 .dark{--bg:var(--c);--fg:var(--o)}.cream{--bg:var(--iv);--fg:var(--c)}.sage{--bg:var(--sg);--fg:var(--c)}.pink{--bg:var(--pk);--fg:var(--c)}.offw{--bg:var(--o);--fg:var(--c)}
 .p h2,.p h3{font:200 clamp(54px,10.5vw,190px)/.92 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.045em;max-width:11em;will-change:transform}
 .p h3{font-size:clamp(46px,9vw,160px)}
 .p h3.long{font-size:clamp(36px,6.4vw,116px)}
 
 /* ============================================================
-   CUISINE MASTHEAD — poster-style heading at the top of each
-   panel. Takes the vacant upper third, big italic Fraunces,
-   centred, with a soft rule underneath.
+   CUISINE KICKER — refined editorial label at the top of each
+   panel. Small, italic, delicate rule on both sides, quiet.
    ============================================================ */
 .k{
   position:absolute;
-  top:11vh;
+  top:13vh;
   left:var(--pad);
   right:var(--pad);
-  text-align:center;
-  font:200 clamp(72px,12.5vw,220px)/.9 var(--serif);
-  font-variation-settings:"opsz" 144,"wght" 240;
-  font-style:italic;
-  letter-spacing:-.05em;
-  opacity:.94;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(16px,2.4vw,32px);
+  font:200 clamp(15px,1.35vw,20px)/1 var(--sans);
+  letter-spacing:.42em;
+  text-transform:uppercase;
+  opacity:.62;
   pointer-events:none;
   z-index:2;
 }
-.k:after{
+.k:before,.k:after{
   content:"";
-  display:block;
-  width:clamp(56px,6vw,110px);
   height:1px;
   background:currentColor;
-  opacity:.42;
-  margin:clamp(16px,2.2vh,26px) auto 0;
+  opacity:.4;
+  flex:0 0 clamp(24px,4vw,72px);
 }
 
 .note{display:flex;justify-content:space-between;align-items:baseline;gap:clamp(20px,4vw,64px);padding-top:18px;position:relative;max-width:min(100%,1100px)}
@@ -87,11 +86,11 @@ section{position:relative;z-index:1}
    ============================================================ */
 .p-img{
   position:absolute;
-  top:33vh;
+  top:26vh;
   left:0;
   right:0;
   margin:0 auto;
-  width:min(26vh, 30vw, 380px);
+  width:min(36vh, 38vw, 480px);
   aspect-ratio:1 / 1;
   overflow:hidden;
   pointer-events:none;
@@ -107,14 +106,14 @@ section{position:relative;z-index:1}
   will-change:transform,opacity;
 }
 .p-img.rot{
-  top:31vh;
-  width:min(30vh, 34vw, 440px);
+  top:24vh;
+  width:min(42vh, 44vw, 560px);
   transform:rotate(-90deg);
 }
 .p-img.rot img{object-fit:contain}
 .p-img.drink{
-  top:29vh;
-  width:min(32vh, 36vw, 460px);
+  top:22vh;
+  width:min(48vh, 50vw, 640px);
 }
 .p-img.drink img{object-fit:contain;object-position:center bottom}
 
@@ -306,11 +305,11 @@ section{position:relative;z-index:1}
   .idea-foot{flex-direction:column;gap:8px}
   .endinner{padding-top:52vh;padding-bottom:20vh}
   .sf-links{grid-template-columns:1fr 1fr}
-  .k{top:13vh;font-size:clamp(44px,12vw,72px)}
-  .k:after{margin-top:14px;width:48px}
-  .p-img{top:30vh;width:min(26vh,72vw,320px)}
-  .p-img.rot{top:28vh;width:min(30vh,80vw,380px)}
-  .p-img.drink{top:28vh;width:min(34vh,86vw,420px)}
+  .k{top:15vh;font-size:11px;letter-spacing:.34em;gap:14px}
+  .k:before,.k:after{flex:0 0 20px}
+  .p-img{top:26vh;width:min(32vh,78vw,380px)}
+  .p-img.rot{top:24vh;width:min(38vh,86vw,440px)}
+  .p-img.drink{top:24vh;width:min(44vh,92vw,520px)}
 }
 @media(hover:none),(pointer:coarse){#cur{display:none}}
 
@@ -823,12 +822,12 @@ $$('.p-img img').forEach(function(img){
   gsap.to(img,{opacity:1,y:0,scale:1,duration:1.5,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 72%',toggleActions:'play none none reverse'}});
   gsap.fromTo(img,{xPercent:3},{xPercent:-3,ease:'none',scrollTrigger:{trigger:p,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
 });
-/* cuisine masthead reveal — drops in from above with a fade */
+/* cuisine kicker reveal — subtle fade + tiny lift */
 $$('.p .k').forEach(function(el){
   var p=el.closest('.p');
   if(reduce) return;
-  gsap.set(el,{opacity:0,y:-24});
-  gsap.to(el,{opacity:.94,y:0,duration:1.5,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 68%',toggleActions:'play none none reverse'}});
+  gsap.set(el,{opacity:0,y:-10});
+  gsap.to(el,{opacity:.62,y:0,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 70%',toggleActions:'play none none reverse'}});
 });
 
 var field=$('#garden'),fls=[],cs=[SG,PK,C];
