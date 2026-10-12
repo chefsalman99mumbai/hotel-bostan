@@ -15,7 +15,7 @@
 <meta property="og:title" content="Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West">
 <meta property="og:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Every night, 19:00–23:30.">
 <meta property="og:url" content="https://hotelbostan.in/">
-<meta property="og:image" content="https://hotelbostan.in/bost-footer.png">
+<meta property="og:image" content="https://hotelbostan.in/hero-bostan.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The room at Hotel Bostan — candlelight, brick, and the long table after service.">
@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West">
 <meta name="twitter:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Every night, 19:00–23:30.">
-<meta name="twitter:image" content="https://hotelbostan.in/bost-footer.png">
+<meta name="twitter:image" content="https://hotelbostan.in/hero-bostan.png">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A1A1A'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='66' font-style='italic' fill='%23F4EDD8' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -343,7 +343,7 @@ section{position:relative;z-index:1}
 
 .journey{position:relative;z-index:2;height:500vh;height:500svh;background:#0b0a09}
 .jstick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0b0a09;pointer-events:none}
-.jstick video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transform:translateZ(0);backface-visibility:hidden}
+.jstick img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;pointer-events:none;-webkit-user-drag:none;transform:translateZ(0) scale(1.02);backface-visibility:hidden;will-change:transform}
 .jveil{position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 100% at 50% 42%,rgba(0,0,0,0) 34%,rgba(6,5,8,.62) 100%),linear-gradient(to bottom,rgba(6,5,8,.55),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 55%,rgba(6,5,8,.82))}
 .jtitle{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(12vh + env(safe-area-inset-bottom,0px));color:#F7F5F0;text-shadow:0 4px 40px rgba(0,0,0,.55);pointer-events:none;will-change:opacity,transform;z-index:2}
 .jtitle-k{display:flex;align-items:center;gap:16px;font:500 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;opacity:.78;margin-bottom:clamp(18px,3.5vh,36px)}
@@ -367,10 +367,7 @@ section{position:relative;z-index:1}
 
   <section class="journey" id="journey" data-t="dark">
     <div class="jstick">
-      <video id="heroVid" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" poster="bost-hero-poster.jpg">
-        <source src="bost-hero.webm" type="video/webm">
-        <source src="bost-hero.mp4" type="video/mp4">
-      </video>
+      <img id="heroImg" src="hero-bostan.png" alt="The room at Hotel Bostan — charcoal fires, brick and candlelight." fetchpriority="high" decoding="async">
       <div class="jveil" aria-hidden="true"></div>
       <div class="jtitle" id="jTitle" aria-hidden="true">
         <div class="jtitle-k">Jogeshwari West &mdash; Est. 1980</div>
@@ -983,21 +980,41 @@ $$('.n').forEach(function(el){var o={v:0},n=+el.dataset.n;if(reduce){el.textCont
 
 gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigger:{trigger:'.book',start:'top 60%'}});
 
-(function heroFilm(){
-  var v=document.getElementById('heroVid'),sec=document.getElementById('journey');
-  if(!v||!sec) return;
-  var barEl=document.getElementById('filmBar'),pctEl=document.getElementById('filmPct'),titleEl=document.getElementById('jTitle');
-  var proxy={p:0},dur=0,ready=false,dead=false,lastSeek=-1,pending=null;
-  function fail(){dead=true}
-  function seek(t){if(!ready||dead)return;if(t<0)t=0;if(t>dur-0.001)t=dur-0.001;if(Math.abs(t-lastSeek)<0.0025)return;lastSeek=t;if(v.seeking){pending=t;return}try{v.currentTime=t}catch(e){}}
-  v.addEventListener('seeked',function(){if(pending!==null){var p=pending;pending=null;lastSeek=p;try{v.currentTime=p}catch(e){}}});
-  function primeVideo(){if(!ready||dead)return;try{var pr=v.play();if(pr&&pr.then){pr.then(function(){v.pause();v.currentTime=Math.max(0,lastSeek)}).catch(function(){})}else{v.pause()}}catch(e){}}
-  addEventListener('touchstart',primeVideo,{passive:true,once:true});addEventListener('pointerdown',primeVideo,{once:true});
-  function syncToScroll(){var r=sec.getBoundingClientRect(),h=sec.offsetHeight-innerHeight;var p=Math.max(0,Math.min(1,-r.top/Math.max(1,h)));seek(p*dur)}
-  function onMeta(){if(v.duration&&isFinite(v.duration)&&v.duration>0){dur=v.duration;ready=true;dead=false;lastSeek=-1;primeVideo();syncToScroll()}else{fail()}}
-  v.addEventListener('error',fail);v.addEventListener('loadedmetadata',onMeta);if(v.readyState>=1)onMeta();
-  gsap.to(proxy,{p:1,ease:'none',scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:reduce?true:0.45,invalidateOnRefresh:true,onUpdate:function(self){var pr=self.progress;if(barEl)barEl.style.transform='scaleX('+pr.toFixed(4)+')';if(pctEl)pctEl.textContent=String(Math.round(pr*100)).padStart(2,'0')+'%';if(titleEl){var to=Math.max(0,1-pr*5);titleEl.style.opacity=to.toFixed(3);titleEl.style.transform='translateY('+(-pr*40).toFixed(1)+'px)'}}},onUpdate:function(){seek(proxy.p*dur)},onComplete:function(){seek(dur-0.001)}});
-  addEventListener('load',function(){ScrollTrigger.refresh()});
+/* ---------- hero still: full-bleed photo replaces the video ---------- */
+(function heroStill(){
+  var sec=document.getElementById('journey');
+  if(!sec) return;
+  var barEl=document.getElementById('filmBar'),pctEl=document.getElementById('filmPct'),titleEl=document.getElementById('jTitle'),img=document.getElementById('heroImg');
+
+  if(reduce){
+    if(barEl)barEl.style.transform='scaleX(1)';
+    if(pctEl)pctEl.textContent='100%';
+    return;
+  }
+
+  /* slow parallax settle — replaces the old frame-by-frame video scrub.
+     Scale never drops below 1.06 while the image drifts ±1.5%, so the
+     photo always overflows its box: no letterboxing, no edge seams. */
+  if(img){
+    gsap.fromTo(img,
+      {scale:1.12,yPercent:-1.5},
+      {scale:1.06,yPercent:1.5,ease:'none',
+       scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:0.6,invalidateOnRefresh:true}});
+  }
+
+  /* progress bar, percentage readout and title fade stay scroll-driven */
+  ScrollTrigger.create({
+    trigger:sec,start:'top top',end:'bottom bottom',invalidateOnRefresh:true,
+    onUpdate:function(self){
+      var pr=self.progress;
+      if(barEl)barEl.style.transform='scaleX('+pr.toFixed(4)+')';
+      if(pctEl)pctEl.textContent=String(Math.round(pr*100)).padStart(2,'0')+'%';
+      if(titleEl){
+        titleEl.style.opacity=Math.max(0,1-pr*5).toFixed(3);
+        titleEl.style.transform='translateY('+(-pr*40).toFixed(1)+'px)';
+      }
+    }
+  });
 })();
 
 (function endImage(){
@@ -1033,7 +1050,7 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
   "@type": "Restaurant",
   "name": "Hotel Bostan",
   "description": "A Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay since 1980.",
-  "image": "https://hotelbostan.in/bost-footer.png",
+  "image": "https://hotelbostan.in/hero-bostan.png",
   "url": "https://hotelbostan.in/",
   "telephone": "+916350362925",
   "email": "reserve@hotelbostan.in",
