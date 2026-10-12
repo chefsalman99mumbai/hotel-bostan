@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West</title>
-<meta name="description" content="Hotel Bostan — a Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Open every day, 19:00–23:30.">
+<meta name="description" content="Hotel Bostan — a Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Open every day, 12:00–23:30.">
 <meta name="theme-color" content="#1A1A1A">
 <meta name="format-detection" content="telephone=yes">
 <link rel="canonical" href="https://hotelbostan.in/">
@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_IN">
 <meta property="og:site_name" content="Hotel Bostan">
 <meta property="og:title" content="Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West">
-<meta property="og:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Open every day, 19:00–23:30.">
+<meta property="og:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Open every day, 12:00–23:30.">
 <meta property="og:url" content="https://hotelbostan.in/">
 <meta property="og:image" content="https://hotelbostan.in/hero-bostan.png">
 <meta property="og:image:width" content="1200">
@@ -24,7 +24,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West">
-<meta name="twitter:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Open every day, 19:00–23:30.">
+<meta name="twitter:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Open every day, 12:00–23:30.">
 <meta name="twitter:image" content="https://hotelbostan.in/hero-bostan.png">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A1A1A'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='66' font-style='italic' fill='%23F4EDD8' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
@@ -352,41 +352,13 @@ section{position:relative;z-index:1}
 .jtitle-k:before{content:"";width:44px;height:1px;background:currentColor;opacity:.7}
 .jtitle-h{font:200 clamp(46px,10.5vw,180px)/.92 var(--serif);font-variation-settings:"opsz" 144,"wght" 180;font-style:italic;letter-spacing:-.055em;margin-left:-.045em;padding-bottom:.08em}
 .jtitle-s{font:italic 300 clamp(15px,1.5vw,21px)/1.35 var(--serif);opacity:.82;margin-top:clamp(14px,2vh,22px);max-width:30ch}
+/* hide hero copy at first paint so nothing flashes before GSAP takes over */
+.js .jtitle-k,.js .jtitle-h,.js .jtitle-s{opacity:0}
 .jhud{position:absolute;top:calc(84px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);display:flex;justify-content:flex-end;font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55);font-variant-numeric:tabular-nums}
 .jprog{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(5vh + env(safe-area-inset-bottom,0px));height:2px;background:rgba(255,255,255,.2);overflow:hidden}
 .jprog b{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left;will-change:transform}
 
-/* ===== MOBILE HERO FIX =====
-   On phones we render the full photograph with object-fit: contain so the
-   entire frame (including the road on both sides) stays visible. A blurred,
-   darkened copy of the same frame fills the empty space behind it, so the
-   hero still reads as full-bleed without cropping the scene. */
-@media(max-width:700px){
-  .journey{height:440vh;height:440svh}
-  .jtitle-h{font-size:clamp(40px,12vw,110px)}
-
-  .jstick{background:#0b0a09}
-  .jstick::before{
-    content:"";
-    position:absolute;
-    inset:-40px;
-    background-image:url('hero-bostan.png');
-    background-size:cover;
-    background-position:center center;
-    filter:blur(46px) brightness(.42) saturate(.85);
-    transform:scale(1.08);
-    z-index:0;
-    pointer-events:none
-  }
-  .jstick img{
-    object-fit:contain;
-    object-position:center center;
-    transform:none;
-    z-index:1
-  }
-  .jveil{z-index:2}
-  .jtitle,.jhud,.jprog{z-index:3}
-}
+@media(max-width:700px){.journey{height:440vh;height:440svh}.jtitle-h{font-size:clamp(40px,12vw,110px)}}
 </style>
 </head>
 <body>
@@ -419,8 +391,8 @@ section{position:relative;z-index:1}
     </div>
     <div class="idea-inner">
       <div class="idea-k"><span>The idea</span></div>
-      <p class="idea-p" id="idea" aria-label="Hotel Bostan — a Halal kitchen in Jogeshwari West. Fire, salt and patience since 1980.">
-        <span class="w w-it">Hotel</span><span class="w w-it">Bostan</span><span class="w">&mdash;</span><span class="w">a</span><span class="w">Halal</span><span class="w">kitchen</span><span class="w">in</span><span class="w w-it">Jogeshwari</span><span class="w w-it">West.</span><span class="w w-sans">Fire,</span><span class="w">salt</span><span class="w">and</span><span class="w w-it">patience</span><span class="w">since</span><span class="w">1980.</span>
+      <p class="idea-p" id="idea" aria-label="Hotel Bostan — a Halal kitchen in Jogeshwari West. Fire, salt and patience — every day since 1980.">
+        <span class="w w-it">Hotel</span><span class="w w-it">Bostan</span><span class="w">&mdash;</span><span class="w">a</span><span class="w">Halal</span><span class="w">kitchen</span><span class="w">in</span><span class="w w-it">Jogeshwari</span><span class="w w-it">West.</span><span class="w w-sans">Fire,</span><span class="w">salt</span><span class="w">and</span><span class="w w-it">patience</span><span class="w">&mdash;</span><span class="w">every</span><span class="w">day</span><span class="w">since</span><span class="w">1980.</span>
       </p>
       <div class="idea-foot">
         <span>Jogeshwari West &middot; Mumbai</span>
@@ -440,7 +412,7 @@ section{position:relative;z-index:1}
   <section class="fx fire" id="fire" data-t="dark">
     <div class="k">How it&rsquo;s made</div>
     <h2 class="big">Everything<br><i>touches fire.</i></h2>
-    <p class="hint">Four fires, one kitchen. Each does one thing &mdash; and does it every night, without fail.</p>
+    <p class="hint">Four fires, one kitchen. Each does one thing &mdash; and does it every day, without fail.</p>
 
     <div class="fire-grid">
       <div class="fire-item">
@@ -468,13 +440,13 @@ section{position:relative;z-index:1}
 
   <section class="fx" id="stats" data-t="sage">
     <h2 class="big" style="margin-bottom:clamp(40px,8vh,90px)">In numbers,<br><i>slowly.</i></h2>
-    <div class="stats"><div><b class="n" data-n="24">0</b><span>plates, made to share</span></div><div><b class="n" data-n="7">0</b><span>days a week, every day</span></div><div><b class="n" data-n="19">0</b><span>o'clock, when the embers are ready</span></div><div><b class="n" data-n="100">0</b><span>percent Halal, always</span></div></div>
+    <div class="stats"><div><b class="n" data-n="24">0</b><span>plates, made to share</span></div><div><b class="n" data-n="7">0</b><span>days a week, every day</span></div><div><b class="n" data-n="12">0</b><span>o'clock, when the tandoor is lit</span></div><div><b class="n" data-n="100">0</b><span>percent Halal, always</span></div></div>
   </section>
 
   <section class="book" id="book" data-t="dark">
     <div>
       <div class="book-k">Reservations</div>
-      <p class="book-note">Open every day, 19:00&ndash;23:30. Tables for one to twelve.</p>
+      <p class="book-note">Open every day, 12:00&ndash;23:30. Tables for one to twelve.</p>
       <a class="cta" href="mailto:reserve@hotelbostan.in" id="openBook">Reserve a table &rarr;</a>
     </div>
   </section>
@@ -494,7 +466,7 @@ section{position:relative;z-index:1}
 
         <div class="credit">
           <span class="c-role">Hours</span>
-          <span class="c-name">Every day<br>19:00 &ndash; 23:30</span>
+          <span class="c-name">Every day<br>12:00 &ndash; 23:30</span>
         </div>
 
         <div class="credit">
@@ -645,8 +617,8 @@ section{position:relative;z-index:1}
 
     <div class="bm-head">
       <span class="bm-k">Reservations</span>
-      <h2 class="bm-title" id="bmTitle">Choose a night</h2>
-      <p class="bm-lede">Pick a night, a time, and how many of you are coming.</p>
+      <h2 class="bm-title" id="bmTitle">Choose a day</h2>
+      <p class="bm-lede">Pick a day, a time, and how many of you are coming.</p>
     </div>
 
     <div class="bm-grid">
@@ -811,13 +783,13 @@ var lock={y:0,on:function(){this.y=window.scrollY||window.pageYOffset||0;documen
   var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
   var DOW=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var MON3=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var TIMES=['19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30'];
+  var TIMES=['12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30'];
 
   var today=new Date();today.setHours(0,0,0,0);
   var maxDate=new Date(today.getTime());maxDate.setDate(maxDate.getDate()+90);
   var view=new Date(today.getFullYear(),today.getMonth(),1);
   var sel=new Date(today.getTime());
-  var guests=2,time='20:00',isOpen=false;
+  var guests=2,time='13:00',isOpen=false;
 
   function sameDay(a,b){return !!a&&!!b&&a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();}
   function fmtLong(d){return DOW[d.getDay()]+', '+d.getDate()+' '+MON3[d.getMonth()];}
@@ -910,11 +882,11 @@ var lock={y:0,on:function(){this.y=window.scrollY||window.pageYOffset||0;documen
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeBook();});
 })();
 
-/* theme palette — slider panels use the original cream / sage / pink backgrounds */
+/* theme palette */
 var C='#1A1A1A',O='#F7F5F0',
-    IV='#F4EDD8',  /* cream */
-    SG='#A3B58F',  /* sage */
-    PK='#EBCFC8',  /* soft pink */
+    IV='#F4EDD8',
+    SG='#A3B58F',
+    PK='#EBCFC8',
     T={dark:[C,O],cream:[IV,'#252725'],sage:[SG,'#252725'],pink:[PK,'#252725'],offw:[O,'#252725']},cur='';
 function theme(n){if(n===cur)return;cur=n;gsap.to('body',{backgroundColor:T[n][0],color:T[n][1],duration:1,ease:'power3.inOut',overwrite:true})}
 
@@ -949,12 +921,11 @@ var D=[
 
 var tr=$('#track'),names=['dark'].concat(D.map(function(d){return d[4]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
 
-/* opening panel — full-bleed poster, rewritten so the copy actually tells
-   the viewer what this section is before the dish carousel starts. */
+/* opening panel — poster copy now clearly states what this section is */
 tr.innerHTML='<div class="p dark poster">'
   +'<div class="p-img"><img src="the-table.png" alt="The table at Hotel Bostan — candlelight, brick and the long table." loading="eager" decoding="async"></div>'
   +'<div class="p-veil" aria-hidden="true"></div>'
-  +'<div class="p-copy"><h2>Tonight\u2019s table</h2><p class="hint">Five dishes from tonight\u2019s kitchen \u2014 scroll on.</p></div>'
+  +'<div class="p-copy"><h2>Tonight\u2019s table</h2><p class="hint">Five dishes from tonight\u2019s kitchen \u2014 scroll across.</p></div>'
 +'</div>'+D.map(function(d){
   var rotCls = d[6] ? ' rot' : '';
   var drinkCls = /bostan-matcha/i.test(d[5]) ? ' drink' : '';
@@ -968,7 +939,6 @@ tr.innerHTML='<div class="p dark poster">'
 tr.style.width=N*100+'vw';
 var h=gsap.to(tr,{x:function(){return -(tr.scrollWidth-innerWidth)},ease:'none',scrollTrigger:{trigger:'#menu',pin:true,scrub:1.2,anticipatePin:1,invalidateOnRefresh:true,end:function(){return '+='+(tr.scrollWidth-innerWidth)},onUpdate:function(s){bar(s.progress);var i=Math.round(s.progress*(N-1));cn.textContent=String(Math.max(1,i+1)).padStart(2,'0');theme(names[i])}}});
 
-/* headings — poster heading reveals on load, others on horizontal scroll */
 $$('.p h2,.p h3').forEach(function(el){
   var rows=mask(el);
   var panel=el.closest('.p');
@@ -982,7 +952,6 @@ $$('.p h2,.p h3').forEach(function(el){
   }
 });
 
-/* poster hint copy */
 (function(){
   var hintEl=tr.querySelector('.p.poster .hint');
   if(!hintEl||reduce) return;
@@ -993,7 +962,6 @@ $$('.p h2,.p h3').forEach(function(el){
 $$('.note').forEach(function(l){var p=l.parentNode;
  if(!reduce){gsap.set(l.children,{opacity:0,y:24});gsap.to(l.children,{opacity:1,y:0,duration:1.3,stagger:.12,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 65%',toggleActions:'play none none reverse'}})}});
 
-/* dish images — poster does a slow settle, others fade + slide with a subtle parallax */
 $$('.p-img img').forEach(function(img){
   var p=img.closest('.p');
   if(reduce) return;
@@ -1014,12 +982,11 @@ $$('.n').forEach(function(el){var o={v:0},n=+el.dataset.n;if(reduce){el.textCont
 
 gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigger:{trigger:'.book',start:'top 60%'}});
 
-/* ---------- hero still: full-bleed photo ----------
-   1) The hero copy stays completely invisible on landing. It is typeset in
-      by the scroll itself, line by line, at the speed of the scroll.
-   2) On desktop the photograph drifts and settles for depth. On mobile we
-      skip that scale, because the mobile hero uses object-fit: contain so
-      the whole scene (road and all) stays visible. */
+/* ---------- hero still ----------
+   Copy hidden on load (also enforced by .js CSS rule so nothing flashes
+   before this runs). It types itself in line by line at the speed of the
+   scroll — only within the first ~10% of the pinned journey, so it feels
+   immediate rather than a slow burn. */
 (function heroStill(){
   var sec=document.getElementById('journey');
   if(!sec) return;
@@ -1040,25 +1007,22 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
     return;
   }
 
-  /* start hidden — nothing written on the hero until the reader moves */
   parts.forEach(function(el){
     if(!el) return;
     el.style.opacity = '0';
     el.style.transform = 'translateY(46px)';
   });
 
-  /* parallax settle — desktop only */
+  /* desktop-only parallax settle. Mobile keeps the original cover framing
+     with the same gentle scale so the road stays visible, as before. */
   if(img){
-    var mm = gsap.matchMedia();
-    mm.add('(min-width:701px)', function(){
-      gsap.fromTo(img,
-        {scale:1.12,yPercent:-1.5},
-        {scale:1.06,yPercent:1.5,ease:'none',
-         scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:0.6,invalidateOnRefresh:true}});
-    });
+    gsap.fromTo(img,
+      {scale:1.12,yPercent:-1.5},
+      {scale:1.06,yPercent:1.5,ease:'none',
+       scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:0.6,invalidateOnRefresh:true}});
   }
 
-  /* progress bar + percentage + scroll-driven text reveal, all in one tick */
+  /* one ScrollTrigger drives bar, percent, AND the hero copy reveal */
   ScrollTrigger.create({
     trigger:sec,start:'top top',end:'bottom bottom',invalidateOnRefresh:true,
     onUpdate:function(self){
@@ -1068,8 +1032,8 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
 
       parts.forEach(function(el,i){
         if(!el) return;
-        var start = i * 0.05;
-        var p = Math.min(1, Math.max(0, (pr - start) / 0.18));
+        var start = i * 0.03;
+        var p = Math.min(1, Math.max(0, (pr - start) / 0.05));
         var e = 1 - Math.pow(1 - p, 3);
         el.style.opacity = e.toFixed(3);
         el.style.transform = 'translateY(' + ((1 - e) * 46).toFixed(1) + 'px)';
@@ -1137,7 +1101,7 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "19:00",
+    "opens": "12:00",
     "closes": "23:30"
   }],
   "sameAs": [
