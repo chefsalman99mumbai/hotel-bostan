@@ -4,16 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West</title>
-<meta name="description" content="Hotel Bostan — a Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Open every night, 19:00–23:30.">
+<meta name="description" content="Hotel Bostan — a Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Open every day, 19:00–23:30.">
 <meta name="theme-color" content="#1A1A1A">
 <meta name="format-detection" content="telephone=yes">
 <link rel="canonical" href="https://hotelbostan.in/">
+
+<script>document.documentElement.classList.add('js');</script>
 
 <meta property="og:type" content="restaurant.restaurant">
 <meta property="og:locale" content="en_IN">
 <meta property="og:site_name" content="Hotel Bostan">
 <meta property="og:title" content="Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West">
-<meta property="og:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Every night, 19:00–23:30.">
+<meta property="og:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Open every day, 19:00–23:30.">
 <meta property="og:url" content="https://hotelbostan.in/">
 <meta property="og:image" content="https://hotelbostan.in/hero-bostan.png">
 <meta property="og:image:width" content="1200">
@@ -22,7 +24,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West">
-<meta name="twitter:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Every night, 19:00–23:30.">
+<meta name="twitter:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Open every day, 19:00–23:30.">
 <meta name="twitter:image" content="https://hotelbostan.in/hero-bostan.png">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A1A1A'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='66' font-style='italic' fill='%23F4EDD8' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
@@ -353,7 +355,38 @@ section{position:relative;z-index:1}
 .jhud{position:absolute;top:calc(84px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);display:flex;justify-content:flex-end;font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55);font-variant-numeric:tabular-nums}
 .jprog{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(5vh + env(safe-area-inset-bottom,0px));height:2px;background:rgba(255,255,255,.2);overflow:hidden}
 .jprog b{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left;will-change:transform}
-@media(max-width:700px){.journey{height:440vh;height:440svh}.jtitle-h{font-size:clamp(40px,12vw,110px)}}
+
+/* ===== MOBILE HERO FIX =====
+   On phones we render the full photograph with object-fit: contain so the
+   entire frame (including the road on both sides) stays visible. A blurred,
+   darkened copy of the same frame fills the empty space behind it, so the
+   hero still reads as full-bleed without cropping the scene. */
+@media(max-width:700px){
+  .journey{height:440vh;height:440svh}
+  .jtitle-h{font-size:clamp(40px,12vw,110px)}
+
+  .jstick{background:#0b0a09}
+  .jstick::before{
+    content:"";
+    position:absolute;
+    inset:-40px;
+    background-image:url('hero-bostan.png');
+    background-size:cover;
+    background-position:center center;
+    filter:blur(46px) brightness(.42) saturate(.85);
+    transform:scale(1.08);
+    z-index:0;
+    pointer-events:none
+  }
+  .jstick img{
+    object-fit:contain;
+    object-position:center center;
+    transform:none;
+    z-index:1
+  }
+  .jveil{z-index:2}
+  .jtitle,.jhud,.jprog{z-index:3}
+}
 </style>
 </head>
 <body>
@@ -386,8 +419,8 @@ section{position:relative;z-index:1}
     </div>
     <div class="idea-inner">
       <div class="idea-k"><span>The idea</span></div>
-      <p class="idea-p" id="idea" aria-label="Hotel Bostan — a Halal kitchen on Swami Vivekanand Road. Fire, salt and patience since 1980.">
-        <span class="w w-it">Hotel</span><span class="w w-it">Bostan</span><span class="w">&mdash;</span><span class="w">a</span><span class="w">Halal</span><span class="w">kitchen</span><span class="w">on</span><span class="w w-it">Swami</span><span class="w w-it">Vivekanand</span><span class="w w-it">Road.</span><span class="w w-sans">Fire,</span><span class="w">salt</span><span class="w">and</span><span class="w w-it">patience</span><span class="w">since</span><span class="w">1980.</span>
+      <p class="idea-p" id="idea" aria-label="Hotel Bostan — a Halal kitchen in Jogeshwari West. Fire, salt and patience since 1980.">
+        <span class="w w-it">Hotel</span><span class="w w-it">Bostan</span><span class="w">&mdash;</span><span class="w">a</span><span class="w">Halal</span><span class="w">kitchen</span><span class="w">in</span><span class="w w-it">Jogeshwari</span><span class="w w-it">West.</span><span class="w w-sans">Fire,</span><span class="w">salt</span><span class="w">and</span><span class="w w-it">patience</span><span class="w">since</span><span class="w">1980.</span>
       </p>
       <div class="idea-foot">
         <span>Jogeshwari West &middot; Mumbai</span>
@@ -435,13 +468,13 @@ section{position:relative;z-index:1}
 
   <section class="fx" id="stats" data-t="sage">
     <h2 class="big" style="margin-bottom:clamp(40px,8vh,90px)">In numbers,<br><i>slowly.</i></h2>
-    <div class="stats"><div><b class="n" data-n="24">0</b><span>plates, made to share</span></div><div><b class="n" data-n="7">0</b><span>nights a week, every night</span></div><div><b class="n" data-n="19">0</b><span>o'clock, when the embers are ready</span></div><div><b class="n" data-n="100">0</b><span>percent Halal, always</span></div></div>
+    <div class="stats"><div><b class="n" data-n="24">0</b><span>plates, made to share</span></div><div><b class="n" data-n="7">0</b><span>days a week, every day</span></div><div><b class="n" data-n="19">0</b><span>o'clock, when the embers are ready</span></div><div><b class="n" data-n="100">0</b><span>percent Halal, always</span></div></div>
   </section>
 
   <section class="book" id="book" data-t="dark">
     <div>
       <div class="book-k">Reservations</div>
-      <p class="book-note">Open every night, 19:00&ndash;23:30. Tables for one to twelve.</p>
+      <p class="book-note">Open every day, 19:00&ndash;23:30. Tables for one to twelve.</p>
       <a class="cta" href="mailto:reserve@hotelbostan.in" id="openBook">Reserve a table &rarr;</a>
     </div>
   </section>
@@ -916,11 +949,12 @@ var D=[
 
 var tr=$('#track'),names=['dark'].concat(D.map(function(d){return d[4]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
 
-/* opening panel — full-bleed poster */
+/* opening panel — full-bleed poster, rewritten so the copy actually tells
+   the viewer what this section is before the dish carousel starts. */
 tr.innerHTML='<div class="p dark poster">'
   +'<div class="p-img"><img src="the-table.png" alt="The table at Hotel Bostan — candlelight, brick and the long table." loading="eager" decoding="async"></div>'
   +'<div class="p-veil" aria-hidden="true"></div>'
-  +'<div class="p-copy"><h2>The table</h2><p class="hint">A short look at what we cook.</p></div>'
+  +'<div class="p-copy"><h2>Tonight\u2019s table</h2><p class="hint">Five dishes from tonight\u2019s kitchen \u2014 scroll on.</p></div>'
 +'</div>'+D.map(function(d){
   var rotCls = d[6] ? ' rot' : '';
   var drinkCls = /bostan-matcha/i.test(d[5]) ? ' drink' : '';
@@ -980,39 +1014,66 @@ $$('.n').forEach(function(el){var o={v:0},n=+el.dataset.n;if(reduce){el.textCont
 
 gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigger:{trigger:'.book',start:'top 60%'}});
 
-/* ---------- hero still: full-bleed photo replaces the video ---------- */
+/* ---------- hero still: full-bleed photo ----------
+   1) The hero copy stays completely invisible on landing. It is typeset in
+      by the scroll itself, line by line, at the speed of the scroll.
+   2) On desktop the photograph drifts and settles for depth. On mobile we
+      skip that scale, because the mobile hero uses object-fit: contain so
+      the whole scene (road and all) stays visible. */
 (function heroStill(){
   var sec=document.getElementById('journey');
   if(!sec) return;
-  var barEl=document.getElementById('filmBar'),pctEl=document.getElementById('filmPct'),titleEl=document.getElementById('jTitle'),img=document.getElementById('heroImg');
+  var barEl=document.getElementById('filmBar'),
+      pctEl=document.getElementById('filmPct'),
+      titleEl=document.getElementById('jTitle'),
+      img=document.getElementById('heroImg');
+  var parts = titleEl ? [
+    titleEl.querySelector('.jtitle-k'),
+    titleEl.querySelector('.jtitle-h'),
+    titleEl.querySelector('.jtitle-s')
+  ] : [];
 
   if(reduce){
+    parts.forEach(function(el){ if(el){ el.style.opacity=''; el.style.transform=''; } });
     if(barEl)barEl.style.transform='scaleX(1)';
     if(pctEl)pctEl.textContent='100%';
     return;
   }
 
-  /* slow parallax settle — replaces the old frame-by-frame video scrub.
-     Scale never drops below 1.06 while the image drifts ±1.5%, so the
-     photo always overflows its box: no letterboxing, no edge seams. */
+  /* start hidden — nothing written on the hero until the reader moves */
+  parts.forEach(function(el){
+    if(!el) return;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(46px)';
+  });
+
+  /* parallax settle — desktop only */
   if(img){
-    gsap.fromTo(img,
-      {scale:1.12,yPercent:-1.5},
-      {scale:1.06,yPercent:1.5,ease:'none',
-       scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:0.6,invalidateOnRefresh:true}});
+    var mm = gsap.matchMedia();
+    mm.add('(min-width:701px)', function(){
+      gsap.fromTo(img,
+        {scale:1.12,yPercent:-1.5},
+        {scale:1.06,yPercent:1.5,ease:'none',
+         scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:0.6,invalidateOnRefresh:true}});
+    });
   }
 
-  /* progress bar, percentage readout and title fade stay scroll-driven */
+  /* progress bar + percentage + scroll-driven text reveal, all in one tick */
   ScrollTrigger.create({
     trigger:sec,start:'top top',end:'bottom bottom',invalidateOnRefresh:true,
     onUpdate:function(self){
-      var pr=self.progress;
-      if(barEl)barEl.style.transform='scaleX('+pr.toFixed(4)+')';
-      if(pctEl)pctEl.textContent=String(Math.round(pr*100)).padStart(2,'0')+'%';
-      if(titleEl){
-        titleEl.style.opacity=Math.max(0,1-pr*5).toFixed(3);
-        titleEl.style.transform='translateY('+(-pr*40).toFixed(1)+'px)';
-      }
+      var pr = self.progress;
+      if(barEl) barEl.style.transform = 'scaleX(' + pr.toFixed(4) + ')';
+      if(pctEl) pctEl.textContent = String(Math.round(pr*100)).padStart(2,'0') + '%';
+
+      parts.forEach(function(el,i){
+        if(!el) return;
+        var start = i * 0.05;
+        var p = Math.min(1, Math.max(0, (pr - start) / 0.18));
+        var e = 1 - Math.pow(1 - p, 3);
+        el.style.opacity = e.toFixed(3);
+        el.style.transform = 'translateY(' + ((1 - e) * 46).toFixed(1) + 'px)';
+      });
     }
   });
 })();
