@@ -3,12 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hotel Bostan, Lisbon</title>
+<title>Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West</title>
+<meta name="description" content="Hotel Bostan — a Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Open every day, 12:00–23:30.">
+<meta name="theme-color" content="#1A1A1A">
+<meta name="format-detection" content="telephone=yes">
+<link rel="canonical" href="https://hotelbostan.in/">
+
+<script>document.documentElement.classList.add('js');</script>
+
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="Hotel Bostan">
+<meta property="og:title" content="Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West">
+<meta property="og:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay. Open every day, 12:00–23:30.">
+<meta property="og:url" content="https://hotelbostan.in/">
+<meta property="og:image" content="https://hotelbostan.in/hero-bostan.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The room at Hotel Bostan — candlelight, brick, and the long table after service.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hotel Bostan — Mughlai &amp; North Indian, Jogeshwari West">
+<meta name="twitter:description" content="A Halal kitchen in Jogeshwari West, Mumbai. Open every day, 12:00–23:30.">
+<meta name="twitter:image" content="https://hotelbostan.in/hero-bostan.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A1A1A'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='66' font-style='italic' fill='%23F4EDD8' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--c:#252725;--o:#F7F5F0;--iv:#F4EDD8;--sg:#A3B58F;--pk:#EBCFC8;--r:#A3B58F;--y:#EBCFC8;--serif:'Fraunces','Times New Roman',serif;--sans:'Instrument Sans',system-ui,sans-serif;--pad:clamp(22px,5vw,72px);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{
+  --c:#1A1A1A;         /* ink wash charcoal base */
+  --ink:#252725;       /* black text */
+  --o:#F7F5F0;         /* off-white */
+  --iv:#F4EDD8;        /* cream — panel background */
+  --sg:#A3B58F;        /* sage — panel background */
+  --pk:#EBCFC8;        /* soft pink — panel background */
+  --honey:#D6386F;     /* Honeysuckle  — Pantone 18-2120 TCX */
+  --spider:#C4D06E;    /* Spider Mums  — Pantone 14-0543 TSX */
+  --peach:#F5C8B3;     /* Tropical Peach — Pantone 13-1318 TCX */
+  --rose:#E07A72;      /* Porcelain Rose — Pantone 17-1643 TCX */
+  --y:#EBCFC8;         /* CTA highlight */
+  --serif:'Fraunces','Times New Roman',serif;
+  --sans:'Instrument Sans',system-ui,sans-serif;
+  --pad:clamp(22px,5vw,72px);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px)
+}
 *,*:before,*:after{box-sizing:inherit;margin:0;padding:0}
 html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
 body{background:var(--c);color:var(--o);font:400 16px/1.6 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -16,518 +60,711 @@ a,button{color:inherit;text-decoration:none;font:inherit;background:none;border:
 a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:6px}
 .sf{font-family:var(--serif);font-variation-settings:"opsz" 144}
 #cur{position:fixed;left:0;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;mix-blend-mode:difference;z-index:30;pointer-events:none;opacity:0}
-nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:22px var(--pad);font-size:14px;letter-spacing:.03em;mix-blend-mode:difference;color:#fff}
-nav .logo{font:300 24px/1 var(--serif);font-variation-settings:"opsz" 144}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px var(--pad);font-size:14px;letter-spacing:.03em;mix-blend-mode:difference;color:#fff}
+nav .logo{font:300 clamp(16px,1.6vw,22px)/1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.02em;white-space:nowrap}
 nav div{display:flex;gap:28px}
+@media(max-width:420px){nav{padding:18px var(--pad)}nav .logo{font-size:15px}nav div{gap:12px;font-size:12.5px}}
 section{position:relative;z-index:1}
 
-/* ============ IDEA ============ */
-.idea{min-height:135svh;padding:0 var(--pad);display:flex;align-items:center}
-.idea-inner{width:100%;max-width:1500px;margin:0 auto}
-.idea-k{display:flex;align-items:center;gap:18px;font:500 11px/1 var(--sans);
-  letter-spacing:.26em;text-transform:uppercase;opacity:.5;margin-bottom:clamp(36px,7vh,80px)}
-.idea-k:before{content:"";width:56px;height:1px;background:currentColor;opacity:.6}
-.idea-p{font:200 clamp(36px,5.6vw,90px)/1.1 var(--serif);
-  font-variation-settings:"opsz" 144,"wght" 200;letter-spacing:-.028em;
-  max-width:14em;margin-left:auto;text-align:left}
-.idea-p .w{display:inline-block;font-variation-settings:"opsz" 144,"wght" 200;
-  opacity:.16;will-change:font-variation-settings,opacity}
-.idea-p .w + .w{margin-left:.2em}
+/* ---------- the idea — second hero, full-bleed dish ---------- */
+.idea{position:relative;min-height:100svh;padding:0 var(--pad);display:flex;align-items:center;overflow:hidden;isolation:isolate}
+.idea-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.idea-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;filter:saturate(.88) contrast(1.05) brightness(.72);transform:translateZ(0) scale(1.03);will-change:transform}
+.idea-veil{position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(120% 82% at 50% 50%, rgba(26,26,26,0) 22%, rgba(26,26,26,.42) 100%),
+  linear-gradient(to bottom,
+    rgba(26,26,26,.72) 0%,
+    rgba(26,26,26,.30) 16%,
+    rgba(26,26,26,.20) 42%,
+    rgba(26,26,26,.42) 68%,
+    rgba(26,26,26,.82) 90%,
+    rgba(26,26,26,.96) 100%)}
+.idea-inner{position:relative;z-index:1;width:100%;max-width:1500px;margin:0 auto}
+.idea-k{display:flex;align-items:center;gap:18px;font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;opacity:.62;margin-bottom:clamp(24px,4.4vh,48px);text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.idea-k:before{content:"";width:44px;height:1px;background:currentColor;opacity:.7}
+.idea-p{font:300 clamp(27px,3.7vw,60px)/1.22 var(--serif);font-variation-settings:"opsz" 144,"wght" 300;letter-spacing:-.022em;max-width:19em;margin-left:auto;text-align:left;text-wrap:pretty;text-shadow:0 4px 34px rgba(0,0,0,.6),0 1px 4px rgba(0,0,0,.45)}
+.idea-p .w{display:inline-block;font-variation-settings:"opsz" 144,"wght" 300;opacity:.14;will-change:font-variation-settings,opacity}
+.idea-p .w + .w{margin-left:.22em}
 .idea-p .w-it{font-style:italic}
-.idea-p .w-sans{font-family:var(--sans);font-style:normal;font-weight:500;
-  letter-spacing:.08em;text-transform:uppercase;font-size:.32em;
-  vertical-align:.32em;padding:0 .12em 0 0;opacity:.16}
-.idea-foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
-  margin-top:clamp(56px,9vh,130px);padding-top:16px;
-  border-top:1px solid rgba(128,128,128,.35);
-  font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.42}
+.idea-p .w-sans{font-family:var(--sans);font-style:normal;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:.32em;vertical-align:.06em;padding:0 .1em 0 0;opacity:.14}
+.idea-foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:clamp(40px,7vh,90px);padding-top:16px;border-top:1px solid rgba(247,245,240,.35);font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.62;text-shadow:0 2px 12px rgba(0,0,0,.55)}
 
-/* ============ MARQUEE ============ */
-.mq{overflow:hidden;padding:6vh 0;white-space:nowrap}
-.mq div{display:inline-flex;will-change:transform}
-.mq span{font:200 clamp(70px,16vw,260px)/1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.04em;padding-right:.5em;color:transparent;-webkit-text-stroke:1.5px currentColor}
+/* ---------- quiet editorial band (replaces marquee) ---------- */
+.mq{
+  overflow:hidden;
+  padding:clamp(26px,4.2vh,52px) 0;
+  white-space:nowrap;
+  background:var(--c);
+  border-top:1px solid rgba(247,245,240,.08);
+  border-bottom:1px solid rgba(247,245,240,.08);
+}
+.mq div{display:inline-flex;align-items:center;will-change:transform}
+.mq span{
+  font:italic 300 clamp(18px,1.8vw,26px)/1 var(--serif);
+  font-variation-settings:"opsz" 144;
+  letter-spacing:.005em;
+  padding:0 clamp(16px,1.6vw,26px);
+  color:rgba(247,245,240,.58);
+  white-space:nowrap;
+}
+.mq span.r{font-style:normal}
+.mq span.c{
+  font-style:normal;
+  font-family:var(--sans);
+  font-weight:500;
+  font-size:.62em;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:rgba(247,245,240,.42);
+  padding:0 clamp(22px,2.2vw,36px);
+}
+.mq .mq-dot{
+  display:inline-block;
+  width:4px;height:4px;
+  border-radius:50%;
+  background:var(--honey);
+  flex:none;
+  opacity:.75;
+}
 
-/* ============ MENU ============ */
 .menu{height:100svh;overflow:hidden}
 .track{display:flex;height:100%}
-.p{flex:none;width:100vw;height:100%;padding:0 var(--pad) calc(9vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(16px,3vh,32px);overflow:hidden;background:var(--bg);color:var(--fg)}
-.dark{--bg:var(--c);--fg:var(--o)}.cream{--bg:var(--iv);--fg:var(--c)}.sage{--bg:var(--sg);--fg:var(--c)}.pink{--bg:var(--pk);--fg:var(--c)}.offw{--bg:var(--o);--fg:var(--c)}
-.p h2,.p h3{font:200 clamp(54px,10.5vw,190px)/.92 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.045em;max-width:11em;will-change:transform}
+.p{position:relative;flex:none;width:100vw;height:100%;padding:0 var(--pad) calc(7vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(16px,3vh,32px);overflow:hidden;background:var(--bg);color:var(--fg)}
+
+/* slider panel colours */
+.dark{--bg:var(--c);--fg:var(--o)}
+.cream{--bg:var(--iv);--fg:var(--ink)}
+.sage{--bg:var(--sg);--fg:var(--ink)}
+.pink{--bg:var(--pk);--fg:var(--ink)}
+.offw{--bg:var(--o);--fg:var(--ink)}
+
+.p h2,.p h3{font:200 clamp(54px,10.5vw,190px)/.92 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.045em;max-width:11em;margin:0 auto;text-align:center;will-change:transform}
 .p h3{font-size:clamp(46px,9vw,160px)}
-.k{font:400 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:20px}
-.note{display:flex;justify-content:space-between;align-items:baseline;gap:clamp(20px,4vw,64px);padding-top:18px;position:relative;max-width:min(100%,1100px)}
+.p h3.long{font-size:clamp(36px,6.4vw,116px)}
+.p .hint{margin-left:auto;margin-right:auto;text-align:center}
+
+.k{position:absolute;top:13vh;left:var(--pad);right:var(--pad);display:flex;align-items:center;justify-content:center;gap:clamp(16px,2.4vw,32px);font:200 clamp(15px,1.35vw,20px)/1 var(--sans);letter-spacing:.42em;text-transform:uppercase;opacity:.62;pointer-events:none;z-index:2}
+.k:before,.k:after{content:"";height:1px;background:currentColor;opacity:.4;flex:0 0 clamp(24px,4vw,72px)}
+
+.note{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:18px;position:relative;width:100%;max-width:min(100%,700px);margin:0 auto;text-align:center}
 .note:before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:currentColor;opacity:.3}
-.note p{max-width:36ch;font:italic 300 clamp(17px,1.6vw,22px)/1.4 var(--serif)}
+.note p{max-width:44ch;font:italic 300 clamp(17px,1.6vw,22px)/1.4 var(--serif)}
 .pr{font:300 clamp(26px,3vw,44px)/1 var(--serif);letter-spacing:-.02em;white-space:nowrap}
 .mk{display:inline-block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em;vertical-align:top}.mk i{display:inline-block;font-style:inherit}
-.hud{position:absolute;z-index:3;top:calc(86px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-variant-numeric:tabular-nums;mix-blend-mode:difference;color:#fff}
+
+.p-img{position:absolute;top:19vh;left:0;right:0;margin:0 auto;width:min(34vh, 36vw, 460px);aspect-ratio:1 / 1;overflow:hidden;pointer-events:none;z-index:1}
+.p-img img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;pointer-events:none;will-change:transform,opacity}
+.p-img.rot{top:18vh;width:min(40vh, 42vw, 540px);transform:rotate(-90deg)}
+.p-img.rot img{object-fit:contain}
+.p-img.drink{top:17vh;width:min(44vh, 46vw, 600px)}
+.p-img.drink img{object-fit:contain;object-position:center bottom}
+
+/* ---------- opening panel: full-bleed poster ---------- */
+.p.poster{justify-content:flex-end;gap:0}
+.p.poster .p-img{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;aspect-ratio:auto;margin:0;transform:none;z-index:0;overflow:hidden}
+.p.poster .p-img img{width:100%;height:100%;object-fit:cover;object-position:center 48%;opacity:1}
+.p.poster .p-veil{position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  linear-gradient(to bottom,
+    rgba(26,26,26,.86) 0%,
+    rgba(26,26,26,.42) 14%,
+    rgba(26,26,26,.06) 34%,
+    rgba(26,26,26,.04) 46%,
+    rgba(26,26,26,.34) 62%,
+    rgba(26,26,26,.82) 80%,
+    rgba(26,26,26,.96) 92%,
+    #1A1A1A 100%)}
+.p.poster .p-copy{position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(14px,2.4vh,26px);padding-bottom:1vh}
+.p.poster h2{text-shadow:0 8px 48px rgba(0,0,0,.6),0 2px 8px rgba(0,0,0,.35)}
+.p.poster .hint{opacity:.82;text-shadow:0 2px 18px rgba(0,0,0,.65)}
+
+.hud{position:absolute;z-index:3;top:calc(86px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);display:flex;justify-content:flex-end;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-variant-numeric:tabular-nums;mix-blend-mode:difference;color:#fff}
 .bar{position:absolute;z-index:3;left:var(--pad);right:var(--pad);bottom:calc(4vh + env(safe-area-inset-bottom,0px));height:2px;background:rgba(128,128,128,.3)}
 .bar b{position:absolute;inset:0;background:#fff;mix-blend-mode:difference;transform:scaleX(0);transform-origin:left}
 
-/* ============ FX ============ */
+.fullmenu{position:fixed;inset:0;z-index:70;background:var(--iv);color:var(--ink);padding:clamp(88px,12vh,120px) var(--pad) clamp(48px,7vh,88px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;opacity:0;visibility:hidden;transform:translateY(24px);transition:opacity .55s cubic-bezier(.16,1,.3,1),visibility .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
+.fullmenu.open{opacity:1;visibility:visible;transform:translateY(0)}
+.fm-inner{width:100%;max-width:1120px;margin:0 auto}
+.fm-logo{display:flex;justify-content:center;align-items:center;margin:0 auto clamp(36px,6vh,64px);padding:0;min-height:clamp(60px,10vh,110px)}
+.fm-logo img{display:block;max-width:min(340px,68vw);max-height:clamp(60px,10vh,110px);width:auto;height:auto;object-fit:contain}
+.fm-logo .fm-logo-fallback{font:200 clamp(34px,4.6vw,58px)/1 var(--serif);font-variation-settings:"opsz" 144,"wght" 200;font-style:italic;letter-spacing:-.04em;color:var(--ink);display:none}
+.fm-card{background:var(--o);padding:clamp(24px,4vw,48px) clamp(20px,4vw,72px) clamp(28px,5vw,64px);box-shadow:0 22px 70px rgba(0,0,0,.16),0 2px 4px rgba(0,0,0,.06)}
+.fm-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:clamp(24px,3vh,42px)}
+.fm-tab{padding:clamp(11px,1.6vh,17px) clamp(8px,1.2vw,20px);background:#D9D5CE;color:var(--ink);font:500 clamp(9px,.85vw,11px)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;text-align:center;transition:background .25s,color .25s;cursor:pointer}
+.fm-tab:hover:not(.on){background:#CEC9C0}
+.fm-tab.on{background:var(--honey);color:var(--o)}
+.fm-hero{margin-bottom:26px;overflow:hidden;position:relative}
+.fm-hero img{width:100%;height:clamp(180px,26vh,280px);object-fit:cover;display:block;filter:saturate(.92) contrast(1.02)}
+.fm-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(to bottom,transparent,var(--o));pointer-events:none}
+.fm-key{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:clamp(36px,5vh,60px);font:400 12px/1 var(--sans);color:#6A6660}
+.fm-key .fm-kitem{display:inline-flex;align-items:center;gap:8px}
+.fm-key .fm-kdot{width:9px;height:9px;border-radius:50%;display:inline-block;flex-shrink:0}
+.fm-kdot.sage{background:var(--spider)}
+.fm-kdot.pink{background:var(--honey)}
+.fm-section{margin-bottom:clamp(38px,5vh,56px)}
+.fm-section:last-of-type{margin-bottom:0}
+.fm-heading{font:200 clamp(34px,4.4vw,52px)/1 var(--serif);font-variation-settings:"opsz" 144,"wght" 200;font-style:italic;letter-spacing:-.035em;text-align:center;color:var(--ink);margin:0 0 clamp(24px,3vh,38px)}
+.fm-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(24px,3vw,60px);row-gap:0}
+.fm-dish{padding:0 0 16px;margin-bottom:18px;border-bottom:1px solid rgba(37,39,37,.10);transition:transform .3s ease}
+.fm-dish:hover{transform:translateX(3px)}
+.fm-dhead{display:flex;align-items:baseline;gap:8px;margin-bottom:7px}
+.fm-dname{font-family:var(--serif);font-variation-settings:"opsz" 144,"wght" 500;font-size:clamp(14px,1.4vw,16px);font-weight:500;color:var(--ink);line-height:1.25;letter-spacing:-.01em;flex-shrink:0;max-width:75%}
+.fm-dleader{flex:1;min-width:16px;height:1px;border-bottom:1px dotted rgba(37,39,37,.32);position:relative;top:-3px}
+.fm-dprice{font-family:var(--serif);font-variation-settings:"opsz" 144,"wght" 300;font-size:clamp(14px,1.4vw,16px);font-weight:300;color:var(--ink);flex-shrink:0;white-space:nowrap;letter-spacing:-.01em}
+.fm-ddesc{font:400 clamp(11.5px,1.15vw,12.5px)/1.55 var(--sans);color:#6A6660;letter-spacing:.005em;margin:0;max-width:52ch}
+.fm-ddesc .fm-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;position:relative;top:-1px;vertical-align:middle}
+.fm-dot.sage{background:var(--spider)}
+.fm-dot.pink{background:var(--honey)}
+.fm-fine{margin-top:clamp(40px,6vh,70px);padding-top:clamp(20px,3vh,30px);border-top:1px solid rgba(37,39,37,.13);font:400 10.5px/1.75 var(--sans);color:#8A8680;letter-spacing:.06em;text-transform:uppercase}
+.fm-fine p{margin:0 0 8px}
+.fm-close{position:fixed;top:calc(20px + env(safe-area-inset-top,0px));right:var(--pad);z-index:80;display:inline-flex;align-items:center;gap:10px;padding:12px 22px;background:var(--c);color:var(--o);border:1px solid var(--c);border-radius:99px;font:500 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .4s cubic-bezier(.16,1,.3,1),visibility .4s cubic-bezier(.16,1,.3,1),transform .4s cubic-bezier(.16,1,.3,1),background .3s,color .3s}
+.fm-close.visible{opacity:1;visibility:visible;transform:translateY(0)}
+.fm-close:hover{background:var(--o);color:var(--c)}
+.fm-close svg{width:12px;height:12px;flex:none}
+@media(max-width:720px){
+  .fm-tabs{grid-template-columns:repeat(2,1fr)}
+  .fm-grid{grid-template-columns:1fr;column-gap:0}
+  .fm-heading{font-size:32px}
+  .fm-dname{max-width:70%}
+  .fm-close{padding:10px 16px;font-size:10px;gap:7px}
+}
+
+/* ---------- booking modal ---------- */
+.bookmodal{position:fixed;inset:0;z-index:75;display:flex;align-items:center;justify-content:center;padding:clamp(14px,3vw,40px);background:rgba(11,10,9,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .45s cubic-bezier(.16,1,.3,1),visibility .45s cubic-bezier(.16,1,.3,1)}
+.bookmodal.open{opacity:1;visibility:visible}
+.bm-card{position:relative;width:min(960px,100%);max-height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:var(--iv);color:var(--ink);padding:clamp(26px,4vw,56px);box-shadow:0 30px 90px rgba(0,0,0,.42);transform:translateY(20px);transition:transform .55s cubic-bezier(.16,1,.3,1)}
+.bookmodal.open .bm-card{transform:none}
+.bm-x{position:absolute;top:clamp(14px,2vw,22px);right:clamp(14px,2vw,22px);display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid rgba(37,39,37,.28);border-radius:99px;font:500 10px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;transition:background .3s,color .3s,border-color .3s}
+.bm-x:hover{background:var(--honey);color:var(--o);border-color:var(--honey)}
+.bm-x svg{width:11px;height:11px}
+.bm-head{margin-bottom:clamp(22px,3.5vh,38px);padding-right:clamp(0px,12vw,120px)}
+.bm-k{display:block;font:500 10px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:14px}
+.bm-title{font:200 clamp(28px,3.6vw,48px)/1.05 var(--serif);font-variation-settings:"opsz" 144,"wght" 200;font-style:italic;letter-spacing:-.035em}
+.bm-lede{font:italic 300 clamp(14px,1.3vw,17px)/1.5 var(--serif);opacity:.62;margin-top:10px;max-width:38ch}
+.bm-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,4vw,56px)}
+@media(max-width:760px){.bm-grid{grid-template-columns:1fr;gap:28px}}
+.bm-calhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.bm-month{font:300 clamp(17px,1.8vw,22px)/1 var(--serif);font-style:italic;letter-spacing:-.01em}
+.bm-nav{display:flex;gap:8px}
+.bm-nav button{width:34px;height:34px;border:1px solid rgba(37,39,37,.24);border-radius:50%;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s,border-color .3s}
+.bm-nav button:hover:not(:disabled){background:var(--honey);color:var(--o);border-color:var(--honey)}
+.bm-nav button:disabled{opacity:.22;cursor:not-allowed}
+.bm-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:8px;font:500 9.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.42;text-align:center}
+.bm-days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.bm-day{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;border-radius:50%;font:400 clamp(12px,1.2vw,14px)/1 var(--sans);border:1px solid transparent;transition:background .25s,color .25s,border-color .25s}
+.bm-day:hover:not(:disabled):not(.on){border-color:rgba(37,39,37,.42)}
+.bm-day.on{background:var(--honey);color:var(--o)}
+.bm-day:disabled{opacity:.2;cursor:not-allowed}
+.bm-day.empty{visibility:hidden;pointer-events:none}
+.bm-field{margin-bottom:clamp(18px,2.6vh,28px)}
+.bm-label{display:block;font:500 9.5px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;opacity:.45;margin-bottom:12px}
+.bm-stepper{display:inline-flex;align-items:center;gap:16px;border:1.5px solid rgba(37,39,37,.32);border-radius:99px;padding:5px 8px}
+.bm-stepper button{width:32px;height:32px;border-radius:50%;font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
+.bm-stepper button:hover{background:var(--honey);color:var(--o)}
+.bm-stepper span{min-width:2.6ch;text-align:center;font:300 18px/1 var(--serif)}
+.bm-chips{display:flex;flex-wrap:wrap;gap:8px}
+.bm-chips button{padding:9px 15px;border:1.5px solid rgba(37,39,37,.26);border-radius:99px;font:500 12px/1 var(--sans);letter-spacing:.04em;transition:background .3s,color .3s,border-color .3s}
+.bm-chips button:hover:not(:disabled):not(.on){border-color:var(--honey)}
+.bm-chips button.on{background:var(--honey);color:var(--o);border-color:var(--honey)}
+.bm-chips button:disabled{opacity:.25;cursor:not-allowed;text-decoration:line-through}
+.bm-summary{font:italic 300 clamp(15px,1.4vw,18px)/1.5 var(--serif);opacity:.78;margin-bottom:18px;min-height:1.5em}
+.bm-go{width:100%;padding:18px;background:var(--honey);color:var(--o);border-radius:99px;font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;transition:background .3s,color .3s}
+.bm-go:hover{background:var(--peach);color:var(--ink)}
+.bm-note{margin-top:12px;font:400 11px/1.6 var(--sans);letter-spacing:.04em;opacity:.45}
+
 .fx{min-height:100svh;padding:16vh var(--pad);display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .big{font:200 clamp(52px,11vw,200px)/.95 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.045em}
 .hint{font:italic 300 clamp(18px,1.8vw,24px)/1.4 var(--serif);margin-top:20px;max-width:30ch;opacity:.75}
-#garden{cursor:crosshair;touch-action:manipulation}#garden *{pointer-events:none}
-.fl{position:absolute;width:0;height:0}.fl i{position:absolute;left:-13px;top:-46px;width:26px;height:46px;border-radius:50%;transform-origin:50% 100%;mix-blend-mode:multiply}.fl b{position:absolute;left:-11px;top:-11px;width:22px;height:22px;border-radius:50%}
-.mood{display:flex;flex-wrap:wrap;gap:12px;margin:clamp(24px,5vh,48px) 0}
-.mood button{padding:12px 26px;border:1.5px solid currentColor;border-radius:99px;font-size:15px;transition:background .5s,color .5s}
-.mood button.on,.chips button.on{background:var(--c);color:var(--y)}
-.out{max-width:30ch}.out p{font:italic 300 clamp(20px,2.4vw,32px)/1.35 var(--serif);margin-top:18px}
+
+.fire{background:var(--c);color:var(--o)}
+.fire .big{max-width:14ch}
+.fire-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(28px,4vw,56px) clamp(28px,4vw,64px);margin-top:clamp(48px,8vh,96px);padding-top:clamp(32px,4vh,48px);border-top:1px solid rgba(247,245,240,.18)}
+.fire-item{display:flex;flex-direction:column;gap:14px;padding-bottom:clamp(20px,3vh,32px)}
+.fi-n{font:400 11px/1 var(--sans);letter-spacing:.28em;color:rgba(247,245,240,.42);font-variant-numeric:tabular-nums}
+.fi-t{font:200 clamp(28px,3.4vw,48px)/1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.03em;color:var(--o);margin:0}
+.fi-d{font:italic 300 clamp(15px,1.35vw,18px)/1.5 var(--serif);color:rgba(247,245,240,.62);margin:0;max-width:36ch}
+@media(max-width:700px){.fire-grid{grid-template-columns:1fr;gap:32px}}
+
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(28px,5vw,64px)}
 .stats div{border-top:1px solid currentColor;padding-top:18px}
 .stats b{display:block;font:200 clamp(64px,9vw,150px)/1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.04em}
 .stats span{font-size:15px;opacity:.8}
 
-/* ============ BOOK ============ */
-.book{min-height:100svh;padding:20vh var(--pad) calc(5vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:space-between}
-.pick{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-bottom:clamp(20px,4vh,40px);font-size:15px}
-.step{display:flex;align-items:center;gap:14px;border:1.5px solid currentColor;border-radius:99px;padding:6px 8px}
-.step button{width:34px;height:34px;border-radius:50%;font-size:20px;line-height:1}
-.chips{display:flex;gap:8px;flex-wrap:wrap}.chips button{padding:10px 18px;border:1.5px solid currentColor;border-radius:99px;transition:background .4s,color .4s}
-.chips button.on{background:var(--y);color:var(--c);border-color:var(--y)}
-.cta{display:inline;font:200 clamp(52px,11vw,200px)/1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.045em;background:linear-gradient(var(--y),var(--y)) 0 100%/0 100% no-repeat;transition:background-size .8s cubic-bezier(.16,1,.3,1),color .5s;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.cta:hover,.cta:focus-visible{background-size:100% 100%;color:var(--c)}
-.foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:28px;margin-top:14vh;font-size:15px;border-top:1px solid rgba(128,128,128,.35);padding-top:28px}
-.foot span{display:block;opacity:.6}
+.book{min-height:100svh;padding:20vh var(--pad) calc(20vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:center}
+.book-k{display:flex;align-items:center;gap:16px;font:500 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;opacity:.55;margin-bottom:clamp(18px,3vh,28px)}
+.book-k:before{content:"";width:46px;height:1px;background:currentColor;opacity:.6}
+.book-note{font:italic 300 clamp(15px,1.4vw,19px)/1.5 var(--serif);opacity:.6;margin-bottom:clamp(24px,4vh,44px);max-width:34ch}
+.cta{display:inline;font:200 clamp(52px,11vw,200px)/1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.045em;background:linear-gradient(var(--honey),var(--honey)) 0 100%/0 100% no-repeat;transition:background-size .8s cubic-bezier(.16,1,.3,1),color .5s;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.cta:hover,.cta:focus-visible{background-size:100% 100%;color:var(--o)}
 
-/* ============ FOOTER FILM ============ */
 .endfilm{position:relative;z-index:2;background:#0b0a09;color:#F7F5F0}
 .endbg{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;pointer-events:none}
-.endbg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:translateZ(0);backface-visibility:hidden}
-.endveil{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(120% 90% at 50% 60%,rgba(0,0,0,0) 30%,rgba(6,5,8,.7) 100%),
-    linear-gradient(to bottom,rgba(6,5,8,.75),rgba(6,5,8,.35) 42%,rgba(6,5,8,.92))}
-.endhud{position:absolute;top:calc(84px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);
-  display:flex;justify-content:space-between;font:500 12px/1 var(--sans);letter-spacing:.22em;
-  text-transform:uppercase;color:#fff;opacity:.62;text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.endbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transform:translateZ(0) scale(1.02);backface-visibility:hidden;filter:saturate(.92) contrast(1.02) brightness(.94)}
+.endveil{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 60%,rgba(0,0,0,0) 30%,rgba(6,5,8,.7) 100%),linear-gradient(to bottom,rgba(6,5,8,.75),rgba(6,5,8,.35) 42%,rgba(6,5,8,.92))}
+.endhud{position:absolute;top:calc(84px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;font:500 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#fff;opacity:.62;text-shadow:0 2px 14px rgba(0,0,0,.55)}
 .endinner{position:relative;margin-top:-100vh;z-index:2;padding:58vh var(--pad) 26vh}
 .credits{max-width:600px}
-.credits-k{display:flex;align-items:center;gap:16px;font:500 11px/1 var(--sans);
-  letter-spacing:.28em;text-transform:uppercase;opacity:.62;margin-bottom:clamp(28px,5vh,52px)}
+.credits-k{display:flex;align-items:center;gap:16px;font:500 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;opacity:.72;margin-bottom:clamp(28px,5vh,52px)}
 .credits-k:before{content:"";width:46px;height:1px;background:currentColor;opacity:.7}
-.credit{display:flex;justify-content:space-between;align-items:baseline;gap:32px;
-  padding:15px 0;border-bottom:1px solid rgba(255,255,255,.14)}
-.credit .c-role{font:italic 300 clamp(14px,1.4vw,17px)/1 var(--serif);opacity:.58;letter-spacing:.02em}
-.credit .c-name{font:200 clamp(20px,2.4vw,32px)/1.1 var(--serif);
-  font-variation-settings:"opsz" 144;letter-spacing:-.025em;text-align:right}
-.credit-meta{margin-top:clamp(28px,4vh,44px);font:400 11px/1.8 var(--sans);
-  letter-spacing:.2em;text-transform:uppercase;opacity:.42}
+.credit{display:flex;justify-content:space-between;align-items:baseline;gap:32px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.credit .c-role{font:italic 300 clamp(14px,1.4vw,17px)/1.3 var(--serif);opacity:.65;letter-spacing:.02em;flex-shrink:0}
+.credit .c-name{font:200 clamp(17px,1.9vw,24px)/1.35 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.02em;text-align:right}
+.credit .c-name a{border-bottom:1px solid rgba(247,245,240,.28);transition:border-color .3s,color .3s}
+.credit .c-name a:hover,.credit .c-name a:focus-visible{border-color:var(--peach);color:var(--peach)}
 
-/* =================================================================
-   THE CLOSING — an exhibition flyer
-   ================================================================= */
-.closing{position:relative;z-index:2;background:#0b0a09;color:#F7F5F0;
-  padding:clamp(56px,7vh,88px) 0 clamp(48px,6vh,72px);
-  overflow:hidden}
-/* paper grain / dotted registry texture */
-.closing:before{content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:radial-gradient(rgba(247,245,240,.055) 1px,transparent 1px);
-  background-size:22px 22px;z-index:0}
-/* paper crease — vertical */
-.closing:after{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;
-  background:linear-gradient(to bottom,transparent,rgba(255,255,255,.045) 18%,rgba(255,255,255,.045) 82%,transparent);
-  pointer-events:none;z-index:0}
+.credit-meta{margin-top:clamp(28px,4vh,44px);border-top:1px solid rgba(247,245,240,.14)}
+.cm-row{display:grid;grid-template-columns:minmax(120px,auto) 1fr;gap:24px;padding:14px 0;border-bottom:1px solid rgba(247,245,240,.09);align-items:baseline}
+.cm-k{font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(247,245,240,.5)}
+.cm-v{font:300 clamp(14px,1.2vw,16px)/1.4 var(--sans);color:rgba(247,245,240,.82);letter-spacing:.005em}
+@media(max-width:520px){.cm-row{grid-template-columns:1fr;gap:6px}.cm-k{padding-top:2px}}
 
-.flyer{position:relative;z-index:1;
-  width:100%;max-width:1280px;margin:0 auto;
-  padding:0 clamp(22px,4.6vw,64px);
-  display:flex;flex-direction:column}
+.site-footer{position:relative;z-index:2;background:#0b0a09;color:rgba(247,245,240,.72);padding:clamp(48px,7vh,88px) var(--pad) calc(36px + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(247,245,240,.10)}
+.sf-inner{width:100%;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.15fr 1fr 1.1fr;gap:clamp(32px,5vw,80px);align-items:start}
+@media(max-width:960px){.sf-inner{grid-template-columns:1fr 1fr}.sf-news{grid-column:1/-1;padding-top:36px;border-top:1px solid rgba(247,245,240,.10)}}
+@media(max-width:640px){.sf-inner{grid-template-columns:1fr}.sf-news{padding-top:0;border-top:0}}
+.sf-brand{font:300 clamp(30px,3.8vw,60px)/.95 var(--serif);font-variation-settings:"opsz" 144,"wght" 200;font-style:italic;color:var(--o);letter-spacing:-.04em;display:block}
+.sf-links{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
+.sf-group h4{font:500 10px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:rgba(247,245,240,.42);margin-bottom:20px}
+.sf-group ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.sf-group a{font:300 clamp(16px,1.5vw,20px)/1.2 var(--sans);color:rgba(247,245,240,.88);display:inline-flex;align-items:baseline;gap:10px;letter-spacing:.005em;transition:color .3s;padding-bottom:2px;border-bottom:1px solid rgba(247,245,240,.14);width:fit-content}
+.sf-group a:hover{color:var(--peach);border-color:var(--peach)}
+.sf-group a:before{content:"→";color:rgba(247,245,240,.35);font-size:.85em;transition:color .3s, transform .3s;display:inline-block}
+.sf-group a:hover:before{color:var(--peach);transform:translateX(3px)}
 
-/* crop marks in four corners */
-.flyer .cm{position:absolute;width:16px;height:16px;pointer-events:none;opacity:.36}
-.flyer .cm:before,.flyer .cm:after{content:"";position:absolute;background:#F7F5F0}
-.flyer .cm:before{width:100%;height:1px;top:0;left:0}
-.flyer .cm:after{width:1px;height:100%;top:0;left:0}
-.flyer .cm.tl{top:-8px;left:-8px}
-.flyer .cm.tr{top:-8px;right:-8px;transform:scaleX(-1)}
-.flyer .cm.bl{bottom:-8px;left:-8px;transform:scaleY(-1)}
-.flyer .cm.br{bottom:-8px;right:-8px;transform:scale(-1,-1)}
+.sf-social{display:flex;gap:10px;margin-top:22px}
+.sf-social-icon{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(247,245,240,.20);border-radius:50%;color:rgba(247,245,240,.72);cursor:default}
+.sf-social-icon svg{width:16px;height:16px}
 
-/* top bar */
-.f-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
-  padding:14px 0 16px;border-top:1px solid rgba(247,245,240,.28);
-  border-bottom:1px solid rgba(247,245,240,.14);
-  font:500 10px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;
-  color:rgba(247,245,240,.62);font-variant-numeric:tabular-nums}
-.f-top .f-top-r{display:flex;gap:26px;flex-wrap:wrap}
-.f-top .dot-sep{opacity:.4}
+.sf-news h4{font:500 10px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:rgba(247,245,240,.42);margin-bottom:20px}
+.sf-news p{font:italic 300 clamp(15px,1.3vw,17px)/1.5 var(--serif);color:rgba(247,245,240,.6);margin-bottom:18px;max-width:34ch}
+.sf-news form{display:flex;gap:8px;flex-wrap:wrap}
+.sf-news input{flex:1;min-width:0;padding:13px 18px;background:rgba(247,245,240,.05);border:1px solid rgba(247,245,240,.18);color:var(--o);font:400 14px/1 var(--sans);border-radius:99px;transition:border-color .3s,background .3s}
+.sf-news input::placeholder{color:rgba(247,245,240,.35)}
+.sf-news input:focus{outline:none;border-color:var(--peach);background:rgba(247,245,240,.08)}
+.sf-news button{padding:13px 24px;background:var(--honey);color:var(--o);border-radius:99px;font:500 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;transition:background .3s,transform .3s;cursor:pointer}
+.sf-news button:hover,.sf-news button:focus-visible{background:var(--peach);color:var(--ink);transform:translateY(-1px)}
+.sf-news .sf-msg{margin-top:14px;font:italic 300 13px/1.45 var(--serif);color:var(--peach);opacity:0;transition:opacity .4s;min-height:1.4em}
+.sf-news .sf-msg.on{opacity:1}
+.sf-news .sf-msg.err{color:#E8A6A0}
 
-/* body: side + main */
-.f-body{display:grid;grid-template-columns:34px 1fr;gap:clamp(28px,4.5vw,64px);
-  padding:clamp(42px,6vh,74px) 0 clamp(46px,6vh,80px);
-  border-bottom:1px solid rgba(247,245,240,.14)}
-.f-side{writing-mode:vertical-rl;transform:rotate(180deg);
-  align-self:stretch;display:flex;align-items:flex-end;
-  font:500 10px/1 var(--sans);letter-spacing:.36em;text-transform:uppercase;
-  color:rgba(247,245,240,.42);padding:6px 0}
-.f-side span{white-space:nowrap}
+.sf-bottom{width:100%;max-width:1280px;margin:clamp(40px,6vh,72px) auto 0;padding-top:clamp(22px,3vh,32px);border-top:1px solid rgba(247,245,240,.10);display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:center;font:400 10.5px/1.6 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(247,245,240,.4)}
+.sf-legal{display:flex;gap:22px;align-items:center}
+.sf-legal a{color:rgba(247,245,240,.5);transition:color .3s}
+.sf-legal a:hover{color:var(--peach)}
+.sf-powered{width:100%;max-width:1280px;margin:14px auto 0;text-align:center;font:400 9px/1.6 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(247,245,240,.3)}
+@media(max-width:640px){.sf-bottom{flex-direction:column;text-align:center;justify-content:center;gap:14px}.sf-legal{justify-content:center}}
 
-.f-main{position:relative}
-.f-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:clamp(28px,4vh,44px);
-  font:500 10px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;
-  color:rgba(247,245,240,.52)}
-.f-eyebrow:before{content:"";width:38px;height:1px;background:currentColor;opacity:.6}
-
-.f-title{font-family:var(--serif);font-variation-settings:"opsz" 144;
-  letter-spacing:-.05em;line-height:.86;margin-bottom:clamp(28px,4vh,48px)}
-.f-title .row{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
-.f-title .row i{display:inline-block;font-style:inherit;will-change:transform}
-.f-title .r1{font-size:clamp(28px,4vw,58px);font-weight:200;font-style:italic;
-  color:#EBCFC8;letter-spacing:-.03em}
-.f-title .r2{font-size:clamp(86px,17vw,280px);font-weight:230;
-  letter-spacing:-.055em}
-.f-title .r3{font-size:clamp(24px,3vw,42px);font-weight:200;font-style:italic;
-  color:rgba(247,245,240,.55);letter-spacing:-.02em;
-  padding-left:clamp(20px,3vw,58px)}
-.f-title .r4{font-size:clamp(86px,17vw,280px);font-weight:230;
-  letter-spacing:-.055em;position:relative}
-.f-title .r4 .period{color:#EBCFC8;font-style:italic;font-weight:200}
-
-.f-sub{font:italic 300 clamp(16px,1.5vw,21px)/1.45 var(--serif);
-  color:rgba(247,245,240,.72);max-width:34ch}
-
-/* rotating stamp — pinned to the right */
-.f-stamp{position:absolute;right:0;top:clamp(20px,4vh,50px);
-  width:clamp(96px,11vw,140px);height:clamp(96px,11vw,140px);
-  color:rgba(247,245,240,.72);pointer-events:none}
-.f-stamp svg{width:100%;height:100%;animation:stampSpin 42s linear infinite}
-@keyframes stampSpin{to{transform:rotate(360deg)}}
-.f-stamp .center{position:absolute;inset:0;display:grid;place-items:center;
-  font:italic 200 clamp(20px,2.4vw,32px)/1 var(--serif);
-  color:#EBCFC8;letter-spacing:-.02em}
-
-/* acts index */
-.f-acts{padding:clamp(40px,5.5vh,72px) 0 clamp(44px,6vh,76px);
-  border-bottom:1px solid rgba(247,245,240,.14)}
-.f-acts-head{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
-  font:500 10px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;
-  color:rgba(247,245,240,.52);margin-bottom:clamp(26px,3.5vh,42px)}
-.f-acts-head .num{font-variant-numeric:tabular-nums}
-.acts{list-style:none;display:flex;flex-direction:column}
-.acts li{display:grid;
-  grid-template-columns:56px minmax(0,1fr) minmax(0,1.15fr);
-  gap:clamp(16px,2.4vw,44px);align-items:baseline;
-  padding:16px 0;border-bottom:1px solid rgba(247,245,240,.09);
-  transition:padding-left .5s cubic-bezier(.16,1,.3,1),background .5s ease}
-.acts li:last-child{border-bottom:0}
-.acts li:hover{padding-left:12px}
-.acts .n{font:400 11px/1 var(--sans);letter-spacing:.22em;
-  color:rgba(247,245,240,.42);font-variant-numeric:tabular-nums}
-.acts .t{font:200 clamp(20px,2.1vw,30px)/1.1 var(--serif);
-  font-variation-settings:"opsz" 144;letter-spacing:-.02em;color:#F7F5F0}
-.acts .d{font:italic 300 clamp(14px,1.15vw,17px)/1.4 var(--serif);
-  color:rgba(247,245,240,.55)}
-
-/* info grid */
-.f-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:clamp(26px,4vw,56px);
-  padding:clamp(38px,5vh,66px) 0;border-bottom:1px solid rgba(247,245,240,.14)}
-.f-col .k{display:block;font:500 10px/1 var(--sans);letter-spacing:.34em;
-  text-transform:uppercase;color:rgba(247,245,240,.4);margin-bottom:14px}
-.f-col p{font:300 15px/1.55 var(--sans);color:rgba(247,245,240,.85);letter-spacing:.005em}
-.f-col em{font-style:italic;font-family:var(--serif);font-weight:300;
-  font-variation-settings:"opsz" 144;color:#EBCFC8;font-size:1.06em}
-.f-col a{border-bottom:1px solid rgba(247,245,240,.2);
-  transition:border-color .35s ease,color .35s ease}
-.f-col a:hover{border-color:#EBCFC8;color:#EBCFC8}
-
-/* bottom bar — legal + barcode */
-.f-foot{display:flex;justify-content:space-between;align-items:center;
-  gap:20px;flex-wrap:wrap;padding-top:clamp(24px,3vh,36px);
-  font:400 10px/1.5 var(--sans);letter-spacing:.28em;text-transform:uppercase;
-  color:rgba(247,245,240,.34)}
-.f-foot .pt{font-family:var(--serif);font-style:italic;font-weight:300;
-  font-variation-settings:"opsz" 144;
-  letter-spacing:.02em;text-transform:none;font-size:13px;
-  color:#EBCFC8;opacity:.92}
-.f-barcode{width:74px;height:22px;opacity:.7;
-  background:repeating-linear-gradient(to right,
-    #F7F5F0 0 1px,transparent 1px 2px,
-    #F7F5F0 2px 4px,transparent 4px 5px,
-    #F7F5F0 5px 6px,transparent 6px 8px,
-    #F7F5F0 8px 10px,transparent 10px 11px,
-    #F7F5F0 11px 12px,transparent 12px 14px)}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:fixed;top:-200px;left:var(--pad);z-index:100;padding:14px 24px;background:var(--o);color:var(--ink);border-radius:99px;font:500 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;transition:top .35s cubic-bezier(.16,1,.3,1)}
+.skip:focus{top:calc(18px + env(safe-area-inset-top,0px));outline:2px solid var(--honey);outline-offset:3px}
 
 @media(max-width:700px){
-  .f-body{grid-template-columns:1fr;gap:28px}
-  .f-side{writing-mode:horizontal-tb;transform:none;
-    padding-bottom:6px;border-bottom:1px solid rgba(247,245,240,.14)}
-  .f-stamp{position:static;margin:24px 0 0;
-    width:88px;height:88px}
-  .f-title .r3{padding-left:20px}
-  .acts li{grid-template-columns:40px 1fr;row-gap:6px}
-  .acts .d{grid-column:2;font-size:13.5px}
-  .f-foot{flex-direction:column;align-items:flex-start}
   .idea-p{margin:0;max-width:100%}
-  .note{flex-direction:column;gap:10px}
+  .idea-bg img{object-position:center 46%}
+  .note{max-width:100%}
   .p h3{font-size:clamp(40px,12.5vw,90px)}
+  .p h3.long{font-size:clamp(30px,8.6vw,70px)}
   nav div{gap:18px}
   .idea-foot{flex-direction:column;gap:8px}
   .endinner{padding-top:52vh;padding-bottom:20vh}
+  .sf-links{grid-template-columns:1fr 1fr}
+  .k{top:15vh;font-size:11px;letter-spacing:.34em;gap:14px}
+  .k:before,.k:after{flex:0 0 20px}
+  .p-img{top:19vh;width:min(30vh,74vw,360px)}
+  .p-img.rot{top:18vh;width:min(36vh,82vw,420px)}
+  .p-img.drink{top:17vh;width:min(42vh,88vw,500px)}
+  .p.poster .p-img img{object-position:center 42%}
+  .p.poster .p-copy{padding-bottom:2vh}
+  .mq{padding:clamp(20px,3vh,32px) 0}
 }
 @media(hover:none),(pointer:coarse){#cur{display:none}}
 
-/* ============ TEMP uploader ============ */
-#swapMp4{position:fixed;right:var(--pad);bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:40;
-  display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:99px;
-  background:rgba(20,18,16,.72);color:#F7F5F0;border:1px solid rgba(255,255,255,.28);
-  font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  box-shadow:0 10px 30px rgba(0,0,0,.35);transition:background .3s,border-color .3s,transform .3s}
-#swapMp4:hover{background:rgba(40,36,32,.9);border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
-#swapMp4 svg{width:13px;height:13px;flex:none}
-
-/* ============ HERO FILM ============ */
 .journey{position:relative;z-index:2;height:500vh;height:500svh;background:#0b0a09}
 .jstick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0b0a09;pointer-events:none}
-.jstick video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transform:translateZ(0);backface-visibility:hidden}
-.jveil{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(130% 100% at 50% 42%,rgba(0,0,0,0) 34%,rgba(6,5,8,.62) 100%),
-    linear-gradient(to bottom,rgba(6,5,8,.55),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 55%,rgba(6,5,8,.82))}
-.jtitle{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(12vh + env(safe-area-inset-bottom,0px));
-  color:#F7F5F0;text-shadow:0 4px 40px rgba(0,0,0,.55);pointer-events:none;will-change:opacity,transform;z-index:2}
-.jtitle-k{display:flex;align-items:center;gap:16px;font:500 11px/1 var(--sans);letter-spacing:.28em;
-  text-transform:uppercase;opacity:.78;margin-bottom:clamp(18px,3.5vh,36px)}
+.jstick img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;pointer-events:none;-webkit-user-drag:none;transform:translateZ(0) scale(1.02);backface-visibility:hidden;will-change:transform}
+.jveil{position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 100% at 50% 42%,rgba(0,0,0,0) 34%,rgba(6,5,8,.62) 100%),linear-gradient(to bottom,rgba(6,5,8,.55),rgba(0,0,0,0) 22%,rgba(0,0,0,0) 55%,rgba(6,5,8,.82))}
+.jtitle{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(12vh + env(safe-area-inset-bottom,0px));color:#F7F5F0;text-shadow:0 4px 40px rgba(0,0,0,.55);pointer-events:none;will-change:opacity,transform;z-index:2}
+.jtitle-k{display:flex;align-items:center;gap:16px;font:500 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;opacity:.78;margin-bottom:clamp(18px,3.5vh,36px)}
 .jtitle-k:before{content:"";width:44px;height:1px;background:currentColor;opacity:.7}
-.jtitle-h{font:200 clamp(64px,12.5vw,220px)/.9 var(--serif);
-  font-variation-settings:"opsz" 144,"wght" 180;font-style:italic;letter-spacing:-.055em;
-  margin-left:-.045em;padding-bottom:.08em}
-.jtitle-s{font:italic 300 clamp(15px,1.5vw,21px)/1.35 var(--serif);opacity:.82;
-  margin-top:clamp(14px,2vh,22px);max-width:26ch}
-.jhud{position:absolute;top:calc(84px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);
-  display:flex;justify-content:flex-end;font:500 12px/1 var(--sans);letter-spacing:.18em;
-  text-transform:uppercase;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55);font-variant-numeric:tabular-nums}
-.jprog{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(5vh + env(safe-area-inset-bottom,0px));
-  height:2px;background:rgba(255,255,255,.2);overflow:hidden}
+.jtitle-h{font:200 clamp(46px,10.5vw,180px)/.92 var(--serif);font-variation-settings:"opsz" 144,"wght" 180;font-style:italic;letter-spacing:-.055em;margin-left:-.045em;padding-bottom:.08em}
+.jtitle-s{font:italic 300 clamp(15px,1.5vw,21px)/1.35 var(--serif);opacity:.82;margin-top:clamp(14px,2vh,22px);max-width:34ch}
+/* hide hero copy at first paint so nothing flashes before GSAP takes over */
+.js .jtitle-k,.js .jtitle-h,.js .jtitle-s{opacity:0}
+.jprog{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(5vh + env(safe-area-inset-bottom,0px));height:2px;background:rgba(255,255,255,.2);overflow:hidden}
 .jprog b{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left;will-change:transform}
-@media(max-width:700px){.journey{height:440vh;height:440svh}
-  .jtitle-h{font-size:clamp(56px,15vw,120px)}}
+
+@media(max-width:700px){.journey{height:440vh;height:440svh}.jtitle-h{font-size:clamp(40px,12vw,110px)}}
 </style>
 </head>
 <body>
 
+<a class="skip" href="#top">Skip to content</a>
+
 <div id="cur" aria-hidden="true"></div>
 
-<label id="swapMp4" for="swapMp4Input" title="Temporary: swap the MP4 in hero &amp; footer">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M12 16V4M12 4l-4 4M12 4l4 4M4 20h16"/>
-  </svg>
-  <span>Test&nbsp;MP4</span>
-</label>
-<input id="swapMp4Input" type="file" accept="video/mp4,video/quicktime,video/*" hidden>
-
-<nav><a class="logo" href="#top">Bostan</a><div><a href="#menu">Menu</a></div></nav>
+<nav><a class="logo" href="#top">Hotel Bostan</a><div><a href="#menu" data-open-menu>Menu</a><a href="press-kit.html" target="_blank" rel="noopener">Press kit</a><a href="#book">Reserve</a></div></nav>
 <main id="top">
 
   <section class="journey" id="journey" data-t="dark">
     <div class="jstick">
-      <video id="heroVid" src="bost-hero.mp4" muted playsinline preload="auto"
-             disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+      <img id="heroImg" src="hero-bostan.png" alt="The room at Hotel Bostan — charcoal fires, brick and candlelight." fetchpriority="high" decoding="async">
       <div class="jveil" aria-hidden="true"></div>
       <div class="jtitle" id="jTitle" aria-hidden="true">
-        <div class="jtitle-k">Hotel &mdash; Est. 2024</div>
-        <div class="jtitle-h">Bostan</div>
-        <div class="jtitle-s">A garden table in the middle of Lisbon.</div>
+        <div class="jtitle-k">Jogeshwari West &mdash; Est. 1980</div>
+        <div class="jtitle-h">Hotel Bostan</div>
+        <div class="jtitle-s">Mughlai and North Indian, over charcoal and clay. A Halal kitchen where the fire is never rushed and the table is never ordinary.</div>
       </div>
-      <div class="jhud" aria-hidden="true"><span id="filmPct">00%</span></div>
       <div class="jprog" aria-hidden="true"><b id="filmBar"></b></div>
     </div>
   </section>
 
   <section class="idea" data-t="dark">
+    <div class="idea-bg" aria-hidden="true">
+      <img src="second-header.png" alt="" loading="eager" decoding="async">
+      <div class="idea-veil"></div>
+    </div>
     <div class="idea-inner">
-      <div class="idea-k"><span>The idea &mdash; 01</span></div>
-      <p class="idea-p" id="idea" aria-label="Bostan means garden. We cook what a garden gives, with fire, salt and patience, and serve it slowly.">
-        <span class="w w-it">Bostan</span><span class="w">means</span><span class="w w-it">garden.</span><span class="w">We</span><span class="w w-sans">Cook</span><span class="w">what</span><span class="w">a</span><span class="w w-it">garden</span><span class="w">gives,</span><span class="w">with</span><span class="w w-it">fire,</span><span class="w">salt</span><span class="w">and</span><span class="w w-it">patience,</span><span class="w">and</span><span class="w">serve</span><span class="w">it</span><span class="w w-it">slowly.</span>
+      <div class="idea-k"><span>The idea</span></div>
+      <p class="idea-p" id="idea" aria-label="Hotel Bostan — a Halal kitchen in Jogeshwari West. Where the fire is old and the welcome older still. Since 1980.">
+        <span class="w w-it">Hotel</span><span class="w w-it">Bostan</span><span class="w">&mdash;</span><span class="w">a</span><span class="w">Halal</span><span class="w">kitchen</span><span class="w">in</span><span class="w w-it">Jogeshwari</span><span class="w w-it">West.</span><span class="w">Where</span><span class="w">the</span><span class="w">fire</span><span class="w">is</span><span class="w w-it">old</span><span class="w">and</span><span class="w">the</span><span class="w">welcome</span><span class="w w-it">older</span><span class="w">still.</span><span class="w">Since</span><span class="w">1980.</span>
       </p>
       <div class="idea-foot">
-        <span>Est. 2024 &middot; Lisbon</span>
-        <span>38.7223&deg; N &middot; 9.1393&deg; W</span>
+        <span>Jogeshwari West &middot; Mumbai</span>
+        <span>19.1364&deg; N &middot; 72.8397&deg; E</span>
       </div>
     </div>
   </section>
 
-  <section class="mq" data-t="dark" aria-hidden="true"><div id="mq"><span>Hotel Bostan</span><span>Lisbon</span><span>Hotel Bostan</span><span>Lisbon</span></div></section>
+  <section class="mq" data-t="dark" aria-hidden="true"><div id="mq">
+    <span class="r">Charcoal</span><i class="mq-dot"></i>
+    <span>Salt</span><i class="mq-dot"></i>
+    <span>Patience</span><i class="mq-dot"></i>
+    <span class="c">Since 1980</span><i class="mq-dot"></i>
+    <span>Jogeshwari West</span><i class="mq-dot"></i>
+    <span class="c">Purely Halal</span><i class="mq-dot"></i>
+    <span class="r">Charcoal</span><i class="mq-dot"></i>
+    <span>Salt</span><i class="mq-dot"></i>
+    <span>Patience</span><i class="mq-dot"></i>
+    <span class="c">Since 1980</span><i class="mq-dot"></i>
+    <span>Jogeshwari West</span><i class="mq-dot"></i>
+    <span class="c">Purely Halal</span><i class="mq-dot"></i>
+  </div></section>
 
   <section class="menu" id="menu">
-    <div class="hud" aria-hidden="true"><span>The menu</span><span><span id="cn">01</span> / 18</span></div>
+    <div class="hud" aria-hidden="true"><span><span id="cn">01</span> / 06</span></div>
     <div class="track" id="track"></div>
     <div class="bar" aria-hidden="true"><b id="bar"></b></div>
   </section>
-  <section class="fx" id="garden" data-t="cream"><h2 class="big">Plant<br><i>something.</i></h2><p class="hint">Tap anywhere. Every guest leaves a flower on the table.</p></section>
-  <section class="fx" id="pour" data-t="pink">
-    <div class="k">Tonight's sip</div><h2 class="big">How does the<br>evening feel?</h2>
-    <div class="mood" role="group" aria-label="Mood"><button class="on" data-m="quiet">Quiet</button><button data-m="lively">Lively</button><button data-m="grand">Grand</button></div>
-    <div class="out"><div class="sf" id="po" style="font-size:clamp(28px,4vw,56px);line-height:1">Quiet</div><p id="pt"></p></div>
+
+  <section class="fx fire" id="fire" data-t="dark">
+    <div class="k">How it&rsquo;s made</div>
+    <h2 class="big">Everything<br><i>touches fire.</i></h2>
+    <p class="hint">Four fires, one kitchen. Each does one thing &mdash; and does it every day, without fail.</p>
+
+    <div class="fire-grid">
+      <div class="fire-item">
+        <span class="fi-n">01</span>
+        <h3 class="fi-t">Tandoor</h3>
+        <p class="fi-d">Clay oven at 480&deg;C. Breads, tikkas, and the smoke that gets under everything we serve.</p>
+      </div>
+      <div class="fire-item">
+        <span class="fi-n">02</span>
+        <h3 class="fi-t">Sigri</h3>
+        <p class="fi-d">Charcoal grill lit at three in the afternoon. Seekh, chops, the char you can smell from the street.</p>
+      </div>
+      <div class="fire-item">
+        <span class="fi-n">03</span>
+        <h3 class="fi-t">Handi</h3>
+        <p class="fi-d">Sealed clay pot, slow heat, four hours. Korma, nihari, gravies that taste of patience.</p>
+      </div>
+      <div class="fire-item">
+        <span class="fi-n">04</span>
+        <h3 class="fi-t">The pass</h3>
+        <p class="fi-d">Marble counter, one chef, forty covers. Every plate leaves this surface in under a minute.</p>
+      </div>
+    </div>
   </section>
+
   <section class="fx" id="stats" data-t="sage">
     <h2 class="big" style="margin-bottom:clamp(40px,8vh,90px)">In numbers,<br><i>slowly.</i></h2>
-    <div class="stats"><div><b class="n" data-n="18">0</b><span>plates, made to share</span></div><div><b class="n" data-n="6">0</b><span>nights a week, Tuesday to Sunday</span></div><div><b class="n" data-n="19">0</b><span>o'clock, when the embers are ready</span></div><div><b class="n" data-n="100">0</b><span>percent seasonal, always</span></div></div>
+    <div class="stats"><div><b class="n" data-n="24">0</b><span>plates, made to share</span></div><div><b class="n" data-n="7">0</b><span>days a week, every day</span></div><div><b class="n" data-n="12">0</b><span>o'clock, when the tandoor is lit</span></div><div><b class="n" data-n="100">0</b><span>percent Halal, always</span></div></div>
   </section>
+
   <section class="book" id="book" data-t="dark">
     <div>
-      <div class="pick"><div class="step"><button id="gm" aria-label="Fewer guests">&minus;</button><span id="sum" aria-live="polite"></span><button id="gp" aria-label="More guests">+</button></div>
-      <div class="chips" id="chips"><button>19:00</button><button class="on">20:00</button><button>21:00</button><button>22:00</button></div></div>
-      <a class="cta" href="mailto:reserve@hotelbostan.pt">Reserve a table &rarr;</a>
-    </div>
-    <div class="foot">
-      <div><span>Where</span>Hotel Bostan<br>Lisbon, Portugal</div>
-      <div><span>Open</span>Dinner, Tuesday to Sunday<br>From 19:00</div>
-      <div><span>Write</span>reserve@hotelbostan.pt</div>
-      <div><span>Lisbon now</span><b id="tm" style="font-weight:400"></b></div>
+      <div class="book-k">Reservations</div>
+      <p class="book-note">Open every day, 12:00&ndash;23:30. Tables for one to twelve.</p>
+      <a class="cta" href="mailto:reserve@hotelbostan.in" id="openBook">Reserve a table &rarr;</a>
     </div>
   </section>
 
   <section class="endfilm" id="endfilm" data-t="dark">
     <div class="endbg">
-      <video id="endVid" src="bost-hero.mp4" muted playsinline loop preload="auto"
-             disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+      <img id="footImg" src="bost-footer.png" alt="The room at Hotel Bostan — candlelight, brick, and the long table after service." loading="lazy" decoding="async">
       <div class="endveil" aria-hidden="true"></div>
       <div class="endhud" aria-hidden="true">
-        <span>The end &mdash; Lisbon</span>
+        <span>Visit &mdash; Mumbai</span>
         <span>Hotel Bostan</span>
       </div>
     </div>
     <div class="endinner">
       <div class="credits">
-        <div class="credits-k">Cast &amp; credits</div>
-        <div class="credit"><span class="c-role">The fire</span><span class="c-name">burning since four</span></div>
-        <div class="credit"><span class="c-role">The gardener</span><span class="c-name">unseen, essential</span></div>
-        <div class="credit"><span class="c-role">The sommelier</span><span class="c-name">quiet, always right</span></div>
-        <div class="credit"><span class="c-role">You</span><span class="c-name">welcome back</span></div>
-        <div class="credit-meta">Shot on location in Lisbon, Portugal<br>No reservations after midnight</div>
+        <div class="credits-k">The details &mdash; plan your visit</div>
+
+        <div class="credit">
+          <span class="c-role">Hours</span>
+          <span class="c-name">Every day<br>12:00 &ndash; 23:30</span>
+        </div>
+
+        <div class="credit">
+          <span class="c-role">Find us</span>
+          <span class="c-name">Swami Vivekanand Rd, opp. Hanjer Cinema Hall<br>Momin Nagar, Jogeshwari West<br>Mumbai, Maharashtra 400102<br><a href="https://maps.google.com/?q=Swami+Vivekanand+Rd,+opp.+Hanjer+Cinema+Hall,+Momin+Nagar,+Jogeshwari+West,+Mumbai,+Maharashtra+400102" target="_blank" rel="noopener">Get directions &rarr;</a></span>
+        </div>
+
+        <div class="credit">
+          <span class="c-role">Reservations</span>
+          <span class="c-name"><a href="mailto:reserve@hotelbostan.in">reserve@hotelbostan.in</a><br><a href="tel:+916350362925">+91 6350 362 925</a></span>
+        </div>
+
+        <div class="credit">
+          <span class="c-role">Private dining</span>
+          <span class="c-name">The Alcove &mdash; 12 seats<br><a href="mailto:alcove@hotelbostan.in">alcove@hotelbostan.in</a></span>
+        </div>
+
+        <div class="credit-meta">
+          <div class="cm-row"><span class="cm-k">Kitchen</span><span class="cm-v">Purely Halal &middot; No alcohol</span></div>
+          <div class="cm-row"><span class="cm-k">Reservations</span><span class="cm-v">Recommended &middot; essential on weekends</span></div>
+          <div class="cm-row"><span class="cm-k">Payment</span><span class="cm-v">Cash &middot; Card &middot; UPI</span></div>
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- ==================== EXHIBITION FLYER ==================== -->
-  <section class="closing" id="closing" data-t="dark">
-    <div class="flyer">
-
-      <span class="cm tl" aria-hidden="true"></span>
-      <span class="cm tr" aria-hidden="true"></span>
-      <span class="cm bl" aria-hidden="true"></span>
-      <span class="cm br" aria-hidden="true"></span>
-
-      <!-- top bar -->
-      <div class="f-top">
-        <span>Exh. 001 / Hotel Bostan</span>
-        <span class="f-top-r">
-          <span>Lisboa</span>
-          <span class="dot-sep">&middot;</span>
-          <span>MMXXIV</span>
-          <span class="dot-sep">&middot;</span>
-          <span>Ongoing</span>
-        </span>
-      </div>
-
-      <!-- body: side + main -->
-      <div class="f-body">
-        <div class="f-side" aria-hidden="true">
-          <span>An ongoing exhibition in six acts</span>
-        </div>
-
-        <div class="f-main">
-          <div class="f-eyebrow"><span>A garden table, in the middle of Lisbon</span></div>
-
-          <h2 class="f-title" id="flyerTitle" aria-label="The Table is the Exhibition.">
-            <span class="row r1"><i>The</i></span>
-            <span class="row r2"><i>Table</i></span>
-            <span class="row r3"><i>is the</i></span>
-            <span class="row r4"><i>Exhibition<span class="period">.</span></i></span>
-          </h2>
-
-          <p class="f-sub">Six acts, served nightly from seven.<br>Every plate leaves the pass in under a minute. The rest is up to you.</p>
-
-          <div class="f-stamp" aria-hidden="true">
-            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <path id="stampPath" d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
-              </defs>
-              <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(247,245,240,.28)" stroke-width="0.7"/>
-              <circle cx="60" cy="60" r="38" fill="none" stroke="rgba(247,245,240,.18)" stroke-width="0.7"/>
-              <text font-family="'Instrument Sans',sans-serif" font-size="7.6" letter-spacing="3.6" fill="rgba(247,245,240,.72)" font-weight="500">
-                <textPath href="#stampPath" startOffset="0">ONGOING · ONGOING · ONGOING · ONGOING · </textPath>
-              </text>
-            </svg>
-            <span class="center">MMXXIV</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- index of works -->
-      <div class="f-acts">
-        <div class="f-acts-head">
-          <span>Index of works &mdash; six acts, served nightly</span>
-          <span class="num">01 / 06</span>
-        </div>
-        <ul class="acts" id="actsList">
-          <li>
-            <span class="n">01</span>
-            <span class="t">The Threshold</span>
-            <span class="d">Nine steps off a Lisbon street, and the city falls away behind you.</span>
-          </li>
-          <li>
-            <span class="n">02</span>
-            <span class="t">The Vault</span>
-            <span class="d">A barrel vault runs the length of the room. Eleven metres of it, lit by candle and brass.</span>
-          </li>
-          <li>
-            <span class="n">03</span>
-            <span class="t">The Cellar</span>
-            <span class="d">Two hundred colours on one wall. Poured by the glass, chosen by the kitchen.</span>
-          </li>
-          <li>
-            <span class="n">04</span>
-            <span class="t">The Alcove</span>
-            <span class="d">One table, twelve seats, an arch, and a door that closes.</span>
-          </li>
-          <li>
-            <span class="n">05</span>
-            <span class="t">The Pass</span>
-            <span class="d">Forty covers, one counter. Every plate leaves this marble in under a minute.</span>
-          </li>
-          <li>
-            <span class="n">06</span>
-            <span class="t">The Hearth</span>
-            <span class="d">It ends at the fire. Then the garden, then the quiet, then the walk home.</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- info grid -->
-      <div class="f-info">
-        <div class="f-col">
-          <span class="k">When</span>
-          <p>Tuesday &mdash; Sunday<br><em>Seven until late</em></p>
-        </div>
-        <div class="f-col">
-          <span class="k">Where</span>
-          <p>Rua da Bostan, 9<br>1200&ndash;109 Lisboa, Portugal</p>
-        </div>
-        <div class="f-col">
-          <span class="k">Entry</span>
-          <p>By reservation only<br><a href="mailto:reserve@hotelbostan.pt">reserve@hotelbostan.pt</a></p>
-        </div>
-        <div class="f-col">
-          <span class="k">Curated by</span>
-          <p>Chef Rui &amp; team<br><em>quietly, since four</em></p>
-        </div>
-      </div>
-
-      <!-- bottom bar -->
-      <div class="f-foot">
-        <span>&copy; MMXXIV Hotel Bostan</span>
-        <span class="pt">N&atilde;o se apresse.</span>
-        <span class="f-barcode" aria-hidden="true"></span>
-      </div>
-
-    </div>
-  </section>
-  <!-- ======================================================= -->
 
 </main>
+
+<button class="fm-close" id="fmClose" type="button" aria-label="Close menu">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M6 6l12 12M18 6L6 18"/>
+  </svg>
+  Close
+</button>
+
+<section class="fullmenu" id="fullmenu" aria-label="Full menu" aria-hidden="true" data-lenis-prevent>
+  <div class="fm-inner">
+    <div class="fm-logo">
+      <img src="logo.png" alt="Hotel Bostan" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+      <span class="fm-logo-fallback">Hotel Bostan</span>
+    </div>
+
+    <div class="fm-card">
+      <div class="fm-tabs" role="tablist" aria-label="Menu categories">
+        <button class="fm-tab on" role="tab" aria-selected="true" data-filter="all">All</button>
+        <button class="fm-tab" role="tab" aria-selected="false" data-filter="openers">Openers</button>
+        <button class="fm-tab" role="tab" aria-selected="false" data-filter="starters">Starters</button>
+        <button class="fm-tab" role="tab" aria-selected="false" data-filter="mains">Mains</button>
+        <button class="fm-tab" role="tab" aria-selected="false" data-filter="chinese">Chinese</button>
+        <button class="fm-tab" role="tab" aria-selected="false" data-filter="sweet">Sweet</button>
+        <button class="fm-tab" role="tab" aria-selected="false" data-filter="coolers">Coolers</button>
+      </div>
+      <div class="fm-hero">
+        <img src="bost-hero.jpg" alt="The table at Hotel Bostan — candlelight, brick and the long table." loading="lazy">
+      </div>
+      <div class="fm-key">
+        <span class="fm-kitem"><i class="fm-kdot sage"></i>Vegetarian</span>
+        <span class="fm-kitem"><i class="fm-kdot pink"></i>Signature</span>
+      </div>
+
+      <section class="fm-section" data-tab="openers">
+        <h3 class="fm-heading">Openers</h3>
+        <div class="fm-grid">
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Paya Soup</span><span class="fm-dleader"></span><span class="fm-dprice">₹260</span></div><p class="fm-ddesc">Slow-simmered trotters, a Mughlai classic. Served with butter naan.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Manchow Soup</span><span class="fm-dleader"></span><span class="fm-dprice">₹190</span></div><p class="fm-ddesc">Sichuan in a Mughlai house. Noodles, chicken, a whisper of heat.</p></div>
+        </div>
+      </section>
+
+      <section class="fm-section" data-tab="starters">
+        <h3 class="fm-heading">Starters</h3>
+        <div class="fm-grid">
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹280</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Six pieces, tandoor-kissed, smoke still rising.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Hot Honey Chicken Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹310</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Kashmiri chilli honey glaze on tandoor-charred tikka. Sweet, spicy, sticky.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Paneer Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹300</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Six pieces, charred, bright with spices. The vegetarian anchor.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Seekh Kabab</span><span class="fm-dleader"></span><span class="fm-dprice">₹250</span></div><p class="fm-ddesc">Minced, spiced, grilled on skewers. Six pieces to a plate.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Champaran Mutton Seekh</span><span class="fm-dleader"></span><span class="fm-dprice">₹340</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Bihar&rsquo;s legendary Champaran style. Slow-cooked, hand-pressed, finished on the grill.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Gunpowder Chicken 65</span><span class="fm-dleader"></span><span class="fm-dprice">₹290</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Andhra gunpowder tossed with crispy Chicken 65. Crunchy, fiery, made for sharing.</p></div>
+        </div>
+      </section>
+
+      <section class="fm-section" data-tab="signature">
+        <h3 class="fm-heading">Signature</h3>
+        <div class="fm-grid">
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Special Bostan</span><span class="fm-dleader"></span><span class="fm-dprice">₹340</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Red gravy, seekh kabab, the house hero. The dish that has led our table since 1980.</p></div>
+        </div>
+      </section>
+
+      <section class="fm-section" data-tab="mains">
+        <h3 class="fm-heading">Mains</h3>
+        <div class="fm-grid">
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Butter Chicken</span><span class="fm-dleader"></span><span class="fm-dprice">₹300</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Shahi red gravy, the classic. Our most-ordered main.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Truffle Butter Chicken</span><span class="fm-dleader"></span><span class="fm-dprice">₹380</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>The classic, finished with truffle oil. Familiar dish, luxury upgrade.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka Masala</span><span class="fm-dleader"></span><span class="fm-dprice">₹290</span></div><p class="fm-ddesc">Boneless tikka in red gravy.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Dilli-6 Murgh Korma</span><span class="fm-dleader"></span><span class="fm-dprice">₹320</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Awadhi korma reimagined: cashew-almond base, rose water finish, tender chicken.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Afghani Boneless</span><span class="fm-dleader"></span><span class="fm-dprice">₹280</span></div><p class="fm-ddesc">Creamy, mild, boneless. The white-gravy hero.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Kheema</span><span class="fm-dleader"></span><span class="fm-dprice">₹270</span></div><p class="fm-ddesc">Minced, spiced, slow-cooked.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Kolhapuri</span><span class="fm-dleader"></span><span class="fm-dprice">₹310</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Spicy, bold. The heat gap in our menu, filled.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mutton Rogan Josh</span><span class="fm-dleader"></span><span class="fm-dprice">₹290</span></div><p class="fm-ddesc">Kashmiri classic, slow-cooked.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mutton Bhuna</span><span class="fm-dleader"></span><span class="fm-dprice">₹440</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Slow-roasted, deeply spiced. The highest-margin mutton on the menu.</p></div>
+        </div>
+      </section>
+
+      <section class="fm-section" data-tab="chinese">
+        <h3 class="fm-heading">Chinese</h3>
+        <div class="fm-grid">
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Lollipop</span><span class="fm-dleader"></span><span class="fm-dprice">₹260</span></div><p class="fm-ddesc">Frenched wings, fried until crisp.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Crispy</span><span class="fm-dleader"></span><span class="fm-dprice">₹340</span></div><p class="fm-ddesc">Golden, crunchy, 500ml.</p></div>
+        </div>
+      </section>
+
+      <section class="fm-section" data-tab="rice">
+        <h3 class="fm-heading">Rice &amp; Bread</h3>
+        <div class="fm-grid">
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka Biryani</span><span class="fm-dleader"></span><span class="fm-dprice">₹320</span></div><p class="fm-ddesc">Layered with charred tikka.</p></div>
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Butter Naan</span><span class="fm-dleader"></span><span class="fm-dprice">₹90</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Essential for gravy dishes.</p></div>
+        </div>
+      </section>
+
+      <section class="fm-section" data-tab="sweet">
+        <h3 class="fm-heading">Sweet</h3>
+        <div class="fm-grid">
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Caramel Custard</span><span class="fm-dleader"></span><span class="fm-dprice">₹190</span></div><p class="fm-ddesc">Mumbai&rsquo;s oldest love song, sweetened with petals.</p></div>
+        </div>
+      </section>
+
+      <section class="fm-section" data-tab="coolers">
+        <h3 class="fm-heading">Coolers</h3>
+        <div class="fm-grid">
+          <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Bostan Matcha</span><span class="fm-dleader"></span><span class="fm-dprice">₹240</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.</p></div>
+        </div>
+      </section>
+
+      <div class="fm-fine">
+        <p>All prices are exclusive of applicable taxes. A discretionary 10% service charge will be added to your bill.</p>
+        <p>Our kitchen is purely Halal &mdash; we do not serve alcohol or pork. Vegetarian, Jain &amp; allergen menus available on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- booking modal -->
+<div class="bookmodal" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="bmTitle" aria-hidden="true">
+  <div class="bm-card" role="document">
+    <button class="bm-x" id="bmClose" type="button" aria-label="Close reservation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      Close
+    </button>
+
+    <div class="bm-head">
+      <span class="bm-k">Reservations</span>
+      <h2 class="bm-title" id="bmTitle">Choose a day</h2>
+      <p class="bm-lede">Pick a day, a time, and how many of you are coming.</p>
+    </div>
+
+    <div class="bm-grid">
+      <div class="bm-cal">
+        <div class="bm-calhead">
+          <span class="bm-month" id="bmMonth"></span>
+          <span class="bm-nav">
+            <button type="button" id="bmPrev" aria-label="Previous month">&#8592;</button>
+            <button type="button" id="bmNext" aria-label="Next month">&#8594;</button>
+          </span>
+        </div>
+        <div class="bm-dow" aria-hidden="true"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
+        <div class="bm-days" id="bmDays"></div>
+      </div>
+
+      <div class="bm-side">
+        <div class="bm-field">
+          <span class="bm-label">Guests</span>
+          <div class="bm-stepper">
+            <button type="button" id="bmMinus" aria-label="Fewer guests">&minus;</button>
+            <span id="bmGuests" aria-live="polite">2</span>
+            <button type="button" id="bmPlus" aria-label="More guests">+</button>
+          </div>
+        </div>
+
+        <div class="bm-field">
+          <span class="bm-label">Time</span>
+          <div class="bm-chips" id="bmTimes" role="group" aria-label="Choose a time"></div>
+        </div>
+
+        <p class="bm-summary" id="bmSummary" aria-live="polite"></p>
+        <button type="button" class="bm-go" id="bmGo">Confirm reservation</button>
+        <p class="bm-note">We&rsquo;ll open your mail app with the details ready to send.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="sf-inner">
+    <div>
+      <a href="#top" class="sf-brand">Hotel Bostan</a>
+      <div class="sf-social">
+        <span class="sf-social-icon" role="img" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="sf-social-icon" role="img" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.7-1.6h1.5V4.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.7H7.5V14h2.8v8h3.2z"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+
+    <div class="sf-links">
+      <div class="sf-group">
+        <h4>The Table</h4>
+        <ul>
+          <li><a href="#menu" data-open-menu>Menu</a></li>
+          <li><a href="#book" data-open-book>Reserve</a></li>
+          <li><a href="mailto:alcove@hotelbostan.in">Private dining</a></li>
+        </ul>
+      </div>
+      <div class="sf-group">
+        <h4>The House</h4>
+        <ul>
+          <li><a href="mailto:reserve@hotelbostan.in">Contact</a></li>
+          <li><a href="#endfilm">Visit</a></li>
+          <li><a href="https://maps.google.com/?q=Swami+Vivekanand+Rd,+opp.+Hanjer+Cinema+Hall,+Momin+Nagar,+Jogeshwari+West,+Mumbai,+Maharashtra+400102" target="_blank" rel="noopener">Directions</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sf-news">
+      <h4>Stay in touch</h4>
+      <p>Seasonal menus, harvest suppers, and the occasional table held back for friends of the house.</p>
+      <form id="newsForm" novalidate>
+        <label for="newsEmail" class="visually-hidden">Email address</label>
+        <input id="newsEmail" type="email" name="email" placeholder="your@email.in" autocomplete="email" required>
+        <button type="submit">Join</button>
+      </form>
+      <p class="sf-msg" id="newsMsg" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div class="sf-bottom">
+    <span>&copy; Hotel Bostan &middot; Est. 1980 &middot; Mumbai &middot; <a href="tel:+916350362925" style="color:inherit;border-bottom:1px solid rgba(247,245,240,.22)">+91 6350 362 925</a></span>
+    <div class="sf-legal">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/allergens">Allergens</a>
+    </div>
+  </div>
+
+  <div class="sf-powered">Powered by Santinopole.</div>
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -541,7 +778,162 @@ var lenis=null;if(!reduce&&typeof Lenis!=='undefined'){lenis=new Lenis({lerp:.08
 $$('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var el=$(a.getAttribute('href'));if(!el)return;e.preventDefault();if(lenis)lenis.scrollTo(el,{duration:2.4,easing:function(x){return x===1?1:1-Math.pow(2,-10*x)}});else el.scrollIntoView()})});
 function mask(el){var t=el.textContent;el.setAttribute('aria-label',t);el.textContent='';return t.split(' ').map(function(w,i,a){var m=document.createElement('span'),s=document.createElement('i');m.className='mk';m.setAttribute('aria-hidden','true');s.textContent=w;m.appendChild(s);el.appendChild(m);if(i<a.length-1)el.appendChild(document.createTextNode(' '));return s})}
 
-var C='#252725',O='#F7F5F0',IV='#F4EDD8',SG='#A3B58F',PK='#EBCFC8',T={dark:[C,O],cream:[IV,C],sage:[SG,C],pink:[PK,C],offw:[O,C]},cur='';
+/* shared scroll lock so overlays never fight each other */
+var lock={y:0,on:function(){this.y=window.scrollY||window.pageYOffset||0;document.body.style.position='fixed';document.body.style.top=(-this.y)+'px';document.body.style.left='0';document.body.style.right='0';document.body.style.width='100%';document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';if(lenis&&typeof lenis.stop==='function')lenis.stop();},off:function(){document.body.style.position='';document.body.style.top='';document.body.style.left='';document.body.style.right='';document.body.style.width='';document.body.style.overflow='';document.documentElement.style.overflow='';window.scrollTo(0,this.y);if(lenis&&typeof lenis.start==='function')lenis.start();}};
+
+(function fullMenu(){
+  var overlay=document.getElementById('fullmenu');
+  var closeBtn=document.getElementById('fmClose');
+  var openers=document.querySelectorAll('[data-open-menu]');
+  var isOpen=false;
+  function openMenu(e){
+    if(e) e.preventDefault();
+    if(isOpen) return;isOpen=true;
+    lock.on();
+    overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');
+    closeBtn.classList.add('visible');overlay.scrollTop=0;
+    setTimeout(function(){closeBtn.focus();},100);
+  }
+  function closeMenu(){
+    if(!isOpen) return;isOpen=false;
+    lock.off();
+    overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');closeBtn.classList.remove('visible');
+  }
+  openers.forEach(function(b){b.addEventListener('click',openMenu);});
+  closeBtn.addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeMenu();});
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeMenu();});
+  var tabMap={all:['openers','starters','signature','mains','chinese','rice','sweet','coolers'],openers:['openers'],starters:['starters','signature'],mains:['mains','chinese','rice'],chinese:['chinese'],sweet:['sweet'],coolers:['coolers']};
+  function applyFilter(key){var allowed=tabMap[key]||tabMap.all;document.querySelectorAll('.fm-section').forEach(function(s){var tab=s.getAttribute('data-tab')||'';s.style.display=(key==='all'||allowed.indexOf(tab)!==-1)?'':'none';});overlay.scrollTop=0;}
+  var tabs=document.querySelectorAll('.fm-tab');
+  tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false');});t.classList.add('on');t.setAttribute('aria-selected','true');applyFilter(t.getAttribute('data-filter')||'all');});});
+})();
+
+/* reservation modal — calendar, time, guests */
+(function booking(){
+  var modal=document.getElementById('bookModal');
+  if(!modal) return;
+  var openLink=document.getElementById('openBook'),
+      closeBtn=document.getElementById('bmClose'),
+      monthEl=document.getElementById('bmMonth'),
+      daysEl=document.getElementById('bmDays'),
+      prevBtn=document.getElementById('bmPrev'),
+      nextBtn=document.getElementById('bmNext'),
+      timesEl=document.getElementById('bmTimes'),
+      guestsEl=document.getElementById('bmGuests'),
+      minusBtn=document.getElementById('bmMinus'),
+      plusBtn=document.getElementById('bmPlus'),
+      sumEl=document.getElementById('bmSummary'),
+      goBtn=document.getElementById('bmGo');
+
+  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DOW=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var MON3=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var TIMES=['12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30'];
+
+  var today=new Date();today.setHours(0,0,0,0);
+  var maxDate=new Date(today.getTime());maxDate.setDate(maxDate.getDate()+90);
+  var view=new Date(today.getFullYear(),today.getMonth(),1);
+  var sel=new Date(today.getTime());
+  var guests=2,time='13:00',isOpen=false;
+
+  function sameDay(a,b){return !!a&&!!b&&a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();}
+  function fmtLong(d){return DOW[d.getDay()]+', '+d.getDate()+' '+MON3[d.getMonth()];}
+  function slotDisabled(t){
+    if(!sel) return true;
+    if(!sameDay(sel,today)) return false;
+    var now=new Date(),p=t.split(':');
+    var slot=new Date(now.getFullYear(),now.getMonth(),now.getDate(),+p[0],+p[1],0,0);
+    return slot<=now;
+  }
+
+  function renderCal(){
+    var y=view.getFullYear(),m=view.getMonth();
+    monthEl.textContent=MON[m]+' '+y;
+    var first=new Date(y,m,1).getDay(),dim=new Date(y,m+1,0).getDate();
+    var frag=document.createDocumentFragment();
+    for(var i=0;i<first;i++){var e=document.createElement('span');e.className='bm-day empty';frag.appendChild(e);}
+    for(var d=1;d<=dim;d++){
+      var date=new Date(y,m,d);
+      var b=document.createElement('button');
+      b.type='button';b.className='bm-day';b.textContent=d;b.dataset.day=d;
+      if(date<today||date>maxDate) b.disabled=true;
+      if(sameDay(date,sel)) b.classList.add('on');
+      frag.appendChild(b);
+    }
+    daysEl.innerHTML='';daysEl.appendChild(frag);
+    prevBtn.disabled=(y===today.getFullYear()&&m===today.getMonth());
+    nextBtn.disabled=(y>maxDate.getFullYear())||(y===maxDate.getFullYear()&&m>=maxDate.getMonth());
+  }
+
+  function renderTimes(){
+    var avail=[];
+    TIMES.forEach(function(t){if(!slotDisabled(t))avail.push(t);});
+    if(avail.indexOf(time)===-1) time=avail[0]||TIMES[0];
+    timesEl.innerHTML='';
+    TIMES.forEach(function(t){
+      var b=document.createElement('button');
+      b.type='button';b.textContent=t;b.dataset.time=t;
+      if(slotDisabled(t)) b.disabled=true;
+      if(t===time) b.classList.add('on');
+      timesEl.appendChild(b);
+    });
+  }
+
+  function renderSummary(){sumEl.textContent='Table for '+guests+' \u00b7 '+fmtLong(sel)+' \u00b7 '+time;}
+  function renderAll(){renderCal();renderTimes();renderSummary();}
+
+  daysEl.addEventListener('click',function(e){
+    var b=e.target.closest('.bm-day');
+    if(!b||b.disabled||!b.dataset.day) return;
+    sel=new Date(view.getFullYear(),view.getMonth(),+b.dataset.day);
+    renderAll();
+  });
+  timesEl.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-time]');
+    if(!b||b.disabled) return;
+    time=b.dataset.time;renderTimes();renderSummary();
+  });
+  prevBtn.addEventListener('click',function(){view.setMonth(view.getMonth()-1);renderCal();});
+  nextBtn.addEventListener('click',function(){view.setMonth(view.getMonth()+1);renderCal();});
+  minusBtn.addEventListener('click',function(){guests=Math.max(1,guests-1);guestsEl.textContent=guests;renderSummary();});
+  plusBtn.addEventListener('click',function(){guests=Math.min(12,guests+1);guestsEl.textContent=guests;renderSummary();});
+
+  goBtn.addEventListener('click',function(){
+    var subject='Table for '+guests+' \u2014 '+fmtLong(sel)+' at '+time;
+    var body='Name:\nPhone:\nDate: '+fmtLong(sel)+'\nTime: '+time+'\nGuests: '+guests+'\nNotes:';
+    window.location.href='mailto:reserve@hotelbostan.in?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    goBtn.textContent='Opening your mail app\u2026';
+    setTimeout(function(){goBtn.textContent='Confirm reservation';},2600);
+  });
+
+  function openBook(e){
+    if(e) e.preventDefault();
+    if(isOpen) return;isOpen=true;
+    lock.on();
+    modal.classList.add('open');modal.setAttribute('aria-hidden','false');
+    renderAll();
+    setTimeout(function(){closeBtn.focus();},80);
+  }
+  function closeBook(){
+    if(!isOpen) return;isOpen=false;
+    lock.off();
+    modal.classList.remove('open');modal.setAttribute('aria-hidden','true');
+    if(openLink) openLink.focus();
+  }
+  if(openLink) openLink.addEventListener('click',openBook);
+  $$('[data-open-book]').forEach(function(a){a.addEventListener('click',openBook);});
+  closeBtn.addEventListener('click',closeBook);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeBook();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeBook();});
+})();
+
+/* theme palette */
+var C='#1A1A1A',O='#F7F5F0',
+    IV='#F4EDD8',
+    SG='#A3B58F',
+    PK='#EBCFC8',
+    T={dark:[C,O],cream:[IV,'#252725'],sage:[SG,'#252725'],pink:[PK,'#252725'],offw:[O,'#252725']},cur='';
 function theme(n){if(n===cur)return;cur=n;gsap.to('body',{backgroundColor:T[n][0],color:T[n][1],duration:1,ease:'power3.inOut',overwrite:true})}
 
 var dot=$('#cur');
@@ -553,179 +945,215 @@ if(fine&&!reduce){
 addEventListener('resize',function(){ScrollTrigger.refresh()});
 $$('section[data-t]').forEach(function(s){ScrollTrigger.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:function(x){if(x.isActive)theme(s.dataset.t)}})});
 
-/* IDEA — kinetic variable weight */
-(function(){
-  var words=$$('#idea .w');if(!words.length) return;
-  ScrollTrigger.create({trigger:'.idea',start:'top 88%',end:'top 18%',scrub:.5,
-    onUpdate:function(self){
-      var pr=self.progress;
-      words.forEach(function(w,i){
-        var local=Math.max(0,Math.min(1, pr*1.9 - i*0.07));
-        var w0=(i===0)?100:150, w1=(i===0)?640:520;
-        if(!w.classList.contains('w-sans')) w.style.fontVariationSettings='"opsz" 144,"wght" '+Math.round(w0+local*(w1-w0));
-        w.style.opacity=(0.16+local*0.84).toFixed(3);
-      });
-    }});
+(function(){var words=$$('#idea .w');if(!words.length) return;ScrollTrigger.create({trigger:'.idea',start:'top 88%',end:'top 22%',scrub:.5,onUpdate:function(self){var pr=self.progress;words.forEach(function(w,i){var local=Math.max(0,Math.min(1, pr*2.1 - i*0.06));if(!w.classList.contains('w-sans')){var target=w.classList.contains('w-it')?470:360;w.style.fontVariationSettings='"opsz" 144,"wght" '+Math.round(260+local*(target-260));}w.style.opacity=(0.14+local*0.86).toFixed(3);});}});})();
+
+/* second hero — the dish image settles gently on scroll */
+(function secondHero(){
+  var img=document.querySelector('.idea-bg img');
+  if(!img||reduce) return;
+  gsap.fromTo(img,{scale:1.12},{scale:1.03,ease:'none',scrollTrigger:{trigger:'.idea',start:'top bottom',end:'bottom top',scrub:true}});
 })();
 
-var mq=gsap.to('#mq',{xPercent:-50,ease:'none',duration:30,repeat:-1}),sk=gsap.quickSetter('#mq','skewX','deg');
-ScrollTrigger.create({onUpdate:function(s){var v=gsap.utils.clamp(-12,12,s.getVelocity()/-120);sk(v);gsap.to(mq,{timeScale:s.direction*(1+Math.abs(v)*.8),duration:.4,overwrite:true})}});
+/* quiet editorial band — slow drift, subtle skew on scroll velocity */
+var mq=gsap.to('#mq',{xPercent:-50,ease:'none',duration:55,repeat:-1}),sk=gsap.quickSetter('#mq','skewX','deg');
+ScrollTrigger.create({onUpdate:function(s){var v=gsap.utils.clamp(-6,6,s.getVelocity()/-260);sk(v);gsap.to(mq,{timeScale:s.direction*(1+Math.abs(v)*.6),duration:.5,overwrite:true})}});
 
-var D=[['Raw','Cured sea bass, pomegranate','Cold as a first glance, bright as pomegranate in morning light.',19,'cream'],
-['Raw','Heirloom tomato, fig leaf','Sun-warmed secrets of the garden, whispered in fig-leaf oil.',14,'sage'],
-['Raw','Oyster, cucumber, lime leaf','A tide in a shell, cooled with green water and a whisper of lime.',12,'pink'],
-['Raw','Scallop crudo, citrus, dill','Sweet as the first warm day, sharpened by sunlit citrus.',18,'offw'],
-['Garden','Charred carrots, labneh','Kissed by ember, softened with cloud-white labneh.',13,'sage'],
-['Garden','Baby leeks, romesco','Tender things, held close by smoke and hazelnut.',14,'cream'],
-['Garden','Fava beans, mint, sheep cheese','Spring in a bowl, folded with cool mint and a pinch of salt.',12,'pink'],
-['Garden','Roasted beetroot, goat curd','Deep as a secret, softened by something cloud-light.',13,'sage'],
-['Sea','Grilled octopus, smoked paprika','The Atlantic\'s slow embrace, finished over open flame.',24,'offw'],
-['Sea','Clams, coriander, coastal broth','Pulled from the cold, steamed in green herbs and moonlight.',19,'cream'],
-['Sea','Sardine, tomato, grilled bread','Summer on a plate, fast and unashamed.',14,'sage'],
-['Fire','Black rice, cuttlefish','Midnight ink and saffron, shared by candlelight.',26,'pink'],
-['Fire','Lamb shoulder, quince','Hours of patience, honeyed by autumn fruit.',32,'offw'],
-['Fire','Whole turbot, brown butter','Slow flames, golden butter, and a table gone quiet.',48,'sage'],
-['Fire','Veal cheek, sweet potato','Tender as a slow goodbye, sweetened by embers.',27,'cream'],
-['Sweet','Pastel de nata, rose','Lisbon\'s oldest love song, sweetened with petals.',8,'pink'],
-['Sweet','Fig leaf ice cream, olive oil','A last cold kiss, salted and golden.',9,'sage'],
-['Sweet','Orange blossom custard, almond','A small bowl of late afternoon light.',9,'offw']];
+var D=[
+['North-Indian','Rogan Josh','Slow-cooked Kashmiri classic. Tender lamb in a deep red gravy, whole spices, patience.',290,'cream','rogan-josh.png',0],
+['Mughlai','Murgh Musallam','Whole chicken, slow-roasted, stuffed with spiced mince. The royal Mughlai centrepiece.',420,'pink','murgh-musallam.png',0],
+['Chinese','Hakka Noodles','Wok-tossed, glossy. Julienned peppers, spring onion, a whisper of soy.',260,'sage','hakka-noodles.png',0],
+['Mexican','Rosa Mexicano','Loaded tortilla, pink chipotle crema, cotija, coriander. Named for the blush of the plate.',280,'offw','rosa-mexicano.png',-90],
+['Coolers','Bostan Matcha','Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.',240,'cream','bostan-matcha.png',0]
+];
+
 var tr=$('#track'),names=['dark'].concat(D.map(function(d){return d[4]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
-tr.innerHTML='<div class="p dark"><div><h2>The table</h2><p class="hint">Eighteen plates, made to be shared. Slide through.</p></div></div>'+D.map(function(d,i){return '<div class="p '+d[4]+'"><div><div class="k">'+d[0]+' &middot; '+(i<9?'0':'')+(i+1)+'</div><h3>'+d[1]+'</h3></div><div class="note"><p>'+d[2]+'</p><b class="pr">&euro;'+d[3]+'</b></div></div>'}).join('');
+
+/* opening panel — poster copy now clearly states what this section is */
+tr.innerHTML='<div class="p dark poster">'
+  +'<div class="p-img"><img src="the-table.png" alt="The table at Hotel Bostan — candlelight, brick and the long table." loading="eager" decoding="async"></div>'
+  +'<div class="p-veil" aria-hidden="true"></div>'
+  +'<div class="p-copy"><h2>Tonight\u2019s table</h2><p class="hint">Five dishes from tonight\u2019s kitchen \u2014 scroll across.</p></div>'
++'</div>'+D.map(function(d){
+  var rotCls = d[6] ? ' rot' : '';
+  var drinkCls = /bostan-matcha/i.test(d[5]) ? ' drink' : '';
+  return '<div class="p '+d[4]+'">'
+    +'<div class="k">'+d[0]+'</div>'
+    +'<div class="p-img'+rotCls+drinkCls+'"><img src="'+d[5]+'" alt="'+d[1]+' — '+d[0]+'" loading="lazy" decoding="async"></div>'
+    +'<div><h3'+(d[1].length>20?' class="long"':'')+'>'+d[1]+'</h3></div>'
+    +'<div class="note"><p>'+d[2]+'</p><b class="pr">\u20b9'+d[3]+'</b></div>'
+  +'</div>'
+}).join('');
 tr.style.width=N*100+'vw';
-var h=gsap.to(tr,{x:function(){return -(tr.scrollWidth-innerWidth)},ease:'none',scrollTrigger:{trigger:'#menu',pin:true,scrub:1.2,anticipatePin:1,invalidateOnRefresh:true,
- end:function(){return '+='+(tr.scrollWidth-innerWidth)},
- onUpdate:function(s){bar(s.progress);var i=Math.round(s.progress*(N-1));cn.textContent=String(Math.max(1,i)).padStart(2,'0');theme(names[i])}}});
-$$('.p h2,.p h3').forEach(function(el){var rows=mask(el);
- gsap.fromTo(el,{xPercent:18},{xPercent:-6,ease:'none',scrollTrigger:{trigger:el.parentNode.parentNode,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
- if(!reduce){gsap.set(rows,{yPercent:112});gsap.to(rows,{yPercent:0,duration:1.4,stagger:.07,ease:'expo.out',scrollTrigger:{trigger:el.parentNode.parentNode,containerAnimation:h,start:'left 70%',toggleActions:'play none none reverse'}})}});
-$$('.note').forEach(function(l){var p=l.parentNode;gsap.fromTo(l,{xPercent:5},{xPercent:-2,ease:'none',scrollTrigger:{trigger:p,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
- if(!reduce){gsap.set(l.children,{opacity:0,y:30});gsap.to(l.children,{opacity:1,y:0,duration:1.3,stagger:.12,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 65%',toggleActions:'play none none reverse'}})}});
+var h=gsap.to(tr,{x:function(){return -(tr.scrollWidth-innerWidth)},ease:'none',scrollTrigger:{trigger:'#menu',pin:true,scrub:1.2,anticipatePin:1,invalidateOnRefresh:true,end:function(){return '+='+(tr.scrollWidth-innerWidth)},onUpdate:function(s){bar(s.progress);var i=Math.round(s.progress*(N-1));cn.textContent=String(Math.max(1,i+1)).padStart(2,'0');theme(names[i])}}});
 
-var field=$('#garden'),fls=[],cs=[SG,PK,C];
-function plant(x,y){var f=document.createElement('div'),pc=cs[Math.floor(Math.random()*3)],cc=cs[(cs.indexOf(pc)+1+Math.floor(Math.random()*2))%3],i,s='';f.className='fl';
- for(i=0;i<8;i++)s+='<i style="background:'+pc+';transform:rotate('+i*45+'deg)"></i>';f.innerHTML=s+'<b style="background:'+cc+'"></b>';f.style.left=x+'px';f.style.top=y+'px';field.appendChild(f);fls.push(f);
- if(fls.length>70){var o=fls.shift();gsap.killTweensOf(o);gsap.to(o,{scale:0,duration:.5,onComplete:function(){o.remove()}})}
- gsap.fromTo(f,{scale:0,rotation:-90},{scale:.5+Math.random(),rotation:Math.random()*60-30,duration:1.6,ease:'elastic.out(1,.45)'});
- if(!reduce)gsap.to(f,{rotation:'+=14',duration:3+Math.random()*2,ease:'sine.inOut',yoyo:true,repeat:-1,delay:1.6})}
-field.addEventListener('pointerdown',function(e){var r=field.getBoundingClientRect();plant(e.clientX-r.left,e.clientY-r.top)});
-ScrollTrigger.create({trigger:field,start:'top 60%',once:true,onEnter:function(){for(var i=0;i<7;i++)gsap.delayedCall(.15*i,function(){plant(field.offsetWidth*(.1+Math.random()*.8),field.offsetHeight*(.15+Math.random()*.75))})}});
+$$('.p h2,.p h3').forEach(function(el){
+  var rows=mask(el);
+  var panel=el.closest('.p');
+  var isOpening=panel&&panel.classList.contains('poster');
+  if(reduce) return;
+  gsap.set(rows,{yPercent:112});
+  if(isOpening){
+    gsap.to(rows,{yPercent:0,duration:1.6,stagger:.09,ease:'expo.out',delay:.55});
+  }else{
+    gsap.to(rows,{yPercent:0,duration:1.4,stagger:.07,ease:'expo.out',scrollTrigger:{trigger:panel,containerAnimation:h,start:'left 70%',toggleActions:'play none none reverse'}});
+  }
+});
 
-var M={quiet:['Quiet','A cold glass of sparkling water with lime, then silence. Let the garden do the talking.'],lively:['Lively','A cloudy kombucha, passed hand to hand until nobody remembers who ordered it.'],grand:['Grand','Sparkling elderflower, poured too high and laughed about. The table will remember.']},po=$('#po'),pt=$('#pt');
-pt.textContent=M.quiet[1];
-$$('.mood button').forEach(function(b){b.addEventListener('click',function(){$$('.mood button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');var m=M[b.dataset.m];
- gsap.to('.out',{opacity:0,y:18,duration:.3,onComplete:function(){po.textContent=m[0];pt.textContent=m[1];gsap.to('.out',{opacity:1,y:0,duration:.9,ease:'expo.out'})}})})});
-$$('.n').forEach(function(el){var o={v:0},n=+el.dataset.n;if(reduce){el.textContent=n;return}
- ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:function(){gsap.to(o,{v:n,duration:2.4,ease:'expo.out',onUpdate:function(){el.textContent=Math.round(o.v)}})}})});
+(function(){
+  var hintEl=tr.querySelector('.p.poster .hint');
+  if(!hintEl||reduce) return;
+  gsap.set(hintEl,{opacity:0,y:22});
+  gsap.to(hintEl,{opacity:.82,y:0,duration:1.4,ease:'expo.out',delay:1.05});
+})();
 
-var g=2,tm='20:00',cta=$('.cta'),sum=$('#sum');
-function upd(){sum.textContent='Table for '+g;cta.href='mailto:reserve@hotelbostan.pt?subject='+encodeURIComponent('Table for '+g+' at '+tm)}upd();
-$('#gm').onclick=function(){g=Math.max(1,g-1);upd()};$('#gp').onclick=function(){g=Math.min(12,g+1);upd()};
-$$('#chips button').forEach(function(b){b.onclick=function(){$$('#chips button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');tm=b.textContent;upd()}});
-var fmt=new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Lisbon'});function clk(){$('#tm').textContent=fmt.format(new Date())}clk();setInterval(clk,20000);
+$$('.note').forEach(function(l){var p=l.parentNode;
+ if(!reduce){gsap.set(l.children,{opacity:0,y:24});gsap.to(l.children,{opacity:1,y:0,duration:1.3,stagger:.12,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 65%',toggleActions:'play none none reverse'}})}});
+
+$$('.p-img img').forEach(function(img){
+  var p=img.closest('.p');
+  if(reduce) return;
+  if(p&&p.classList.contains('poster')){
+    gsap.fromTo(img,{scale:1.07},{scale:1,duration:2.8,ease:'expo.out'});
+    return;
+  }
+  gsap.set(img,{opacity:0,y:26,scale:0.96});
+  gsap.to(img,{opacity:1,y:0,scale:1,duration:1.5,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 72%',toggleActions:'play none none reverse'}});
+  gsap.fromTo(img,{xPercent:3},{xPercent:-3,ease:'none',scrollTrigger:{trigger:p,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
+});
+
+$$('.p .k').forEach(function(el){var p=el.closest('.p');if(reduce) return;gsap.set(el,{opacity:0,y:-10});gsap.to(el,{opacity:.62,y:0,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:p,containerAnimation:h,start:'left 70%',toggleActions:'play none none reverse'}});});
+
+(function(){var items = $$('.fire-item');if(!items.length || reduce) return;gsap.set(items,{opacity:0,y:28});gsap.to(items,{opacity:1,y:0,duration:1.2,stagger:.1,ease:'expo.out',scrollTrigger:{trigger:'.fire-grid',start:'top 82%'}});gsap.from('.fire .k, .fire .hint',{opacity:0,y:-10,duration:1.2,stagger:.08,ease:'expo.out',scrollTrigger:{trigger:'.fire',start:'top 72%'}});})();
+
+$$('.n').forEach(function(el){var o={v:0},n=+el.dataset.n;if(reduce){el.textContent=n;return}ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:function(){gsap.to(o,{v:n,duration:2.4,ease:'expo.out',onUpdate:function(){el.textContent=Math.round(o.v)}})}})});
+
 gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigger:{trigger:'.book',start:'top 60%'}});
 
-/* ============ HERO FILM — scroll-scrubbed ============ */
-(function heroFilm(){
-  var v=document.getElementById('heroVid'),sec=document.getElementById('journey');
-  if(!v||!sec) return;
-  var barEl=document.getElementById('filmBar'),pctEl=document.getElementById('filmPct'),titleEl=document.getElementById('jTitle');
-  var proxy={p:0},dur=0,ready=false,dead=false,lastSeek=-1,pending=null;
-  function fail(){dead=true}
-  function seek(t){if(!ready||dead)return;if(t<0)t=0;if(t>dur-0.001)t=dur-0.001;if(Math.abs(t-lastSeek)<0.0025)return;lastSeek=t;if(v.seeking){pending=t;return}try{v.currentTime=t}catch(e){}}
-  v.addEventListener('seeked',function(){if(pending!==null){var p=pending;pending=null;lastSeek=p;try{v.currentTime=p}catch(e){}}});
-  function primeVideo(){if(!ready||dead)return;try{var pr=v.play();if(pr&&pr.then){pr.then(function(){v.pause();v.currentTime=Math.max(0,lastSeek)}).catch(function(){})}else{v.pause()}}catch(e){}}
-  addEventListener('touchstart',primeVideo,{passive:true,once:true});addEventListener('pointerdown',primeVideo,{once:true});
-  function syncToScroll(){var r=sec.getBoundingClientRect(),h=sec.offsetHeight-innerHeight;var p=Math.max(0,Math.min(1,-r.top/Math.max(1,h)));seek(p*dur)}
-  function onMeta(){if(v.duration&&isFinite(v.duration)&&v.duration>0){dur=v.duration;ready=true;dead=false;lastSeek=-1;primeVideo();syncToScroll()}else{fail()}}
-  v.addEventListener('error',fail);v.addEventListener('loadedmetadata',onMeta);if(v.readyState>=1)onMeta();
-  gsap.to(proxy,{p:1,ease:'none',scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:reduce?true:0.45,invalidateOnRefresh:true,
-    onUpdate:function(self){var pr=self.progress;
-      if(barEl)barEl.style.transform='scaleX('+pr.toFixed(4)+')';
-      if(pctEl)pctEl.textContent=String(Math.round(pr*100)).padStart(2,'0')+'%';
-      if(titleEl){var to=Math.max(0,1-pr*5);titleEl.style.opacity=to.toFixed(3);titleEl.style.transform='translateY('+(-pr*40).toFixed(1)+'px)'}
-    }},
-    onUpdate:function(){seek(proxy.p*dur)},onComplete:function(){seek(dur-0.001)}});
-  addEventListener('load',function(){ScrollTrigger.refresh()});
+/* ---------- hero still ----------
+   Copy hidden on load (also enforced by .js CSS rule so nothing flashes
+   before this runs). It types itself in line by line at the speed of the
+   scroll — only within the first ~10% of the pinned journey, so it feels
+   immediate rather than a slow burn. */
+(function heroStill(){
+  var sec=document.getElementById('journey');
+  if(!sec) return;
+  var barEl=document.getElementById('filmBar'),
+      titleEl=document.getElementById('jTitle'),
+      img=document.getElementById('heroImg');
+  var parts = titleEl ? [
+    titleEl.querySelector('.jtitle-k'),
+    titleEl.querySelector('.jtitle-h'),
+    titleEl.querySelector('.jtitle-s')
+  ] : [];
+
+  if(reduce){
+    parts.forEach(function(el){ if(el){ el.style.opacity=''; el.style.transform=''; } });
+    if(barEl)barEl.style.transform='scaleX(1)';
+    return;
+  }
+
+  parts.forEach(function(el){
+    if(!el) return;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(46px)';
+  });
+
+  /* desktop-only parallax settle. Mobile keeps the original cover framing
+     with the same gentle scale so the road stays visible, as before. */
+  if(img){
+    gsap.fromTo(img,
+      {scale:1.12,yPercent:-1.5},
+      {scale:1.06,yPercent:1.5,ease:'none',
+       scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:0.6,invalidateOnRefresh:true}});
+  }
+
+  /* one ScrollTrigger drives bar AND the hero copy reveal */
+  ScrollTrigger.create({
+    trigger:sec,start:'top top',end:'bottom bottom',invalidateOnRefresh:true,
+    onUpdate:function(self){
+      var pr = self.progress;
+      if(barEl) barEl.style.transform = 'scaleX(' + pr.toFixed(4) + ')';
+
+      parts.forEach(function(el,i){
+        if(!el) return;
+        var start = i * 0.03;
+        var p = Math.min(1, Math.max(0, (pr - start) / 0.05));
+        var e = 1 - Math.pow(1 - p, 3);
+        el.style.opacity = e.toFixed(3);
+        el.style.transform = 'translateY(' + ((1 - e) * 46).toFixed(1) + 'px)';
+      });
+    }
+  });
 })();
 
-/* ============ FOOTER FILM — looping bookend ============ */
-(function endFilm(){
-  var v=document.getElementById('endVid'),sec=document.getElementById('endfilm');
-  if(!v||!sec) return;
-  v.playbackRate=0.55;
-  function tryPlay(){try{var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}}
-  function tryPause(){try{v.pause()}catch(e){}}
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)tryPlay();else tryPause()})},{threshold:0.12});
-    io.observe(sec);
-  } else { tryPlay() }
-  addEventListener('touchstart',function(){if(!v.paused)return;tryPlay()},{passive:true,once:true});
+(function endImage(){
+  var sec=document.getElementById('endfilm');if(!sec) return;
+  var img=document.getElementById('footImg');
+  if(img&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    gsap.fromTo(img,{yPercent:-4,scale:1.06},{yPercent:4,scale:1.02,ease:'none',scrollTrigger:{trigger:sec,start:'top bottom',end:'bottom top',scrub:true}});
+  }
   var credits=sec.querySelector('.credits');
   if(credits&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
-    gsap.fromTo(credits,{yPercent:8,opacity:0.6},{yPercent:-8,opacity:1,ease:'none',
-      scrollTrigger:{trigger:'.endinner',start:'top bottom',end:'bottom top',scrub:true}});
+    gsap.fromTo(credits,{yPercent:8,opacity:0.6},{yPercent:-8,opacity:1,ease:'none',scrollTrigger:{trigger:'.endinner',start:'top bottom',end:'bottom top',scrub:true}});
   }
-})();
-
-/* ============ EXHIBITION FLYER — staggered print-poster reveal ============ */
-(function flyerReveal(){
-  if(reduce) return;
-
-  // title rows — rise up from baseline, staggered
-  var rows = $$('#flyerTitle .row > i');
-  gsap.set(rows, { yPercent: 118 });
-  gsap.to(rows, {
-    yPercent: 0, duration: 1.5, ease: 'expo.out', stagger: 0.14,
-    scrollTrigger: { trigger: '#flyerTitle', start: 'top 84%' }
-  });
-
-  // eyebrow, subtitle, side text, stamp — soft cascade
-  gsap.from('.f-eyebrow, .f-sub, .f-side span, .f-stamp', {
-    opacity: 0, y: 22, duration: 1.1, stagger: 0.09, ease: 'expo.out',
-    scrollTrigger: { trigger: '.f-body', start: 'top 74%' }
-  });
-
-  // top bar, acts, info, footer — successive fades
-  gsap.from('.f-top', { opacity: 0, y: -14, duration: 1.2, ease: 'expo.out',
-    scrollTrigger: { trigger: '.closing', start: 'top 82%' } });
-
-  gsap.from('#actsList li', {
-    opacity: 0, y: 26, duration: 1.1, stagger: 0.07, ease: 'expo.out',
-    scrollTrigger: { trigger: '#actsList', start: 'top 78%' }
-  });
-
-  gsap.from('.f-info .f-col', {
-    opacity: 0, y: 22, duration: 1.1, stagger: 0.09, ease: 'expo.out',
-    scrollTrigger: { trigger: '.f-info', start: 'top 82%' }
-  });
-
-  gsap.from('.f-foot', {
-    opacity: 0, y: 18, duration: 1.2, ease: 'expo.out',
-    scrollTrigger: { trigger: '.f-foot', start: 'top 90%' }
-  });
-})();
-
-/* ============ TEMP: single MP4 uploader — swaps BOTH films ============ */
-(function swapMp4(){
-  var input=document.getElementById('swapMp4Input'),btn=document.getElementById('swapMp4');
-  if(!input) return;
-  var lastUrl=null;
-  input.addEventListener('change',function(){
-    var f=input.files&&input.files[0];
-    if(!f) return;
-    if(lastUrl){try{URL.revokeObjectURL(lastUrl)}catch(e){}}
-    lastUrl=URL.createObjectURL(f);
-    var hero=document.getElementById('heroVid');
-    if(hero){hero.src=lastUrl;try{hero.load()}catch(e){}}
-    var end=document.getElementById('endVid');
-    if(end){var wasPlaying=!end.paused;end.src=lastUrl;try{end.load()}catch(e){}
-      end.addEventListener('loadedmetadata',function once(){end.removeEventListener('loadedmetadata',once);end.playbackRate=0.55;if(wasPlaying){try{end.play()}catch(e){}}});
-    }
-    if(btn){var span=btn.querySelector('span');if(span) span.textContent=f.name.length>16?f.name.slice(0,13)+'…':f.name}
-  });
 })();
 
 })();
 </script>
+
+<script>
+(function newsForm(){
+  var f = document.getElementById('newsForm');var msg = document.getElementById('newsMsg');var input = document.getElementById('newsEmail');
+  if (!f) return;
+  f.addEventListener('submit', function(e){
+    e.preventDefault();var v = (input.value || '').trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {msg.textContent = 'Please enter a valid email.';msg.classList.add('on','err');return;}
+    msg.classList.remove('err');msg.textContent = 'Thank you — we\'ll write when the kitchen changes.';msg.classList.add('on');input.value = '';
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Hotel Bostan",
+  "description": "A Halal kitchen in Jogeshwari West, Mumbai. Mughlai and North Indian cooking over charcoal and clay since 1980.",
+  "image": "https://hotelbostan.in/hero-bostan.png",
+  "url": "https://hotelbostan.in/",
+  "telephone": "+916350362925",
+  "email": "reserve@hotelbostan.in",
+  "priceRange": "₹₹₹",
+  "currenciesAccepted": "INR",
+  "paymentAccepted": "Cash, Credit Card, UPI",
+  "servesCuisine": ["Indian", "Mughlai", "North Indian", "Chinese", "Halal", "Contemporary"],
+  "acceptsReservations": "https://hotelbostan.in/#book",
+  "foundingDate": "1980",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Swami Vivekanand Rd, opp. Hanjer Cinema Hall, Momin Nagar, Jogeshwari West",
+    "postalCode": "400102",
+    "addressLocality": "Mumbai",
+    "addressRegion": "Maharashtra",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 19.1364,
+    "longitude": 72.8397
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "12:00",
+    "closes": "23:30"
+  }],
+  "sameAs": [
+    "https://instagram.com/hotelbostan",
+    "https://facebook.com/hotelbostan"
+  ]
+}
+</script>
+
 </body>
 </html>
