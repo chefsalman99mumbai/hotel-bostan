@@ -89,9 +89,43 @@ section{position:relative;z-index:1}
 .idea-p .w-sans{font-family:var(--sans);font-style:normal;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:.32em;vertical-align:.06em;padding:0 .1em 0 0;opacity:.14}
 .idea-foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:clamp(40px,7vh,90px);padding-top:16px;border-top:1px solid rgba(247,245,240,.35);font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.62;text-shadow:0 2px 12px rgba(0,0,0,.55)}
 
-.mq{overflow:hidden;padding:6vh 0;white-space:nowrap}
-.mq div{display:inline-flex;will-change:transform}
-.mq span{font:200 clamp(70px,16vw,260px)/1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.04em;padding-right:.5em;color:transparent;-webkit-text-stroke:1.5px currentColor}
+/* ---------- quiet editorial band (replaces marquee) ---------- */
+.mq{
+  overflow:hidden;
+  padding:clamp(26px,4.2vh,52px) 0;
+  white-space:nowrap;
+  background:var(--c);
+  border-top:1px solid rgba(247,245,240,.08);
+  border-bottom:1px solid rgba(247,245,240,.08);
+}
+.mq div{display:inline-flex;align-items:center;will-change:transform}
+.mq span{
+  font:italic 300 clamp(18px,1.8vw,26px)/1 var(--serif);
+  font-variation-settings:"opsz" 144;
+  letter-spacing:.005em;
+  padding:0 clamp(16px,1.6vw,26px);
+  color:rgba(247,245,240,.58);
+  white-space:nowrap;
+}
+.mq span.r{font-style:normal}
+.mq span.c{
+  font-style:normal;
+  font-family:var(--sans);
+  font-weight:500;
+  font-size:.62em;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:rgba(247,245,240,.42);
+  padding:0 clamp(22px,2.2vw,36px);
+}
+.mq .mq-dot{
+  display:inline-block;
+  width:4px;height:4px;
+  border-radius:50%;
+  background:var(--honey);
+  flex:none;
+  opacity:.75;
+}
 
 .menu{height:100svh;overflow:hidden}
 .track{display:flex;height:100%}
@@ -340,6 +374,7 @@ section{position:relative;z-index:1}
   .p-img.drink{top:17vh;width:min(42vh,88vw,500px)}
   .p.poster .p-img img{object-position:center 42%}
   .p.poster .p-copy{padding-bottom:2vh}
+  .mq{padding:clamp(20px,3vh,32px) 0}
 }
 @media(hover:none),(pointer:coarse){#cur{display:none}}
 
@@ -351,10 +386,9 @@ section{position:relative;z-index:1}
 .jtitle-k{display:flex;align-items:center;gap:16px;font:500 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;opacity:.78;margin-bottom:clamp(18px,3.5vh,36px)}
 .jtitle-k:before{content:"";width:44px;height:1px;background:currentColor;opacity:.7}
 .jtitle-h{font:200 clamp(46px,10.5vw,180px)/.92 var(--serif);font-variation-settings:"opsz" 144,"wght" 180;font-style:italic;letter-spacing:-.055em;margin-left:-.045em;padding-bottom:.08em}
-.jtitle-s{font:italic 300 clamp(15px,1.5vw,21px)/1.35 var(--serif);opacity:.82;margin-top:clamp(14px,2vh,22px);max-width:30ch}
+.jtitle-s{font:italic 300 clamp(15px,1.5vw,21px)/1.35 var(--serif);opacity:.82;margin-top:clamp(14px,2vh,22px);max-width:34ch}
 /* hide hero copy at first paint so nothing flashes before GSAP takes over */
 .js .jtitle-k,.js .jtitle-h,.js .jtitle-s{opacity:0}
-.jhud{position:absolute;top:calc(84px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);display:flex;justify-content:flex-end;font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.55);font-variant-numeric:tabular-nums}
 .jprog{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(5vh + env(safe-area-inset-bottom,0px));height:2px;background:rgba(255,255,255,.2);overflow:hidden}
 .jprog b{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left;will-change:transform}
 
@@ -377,9 +411,8 @@ section{position:relative;z-index:1}
       <div class="jtitle" id="jTitle" aria-hidden="true">
         <div class="jtitle-k">Jogeshwari West &mdash; Est. 1980</div>
         <div class="jtitle-h">Hotel Bostan</div>
-        <div class="jtitle-s">Mughlai and North Indian, over charcoal and clay. Purely Halal.</div>
+        <div class="jtitle-s">Mughlai and North Indian, over charcoal and clay. A Halal kitchen where the fire is never rushed and the table is never ordinary.</div>
       </div>
-      <div class="jhud" aria-hidden="true"><span id="filmPct">00%</span></div>
       <div class="jprog" aria-hidden="true"><b id="filmBar"></b></div>
     </div>
   </section>
@@ -391,8 +424,8 @@ section{position:relative;z-index:1}
     </div>
     <div class="idea-inner">
       <div class="idea-k"><span>The idea</span></div>
-      <p class="idea-p" id="idea" aria-label="Hotel Bostan — a Halal kitchen in Jogeshwari West. Fire, salt and patience — every day since 1980.">
-        <span class="w w-it">Hotel</span><span class="w w-it">Bostan</span><span class="w">&mdash;</span><span class="w">a</span><span class="w">Halal</span><span class="w">kitchen</span><span class="w">in</span><span class="w w-it">Jogeshwari</span><span class="w w-it">West.</span><span class="w w-sans">Fire,</span><span class="w">salt</span><span class="w">and</span><span class="w w-it">patience</span><span class="w">&mdash;</span><span class="w">every</span><span class="w">day</span><span class="w">since</span><span class="w">1980.</span>
+      <p class="idea-p" id="idea" aria-label="Hotel Bostan — a Halal kitchen in Jogeshwari West. Where the fire is old and the welcome older still. Since 1980.">
+        <span class="w w-it">Hotel</span><span class="w w-it">Bostan</span><span class="w">&mdash;</span><span class="w">a</span><span class="w">Halal</span><span class="w">kitchen</span><span class="w">in</span><span class="w w-it">Jogeshwari</span><span class="w w-it">West.</span><span class="w">Where</span><span class="w">the</span><span class="w">fire</span><span class="w">is</span><span class="w w-it">old</span><span class="w">and</span><span class="w">the</span><span class="w">welcome</span><span class="w w-it">older</span><span class="w">still.</span><span class="w">Since</span><span class="w">1980.</span>
       </p>
       <div class="idea-foot">
         <span>Jogeshwari West &middot; Mumbai</span>
@@ -401,7 +434,20 @@ section{position:relative;z-index:1}
     </div>
   </section>
 
-  <section class="mq" data-t="dark" aria-hidden="true"><div id="mq"><span>Hotel Bostan</span><span>Mumbai</span><span>Hotel Bostan</span><span>Mumbai</span></div></section>
+  <section class="mq" data-t="dark" aria-hidden="true"><div id="mq">
+    <span class="r">Charcoal</span><i class="mq-dot"></i>
+    <span>Salt</span><i class="mq-dot"></i>
+    <span>Patience</span><i class="mq-dot"></i>
+    <span class="c">Since 1980</span><i class="mq-dot"></i>
+    <span>Jogeshwari West</span><i class="mq-dot"></i>
+    <span class="c">Purely Halal</span><i class="mq-dot"></i>
+    <span class="r">Charcoal</span><i class="mq-dot"></i>
+    <span>Salt</span><i class="mq-dot"></i>
+    <span>Patience</span><i class="mq-dot"></i>
+    <span class="c">Since 1980</span><i class="mq-dot"></i>
+    <span>Jogeshwari West</span><i class="mq-dot"></i>
+    <span class="c">Purely Halal</span><i class="mq-dot"></i>
+  </div></section>
 
   <section class="menu" id="menu">
     <div class="hud" aria-hidden="true"><span><span id="cn">01</span> / 06</span></div>
@@ -908,8 +954,9 @@ $$('section[data-t]').forEach(function(s){ScrollTrigger.create({trigger:s,start:
   gsap.fromTo(img,{scale:1.12},{scale:1.03,ease:'none',scrollTrigger:{trigger:'.idea',start:'top bottom',end:'bottom top',scrub:true}});
 })();
 
-var mq=gsap.to('#mq',{xPercent:-50,ease:'none',duration:30,repeat:-1}),sk=gsap.quickSetter('#mq','skewX','deg');
-ScrollTrigger.create({onUpdate:function(s){var v=gsap.utils.clamp(-12,12,s.getVelocity()/-120);sk(v);gsap.to(mq,{timeScale:s.direction*(1+Math.abs(v)*.8),duration:.4,overwrite:true})}});
+/* quiet editorial band — slow drift, subtle skew on scroll velocity */
+var mq=gsap.to('#mq',{xPercent:-50,ease:'none',duration:55,repeat:-1}),sk=gsap.quickSetter('#mq','skewX','deg');
+ScrollTrigger.create({onUpdate:function(s){var v=gsap.utils.clamp(-6,6,s.getVelocity()/-260);sk(v);gsap.to(mq,{timeScale:s.direction*(1+Math.abs(v)*.6),duration:.5,overwrite:true})}});
 
 var D=[
 ['North-Indian','Rogan Josh','Slow-cooked Kashmiri classic. Tender lamb in a deep red gravy, whole spices, patience.',290,'cream','rogan-josh.png',0],
@@ -933,7 +980,7 @@ tr.innerHTML='<div class="p dark poster">'
     +'<div class="k">'+d[0]+'</div>'
     +'<div class="p-img'+rotCls+drinkCls+'"><img src="'+d[5]+'" alt="'+d[1]+' — '+d[0]+'" loading="lazy" decoding="async"></div>'
     +'<div><h3'+(d[1].length>20?' class="long"':'')+'>'+d[1]+'</h3></div>'
-    +'<div class="note"><p>'+d[2]+'</p><b class="pr">&rupee;'+d[3]+'</b></div>'
+    +'<div class="note"><p>'+d[2]+'</p><b class="pr">\u20b9'+d[3]+'</b></div>'
   +'</div>'
 }).join('');
 tr.style.width=N*100+'vw';
@@ -991,7 +1038,6 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
   var sec=document.getElementById('journey');
   if(!sec) return;
   var barEl=document.getElementById('filmBar'),
-      pctEl=document.getElementById('filmPct'),
       titleEl=document.getElementById('jTitle'),
       img=document.getElementById('heroImg');
   var parts = titleEl ? [
@@ -1003,7 +1049,6 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
   if(reduce){
     parts.forEach(function(el){ if(el){ el.style.opacity=''; el.style.transform=''; } });
     if(barEl)barEl.style.transform='scaleX(1)';
-    if(pctEl)pctEl.textContent='100%';
     return;
   }
 
@@ -1022,13 +1067,12 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
        scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:0.6,invalidateOnRefresh:true}});
   }
 
-  /* one ScrollTrigger drives bar, percent, AND the hero copy reveal */
+  /* one ScrollTrigger drives bar AND the hero copy reveal */
   ScrollTrigger.create({
     trigger:sec,start:'top top',end:'bottom bottom',invalidateOnRefresh:true,
     onUpdate:function(self){
       var pr = self.progress;
       if(barEl) barEl.style.transform = 'scaleX(' + pr.toFixed(4) + ')';
-      if(pctEl) pctEl.textContent = String(Math.round(pr*100)).padStart(2,'0') + '%';
 
       parts.forEach(function(el,i){
         if(!el) return;
