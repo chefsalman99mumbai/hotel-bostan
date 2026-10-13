@@ -92,15 +92,14 @@ nav a:hover{color:var(--tomato)}
 section{position:relative;z-index:1}
 
 /* ---------------- hero ---------------- */
-.journey{position:relative;z-index:2;height:460vh;height:460svh;background:var(--slate)}
+.journey{position:relative;z-index:2;height:100vh;height:100svh;background:var(--slate)}
 .jstick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--slate);display:flex;flex-direction:column;padding:calc(var(--navh) + 12px + env(safe-area-inset-top,0px)) var(--pad) 0;pointer-events:none}
 .jcover{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:3}
 .jnum{font:400 clamp(11px,1vw,13px)/1 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:.4em;color:var(--ink-mute);padding-bottom:clamp(10px,1.6vh,16px);border-bottom:1px solid rgba(255,255,255,.20);width:min(60px,12vw);text-align:center;margin-bottom:clamp(12px,2vh,22px)}
 .jtitle-h{font:400 clamp(46px,9vw,148px)/.92 var(--serif);font-variation-settings:"opsz" 144,"wght" 400;letter-spacing:-.028em;color:var(--ink);text-transform:uppercase}
 .jtitle-h em{font-style:normal;font-weight:400}
 .jtitle-sub{font:italic 300 clamp(14px,1.3vw,18px)/1.4 var(--serif);font-variation-settings:"opsz" 144,"wght" 300;letter-spacing:.02em;color:var(--ink-soft);margin-top:clamp(10px,1.6vh,16px);max-width:36ch}
-.jprog{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(24px,3.6vh,40px);height:1px;background:rgba(255,255,255,.18);overflow:hidden;z-index:4}
-.jprog b{display:block;height:100%;background:var(--tomato);transform:scaleX(0);transform-origin:left;will-change:transform}
+.jprog{display:none}
 
 .jplate{flex:1;min-height:0;margin-top:clamp(20px,3.4vh,40px);position:relative;overflow:hidden;background:var(--slate-2);border:1px solid rgba(255,255,255,.16)}
 .jplate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:saturate(.95) contrast(1.03) brightness(1.02);will-change:transform}
@@ -108,9 +107,9 @@ section{position:relative;z-index:1}
 .js .jtitle-h,.js .jtitle-sub,.js .jnum{opacity:0}
 
 @media(max-width:700px){
-  .journey{height:400vh;height:400svh}
+  .journey{height:100vh;height:100svh}
   .jtitle-h{font-size:clamp(40px,12vw,84px)}
-  .jtitle-sub{font-size:13.5px}
+  .jtitle-sub{font-size:15px}
 }
 
 .idea{position:relative;min-height:100svh;padding:clamp(80px,14vh,140px) var(--pad);display:flex;flex-direction:column;justify-content:center;background:var(--paper);border-top:1px solid var(--rule-soft)}
@@ -972,25 +971,12 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
   var sec=document.getElementById('journey');
   if(!sec) return;
   var barEl=document.getElementById('filmBar'),titleEl=document.getElementById('jTitle'),img=document.getElementById('heroImg');
-  var parts = titleEl ? [titleEl.querySelector('.jnum'),titleEl.querySelector('.jtitle-h'),titleEl.querySelector('.jtitle-sub')] : [];
-  if(reduce){parts.forEach(function(el){if(el){el.style.opacity='';el.style.transform='';}});if(barEl)barEl.style.transform='scaleX(1)';return;}
-  parts.forEach(function(el){if(!el)return;el.style.opacity='0';el.style.transform='translateY(38px)';});
-  if(img){gsap.fromTo(img,{scale:1.08},{scale:1,ease:'none',scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:0.6,invalidateOnRefresh:true}});}
-  ScrollTrigger.create({
-    trigger:sec,start:'top top',end:'bottom bottom',invalidateOnRefresh:true,
-    onUpdate:function(self){
-      var pr = self.progress;
-      if(barEl) barEl.style.transform = 'scaleX(' + pr.toFixed(4) + ')';
-      parts.forEach(function(el,i){
-        if(!el) return;
-        var start = i * 0.05;
-        var p = Math.min(1, Math.max(0, (pr - start) / 0.08));
-        var e = 1 - Math.pow(1 - p, 3);
-        el.style.opacity = e.toFixed(3);
-        el.style.transform = 'translateY(' + ((1 - e) * 38).toFixed(1) + 'px)';
-      });
-    }
-  });
+  var parts = titleEl ? [titleEl.querySelector('.jnum'),titleEl.querySelector('.jtitle-h'),titleEl.querySelector('.jtitle-sub')].filter(Boolean) : [];
+  if(barEl) barEl.style.display='none';
+  if(reduce){parts.forEach(function(el){el.style.opacity='';el.style.transform='';});return;}
+  parts.forEach(function(el){el.style.opacity='';el.style.transform='';});
+  gsap.from(parts,{opacity:0,y:38,duration:1.4,stagger:.1,ease:'expo.out',delay:.15});
+  if(img){gsap.fromTo(img,{scale:1.06},{scale:1,duration:2.2,ease:'expo.out'});}
 })();
 
 (function endImage(){
