@@ -10,19 +10,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   TYPOGRAPHY TOKENS — mirrored from index.html
+   TYPOGRAPHY TOKENS — 1:1 with index.html
    ============================================================ */
 :root{
-  /* palette — 1:1 with index.html */
-  --ink:#1A1714;--ink-2:#2A241C;
-  --paper:#C8D2DF;--paper-2:#B8C4D4;--paper-3:#D6DEE8;
-  --sage:#7A8560;--tomato:#B23A1A;--tomato-2:#8F2D12;--ochre:#C9A36C;
-  --ink-soft:rgba(26,23,20,.62);
-  --ink-mute:rgba(26,23,20,.42);
-  --rule:rgba(26,23,20,.20);
-  --rule-soft:rgba(26,23,20,.10);
+  /* palette — matches index.html */
+  --paper:#8C1A34;
+  --paper-2:#76142A;
+  --paper-3:#A02040;
+  --deep:#2A0611;
+  --ink:#FFFFFF;
+  --ink-2:#FFFFFF;
+  --ink-soft:rgba(255,255,255,.72);
+  --ink-mute:rgba(255,255,255,.48);
+  --rule:rgba(255,255,255,.26);
+  --rule-soft:rgba(255,255,255,.13);
+  --tomato:#E8694A;
+  --tomato-2:#C9542F;
+  --sage:#A8B58C;
+  --ochre:#D8AE72;
 
-  /* type — 1:1 with index.html */
   --serif:'Fraunces','Times New Roman',serif;
   --sans:'Instrument Sans',system-ui,sans-serif;
   --pad:18mm;
@@ -31,10 +37,10 @@
 html{-webkit-text-size-adjust:100%;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 
 /* ============================================================
-   BASE — .body (index.html: font:400 16px/1.6 var(--sans))
+   BASE
    ============================================================ */
 body{
-  background:#0F0D0B;
+  background:#14030A;
   color:var(--ink);
   font:400 10.5pt/1.6 var(--sans);
   padding:14mm 0 40mm;
@@ -42,12 +48,13 @@ body{
 }
 .page{
   width:210mm;min-height:297mm;padding:var(--pad);
-  background:var(--paper);margin:0 auto 12mm;position:relative;
+  background:var(--paper);color:var(--ink);
+  margin:0 auto 12mm;position:relative;
   display:flex;flex-direction:column;overflow:hidden;
-  box-shadow:0 18px 60px rgba(0,0,0,.55),0 2px 6px rgba(0,0,0,.3);
+  box-shadow:0 18px 60px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.4);
 }
 
-/* page footer counter — mirrors .hud (font:500 10px/1 var(--sans);letter-spacing:.28em;uppercase;tabular-nums) */
+/* page footer counter — mirrors .hud on the site */
 .page-num{
   position:absolute;bottom:9mm;left:var(--pad);right:var(--pad);
   display:flex;justify-content:space-between;
@@ -59,7 +66,7 @@ body{
 }
 
 /* ============================================================
-   HEADING RESETS — .jtitle-h / .p h3 / .fm-heading conventions
+   HEADINGS
    ============================================================ */
 h1,h2,h3{
   font-family:var(--serif);
@@ -72,20 +79,32 @@ h1,h2,h3{
 
 /* ============================================================
    PAGE 1 — COVER
-   .cov-top    → .idea-k      (font:500 10.5px/1 var(--sans);ls:.4em;upper)
-   .cov-eyebrow→ .jnum        (font:400 var(--serif);ls:.4em;color:mute)
-   .cov-title  → .jtitle-h    (font:400 …;fvs opsz 144 wght 400;ls:-.028em;upper)
-   .cov-tag    → .jtitle-sub  (font:italic 300 …;fvs opsz 144 wght 300;ls:.02em)
-   .cov-foot dt→ .cm-k        (font:500 9.5px/1 var(--sans);ls:.32em;upper)
-   .cov-foot dd→ .cm-v        (font:300 var(--sans);ls:.01em)
    ============================================================ */
 .cov-top{
-  display:flex;justify-content:space-between;align-items:center;
-  padding-bottom:5mm;border-bottom:1px solid var(--ink);
+  display:flex;justify-content:space-between;align-items:center;gap:8mm;
+  padding-bottom:5mm;border-bottom:1px solid var(--rule);
   font:500 8.5pt/1 var(--sans);
   letter-spacing:.4em;text-transform:uppercase;
   color:var(--ink);
 }
+.cov-brand{
+  display:inline-flex;align-items:center;line-height:0;
+  color:inherit;text-decoration:none;flex:0 0 auto;
+}
+.cov-brand img{
+  display:block;height:10mm;width:auto;max-width:64mm;
+  object-fit:contain;object-position:left center;
+  /* Make any logo.png read white on the maroon cover */
+  filter:brightness(0) invert(1);
+}
+.cov-brand .cov-brand-fallback{
+  display:none;font:400 12pt/1 var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 400;
+  letter-spacing:.02em;text-transform:uppercase;
+  color:var(--ink);
+}
+.cov-meta{text-align:right;white-space:nowrap}
+
 .cov-mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:14mm 0 10mm}
 .cov-eyebrow{
   font:400 12pt/1 var(--serif);
@@ -107,11 +126,19 @@ h1,h2,h3{
   color:var(--ink-soft);
   margin-top:8mm;max-width:96mm;
 }
-.cov-img{height:98mm;overflow:hidden;background:var(--ink);margin:0 calc(-1 * var(--pad)) 0}
+
+/* cover image — full bleed, falls back to a maroon inset if photo missing */
+.cov-img{
+  height:98mm;overflow:hidden;
+  background:var(--paper-2);
+  margin:0 calc(-1 * var(--pad)) 0;
+  position:relative;
+}
 .cov-img img{width:100%;height:100%;object-fit:cover;display:block}
+
 .cov-foot{
   display:grid;grid-template-columns:1fr 1fr;gap:5mm 10mm;
-  padding-top:6mm;margin-top:6mm;border-top:1px solid var(--ink);
+  padding-top:6mm;margin-top:6mm;border-top:1px solid var(--rule);
 }
 .cov-foot dt{
   font:500 8pt/1 var(--sans);
@@ -127,14 +154,11 @@ h1,h2,h3{
 
 /* ============================================================
    SECTION HEADER
-   .sec-head  → .fm-heading surround (line-height:1, gap)
-   .sec-n     → .hud  (font:500 var(--sans);ls:.28em;upper;tabular-nums)
-   .sec-t     → .fm-heading (font:400 clamp;fvs opsz 144 wght 400;ls:-.01em)
    ============================================================ */
 .sec-head{
   display:flex;align-items:baseline;gap:5mm;
   padding-bottom:4mm;margin-bottom:8mm;
-  border-bottom:1px solid var(--ink);
+  border-bottom:1px solid var(--rule);
 }
 .sec-n{
   font:500 8pt/1 var(--sans);
@@ -151,8 +175,6 @@ h1,h2,h3{
 
 /* ============================================================
    FACT SHEET
-   .fact dt → .cm-k      (font:500 9.5px/1 var(--sans);ls:.32em;upper)
-   .fact dd → .cm-v      (font:300 var(--sans);ls:.01em)
    ============================================================ */
 .facts{display:grid;grid-template-columns:1fr 1fr;column-gap:12mm;row-gap:0}
 .fact{
@@ -174,9 +196,6 @@ h1,h2,h3{
 
 /* ============================================================
    STORY / EDITORIAL
-   .story h3 → .fi-t   (font:400 …;fvs opsz 144 wght 400;upper;ls:-.012em)
-   .story p  → .idea-p (font-variation-settings:"opsz" 144,"wght" 320;ls:-.014em)
-   .drop     → .jtitle-h em accent (Fraunces italic 300, --tomato)
    ============================================================ */
 .story{margin-top:12mm;padding-top:8mm;border-top:1px solid var(--rule)}
 .story h3{
@@ -206,9 +225,6 @@ h1,h2,h3{
 
 /* ============================================================
    KITCHEN / FOUR FIRES
-   .fire-n → .fi-n  (font:400 …;fvs opsz 144;italic;ls:-.01em;--tomato)
-   .fire h3 → .fi-t (font:400 …;fvs opsz 144 wght 400;upper;ls:-.012em)
-   .fire p  → .fi-d (font:italic 300 …;fvs opsz 144 wght 300;ls:.02em? no — default)
    ============================================================ */
 .kitchen{display:grid;grid-template-columns:1fr 1fr;gap:9mm 12mm}
 .fire{padding-bottom:4mm;border-bottom:1px solid var(--rule)}
@@ -233,7 +249,6 @@ h1,h2,h3{
   color:var(--ink-soft);
 }
 
-/* inline lede under section head — .idea-p condensed */
 .lede{
   font-family:var(--serif);
   font-variation-settings:"opsz" 144,"wght" 320;
@@ -245,26 +260,18 @@ h1,h2,h3{
 }
 
 /* ============================================================
-   DISHES — matches .fm-dname / .fm-ddesc / .fm-dprice / .fm-tab
-   .dish-cat   → .fm-tab   (font:500 10.5px/1 var(--sans);ls:.28em;upper)
-   .dish-name  → .fm-dname (font-family:var(--serif);fvs opsz 144 wght 500;weight:500;ls:-.005em)
-   .dish-desc  → .fm-ddesc (font:400 clamp;ls:.005em)
-   .dish-price → .fm-dprice(font-family:var(--serif);fvs opsz 144 wght 400;ls:-.005em)
+   DISHES
+   If an image is missing, the entire .dish-img block removes itself
+   so no empty frame or broken icon is ever shown.
    ============================================================ */
 .dishes{display:grid;grid-template-columns:1fr 1fr;gap:9mm 10mm}
 .dish-img{
-  aspect-ratio:4/3;overflow:hidden;background:var(--paper-2);
-  margin-bottom:4mm;position:relative;
-  display:flex;align-items:center;justify-content:center;
+  aspect-ratio:4/3;overflow:hidden;
+  background:var(--paper-2);
+  margin-bottom:4mm;
 }
 .dish-img img{width:100%;height:100%;object-fit:cover;display:block}
-.dish-img.missing img{display:none}
-.dish-img.missing::after{
-  content:attr(data-label);
-  font:500 7pt/1.4 var(--sans);
-  letter-spacing:.2em;text-transform:uppercase;
-  color:var(--ink-mute);text-align:center;padding:0 6mm;
-}
+
 .dish-cat{
   font:500 8pt/1 var(--sans);
   letter-spacing:.28em;text-transform:uppercase;
@@ -301,9 +308,12 @@ h1,h2,h3{
 
 /* ============================================================
    ROOM
-   .room-copy p → .idea-p (Fraunces 320)
    ============================================================ */
-.room-img{height:80mm;overflow:hidden;background:var(--ink);margin-bottom:8mm}
+.room-img{
+  height:80mm;overflow:hidden;
+  background:var(--paper-2);
+  margin-bottom:8mm;
+}
 .room-img img{width:100%;height:100%;object-fit:cover;display:block}
 .room-copy p{
   font-family:var(--serif);
@@ -318,12 +328,10 @@ h1,h2,h3{
 
 /* ============================================================
    CONTACTS
-   .contact h4 → .sf-group h4 (font:500 9.5px/1 var(--sans);ls:.4em;upper;--tomato)
-   .contact p  → .sf-group a  (font:300 clamp;ls:.01em)
    ============================================================ */
 .contacts{
   display:grid;grid-template-columns:1fr 1fr;gap:8mm 12mm;
-  margin-top:10mm;padding-top:8mm;border-top:1px solid var(--ink);
+  margin-top:10mm;padding-top:8mm;border-top:1px solid var(--rule);
 }
 .contact h4{
   font:500 8pt/1 var(--sans);
@@ -337,11 +345,10 @@ h1,h2,h3{
   color:var(--ink);
 }
 .contact a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
-.contact strong{font-weight:500}
+.contact strong{font-weight:500;color:var(--ink)}
 
 /* ============================================================
-   DOWNLOAD BUTTON — .sf-news button / .bm-go
-   (font:500 11px/1 var(--sans);ls:.32em;upper;--ink bg)
+   DOWNLOAD BUTTON (screen only)
    ============================================================ */
 .download-bar{
   position:fixed;right:22px;bottom:22px;z-index:99;
@@ -350,18 +357,18 @@ h1,h2,h3{
 .dl-btn{
   display:inline-flex;align-items:center;gap:10px;
   padding:16px 26px;border:0;border-radius:0;
-  background:var(--ink);color:var(--paper);cursor:pointer;
+  background:var(--tomato);color:#FFFFFF;cursor:pointer;
   font:500 11pt/1 var(--sans);
   letter-spacing:.32em;text-transform:uppercase;
   box-shadow:0 14px 40px rgba(0,0,0,.55);
   transition:transform .3s,background .3s,box-shadow .3s;
 }
-.dl-btn:hover{background:var(--tomato);transform:translateY(-2px);box-shadow:0 18px 48px rgba(0,0,0,.6)}
+.dl-btn:hover{background:var(--deep);transform:translateY(-2px);box-shadow:0 18px 48px rgba(0,0,0,.6)}
 .dl-btn svg{width:15px;height:15px}
 .dl-hint{
   font:400 8.5pt/1.4 var(--sans);
   letter-spacing:.28em;text-transform:uppercase;
-  color:rgba(200,210,223,.55);
+  color:rgba(255,255,255,.55);
   text-align:right;max-width:200px;
 }
 
@@ -372,6 +379,7 @@ h1,h2,h3{
   body{padding:6mm 0 30mm}
   .page{width:100%;min-height:0;padding:8mm;margin-bottom:5mm}
   .cov-title{font-size:56pt}
+  .cov-brand img{height:8mm}
   .cov-img{height:60mm;margin:0 -8mm}
   .facts,.kitchen,.dishes,.contacts{grid-template-columns:1fr}
   .fact{grid-template-columns:1fr;gap:1mm}
@@ -413,18 +421,23 @@ h1,h2,h3{
      ============================================================ -->
 <article class="page">
   <header class="cov-top">
-    <span>Hotel Bostan &mdash; Press Kit</span>
-    <span>Est. 1980 &middot; Mumbai</span>
+    <a class="cov-brand" href="index.html" aria-label="Hotel Bostan">
+      <img src="logo.png" alt="Hotel Bostan"
+           onerror="this.style.display='none';var f=this.parentNode.querySelector('.cov-brand-fallback');if(f)f.style.display='inline-block';">
+      <span class="cov-brand-fallback" aria-hidden="true">Hotel Bostan</span>
+    </a>
+    <span class="cov-meta">Press Kit &middot; Est. 1980 &middot; Mumbai</span>
   </header>
 
   <div class="cov-mid">
-    <span class="cov-eyebrow">61</span>
+    <span class="cov-eyebrow">Volume One</span>
     <h1 class="cov-title">Hotel<br>Bostan</h1>
     <p class="cov-tag">Mughlai &amp; North Indian, over charcoal and clay.<br>A Halal kitchen where the fire is never rushed.</p>
   </div>
 
   <figure class="cov-img">
-    <img src="bost-footer.png" alt="The room at Hotel Bostan" onerror="this.closest('figure').style.background='#1A1714'">
+    <img src="bost-footer.png" alt="The room at Hotel Bostan"
+         onerror="this.style.display='none'">
   </figure>
 
   <footer class="cov-foot">
@@ -518,6 +531,7 @@ h1,h2,h3{
 
 <!-- ============================================================
      PAGE 4 — TONIGHT'S TABLE
+     Missing dish photos remove their own frame — no empty icon.
      ============================================================ -->
 <article class="page">
   <div class="sec-head">
@@ -529,8 +543,9 @@ h1,h2,h3{
 
   <div class="dishes">
     <div class="dish">
-      <div class="dish-img" data-label="rogan-josh.png">
-        <img src="rogan-josh.png" alt="Rogan Josh" onerror="this.parentElement.classList.add('missing')">
+      <div class="dish-img">
+        <img src="rogan-josh.png" alt="Rogan Josh"
+             onerror="this.parentElement.remove()">
       </div>
       <div class="dish-cat">North Indian</div>
       <div class="dish-name">Rogan Josh</div>
@@ -539,8 +554,9 @@ h1,h2,h3{
     </div>
 
     <div class="dish">
-      <div class="dish-img" data-label="murgh-musallam.png">
-        <img src="murgh-musallam.png" alt="Murgh Musallam" onerror="this.parentElement.classList.add('missing')">
+      <div class="dish-img">
+        <img src="murgh-musallam.png" alt="Murgh Musallam"
+             onerror="this.parentElement.remove()">
       </div>
       <div class="dish-cat">Mughlai</div>
       <div class="dish-name">Murgh Musallam</div>
@@ -549,8 +565,9 @@ h1,h2,h3{
     </div>
 
     <div class="dish">
-      <div class="dish-img" data-label="hakka-noodles.png">
-        <img src="hakka-noodles.png" alt="Hakka Noodles" onerror="this.parentElement.classList.add('missing')">
+      <div class="dish-img">
+        <img src="hakka-noodles.png" alt="Hakka Noodles"
+             onerror="this.parentElement.remove()">
       </div>
       <div class="dish-cat">Chinese</div>
       <div class="dish-name">Hakka Noodles</div>
@@ -559,8 +576,9 @@ h1,h2,h3{
     </div>
 
     <div class="dish">
-      <div class="dish-img" data-label="rosa-mexicano.png">
-        <img src="rosa-mexicano.png" alt="Rosa Mexicano" onerror="this.parentElement.classList.add('missing')">
+      <div class="dish-img">
+        <img src="rosa-mexicano.png" alt="Rosa Mexicano"
+             onerror="this.parentElement.remove()">
       </div>
       <div class="dish-cat">Mexican</div>
       <div class="dish-name">Rosa Mexicano</div>
@@ -569,8 +587,9 @@ h1,h2,h3{
     </div>
 
     <div class="dish wide sig">
-      <div class="dish-img" data-label="bostan-matcha.png">
-        <img src="bostan-matcha.png" alt="Bostan Matcha" onerror="this.parentElement.classList.add('missing')">
+      <div class="dish-img">
+        <img src="bostan-matcha.png" alt="Bostan Matcha"
+             onerror="this.parentElement.remove()">
       </div>
       <div class="dish-cat">Signature &middot; Coolers</div>
       <div class="dish-name">Bostan Matcha</div>
@@ -591,11 +610,12 @@ h1,h2,h3{
 <article class="page">
   <div class="sec-head">
     <span class="sec-n">04</span>
-    <h2 class="sec-t">The Room &amp; The Table</h2>
+    <h2 class="sec-t">The Table</h2>
   </div>
 
   <figure class="room-img">
-    <img src="bost-hero.jpg" alt="The dining room at Hotel Bostan" onerror="this.closest('figure').style.background='#1A1714'">
+    <img src="bost-hero.jpg" alt="The dining room at Hotel Bostan"
+         onerror="this.style.display='none'">
   </figure>
 
   <div class="room-copy">
