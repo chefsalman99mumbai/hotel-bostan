@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,102 +9,368 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   TYPOGRAPHY TOKENS — mirrored from index.html
+   ============================================================ */
 :root{
-  --ink:#252725;--paper:#F7F5F0;--cream:#F4EDD8;--sage:#A3B58F;--pink:#EBCFC8;
-  --mute:#6A6660;--line:rgba(37,39,37,.16);
+  /* palette — 1:1 with index.html */
+  --ink:#1A1714;--ink-2:#2A241C;
+  --paper:#C8D2DF;--paper-2:#B8C4D4;--paper-3:#D6DEE8;
+  --sage:#7A8560;--tomato:#B23A1A;--tomato-2:#8F2D12;--ochre:#C9A36C;
+  --ink-soft:rgba(26,23,20,.62);
+  --ink-mute:rgba(26,23,20,.42);
+  --rule:rgba(26,23,20,.20);
+  --rule-soft:rgba(26,23,20,.10);
+
+  /* type — 1:1 with index.html */
   --serif:'Fraunces','Times New Roman',serif;
   --sans:'Instrument Sans',system-ui,sans-serif;
   --pad:18mm;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-body{background:#2b2b28;color:var(--ink);font:400 10.5pt/1.55 var(--sans);padding:14mm 0 40mm;-webkit-font-smoothing:antialiased}
-.page{width:210mm;min-height:297mm;padding:var(--pad);background:var(--paper);margin:0 auto 12mm;position:relative;display:flex;flex-direction:column;box-shadow:0 18px 60px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.25);overflow:hidden}
-.page-num{position:absolute;bottom:9mm;left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;font:500 7pt/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:rgba(37,39,37,.35);padding-top:3mm;border-top:1px solid var(--line)}
-h1,h2,h3{font-family:var(--serif);font-weight:200;letter-spacing:-.035em;line-height:1}
 
-.cov-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:5mm;border-bottom:1px solid var(--ink);font:500 7.5pt/1 var(--sans);letter-spacing:.3em;text-transform:uppercase}
+/* ============================================================
+   BASE — .body (index.html: font:400 16px/1.6 var(--sans))
+   ============================================================ */
+body{
+  background:#0F0D0B;
+  color:var(--ink);
+  font:400 10.5pt/1.6 var(--sans);
+  padding:14mm 0 40mm;
+  -webkit-font-smoothing:antialiased;
+}
+.page{
+  width:210mm;min-height:297mm;padding:var(--pad);
+  background:var(--paper);margin:0 auto 12mm;position:relative;
+  display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 18px 60px rgba(0,0,0,.55),0 2px 6px rgba(0,0,0,.3);
+}
+
+/* page footer counter — mirrors .hud (font:500 10px/1 var(--sans);letter-spacing:.28em;uppercase;tabular-nums) */
+.page-num{
+  position:absolute;bottom:9mm;left:var(--pad);right:var(--pad);
+  display:flex;justify-content:space-between;
+  font:500 8pt/1 var(--sans);
+  letter-spacing:.28em;text-transform:uppercase;
+  font-variant-numeric:tabular-nums;
+  color:var(--ink-mute);
+  padding-top:3mm;border-top:1px solid var(--rule);
+}
+
+/* ============================================================
+   HEADING RESETS — .jtitle-h / .p h3 / .fm-heading conventions
+   ============================================================ */
+h1,h2,h3{
+  font-family:var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 400;
+  font-weight:400;
+  letter-spacing:-.028em;
+  line-height:1;
+  color:var(--ink);
+}
+
+/* ============================================================
+   PAGE 1 — COVER
+   .cov-top    → .idea-k      (font:500 10.5px/1 var(--sans);ls:.4em;upper)
+   .cov-eyebrow→ .jnum        (font:400 var(--serif);ls:.4em;color:mute)
+   .cov-title  → .jtitle-h    (font:400 …;fvs opsz 144 wght 400;ls:-.028em;upper)
+   .cov-tag    → .jtitle-sub  (font:italic 300 …;fvs opsz 144 wght 300;ls:.02em)
+   .cov-foot dt→ .cm-k        (font:500 9.5px/1 var(--sans);ls:.32em;upper)
+   .cov-foot dd→ .cm-v        (font:300 var(--sans);ls:.01em)
+   ============================================================ */
+.cov-top{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:5mm;border-bottom:1px solid var(--ink);
+  font:500 8.5pt/1 var(--sans);
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--ink);
+}
 .cov-mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:14mm 0 10mm}
-.cov-eyebrow{font-family:var(--serif);font-style:italic;font-weight:300;font-size:20pt;letter-spacing:-.02em;color:var(--mute);margin-bottom:2mm}
-.cov-title{font-size:96pt;font-weight:200;font-style:italic;letter-spacing:-.055em;line-height:.82;margin-left:-.04em}
-.cov-tag{font-family:var(--serif);font-style:italic;font-weight:300;font-size:14pt;line-height:1.35;color:var(--mute);margin-top:8mm;max-width:78mm}
-.cov-img{height:98mm;overflow:hidden;background:#1a1a18;margin:0 calc(-1 * var(--pad)) 0}
+.cov-eyebrow{
+  font:400 12pt/1 var(--serif);
+  font-variation-settings:"opsz" 144;
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-bottom:5mm;
+}
+.cov-title{
+  font:400 96pt/.92 var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 400;
+  letter-spacing:-.028em;text-transform:uppercase;
+  color:var(--ink);
+}
+.cov-tag{
+  font:italic 300 14pt/1.4 var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 300;
+  letter-spacing:.02em;
+  color:var(--ink-soft);
+  margin-top:8mm;max-width:96mm;
+}
+.cov-img{height:98mm;overflow:hidden;background:var(--ink);margin:0 calc(-1 * var(--pad)) 0}
 .cov-img img{width:100%;height:100%;object-fit:cover;display:block}
-.cov-foot{display:grid;grid-template-columns:1fr 1fr;gap:5mm 10mm;padding-top:6mm;margin-top:6mm;border-top:1px solid var(--ink)}
-.cov-foot dt{font:500 6.5pt/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--mute);margin-bottom:1.5mm}
-.cov-foot dd{font:300 9.5pt/1.45 var(--sans)}
-.cov-foot a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+.cov-foot{
+  display:grid;grid-template-columns:1fr 1fr;gap:5mm 10mm;
+  padding-top:6mm;margin-top:6mm;border-top:1px solid var(--ink);
+}
+.cov-foot dt{
+  font:500 8pt/1 var(--sans);
+  letter-spacing:.32em;text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-bottom:2mm;
+}
+.cov-foot dd{
+  font:300 9.5pt/1.5 var(--sans);
+  letter-spacing:.01em;color:var(--ink);
+}
+.cov-foot a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
 
-.sec-head{display:flex;align-items:baseline;gap:5mm;padding-bottom:4mm;margin-bottom:8mm;border-bottom:1px solid var(--ink)}
-.sec-n{font:500 7pt/1 var(--sans);letter-spacing:.24em;color:var(--mute);font-variant-numeric:tabular-nums}
-.sec-t{font-family:var(--serif);font-style:italic;font-weight:200;font-size:26pt;letter-spacing:-.03em}
+/* ============================================================
+   SECTION HEADER
+   .sec-head  → .fm-heading surround (line-height:1, gap)
+   .sec-n     → .hud  (font:500 var(--sans);ls:.28em;upper;tabular-nums)
+   .sec-t     → .fm-heading (font:400 clamp;fvs opsz 144 wght 400;ls:-.01em)
+   ============================================================ */
+.sec-head{
+  display:flex;align-items:baseline;gap:5mm;
+  padding-bottom:4mm;margin-bottom:8mm;
+  border-bottom:1px solid var(--ink);
+}
+.sec-n{
+  font:500 8pt/1 var(--sans);
+  letter-spacing:.28em;text-transform:uppercase;
+  font-variant-numeric:tabular-nums;
+  color:var(--ink-mute);
+}
+.sec-t{
+  font:400 24pt/1 var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 400;
+  letter-spacing:-.01em;
+  color:var(--ink);
+}
 
+/* ============================================================
+   FACT SHEET
+   .fact dt → .cm-k      (font:500 9.5px/1 var(--sans);ls:.32em;upper)
+   .fact dd → .cm-v      (font:300 var(--sans);ls:.01em)
+   ============================================================ */
 .facts{display:grid;grid-template-columns:1fr 1fr;column-gap:12mm;row-gap:0}
-.fact{display:grid;grid-template-columns:34mm 1fr;gap:5mm;padding:3.4mm 0;border-bottom:1px solid var(--line);align-items:baseline}
-.fact dt{font:500 6.5pt/1.3 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
-.fact dd{font:300 9pt/1.5 var(--sans)}
-.fact dd a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+.fact{
+  display:grid;grid-template-columns:34mm 1fr;gap:5mm;
+  padding:3.4mm 0;border-bottom:1px solid var(--rule);
+  align-items:baseline;
+}
+.fact dt{
+  font:500 8pt/1.3 var(--sans);
+  letter-spacing:.32em;text-transform:uppercase;
+  color:var(--ink-mute);
+}
+.fact dd{
+  font:300 9.5pt/1.5 var(--sans);
+  letter-spacing:.01em;color:var(--ink);
+}
+.fact dd a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
 .full{grid-column:1/-1}
 
-.story{margin-top:12mm;padding-top:8mm;border-top:1px solid var(--line)}
-.story h3{font-size:19pt;font-style:italic;font-weight:200;margin-bottom:5mm;letter-spacing:-.03em}
-.story p{font-family:var(--serif);font-weight:300;font-size:11.5pt;line-height:1.62;color:#3a3a37;max-width:150mm}
+/* ============================================================
+   STORY / EDITORIAL
+   .story h3 → .fi-t   (font:400 …;fvs opsz 144 wght 400;upper;ls:-.012em)
+   .story p  → .idea-p (font-variation-settings:"opsz" 144,"wght" 320;ls:-.014em)
+   .drop     → .jtitle-h em accent (Fraunces italic 300, --tomato)
+   ============================================================ */
+.story{margin-top:12mm;padding-top:8mm;border-top:1px solid var(--rule)}
+.story h3{
+  font:400 16pt/1.05 var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 400;
+  letter-spacing:-.012em;text-transform:uppercase;
+  margin-bottom:5mm;
+}
+.story p{
+  font-family:var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 320;
+  font-weight:320;
+  font-size:11.5pt;line-height:1.62;
+  letter-spacing:-.014em;
+  color:var(--ink-2);
+  max-width:150mm;
+}
 .story p + p{margin-top:4.5mm}
-.story .drop::first-letter{font-family:var(--serif);font-style:italic;font-weight:200;font-size:34pt;line-height:.8;float:left;padding:1mm 2.5mm 0 0;color:var(--ink)}
+.story .drop::first-letter{
+  font-family:var(--serif);font-style:italic;
+  font-variation-settings:"opsz" 144,"wght" 300;
+  font-weight:300;
+  font-size:34pt;line-height:.8;
+  float:left;padding:1mm 2.5mm 0 0;
+  color:var(--tomato);
+}
 
+/* ============================================================
+   KITCHEN / FOUR FIRES
+   .fire-n → .fi-n  (font:400 …;fvs opsz 144;italic;ls:-.01em;--tomato)
+   .fire h3 → .fi-t (font:400 …;fvs opsz 144 wght 400;upper;ls:-.012em)
+   .fire p  → .fi-d (font:italic 300 …;fvs opsz 144 wght 300;ls:.02em? no — default)
+   ============================================================ */
 .kitchen{display:grid;grid-template-columns:1fr 1fr;gap:9mm 12mm}
-.fire{padding-bottom:4mm;border-bottom:1px solid var(--line)}
-.fire-n{font:500 6.5pt/1 var(--sans);letter-spacing:.26em;color:var(--sage);font-variant-numeric:tabular-nums;display:block;margin-bottom:2.5mm}
-.fire h3{font-size:20pt;font-weight:200;margin-bottom:3mm;letter-spacing:-.03em}
-.fire p{font:italic 300 10pt/1.5 var(--serif);color:var(--mute)}
+.fire{padding-bottom:4mm;border-bottom:1px solid var(--rule)}
+.fire-n{
+  display:block;margin-bottom:2.5mm;
+  font:400 13pt/1 var(--serif);
+  font-variation-settings:"opsz" 144;
+  font-style:italic;letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums;
+  color:var(--tomato);
+}
+.fire h3{
+  font:400 18pt/1.05 var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 400;
+  letter-spacing:-.012em;text-transform:uppercase;
+  margin-bottom:3mm;
+}
+.fire p{
+  font:italic 300 10.5pt/1.55 var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 300;
+  letter-spacing:.005em;
+  color:var(--ink-soft);
+}
 
+/* inline lede under section head — .idea-p condensed */
+.lede{
+  font-family:var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 320;
+  font-weight:320;
+  font-size:12pt;line-height:1.45;
+  letter-spacing:-.014em;
+  color:var(--ink-soft);
+  max-width:150mm;margin-bottom:12mm;
+}
+
+/* ============================================================
+   DISHES — matches .fm-dname / .fm-ddesc / .fm-dprice / .fm-tab
+   .dish-cat   → .fm-tab   (font:500 10.5px/1 var(--sans);ls:.28em;upper)
+   .dish-name  → .fm-dname (font-family:var(--serif);fvs opsz 144 wght 500;weight:500;ls:-.005em)
+   .dish-desc  → .fm-ddesc (font:400 clamp;ls:.005em)
+   .dish-price → .fm-dprice(font-family:var(--serif);fvs opsz 144 wght 400;ls:-.005em)
+   ============================================================ */
 .dishes{display:grid;grid-template-columns:1fr 1fr;gap:9mm 10mm}
-.dish-img{aspect-ratio:4/3;overflow:hidden;background:var(--cream);margin-bottom:4mm;position:relative;display:flex;align-items:center;justify-content:center}
+.dish-img{
+  aspect-ratio:4/3;overflow:hidden;background:var(--paper-2);
+  margin-bottom:4mm;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
 .dish-img img{width:100%;height:100%;object-fit:cover;display:block}
 .dish-img.missing img{display:none}
-.dish-img.missing::after{content:attr(data-label);font:500 6.5pt/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(37,39,37,.35);text-align:center;padding:0 6mm}
-.dish-cat{font:500 6.5pt/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--sage);margin-bottom:2mm}
-.dish-name{font-family:var(--serif);font-weight:300;font-style:italic;font-size:17pt;letter-spacing:-.025em;line-height:1.05;margin-bottom:2.5mm}
-.dish-desc{font:300 8.5pt/1.5 var(--sans);color:var(--mute)}
-.dish-price{font-family:var(--serif);font-weight:300;font-size:11pt;margin-top:2mm;color:var(--ink)}
+.dish-img.missing::after{
+  content:attr(data-label);
+  font:500 7pt/1.4 var(--sans);
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-mute);text-align:center;padding:0 6mm;
+}
+.dish-cat{
+  font:500 8pt/1 var(--sans);
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-bottom:2.5mm;
+}
+.dish.sig .dish-cat{color:var(--tomato)}
+.dish-name{
+  font-family:var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 500;
+  font-weight:500;
+  font-size:16pt;line-height:1.05;
+  letter-spacing:-.005em;
+  color:var(--ink);
+  margin-bottom:3mm;
+}
+.dish-desc{
+  font:400 9pt/1.6 var(--sans);
+  letter-spacing:.005em;
+  color:var(--ink-soft);
+}
+.dish-price{
+  font-family:var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 400;
+  font-weight:400;
+  font-size:14pt;line-height:1;
+  letter-spacing:-.005em;
+  color:var(--ink);
+  margin-top:2.5mm;
+}
 .dish-price::before{content:"₹"}
 .dish.wide{grid-column:1/-1}
-.dish.wide .dish-img{aspect-ratio:16/7}
+.dish.wide .dish-img{aspect-ratio:16/6}
 
-.room-img{height:80mm;overflow:hidden;background:#1a1a18;margin-bottom:8mm}
+/* ============================================================
+   ROOM
+   .room-copy p → .idea-p (Fraunces 320)
+   ============================================================ */
+.room-img{height:80mm;overflow:hidden;background:var(--ink);margin-bottom:8mm}
 .room-img img{width:100%;height:100%;object-fit:cover;display:block}
-.room-copy p{font-family:var(--serif);font-weight:300;font-size:11pt;line-height:1.62;color:#3a3a37;max-width:150mm}
+.room-copy p{
+  font-family:var(--serif);
+  font-variation-settings:"opsz" 144,"wght" 320;
+  font-weight:320;
+  font-size:11pt;line-height:1.62;
+  letter-spacing:-.014em;
+  color:var(--ink-2);
+  max-width:150mm;
+}
 .room-copy p + p{margin-top:4mm}
 
-.contacts{display:grid;grid-template-columns:1fr 1fr;gap:8mm 12mm;margin-top:10mm;padding-top:8mm;border-top:1px solid var(--ink)}
-.contact h4{font:500 6.5pt/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--mute);margin-bottom:3mm}
-.contact p{font:300 9.5pt/1.6 var(--sans)}
-.contact a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+/* ============================================================
+   CONTACTS
+   .contact h4 → .sf-group h4 (font:500 9.5px/1 var(--sans);ls:.4em;upper;--tomato)
+   .contact p  → .sf-group a  (font:300 clamp;ls:.01em)
+   ============================================================ */
+.contacts{
+  display:grid;grid-template-columns:1fr 1fr;gap:8mm 12mm;
+  margin-top:10mm;padding-top:8mm;border-top:1px solid var(--ink);
+}
+.contact h4{
+  font:500 8pt/1 var(--sans);
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--tomato);
+  margin-bottom:3mm;
+}
+.contact p{
+  font:300 9.5pt/1.6 var(--sans);
+  letter-spacing:.01em;
+  color:var(--ink);
+}
+.contact a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
 .contact strong{font-weight:500}
 
+/* ============================================================
+   DOWNLOAD BUTTON — .sf-news button / .bm-go
+   (font:500 11px/1 var(--sans);ls:.32em;upper;--ink bg)
+   ============================================================ */
 .download-bar{
   position:fixed;right:22px;bottom:22px;z-index:99;
   display:flex;flex-direction:column;gap:10px;align-items:flex-end;
 }
 .dl-btn{
   display:inline-flex;align-items:center;gap:10px;
-  padding:16px 26px;border:0;border-radius:99px;
+  padding:16px 26px;border:0;border-radius:0;
   background:var(--ink);color:var(--paper);cursor:pointer;
-  font:500 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
-  box-shadow:0 14px 40px rgba(0,0,0,.45);
+  font:500 11pt/1 var(--sans);
+  letter-spacing:.32em;text-transform:uppercase;
+  box-shadow:0 14px 40px rgba(0,0,0,.55);
   transition:transform .3s,background .3s,box-shadow .3s;
 }
-.dl-btn:hover{background:#000;transform:translateY(-2px);box-shadow:0 18px 48px rgba(0,0,0,.55)}
+.dl-btn:hover{background:var(--tomato);transform:translateY(-2px);box-shadow:0 18px 48px rgba(0,0,0,.6)}
 .dl-btn svg{width:15px;height:15px}
 .dl-hint{
-  font:500 8.5px/1.4 var(--sans);letter-spacing:.14em;
-  text-transform:uppercase;color:rgba(247,245,240,.55);
+  font:400 8.5pt/1.4 var(--sans);
+  letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(200,210,223,.55);
   text-align:right;max-width:200px;
 }
 
+/* ============================================================
+   RESPONSIVE / PRINT
+   ============================================================ */
 @media (max-width:820px){
   body{padding:6mm 0 30mm}
-  .page{width:100%;min-height:0;padding:8mm;margin-bottom:5mm;border-radius:2mm}
+  .page{width:100%;min-height:0;padding:8mm;margin-bottom:5mm}
   .cov-title{font-size:56pt}
   .cov-img{height:60mm;margin:0 -8mm}
   .facts,.kitchen,.dishes,.contacts{grid-template-columns:1fr}
@@ -113,15 +378,18 @@ h1,h2,h3{font-family:var(--serif);font-weight:200;letter-spacing:-.035em;line-he
   .sec-t{font-size:20pt}
   .page-num{position:static;margin-top:8mm}
   .download-bar{right:12px;bottom:12px}
-  .dl-btn{padding:14px 22px;font-size:10px}
+  .dl-btn{padding:14px 22px;font-size:10pt}
 }
-
 @page{size:A4;margin:0}
 @media print{
   html,body{background:#fff}
   body{padding:0;font-size:10pt}
   .download-bar{display:none!important}
-  .page{width:210mm;height:297mm;min-height:297mm;margin:0;padding:var(--pad);box-shadow:none;border-radius:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page{
+    width:210mm;height:297mm;min-height:297mm;
+    margin:0;padding:var(--pad);
+    box-shadow:none;page-break-after:always;break-after:page;overflow:hidden;
+  }
   .page:last-of-type{page-break-after:auto;break-after:auto}
   .dish-img,.room-img,.cov-img{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   a{text-decoration:none}
@@ -150,13 +418,13 @@ h1,h2,h3{font-family:var(--serif);font-weight:200;letter-spacing:-.035em;line-he
   </header>
 
   <div class="cov-mid">
-    <span class="cov-eyebrow">Hotel</span>
-    <h1 class="cov-title">Bostan</h1>
-    <p class="cov-tag">A garden table in the middle of Mumbai. Purely Halal, since 1980.</p>
+    <span class="cov-eyebrow">61</span>
+    <h1 class="cov-title">Hotel<br>Bostan</h1>
+    <p class="cov-tag">Mughlai &amp; North Indian, over charcoal and clay.<br>A Halal kitchen where the fire is never rushed.</p>
   </div>
 
   <figure class="cov-img">
-    <img src="bost-footer.png" alt="The room at Hotel Bostan" onerror="this.closest('figure').style.background='#252725'">
+    <img src="bost-footer.png" alt="The room at Hotel Bostan" onerror="this.closest('figure').style.background='#1A1714'">
   </figure>
 
   <footer class="cov-foot">
@@ -191,15 +459,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:200;letter-spacing:-.035em;line-he
   <dl class="facts">
     <div class="fact"><dt>Name</dt><dd>Hotel Bostan</dd></div>
     <div class="fact"><dt>Established</dt><dd>1980 &mdash; forty-five years in Jogeshwari West</dd></div>
-    <div class="fact"><dt>Head chef</dt><dd>Chef Salman</dd></div>
     <div class="fact"><dt>City</dt><dd>Mumbai, Maharashtra</dd></div>
     <div class="fact"><dt>Neighbourhood</dt><dd>Jogeshwari West</dd></div>
-    <div class="fact"><dt>Format</dt><dd>Dinner only &middot; small plates &amp; sharing mains</dd></div>
-    <div class="fact"><dt>Cuisine</dt><dd>Indian &middot; Mughlai &middot; North Indian &middot; Chinese &middot; Contemporary</dd></div>
+    <div class="fact"><dt>Format</dt><dd>Open every day &middot; small plates &amp; sharing mains</dd></div>
+    <div class="fact"><dt>Cuisine</dt><dd>Indian &middot; Mughlai &middot; North Indian &middot; Chinese &middot; Halal &middot; Contemporary</dd></div>
     <div class="fact"><dt>Kitchen</dt><dd>Purely Halal &middot; No alcohol &middot; No pork</dd></div>
-    <div class="fact"><dt>Hours</dt><dd>Open every day<br>19:00 &ndash; 23:30</dd></div>
+    <div class="fact"><dt>Hours</dt><dd>Open every day<br>12:00 &ndash; 23:30</dd></div>
     <div class="fact"><dt>Price range</dt><dd>₹₹₹ &middot; sides from ₹90, mains from ₹240</dd></div>
     <div class="fact"><dt>Seats</dt><dd>40 in the main room<br>12 in The Alcove (private)</dd></div>
+    <div class="fact"><dt>Fires</dt><dd>Tandoor &middot; Sigri &middot; Handi &middot; The Pass</dd></div>
     <div class="fact"><dt>Children</dt><dd>Welcome anytime</dd></div>
     <div class="fact"><dt>Dietary</dt><dd>Vegetarian, Jain &amp; allergen menus available</dd></div>
     <div class="fact"><dt>Payment</dt><dd>Cash &middot; Card &middot; UPI</dd></div>
@@ -208,9 +476,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:200;letter-spacing:-.035em;line-he
   </dl>
 
   <div class="story">
-    <h3>The idea</h3>
-    <p class="drop">Bostan means garden. We took the word as a brief: cook what a garden gives, with fire, salt and patience &mdash; and serve it slowly. Since 1980, everything on the menu has begun within a few hours of this table, and nothing leaves the kitchen until it has met one of four fires.</p>
-    <p>Chef Salman has led the pass for over two decades. The room is built around a single long table and a working marble counter, so guests watch the last thirty seconds of every plate come together. It is a restaurant that behaves, quietly, like a garden: seasonal, unhurried, and entirely dependent on what the morning brought in.</p>
+    <h3>The Idea</h3>
+    <p class="drop">Hotel Bostan &mdash; a Halal kitchen in Jogeshwari West. Where the fire is old and the welcome older still. Since 1980, everything on the menu has begun within a few hours of this table, and nothing leaves the kitchen until it has met one of four fires.</p>
+    <p>For over four decades the room has been built around a single long table and a working marble pass, so guests watch the last thirty seconds of every plate come together. It is a kitchen that behaves, quietly, like the fire it cooks over: charcoal, salt, patience &mdash; and a welcome that never closes.</p>
   </div>
 
   <div class="page-num">
@@ -225,23 +493,21 @@ h1,h2,h3{font-family:var(--serif);font-weight:200;letter-spacing:-.035em;line-he
 <article class="page">
   <div class="sec-head">
     <span class="sec-n">02</span>
-    <h2 class="sec-t">The kitchen</h2>
+    <h2 class="sec-t">The Kitchen</h2>
   </div>
 
-  <p style="font:italic 300 11.5pt/1.55 var(--serif);color:#6A6660;max-width:150mm;margin-bottom:12mm">
-    Four fires, one brigade, forty covers a night. Each fire does one thing &mdash; and does it every night, without fail.
-  </p>
+  <p class="lede">Four fires, one kitchen. Each does one thing &mdash; and does it every day, without fail.</p>
 
   <div class="kitchen">
     <div class="fire"><span class="fire-n">01</span><h3>Tandoor</h3><p>Clay oven at 480&deg;C. Breads, tikkas, and the smoke that gets under everything we serve.</p></div>
     <div class="fire"><span class="fire-n">02</span><h3>Sigri</h3><p>Charcoal grill lit at three in the afternoon. Seekh, chops, the char you can smell from the street.</p></div>
     <div class="fire"><span class="fire-n">03</span><h3>Handi</h3><p>Sealed clay pot, slow heat, four hours. Korma, nihari, gravies that taste of patience.</p></div>
-    <div class="fire"><span class="fire-n">04</span><h3>The pass</h3><p>Marble counter, one chef, forty covers. Every plate leaves this surface in under a minute.</p></div>
+    <div class="fire"><span class="fire-n">04</span><h3>The Pass</h3><p>Marble counter, one chef, forty covers. Every plate leaves this surface in under a minute.</p></div>
   </div>
 
   <div class="story" style="margin-top:auto;padding-top:10mm">
-    <h3 style="font-size:15pt">A note on sourcing &amp; kitchen</h3>
-    <p style="font-size:10pt">Produce arrives daily from Nashik and Pune. Ghee is hand-churned in Rajasthan. Citrus comes from Nagpur, sea salt from Kutch, and the herbs &mdash; curry leaf, mint, coriander, bay &mdash; are grown on our own roof, four floors above the dining room. Our kitchen is purely Halal; we do not serve alcohol or pork, and we do not close for Mondays.</p>
+    <h3 style="font-size:14pt">A note on sourcing &amp; kitchen</h3>
+    <p style="font-size:10.5pt">Produce arrives daily from Nashik and Pune. Ghee is hand-churned in Rajasthan. Citrus comes from Nagpur, sea salt from Kutch, and the herbs &mdash; curry leaf, mint, coriander, bay &mdash; are grown on our own roof, four floors above the dining room. Our kitchen is purely Halal; we do not serve alcohol or pork, and we open every day of the week.</p>
   </div>
 
   <div class="page-num">
@@ -251,13 +517,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:200;letter-spacing:-.035em;line-he
 </article>
 
 <!-- ============================================================
-     PAGE 4 — SIGNATURE DISHES
+     PAGE 4 — TONIGHT'S TABLE
      ============================================================ -->
 <article class="page">
   <div class="sec-head">
     <span class="sec-n">03</span>
-    <h2 class="sec-t">Signature dishes</h2>
+    <h2 class="sec-t">Tonight&rsquo;s Table</h2>
   </div>
+
+  <p class="lede">Five plates from tonight&rsquo;s kitchen &mdash; photographed at service, Hotel Bostan.</p>
 
   <div class="dishes">
     <div class="dish">
@@ -299,6 +567,16 @@ h1,h2,h3{font-family:var(--serif);font-weight:200;letter-spacing:-.035em;line-he
       <p class="dish-desc">Loaded tortilla, pink chipotle crema, cotija, coriander. Named for the blush of the plate.</p>
       <div class="dish-price">280</div>
     </div>
+
+    <div class="dish wide sig">
+      <div class="dish-img" data-label="bostan-matcha.png">
+        <img src="bostan-matcha.png" alt="Bostan Matcha" onerror="this.parentElement.classList.add('missing')">
+      </div>
+      <div class="dish-cat">Signature &middot; Coolers</div>
+      <div class="dish-name">Bostan Matcha</div>
+      <p class="dish-desc">Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.</p>
+      <div class="dish-price">240</div>
+    </div>
   </div>
 
   <div class="page-num">
@@ -313,11 +591,11 @@ h1,h2,h3{font-family:var(--serif);font-weight:200;letter-spacing:-.035em;line-he
 <article class="page">
   <div class="sec-head">
     <span class="sec-n">04</span>
-    <h2 class="sec-t">The room &amp; the table</h2>
+    <h2 class="sec-t">The Room &amp; The Table</h2>
   </div>
 
   <figure class="room-img">
-    <img src="bost-hero.jpg" alt="The dining room at Hotel Bostan" onerror="this.closest('figure').style.background='#252725'">
+    <img src="bost-hero.jpg" alt="The dining room at Hotel Bostan" onerror="this.closest('figure').style.background='#1A1714'">
   </figure>
 
   <div class="room-copy">
@@ -325,29 +603,17 @@ h1,h2,h3{font-family:var(--serif);font-weight:200;letter-spacing:-.035em;line-he
     <p>The Alcove &mdash; twelve seats behind a closing door &mdash; is available for private dinners, tastings and press previews. Menus are written to the season and confirmed a week ahead.</p>
   </div>
 
-  <div class="dishes" style="margin-top:8mm">
-    <div class="dish wide">
-      <div class="dish-img" data-label="bostan-matcha.png" style="aspect-ratio:16/6">
-        <img src="bostan-matcha.png" alt="Bostan Matcha" onerror="this.parentElement.classList.add('missing')">
-      </div>
-      <div class="dish-cat">Coolers</div>
-      <div class="dish-name">Bostan Matcha</div>
-      <p class="dish-desc">Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.</p>
-      <div class="dish-price">240</div>
-    </div>
-  </div>
-
   <div class="contacts">
     <div class="contact">
-      <h4>Press &amp; media</h4>
+      <h4>Press &amp; Media</h4>
       <p><strong>press@hotelbostan.in</strong><br>For interviews, tastings,<br>photo access and samples.</p>
     </div>
     <div class="contact">
       <h4>Reservations</h4>
-      <p><strong>reserve@hotelbostan.in</strong><br>+91 6350 362 925<br>Every day, 19:00 &ndash; 23:30</p>
+      <p><strong>reserve@hotelbostan.in</strong><br>+91 6350 362 925<br>Every day, 12:00 &ndash; 23:30</p>
     </div>
     <div class="contact">
-      <h4>Private dining</h4>
+      <h4>Private Dining</h4>
       <p><strong>alcove@hotelbostan.in</strong><br>The Alcove &mdash; 12 seats<br>Set menus on request</p>
     </div>
     <div class="contact">
