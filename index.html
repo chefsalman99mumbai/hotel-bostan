@@ -975,7 +975,7 @@ gsap.from('.cta',{yPercent:30,opacity:0,duration:1.6,ease:'expo.out',scrollTrigg
   if(barEl) barEl.style.display='none';
   if(reduce){parts.forEach(function(el){el.style.opacity='';el.style.transform='';});return;}
   parts.forEach(function(el){el.style.opacity='';el.style.transform='';});
-  gsap.from(parts,{opacity:0,y:38,duration:1.4,stagger:.1,ease:'expo.out',delay:.15});
+  gsap.fromTo(parts,{opacity:0,y:38},{opacity:1,y:0,duration:1.4,stagger:.1,ease:'expo.out',delay:.15});
   if(img){gsap.fromTo(img,{scale:1.06},{scale:1,duration:2.2,ease:'expo.out'});}
 })();
 
