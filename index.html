@@ -25,10 +25,10 @@
 :root{
   --paper:#5A4155;--paper-rgb:90,65,85;--paper-2:#B7535B;--paper-3:#6B5466;
   --slate:#5A4155;--slate-2:#B7535B;--deep:#1B141A;--deep-rgb:27,20,26;
-  --footer-bg:#A19836; /* Default Footer Background Color */
-  --footer-rule:rgba(255,255,255,.2); /* Footer Hairline Color */
-  --accent:#A19836; /* Accent Color (Olive/Gold) */
-  --accent-trans:rgba(161,152,54,0.3); /* 1% Accent Opacity for Thin Lines */
+  --footer-bg:#A19836;
+  --footer-rule:rgba(0,0,0,.22);
+  --accent:#A19836;
+  --accent-trans:rgba(161,152,54,0.3);
   --ink:#FFFFFF;--ink-rgb:255,255,255;--ink-2:#FFFFFF;
   --ink-soft:rgba(var(--ink-rgb),.72);--ink-mute:rgba(var(--ink-rgb),.48);
   --rule:rgba(var(--ink-rgb),.26);--rule-soft:rgba(var(--ink-rgb),.13);
@@ -45,16 +45,16 @@ a,button{color:inherit;text-decoration:none;font:inherit;background:none;border:
 a:focus-visible,button:focus-visible{outline:1.5px solid var(--tomato);outline-offset:4px}
 #cur{position:fixed;left:0;top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--tomato);z-index:30;pointer-events:none;opacity:0}
 nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:16px;height:var(--navh);padding:0 var(--pad);font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ink);background:rgba(var(--paper-rgb),.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--accent-trans)}
-nav .logo{display:flex;align-items:center;flex:1 1 auto;min-width:0;max-width:min(340px,54vw);height:100%;overflow:hidden}
-nav .logo img{display:block;width:auto;height:auto;max-height:calc(var(--navh) - 14px);max-width:100%;object-fit:contain;object-position:left center}
+nav .logo{display:flex;align-items:center;flex:1 1 auto;min-width:0;max-width:min(440px,60vw);height:100%;overflow:hidden}
+nav .logo img{display:block;width:auto;height:auto;max-height:calc(var(--navh) + 8px);max-width:100%;object-fit:contain;object-position:left center}
 nav .logo img.is-hidden{display:none}
 nav .logo .logo-text{display:none;font:400 clamp(15px,1.4vw,18px)/1 var(--serif);letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;color:var(--ink)}
 nav .logo .logo-text.is-on{display:block}
 nav div{display:flex;gap:30px;flex:0 0 auto;align-items:center}
 nav a{transition:color .3s}
 nav a:hover{color:var(--tomato)}
-@media(max-width:700px){nav{gap:12px}nav .logo{max-width:min(300px,52vw)}nav .logo img{max-height:calc(var(--navh) - 13px)}nav div{gap:16px}}
-@media(max-width:420px){nav{gap:8px}nav .logo{max-width:min(250px,50vw)}nav .logo img{max-height:calc(var(--navh) - 12px)}nav .logo .logo-text{font-size:13px}nav div{gap:12px;font-size:10px}}
+@media(max-width:700px){nav{gap:12px}nav .logo{max-width:min(340px,58vw)}nav .logo img{max-height:calc(var(--navh) + 6px)}nav div{gap:16px}}
+@media(max-width:420px){nav{gap:8px}nav .logo{max-width:min(280px,54vw)}nav .logo img{max-height:calc(var(--navh) + 4px)}nav .logo .logo-text{font-size:13px}nav div{gap:12px;font-size:10px}}
 section{position:relative;z-index:1}
 .journey{position:relative;z-index:2;height:100vh;height:100svh;background:var(--slate)}
 .jstick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--slate);display:flex;flex-direction:column;padding:calc(var(--navh) + 12px + env(safe-area-inset-top,0px)) var(--pad) 0;pointer-events:none}
@@ -83,12 +83,6 @@ section{position:relative;z-index:1}
 .idea-foot span{position:relative}
 .idea-foot span + span:before{content:"·";position:absolute;left:calc(-1 * clamp(10px,2vw,30px));color:var(--accent);opacity:.6}
 @media(max-width:760px){.idea-split{grid-template-columns:1fr;gap:clamp(32px,6vh,52px);text-align:center}.idea-col{align-items:center;gap:clamp(14px,2vh,20px)}.idea-col-p{font-size:17px;max-width:34ch;margin:0 auto}.idea-still img{max-width:min(240px,62vw)}}
-.mq{overflow:hidden;padding:clamp(20px,3vh,36px) 0;white-space:nowrap;background:var(--paper);border-top:1px solid var(--accent-trans);border-bottom:1px solid var(--accent-trans)}
-.mq div{display:inline-flex;align-items:center;will-change:transform}
-.mq span{font:italic 300 clamp(15px,1.5vw,21px)/1 var(--serif);letter-spacing:.005em;padding:0 clamp(14px,1.4vw,22px);color:var(--ink-soft);white-space:nowrap}
-.mq span.r{font-style:normal;font-size:.9em;letter-spacing:.24em;text-transform:uppercase;font-family:var(--sans);font-weight:500;color:var(--ink-mute)}
-.mq span.red{color:var(--accent);font-style:italic}
-.mq .mq-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;opacity:.75}
 .menu{height:100svh;overflow:hidden}
 .track{display:flex;height:100%}
 .p{position:relative;flex:none;width:100vw;height:100%;padding:0 var(--pad) calc(7vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(16px,3vh,32px);overflow:hidden;background:var(--bg);color:var(--fg)}
@@ -98,6 +92,7 @@ section{position:relative;z-index:1}
 .tomato{--bg:var(--tomato);--fg:#FFFFFF}
 .sage{--bg:var(--sage);--fg:#FFFFFF}
 .ochre{--bg:var(--ochre);--fg:#FFFFFF}
+.gold{--bg:var(--accent);--fg:#FFFFFF}
 .p h2,.p h3{font:400 clamp(52px,10vw,180px)/.92 var(--serif);letter-spacing:-.028em;text-transform:uppercase;max-width:11em;margin:0 auto;text-align:center;will-change:transform;color:var(--fg,#FFFFFF)}
 .p h3{font-size:clamp(44px,8.4vw,148px)}
 .p h3.long{font-size:clamp(32px,5.4vw,100px)}
@@ -109,7 +104,7 @@ section{position:relative;z-index:1}
 .note p{max-width:44ch;font:italic 300 clamp(15px,1.5vw,20px)/1.45 var(--serif);color:var(--fg,#FFFFFF)}
 .pr{font:400 clamp(20px,2.2vw,30px)/1 var(--serif);letter-spacing:.02em;white-space:nowrap;color:var(--fg,#FFFFFF)}
 .mk{display:inline-block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em;vertical-align:top}.mk i{display:inline-block;font-style:inherit}
-.p-img{position:absolute;top:19vh;left:0;right:0;margin:0 auto;width:min(34vh,36vw,460px);aspect-ratio:1/1;overflow:hidden;pointer-events:none;z-index:1;border:1px solid var(--accent-trans)}
+.p-img{position:absolute;top:19vh;left:0;right:0;margin:0 auto;width:min(34vh,36vw,460px);aspect-ratio:1/1;overflow:hidden;pointer-events:none;z-index:1}
 .p-img img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;pointer-events:none;will-change:transform,opacity}
 .p-img.rot{top:18vh;width:min(40vh,42vw,540px);transform:rotate(-90deg)}
 .p-img.rot img{object-fit:contain}
@@ -120,7 +115,7 @@ section{position:relative;z-index:1}
 .p.poster .p-img img{width:100%;height:100%;object-fit:cover;object-position:center 48%;opacity:1;filter:saturate(.96) contrast(1.04)}
 .p.poster .p-veil{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(to bottom,rgba(var(--deep-rgb),.58) 0%,rgba(var(--deep-rgb),.20) 14%,rgba(var(--deep-rgb),.02) 34%,rgba(var(--deep-rgb),.02) 46%,rgba(var(--deep-rgb),.20) 62%,rgba(var(--deep-rgb),.62) 82%,var(--deep) 100%)}
 .p.poster .p-copy{position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(14px,2.4vh,26px);padding-bottom:2vh;color:#FFFFFF;text-align:center;align-items:center}
-.p.poster .p-copy:before{content:"FIVE PLATES";font:500 10px/1 var(--sans);letter-spacing:.42em;color:var(--accent)}
+.p.poster .p-copy:before{content:"SINCE 1980";font:500 10px/1 var(--sans);letter-spacing:.42em;color:var(--accent)}
 .p.poster h2{color:#FFFFFF;text-shadow:0 4px 24px rgba(0,0,0,.4)}
 .p.poster .hint{color:var(--accent)}
 .hud{position:absolute;z-index:3;top:calc(80px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);display:flex;justify-content:flex-end;font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;font-variant-numeric:tabular-nums;color:var(--fg,#FFFFFF);opacity:.72}
@@ -137,11 +132,6 @@ section{position:relative;z-index:1}
 .fm-masthead h2{font:400 clamp(38px,6vw,84px)/.95 var(--serif);letter-spacing:-.025em;text-transform:uppercase;color:var(--ink)}
 .fm-masthead .fm-tagline{font:italic 300 clamp(14px,1.3vw,17px)/1.4 var(--serif);color:var(--ink-soft);margin-top:12px}
 .fm-masthead .fm-mastrule{width:56px;height:1px;background:var(--accent);margin:20px auto 0}
-.fm-special{background:var(--accent-trans);border:1px solid var(--accent);padding:clamp(20px,4vh,40px);margin-bottom:clamp(30px,5vh,50px);text-align:center;position:relative;overflow:hidden}
-.fm-special h3{font:400 clamp(28px,3.5vw,42px)/1.1 var(--serif);color:var(--ink);margin-bottom:12px;text-transform:uppercase}
-.fm-special p{font:italic 300 clamp(14px,1.3vw,16px)/1.6 var(--serif);color:var(--ink-soft);max-width:50ch;margin:0 auto 20px}
-.fm-special .fm-sb-btn{display:inline-block;padding:12px 28px;background:var(--accent);color:#FFFFFF;font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;transition:background .3s;cursor:pointer;border:none}
-.fm-special .fm-sb-btn:hover{background:var(--deep)}
 .fm-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-bottom:clamp(36px,6vh,60px);border-top:1px solid var(--accent-trans);border-bottom:1px solid var(--accent-trans);padding:16px 0}
 .fm-tab{padding:6px 18px;background:transparent;color:var(--ink-soft);font:500 10.5px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;text-align:center;transition:color .25s;cursor:pointer;position:relative}
 .fm-tab + .fm-tab{border-left:1px solid var(--rule-soft)}
@@ -264,40 +254,43 @@ section{position:relative;z-index:1}
 .cm-k{font:500 9.5px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55)}
 .cm-v{font:300 clamp(13px,1.15vw,15px)/1.4 var(--sans);color:rgba(var(--ink-rgb),.88);letter-spacing:.01em}
 @media(max-width:520px){.cm-row{grid-template-columns:1fr;gap:6px}.cm-k{padding-top:2px}}
-.site-footer{position:relative;z-index:2;background:var(--footer-bg);color:#FFFFFF;padding:clamp(48px,7vh,88px) var(--pad) calc(36px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--footer-rule)}
+
+/* ===== FOOTER — gold background, black fonts ===== */
+.site-footer{position:relative;z-index:2;background:var(--footer-bg);color:#000000;padding:clamp(48px,7vh,88px) var(--pad) calc(36px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--footer-rule)}
 .sf-inner{width:100%;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.15fr 1fr 1.1fr;gap:clamp(32px,5vw,80px);align-items:start}
 @media(max-width:960px){.sf-inner{grid-template-columns:1fr 1fr}.sf-news{grid-column:1/-1;padding-top:36px;border-top:1px solid var(--footer-rule)}}
 @media(max-width:640px){.sf-inner{grid-template-columns:1fr}.sf-news{padding-top:0;border-top:0}}
-.sf-brand{display:inline-flex;align-items:center;justify-content:flex-start;max-width:100%;padding:0;background:none;border:0;line-height:0;margin-bottom:12px}
-.sf-brand img{display:block;height:clamp(80px, 8vw, 120px);width:auto;max-width:min(400px, 100%);max-height:120px;object-fit:contain;object-position:left center}
-.sf-brand .sf-brand-fallback{display:none;font:400 clamp(32px,4vw,52px)/1 var(--serif);letter-spacing:-.025em;text-transform:uppercase;color:#FFFFFF;line-height:1}
+.sf-brand{display:inline-flex;align-items:flex-start;justify-content:flex-start;max-width:100%;padding:0;background:none;border:0;line-height:0;margin-bottom:22px}
+.sf-brand img{display:block;width:140px;height:auto;max-width:100%;object-fit:contain;object-position:left top;filter:brightness(0)}
+.sf-brand .sf-brand-fallback{display:none;font:400 22px/1 var(--serif);letter-spacing:-.02em;text-transform:uppercase;color:#000000;line-height:1}
 .sf-links{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
-.sf-group h4{font:500 9.5px/1 var(--sans);letter-spacing:.4em;text-transform:uppercase;color:#FFFFFF;margin-bottom:20px}
+.sf-group h4{font:500 9.5px/1 var(--sans);letter-spacing:.4em;text-transform:uppercase;color:#000000;margin-bottom:20px}
 .sf-group ul{list-style:none;display:flex;flex-direction:column;gap:12px}
-.sf-group a{font:300 clamp(15px,1.4vw,18px)/1.3 var(--sans);color:#FFFFFF;display:inline-flex;align-items:baseline;gap:10px;letter-spacing:.01em;transition:color .3s;padding-bottom:2px;border-bottom:1px solid var(--footer-rule);width:fit-content}
-.sf-group a:hover{color:var(--accent);border-color:var(--accent)}
-.sf-group a:before{content:"→";color:rgba(255,255,255,.38);font-size:.85em;transition:color .3s,transform .3s;display:inline-block}
-.sf-group a:hover:before{color:var(--accent);transform:translateX(3px)}
-.sf-social{display:flex;gap:10px;margin-top:22px}
-.sf-social-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(255,255,255,.24);border-radius:50%;color:#FFFFFF;cursor:default}
+.sf-group a{font:300 clamp(15px,1.4vw,18px)/1.3 var(--sans);color:#000000;display:inline-flex;align-items:baseline;gap:10px;letter-spacing:.01em;transition:color .3s;padding-bottom:2px;border-bottom:1px solid rgba(0,0,0,.35);width:fit-content}
+.sf-group a:hover{color:#1B141A;border-color:#1B141A}
+.sf-group a:before{content:"→";color:rgba(0,0,0,.55);font-size:.85em;transition:color .3s,transform .3s;display:inline-block}
+.sf-group a:hover:before{color:#1B141A;transform:translateX(3px)}
+.sf-social{display:flex;gap:10px;margin-top:0;width:140px}
+.sf-social-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(0,0,0,.28);border-radius:50%;color:#000000;cursor:default;flex:0 0 40px}
 .sf-social-icon svg{width:15px;height:15px}
-.sf-news h4{font:500 9.5px/1 var(--sans);letter-spacing:.4em;text-transform:uppercase;color:#FFFFFF;margin-bottom:20px}
-.sf-news p{font:italic 300 clamp(14px,1.25vw,16px)/1.5 var(--serif);color:rgba(255,255,255,.65);margin-bottom:18px;max-width:34ch}
+.sf-news h4{font:500 9.5px/1 var(--sans);letter-spacing:.4em;text-transform:uppercase;color:#000000;margin-bottom:20px}
+.sf-news p{font:italic 300 clamp(14px,1.25vw,16px)/1.5 var(--serif);color:rgba(0,0,0,.72);margin-bottom:18px;max-width:34ch}
 .sf-news form{display:flex;gap:8px;flex-wrap:wrap}
-.sf-news input{flex:1;min-width:0;padding:13px 18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.24);color:#FFFFFF;font:400 13px/1 var(--sans);border-radius:0;transition:border-color .3s,background .3s;letter-spacing:.02em}
-.sf-news input::placeholder{color:rgba(255,255,255,.42)}
-.sf-news input:focus{outline:none;border-color:#FFFFFF;background:rgba(255,255,255,.12)}
-.sf-news button{padding:13px 22px;background:var(--accent);color:#FFFFFF;border-radius:0;font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;transition:background .3s,color .3s,transform .3s;cursor:pointer}
-.sf-news button:hover,.sf-news button:focus-visible{background:var(--deep);color:#FFFFFF;transform:translateY(-1px)}
-.sf-news .sf-msg{margin-top:14px;font:italic 300 13px/1.45 var(--serif);color:#FFFFFF;opacity:0;transition:opacity .4s;min-height:1.4em}
+.sf-news input{flex:1;min-width:0;padding:13px 18px;background:rgba(0,0,0,.10);border:1px solid rgba(0,0,0,.28);color:#000000;font:400 13px/1 var(--sans);border-radius:0;transition:border-color .3s,background .3s;letter-spacing:.02em}
+.sf-news input::placeholder{color:rgba(0,0,0,.42)}
+.sf-news input:focus{outline:none;border-color:#000000;background:rgba(0,0,0,.16)}
+.sf-news button{padding:13px 22px;background:#1B141A;color:#FFFFFF;border-radius:0;font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;transition:background .3s,color .3s,transform .3s;cursor:pointer}
+.sf-news button:hover,.sf-news button:focus-visible{background:#000000;color:#FFFFFF;transform:translateY(-1px)}
+.sf-news .sf-msg{margin-top:14px;font:italic 300 13px/1.45 var(--serif);color:#000000;opacity:0;transition:opacity .4s;min-height:1.4em}
 .sf-news .sf-msg.on{opacity:1}
-.sf-news .sf-msg.err{color:#F0B4AE}
-.sf-bottom{width:100%;max-width:1280px;margin:clamp(40px,6vh,72px) auto 0;padding-top:clamp(22px,3vh,32px);border-top:1px solid var(--footer-rule);display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:center;font:400 10px/1.7 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.sf-news .sf-msg.err{color:#8B1D12}
+.sf-bottom{width:100%;max-width:1280px;margin:clamp(40px,6vh,72px) auto 0;padding-top:clamp(22px,3vh,32px);border-top:1px solid var(--footer-rule);display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:center;font:400 10px/1.7 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:rgba(0,0,0,.65)}
 .sf-legal{display:flex;gap:22px;align-items:center}
-.sf-legal a{color:rgba(255,255,255,.62);transition:color .3s}
-.sf-legal a:hover{color:var(--accent)}
-.sf-powered{width:100%;max-width:1280px;margin:14px auto 0;text-align:center;font:400 9px/1.6 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.sf-legal a{color:rgba(0,0,0,.72);transition:color .3s}
+.sf-legal a:hover{color:#1B141A}
+.sf-powered{width:100%;max-width:1280px;margin:14px auto 0;text-align:center;font:400 9px/1.6 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:rgba(0,0,0,.5)}
 @media(max-width:640px){.sf-bottom{flex-direction:column;text-align:center;justify-content:center;gap:14px}.sf-legal{justify-content:center}}
+
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .skip{position:fixed;top:-200px;left:var(--pad);z-index:100;padding:14px 24px;background:var(--accent);color:#FFFFFF;border-radius:0;font:500 10.5px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;transition:top .35s cubic-bezier(.16,1,.3,1)}
 .skip:focus{top:calc(18px + env(safe-area-inset-top,0px));outline:1.5px solid #FFFFFF;outline-offset:3px}
@@ -309,7 +302,7 @@ section{position:relative;z-index:1}
 #logoTool .lt-upload:hover{background:var(--deep);border-color:var(--deep);color:#FFFFFF}
 #logoTool .lt-info{max-width:min(220px,36vw);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.72;font-size:9.5px;letter-spacing:.12em;text-transform:none;color:#FFFFFF}
 @media(max-width:520px){#logoTool{gap:6px;padding:7px 8px}#logoTool .lt-info{display:none}}
-@media(max-width:700px){.note{max-width:100%}.p h3{font-size:clamp(36px,11vw,84px)}.p h3.long{font-size:clamp(26px,7.4vw,64px)}.idea-foot{flex-direction:column;gap:8px;text-align:center}.idea-foot span + span:before{display:none}.endinner{padding-top:52vh;padding-bottom:20vh}.sf-links{grid-template-columns:1fr 1fr}.k{top:14vh;font-size:clamp(16px,4vw,24px);letter-spacing:.15em}.k:before,.k:after{flex:0 0 20px}.p-img{top:19vh;width:min(30vh,74vw,360px)}.p-img.rot{top:18vh;width:min(36vh,82vw,420px)}.p-img.drink{top:17vh;width:min(42vh,88vw,500px)}.p.poster .p-img img{object-position:center 42%}.p.poster .p-copy{padding-bottom:3vh}.mq{padding:clamp(16px,2.6vh,26px) 0}}
+@media(max-width:700px){.note{max-width:100%}.p h3{font-size:clamp(36px,11vw,84px)}.p h3.long{font-size:clamp(26px,7.4vw,64px)}.idea-foot{flex-direction:column;gap:8px;text-align:center}.idea-foot span + span:before{display:none}.endinner{padding-top:52vh;padding-bottom:20vh}.sf-links{grid-template-columns:1fr 1fr}.k{top:14vh;font-size:clamp(16px,4vw,24px);letter-spacing:.15em}.k:before,.k:after{flex:0 0 20px}.p-img{top:19vh;width:min(30vh,74vw,360px)}.p-img.rot{top:18vh;width:min(36vh,82vw,420px)}.p-img.drink{top:17vh;width:min(42vh,88vw,500px)}.p.poster .p-img img{object-position:center 42%}.p.poster .p-copy{padding-bottom:3vh}}
 @media(hover:none),(pointer:coarse){#cur{display:none}}
 </style>
 </head>
@@ -358,25 +351,9 @@ section{position:relative;z-index:1}
       <div class="idea-foot">
         <span>Jogeshwari West</span>
         <span>Mumbai</span>
-      
       </div>
     </div>
   </section>
-
-  <section class="mq" data-t="paper" aria-hidden="true"><div id="mq">
-    <span class="r">Charcoal</span><i class="mq-dot"></i>
-    <span>salt</span><i class="mq-dot"></i>
-    <span class="r">Patience</span><i class="mq-dot"></i>
-    <span class="red">since 1980</span><i class="mq-dot"></i>
-    <span class="r">Jogeshwari West</span><i class="mq-dot"></i>
-    <span class="red">purely Halal</span><i class="mq-dot"></i>
-    <span class="r">Charcoal</span><i class="mq-dot"></i>
-    <span>salt</span><i class="mq-dot"></i>
-    <span class="r">Patience</span><i class="mq-dot"></i>
-    <span class="red">since 1980</span><i class="mq-dot"></i>
-    <span class="r">Jogeshwari West</span><i class="mq-dot"></i>
-    <span class="red">purely Halal</span><i class="mq-dot"></i>
-  </div></section>
 
   <section class="menu" id="menu">
     <div class="hud" aria-hidden="true"><span><span id="cn">01</span> / 06</span></div>
@@ -385,14 +362,14 @@ section{position:relative;z-index:1}
   </section>
 
   <section class="fx fire" id="fire" data-t="paper">
-    <div class="k">How it&rsquo;s made</div>
-    <h2 class="big">Everything<br><i>touches fire.</i></h2>
-    <p class="hint">Four fires, one kitchen. Each does one thing &mdash; and does it every day, without fail.</p>
+    <div class="k">The Craft</div>
+    <h2 class="big">Four fires.<br><i>One standard.</i></h2>
+    <p class="hint">Nothing leaves this kitchen without meeting the fire that shapes it &mdash; each one lit every day since 1980, and each one here for a single reason: to give the plate its soul.</p>
     <div class="fire-grid">
-      <div class="fire-item"><span class="fi-n">01</span><h3 class="fi-t">Tandoor</h3><p class="fi-d">Clay oven at 480&deg;C. Breads, tikkas, and the smoke that gets under everything we serve.</p></div>
-      <div class="fire-item"><span class="fi-n">02</span><h3 class="fi-t">Sigri</h3><p class="fi-d">Charcoal grill lit at three in the afternoon. Seekh, chops, the char you can smell from the street.</p></div>
-      <div class="fire-item"><span class="fi-n">03</span><h3 class="fi-t">Handi</h3><p class="fi-d">Sealed clay pot, slow heat, four hours. Korma, nihari, gravies that taste of patience.</p></div>
-      <div class="fire-item"><span class="fi-n">04</span><h3 class="fi-t">The Pass</h3><p class="fi-d">Marble counter, one chef, forty covers. Every plate leaves this surface in under a minute.</p></div>
+      <div class="fire-item"><span class="fi-n">01</span><h3 class="fi-t">The Tandoor</h3><p class="fi-d">Clay, 480&deg;C, unbroken since morning. Breads blistered at the edge, tikkas smoked to the bone. The fire that has never once gone cold in forty-five years.</p></div>
+      <div class="fire-item"><span class="fi-n">02</span><h3 class="fi-t">The Sigri</h3><p class="fi-d">Charcoal, lit at three in the afternoon. The slow perfume that drifts to the street and tells the neighbourhood dinner is close. Seekh, chops, and the char we are known for.</p></div>
+      <div class="fire-item"><span class="fi-n">03</span><h3 class="fi-t">The Handi</h3><p class="fi-d">Sealed clay, four unhurried hours. Korma, nihari, gravies that carry the memory of every slow afternoon this kitchen has known. Time, never shortcuts.</p></div>
+      <div class="fire-item"><span class="fi-n">04</span><h3 class="fi-t">The Pass</h3><p class="fi-d">Marble, one chef, forty covers. Ninety seconds between pan and plate. The last fire of the room &mdash; precision, and the hands that plate every dish.</p></div>
     </div>
   </section>
 
@@ -455,13 +432,6 @@ section{position:relative;z-index:1}
       <p class="fm-tagline">Cook. Nourish. Enjoy.</p>
       <div class="fm-mastrule"></div>
     </div>
-    
-    <!-- NEW: SUNDAY SPECIAL BRUNCH FEATURE BLOCK -->
-    <div class="fm-special">
-      <h3>Sunday Special Brunch</h3>
-      <p>One day a week, the kitchen turns Mediterranean &mdash; olive oil, warm bread, slow eggs, mezze. Served Sundays, 12:00 to 16:00.</p>
-      <button class="fm-sb-btn" data-filter="sunday">View Sunday Menu &rarr;</button>
-    </div>
 
     <div class="fm-tabs" role="tablist" aria-label="Menu categories">
       <button class="fm-tab on" role="tab" aria-selected="true" data-filter="all">All</button>
@@ -485,12 +455,12 @@ section{position:relative;z-index:1}
       <h3 class="fm-heading"><em>Sunday Brunch</em></h3>
       <p class="fm-lede">One day a week, the kitchen turns Mediterranean &mdash; olive oil, warm bread, slow eggs, mezze. Served Sundays, 12:00 to 16:00. Reservations only.</p>
       <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Burrata &amp; Roasted Tomato Toast</span><span class="fm-dleader"></span><span class="fm-dprice">₹480</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Vine tomatoes, torn burrata, cold-pressed oil, grilled sourdough. The plate that opens every Sunday.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Shakshuka</span><span class="fm-dleader"></span><span class="fm-dprice">₹420</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Slow eggs poached in tomato and pepper, cumin, coriander. Served with warm pita.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mezze Board</span><span class="fm-dleader"></span><span class="fm-dprice">₹560</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Hummus, muhammara, labneh, olives, pickles, warm bread. Made for the middle of the table.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Halloumi &amp; Za&rsquo;atar Flatbread</span><span class="fm-dleader"></span><span class="fm-dprice">₹380</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Griddled halloumi, wild thyme, a thread of honey, blistered flatbread.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mediterranean Grain Bowl</span><span class="fm-dleader"></span><span class="fm-dprice">₹440</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Farro, roasted vegetables, feta, herb oil, lemon. The green thing on the table.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Orange &amp; Olive Oil Cake</span><span class="fm-dleader"></span><span class="fm-dprice">₹280</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Citrus, cardamom, good oil, a spoon of cr&egrave;me fra&icirc;che. The Sunday ending.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Burrata &amp; Roasted Tomato Toast</span><span class="fm-dleader"></span><span class="fm-dprice">₹820</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Vine tomatoes, torn burrata, cold-pressed oil, grilled sourdough. The plate that opens every Sunday.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Shakshuka</span><span class="fm-dleader"></span><span class="fm-dprice">₹720</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Slow eggs poached in tomato and pepper, cumin, coriander. Served with warm pita.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mezze Board</span><span class="fm-dleader"></span><span class="fm-dprice">₹950</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Hummus, muhammara, labneh, olives, pickles, warm bread. Made for the middle of the table.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Halloumi &amp; Za&rsquo;atar Flatbread</span><span class="fm-dleader"></span><span class="fm-dprice">₹650</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Griddled halloumi, wild thyme, a thread of honey, blistered flatbread.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mediterranean Grain Bowl</span><span class="fm-dleader"></span><span class="fm-dprice">₹760</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Farro, roasted vegetables, feta, herb oil, lemon. The green thing on the table.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Orange &amp; Olive Oil Cake</span><span class="fm-dleader"></span><span class="fm-dprice">₹480</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Citrus, cardamom, good oil, a spoon of cr&egrave;me fra&icirc;che. The Sunday ending.</p></div>
       </div>
       <p class="fm-tail">Sundays only &middot; 12:00 &ndash; 16:00 &middot; 40 covers &middot; Reservations essential</p>
     </section>
@@ -498,72 +468,72 @@ section{position:relative;z-index:1}
     <section class="fm-section" data-tab="openers">
       <h3 class="fm-heading"><em>Openers</em></h3>
       <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Paya Soup</span><span class="fm-dleader"></span><span class="fm-dprice">₹260</span></div><p class="fm-ddesc">Slow-simmered trotters, a Moghlai classic. Served with butter naan.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Manchow Soup</span><span class="fm-dleader"></span><span class="fm-dprice">₹190</span></div><p class="fm-ddesc">Sichuan in a Moghlai house. Noodles, chicken, a whisper of heat.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Paya Soup</span><span class="fm-dleader"></span><span class="fm-dprice">₹440</span></div><p class="fm-ddesc">Slow-simmered trotters, a Moghlai classic. Served with butter naan.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Manchow Soup</span><span class="fm-dleader"></span><span class="fm-dprice">₹340</span></div><p class="fm-ddesc">Sichuan in a Moghlai house. Noodles, chicken, a whisper of heat.</p></div>
       </div>
     </section>
 
     <section class="fm-section" data-tab="starters">
       <h3 class="fm-heading"><em>Starters</em></h3>
       <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹280</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Six pieces, tandoor-kissed, smoke still rising.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Hot Honey Chicken Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹310</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Kashmiri chilli honey glaze on tandoor-charred tikka. Sweet, spicy, sticky.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Paneer Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹300</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Six pieces, charred, bright with spices. The vegetarian anchor.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Seekh Kabab</span><span class="fm-dleader"></span><span class="fm-dprice">₹250</span></div><p class="fm-ddesc">Minced, spiced, grilled on skewers. Six pieces to a plate.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Champaran Mutton Seekh</span><span class="fm-dleader"></span><span class="fm-dprice">₹340</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Bihar&rsquo;s legendary Champaran style. Slow-cooked, hand-pressed, finished on the grill.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Gunpowder Chicken 65</span><span class="fm-dleader"></span><span class="fm-dprice">₹290</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Andhra gunpowder tossed with crispy Chicken 65. Crunchy, fiery, made for sharing.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹480</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Six pieces, tandoor-kissed, smoke still rising.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Hot Honey Chicken Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹540</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Kashmiri chilli honey glaze on tandoor-charred tikka. Sweet, spicy, sticky.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Paneer Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹520</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Six pieces, charred, bright with spices. The vegetarian anchor.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Seekh Kabab</span><span class="fm-dleader"></span><span class="fm-dprice">₹440</span></div><p class="fm-ddesc">Minced, spiced, grilled on skewers. Six pieces to a plate.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Champaran Mutton Seekh</span><span class="fm-dleader"></span><span class="fm-dprice">₹580</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Bihar&rsquo;s legendary Champaran style. Slow-cooked, hand-pressed, finished on the grill.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Gunpowder Chicken 65</span><span class="fm-dleader"></span><span class="fm-dprice">₹500</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Andhra gunpowder tossed with crispy Chicken 65. Crunchy, fiery, made for sharing.</p></div>
       </div>
     </section>
 
     <section class="fm-section" data-tab="signature">
       <h3 class="fm-heading"><em>Signature</em></h3>
       <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Special Bostan</span><span class="fm-dleader"></span><span class="fm-dprice">₹340</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Red gravy, seekh kabab, the house hero. The dish that has led our table since 1980.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Special Bostan</span><span class="fm-dleader"></span><span class="fm-dprice">₹580</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Red gravy, seekh kabab, the house hero. The dish that has led our table since 1980.</p></div>
       </div>
     </section>
 
     <section class="fm-section" data-tab="mains">
       <h3 class="fm-heading"><em>Mains</em></h3>
       <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Butter Chicken</span><span class="fm-dleader"></span><span class="fm-dprice">₹300</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Shahi red gravy, the classic. Our most-ordered main.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Truffle Butter Chicken</span><span class="fm-dleader"></span><span class="fm-dprice">₹380</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>The classic, finished with truffle oil. Familiar dish, luxury upgrade.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka Masala</span><span class="fm-dleader"></span><span class="fm-dprice">₹290</span></div><p class="fm-ddesc">Boneless tikka in red gravy.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Dilli-6 Murgh Korma</span><span class="fm-dleader"></span><span class="fm-dprice">₹320</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Awadhi korma reimagined: cashew-almond base, rose water finish, tender chicken.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Afghani Boneless</span><span class="fm-dleader"></span><span class="fm-dprice">₹280</span></div><p class="fm-ddesc">Creamy, mild, boneless. The white-gravy hero.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Kheema</span><span class="fm-dleader"></span><span class="fm-dprice">₹270</span></div><p class="fm-ddesc">Minced, spiced, slow-cooked.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Kolhapuri</span><span class="fm-dleader"></span><span class="fm-dprice">₹310</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Spicy, bold. The heat gap in our menu, filled.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mutton Rogan Josh</span><span class="fm-dleader"></span><span class="fm-dprice">₹290</span></div><p class="fm-ddesc">Kashmiri classic, slow-cooked.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mutton Bhuna</span><span class="fm-dleader"></span><span class="fm-dprice">₹440</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Slow-roasted, deeply spiced. The highest-margin mutton on the menu.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Butter Chicken</span><span class="fm-dleader"></span><span class="fm-dprice">₹520</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Shahi red gravy, the classic. Our most-ordered main.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Truffle Butter Chicken</span><span class="fm-dleader"></span><span class="fm-dprice">₹660</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>The classic, finished with truffle oil. Familiar dish, luxury upgrade.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka Masala</span><span class="fm-dleader"></span><span class="fm-dprice">₹500</span></div><p class="fm-ddesc">Boneless tikka in red gravy.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Dilli-6 Murgh Korma</span><span class="fm-dleader"></span><span class="fm-dprice">₹560</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Awadhi korma reimagined: cashew-almond base, rose water finish, tender chicken.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Afghani Boneless</span><span class="fm-dleader"></span><span class="fm-dprice">₹500</span></div><p class="fm-ddesc">Creamy, mild, boneless. The white-gravy hero.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Kheema</span><span class="fm-dleader"></span><span class="fm-dprice">₹480</span></div><p class="fm-ddesc">Minced, spiced, slow-cooked.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Kolhapuri</span><span class="fm-dleader"></span><span class="fm-dprice">₹540</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Spicy, bold. The heat gap in our menu, filled.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mutton Rogan Josh</span><span class="fm-dleader"></span><span class="fm-dprice">₹500</span></div><p class="fm-ddesc">Kashmiri classic, slow-cooked.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mutton Bhuna</span><span class="fm-dleader"></span><span class="fm-dprice">₹760</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Slow-roasted, deeply spiced. The highest-margin mutton on the menu.</p></div>
       </div>
     </section>
 
     <section class="fm-section" data-tab="chinese">
       <h3 class="fm-heading"><em>Chinese</em></h3>
       <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Lollipop</span><span class="fm-dleader"></span><span class="fm-dprice">₹260</span></div><p class="fm-ddesc">Frenched wings, fried until crisp.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Crispy</span><span class="fm-dleader"></span><span class="fm-dprice">₹340</span></div><p class="fm-ddesc">Golden, crunchy, 500ml.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Lollipop</span><span class="fm-dleader"></span><span class="fm-dprice">₹460</span></div><p class="fm-ddesc">Frenched wings, fried until crisp.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Crispy</span><span class="fm-dleader"></span><span class="fm-dprice">₹580</span></div><p class="fm-ddesc">Golden, crunchy, 500ml.</p></div>
       </div>
     </section>
 
     <section class="fm-section" data-tab="rice">
       <h3 class="fm-heading"><em>Rice &amp; Bread</em></h3>
       <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka Biryani</span><span class="fm-dleader"></span><span class="fm-dprice">₹320</span></div><p class="fm-ddesc">Layered with charred tikka.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Butter Naan</span><span class="fm-dleader"></span><span class="fm-dprice">₹90</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Essential for gravy dishes.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka Biryani</span><span class="fm-dleader"></span><span class="fm-dprice">₹560</span></div><p class="fm-ddesc">Layered with charred tikka.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Butter Naan</span><span class="fm-dleader"></span><span class="fm-dprice">₹160</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Essential for gravy dishes.</p></div>
       </div>
     </section>
 
     <section class="fm-section" data-tab="sweet">
       <h3 class="fm-heading"><em>Sweet</em></h3>
       <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Caramel Custard</span><span class="fm-dleader"></span><span class="fm-dprice">₹190</span></div><p class="fm-ddesc">Mumbai&rsquo;s oldest love song, sweetened with petals.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Caramel Custard</span><span class="fm-dleader"></span><span class="fm-dprice">₹340</span></div><p class="fm-ddesc">Mumbai&rsquo;s oldest love song, sweetened with petals.</p></div>
       </div>
     </section>
 
     <section class="fm-section" data-tab="coolers">
       <h3 class="fm-heading"><em>Coolers</em></h3>
       <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Bostan Matcha</span><span class="fm-dleader"></span><span class="fm-dprice">₹240</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.</p></div>
+        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Bostan Matcha</span><span class="fm-dleader"></span><span class="fm-dprice">₹420</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.</p></div>
       </div>
     </section>
 
@@ -612,7 +582,7 @@ section{position:relative;z-index:1}
         </div>
         <p class="bm-summary" id="bmSummary" aria-live="polite"></p>
         <button type="button" class="bm-go" id="bmGo">Confirm Reservation</button>
-        <p class="bm-note">We&rsquo;ll open your mail app with the details ready to send.</p>
+        <p class="bm-note">We&rsquo;ll open WhatsApp with your details ready to send.</p>
       </div>
     </div>
   </div>
@@ -628,6 +598,7 @@ section{position:relative;z-index:1}
       <div class="sf-social">
         <span class="sf-social-icon" role="img" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg></span>
         <span class="sf-social-icon" role="img" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.7-1.6h1.5V4.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.7H7.5V14h2.8v8h3.2z"/></svg></span>
+        <span class="sf-social-icon" role="img" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.79 14.19c-.24.68-1.4 1.31-1.93 1.35-.49.05-1.11.07-1.79-.11-.41-.13-.94-.31-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.27-.29.58-.36.78-.36.19 0 .39.001.56.01.18.01.42-.07.65.5.24.58.81 1.99.88 2.13.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.37-.43.5-.14.14-.29.29-.12.58.17.29.75 1.24 1.61 2.01 1.11.99 2.04 1.29 2.33 1.44.29.14.46.12.63-.07.17-.19.72-.85.92-1.14.19-.29.39-.24.66-.14.27.1 1.71.81 2 .96.29.14.49.22.56.34.07.12.07.71-.17 1.39z"/></svg></span>
       </div>
     </div>
     <div class="sf-links">
@@ -660,7 +631,7 @@ section{position:relative;z-index:1}
     </div>
   </div>
   <div class="sf-bottom">
-    <span>&copy; Hotel Bostan &middot; Est. 1980 &middot; Mumbai &middot; <a href="tel:+919004455115" style="color:inherit;border-bottom:1px solid rgba(255,255,255,.28)">+91 9004 455 115</a></span>
+    <span>&copy; Hotel Bostan &middot; Est. 1980 &middot; Mumbai &middot; <a href="tel:+919004455115" style="color:inherit;border-bottom:1px solid rgba(0,0,0,.4)">+91 9004 455 115</a></span>
     <div class="sf-legal">
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
@@ -677,7 +648,6 @@ section{position:relative;z-index:1}
   <button class="lt-btn lt-reset" type="button" id="logoReset">Reset</button>
   <span class="lt-info" id="logoInfo">logo.png</span>
   
-  <!-- NEW: TEMPORARY FOOTER COLOR TOOL -->
   <div style="display:flex; align-items:center; gap:10px; margin-left:10px; border-left:1px solid rgba(255,255,255,.2); padding-left:15px;">
     <span class="lt-tag" style="color:#A19836">Footer BG</span>
     <input type="text" id="footerColorInput" placeholder="#A19836" value="#A19836" style="padding:6px; width:75px; font-family:monospace; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); color:#fff; border-radius:2px; font-size:11px;">
@@ -713,14 +683,6 @@ var lock={y:0,on:function(){this.y=window.scrollY||window.pageYOffset||0;documen
   function applyFilter(key){var allowed=tabMap[key]||tabMap.all;document.querySelectorAll('.fm-section').forEach(function(s){var tab=s.getAttribute('data-tab')||'';s.style.display=(key==='all'||allowed.indexOf(tab)!==-1)?'':'none';});overlay.scrollTop=0;}
   var tabs=document.querySelectorAll('.fm-tab');
   tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false');});t.classList.add('on');t.setAttribute('aria-selected','true');applyFilter(t.getAttribute('data-filter')||'all');});});
-  // Handle the Sunday Brunch special button
-  var sbBtn = document.querySelector('.fm-sb-btn');
-  if(sbBtn) {
-    sbBtn.addEventListener('click', function() {
-      var sundayTab = document.querySelector('.fm-tab[data-filter="sunday"]');
-      if(sundayTab) sundayTab.click();
-    });
-  }
 })();
 (function booking(){
   var modal=document.getElementById('bookModal');if(!modal) return;
@@ -729,6 +691,7 @@ var lock={y:0,on:function(){this.y=window.scrollY||window.pageYOffset||0;documen
   var DOW=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var MON3=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var TIMES=['12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30'];
+  var WHATSAPP_NUMBER='919004455115'; /* +91 9004 455 115 */
   var today=new Date();today.setHours(0,0,0,0);
   var maxDate=new Date(today.getTime());maxDate.setDate(maxDate.getDate()+90);
   var view=new Date(today.getFullYear(),today.getMonth(),1);
@@ -747,7 +710,19 @@ var lock={y:0,on:function(){this.y=window.scrollY||window.pageYOffset||0;documen
   nextBtn.addEventListener('click',function(){view.setMonth(view.getMonth()+1);renderCal();});
   minusBtn.addEventListener('click',function(){guests=Math.max(1,guests-1);guestsEl.textContent=guests;renderSummary();});
   plusBtn.addEventListener('click',function(){guests=Math.min(12,guests+1);guestsEl.textContent=guests;renderSummary();});
-  goBtn.addEventListener('click',function(){var subject='Table for '+guests+' \u2014 '+fmtLong(sel)+' at '+time;var body='Name:\nPhone:\nDate: '+fmtLong(sel)+'\nTime: '+time+'\nGuests: '+guests+'\nNotes:';window.location.href='mailto:reserve@hotelbostan.in?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);goBtn.textContent='Opening your mail app\u2026';setTimeout(function(){goBtn.textContent='Confirm Reservation';},2600);});
+  goBtn.addEventListener('click',function(){
+    var msg='*Table Reservation \u2014 Hotel Bostan*\n\n'+
+            'Date: '+fmtLong(sel)+'\n'+
+            'Time: '+time+'\n'+
+            'Guests: '+guests+'\n'+
+            'Name: \n'+
+            'Phone: \n'+
+            'Notes: ';
+    var url='https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(msg);
+    window.open(url,'_blank');
+    goBtn.textContent='Opening WhatsApp\u2026';
+    setTimeout(function(){goBtn.textContent='Confirm Reservation';},2600);
+  });
   function openBook(e){if(e)e.preventDefault();if(isOpen)return;isOpen=true;lock.on();modal.classList.add('open');modal.setAttribute('aria-hidden','false');renderAll();setTimeout(function(){closeBtn.focus();},80);}
   function closeBook(){if(!isOpen)return;isOpen=false;lock.off();modal.classList.remove('open');modal.setAttribute('aria-hidden','true');if(openLink)openLink.focus();}
   if(openLink)openLink.addEventListener('click',openBook);
@@ -757,26 +732,24 @@ var lock={y:0,on:function(){this.y=window.scrollY||window.pageYOffset||0;documen
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeBook();});
 })();
 var PAPER='#5A4155',INK='#FFFFFF',PAPER2='#B7535B',SAGE='#FFFFFF',OCHRE='#FFFFFF',TOMATO='#000000',SLATE='#5A4155',DEEP='#1B141A';
-var T={paper:[PAPER,INK],ink:[DEEP,INK],cream:[PAPER2,INK],tomato:[TOMATO,INK],sage:[SAGE,INK],ochre:[OCHRE,INK],slate:[SLATE,INK]},cur='';
+var T={paper:[PAPER,INK],ink:[DEEP,INK],cream:[PAPER2,INK],tomato:[TOMATO,INK],sage:[SAGE,INK],ochre:[OCHRE,INK],slate:[SLATE,INK],gold:['#A19836',INK]},cur='';
 function theme(n){if(!T[n]||n===cur) return;cur=n;gsap.to('body',{backgroundColor:T[n][0],color:T[n][1],duration:1,ease:'power3.inOut',overwrite:true})}
 var dot=$('#cur');
 if(fine&&!reduce){var qx=gsap.quickTo(dot,'x',{duration:.45,ease:'power3'}),qy=gsap.quickTo(dot,'y',{duration:.45,ease:'power3'});addEventListener('pointermove',function(e){dot.style.opacity=1;qx(e.clientX);qy(e.clientY)},{passive:true});document.addEventListener('pointerover',function(e){gsap.to(dot,{scale:e.target.closest('a,button,label')?3:1,duration:.5,ease:'expo.out'})})}
 addEventListener('resize',function(){ScrollTrigger.refresh()});
 $$('section[data-t]').forEach(function(s){ScrollTrigger.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:function(x){if(x.isActive)theme(s.dataset.t)}})});
-var mq=gsap.to('#mq',{xPercent:-50,ease:'none',duration:55,repeat:-1}),sk=gsap.quickSetter('#mq','skewX','deg');
-ScrollTrigger.create({onUpdate:function(s){var v=gsap.utils.clamp(-6,6,s.getVelocity()/-260);sk(v);gsap.to(mq,{timeScale:s.direction*(1+Math.abs(v)*.6),duration:.5,overwrite:true})}});
 var D=[
-['North-Indian','Rogan Josh','Slow-cooked Kashmiri classic. Tender lamb in a deep red gravy, whole spices, patience.',290,'cream','rogan-josh.png',0],
-['Moghlai','Murgh Musallam','Whole chicken, slow-roasted, stuffed with spiced mince. The royal Moghlai centrepiece.',420,'ochre','murgh-musallam.png',0],
-['Chinese','Hakka Noodles','Wok-tossed, glossy. Julienned peppers, spring onion, a whisper of soy.',260,'sage','hakka-noodles.png',0],
-['Mexican','Rosa Mexicano','Loaded tortilla, pink chipotle crema, cotija, coriander. Named for the blush of the plate.',280,'paper','rosa-mexicano.png',-90],
-['Coolers','Bostan Matcha','Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.',240,'tomato','bostan-matcha.png',0]
+['North-Indian','Rogan Josh','Slow-cooked Kashmiri classic. Tender lamb in a deep red gravy, whole spices, patience.',490,'cream','rogan-josh.png',0],
+['Moghlai','Murgh Musallam','Whole chicken, slow-roasted, stuffed with spiced mince. The royal Moghlai centrepiece.',720,'ochre','murgh-musallam.png',0],
+['Chinese','Hakka Noodles','Wok-tossed, glossy. Julienned peppers, spring onion, a whisper of soy.',440,'gold','hakka-noodles.png',0],
+['Mexican','Rosa Mexicano','Loaded tortilla, pink chipotle crema, cotija, coriander. Named for the blush of the plate.',480,'paper','rosa-mexicano.png',-90],
+['Coolers','Bostan Matcha','Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.',420,'tomato','bostan-matcha.png',0]
 ];
 var tr=$('#track'),names=['ink'].concat(D.map(function(d){return d[4]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
 tr.innerHTML='<div class="p ink poster">'
-  +'<div class="p-img"><img src="the-table.png" alt="The table at Hotel Bostan — candlelight, brick and the long table." loading="eager" decoding="async"></div>'
+  +'<div class="p-img"><img src="the-table.png" alt="The dining hall at Hotel Bostan — candlelight, exposed brick, and the long marble pass." loading="eager" decoding="async"></div>'
   +'<div class="p-veil" aria-hidden="true"></div>'
-  +'<div class="p-copy"><h2>Tonight&rsquo;s Table</h2><p class="hint">Five plates from tonight&rsquo;s kitchen &mdash; scroll across.</p></div>'
+  +'<div class="p-copy"><h2>The Dining Hall</h2><p class="hint">Forty covers, one long table, and a working marble pass &mdash; candlelight, exposed brick, and the fire never far. Scroll to meet the plates.</p></div>'
 +'</div>'+D.map(function(d){
   var rotCls=d[6]?' rot':'';
   var drinkCls=/bostan-matcha/i.test(d[5])?' drink':'';
@@ -830,14 +803,12 @@ setTimeout(fitPanels,500);
   window.__setLogo=setSrc;
 })();
 
-// NEW: TEMPORARY FOOTER COLOR TOOL LOGIC
 (function footerColorTester(){
   var input = document.getElementById('footerColorInput');
   var applyBtn = document.getElementById('footerColorApply');
   var resetBtn = document.getElementById('footerColorReset');
   var footer = document.querySelector('.site-footer');
   if(!input || !footer) return;
-  var originalColor = getComputedStyle(footer).backgroundColor;
   function applyColor(){
     var val = input.value.trim();
     if(/^#([0-9A-F]{3}){1,2}$/i.test(val)){
