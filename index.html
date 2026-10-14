@@ -66,7 +66,7 @@ section{position:relative;z-index:1}
 .jprog{display:none}
 .jplate{flex:1;min-height:0;margin-top:clamp(20px,3.4vh,40px);position:relative;overflow:hidden;background:var(--slate-2);border:1px solid rgba(var(--ink-rgb),.16)}
 .jplate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:saturate(.95) contrast(1.03) brightness(1.02);will-change:transform}
-
+.jplate:after{content:"PHOTOGRAPHED AT SERVICE · HOTEL BOSTAN";position:absolute;left:14px;bottom:10px;font:400 9px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.72);text-shadow:0 1px 6px rgba(0,0,0,.5);pointer-events:none}
 .js .jtitle-h,.js .jtitle-sub,.js .jnum{opacity:0}
 @media(max-width:700px){.journey{height:100vh;height:100svh}.jtitle-h{font-size:clamp(40px,12vw,84px)}.jtitle-sub{font-size:15px}}
 .idea{position:relative;min-height:100svh;padding:clamp(80px,14vh,140px) var(--pad);display:flex;flex-direction:column;justify-content:center;background:var(--paper);border-top:1px solid var(--accent-trans)}
@@ -99,6 +99,7 @@ section{position:relative;z-index:1}
 .p .hint{margin-left:auto;margin-right:auto;text-align:center;color:var(--accent)}
 .k{position:absolute;top:13vh;left:var(--pad);right:var(--pad);display:flex;align-items:center;justify-content:center;gap:clamp(14px,2vw,26px);font:500 clamp(18px, 2.2vw, 34px)/1 var(--serif);letter-spacing:.2em;text-transform:uppercase;opacity:1;color:var(--accent);pointer-events:none;z-index:2}
 .k:before,.k:after{content:"";height:2px;background:currentColor;opacity:1;flex:0 0 clamp(30px,5vw,80px)}
+.p.gold .k{color:#FFFFFF}
 .note{display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:20px;position:relative;width:100%;max-width:min(100%,640px);margin:0 auto;text-align:center;color:var(--fg,#FFFFFF)}
 .note:before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:currentColor;opacity:.32}
 .note p{max-width:44ch;font:italic 300 clamp(15px,1.5vw,20px)/1.45 var(--serif);color:var(--fg,#FFFFFF)}
@@ -121,56 +122,6 @@ section{position:relative;z-index:1}
 .hud{position:absolute;z-index:3;top:calc(80px + env(safe-area-inset-top,0px));left:var(--pad);right:var(--pad);display:flex;justify-content:flex-end;font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;font-variant-numeric:tabular-nums;color:var(--fg,#FFFFFF);opacity:.72}
 .bar{position:absolute;z-index:3;left:var(--pad);right:var(--pad);bottom:calc(4vh + env(safe-area-inset-bottom,0px));height:1px;background:rgba(255,255,255,.14)}
 .bar b{position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left}
-.fullmenu{position:fixed;inset:0;z-index:70;background:var(--paper);color:var(--ink);padding:clamp(88px,12vh,120px) var(--pad) clamp(48px,7vh,88px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;opacity:0;visibility:hidden;transform:translateY(24px);transition:opacity .55s cubic-bezier(.16,1,.3,1),visibility .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
-.fullmenu.open{opacity:1;visibility:visible;transform:translateY(0)}
-.fm-inner{width:100%;max-width:1000px;margin:0 auto}
-.fm-logo{display:flex;justify-content:center;align-items:center;margin:0 auto clamp(28px,5vh,52px);padding:0;min-height:clamp(50px,8vh,90px)}
-.fm-logo img{display:block;max-width:min(320px,64vw);max-height:clamp(50px,8vh,90px);width:auto;height:auto;object-fit:contain;filter:brightness(0) invert(1) opacity(.94)}
-.fm-logo .fm-logo-fallback{font:400 clamp(28px,3.6vw,46px)/1 var(--serif);font-style:italic;letter-spacing:-.02em;color:var(--ink);display:none}
-.fm-masthead{text-align:center;margin-bottom:clamp(28px,5vh,48px)}
-.fm-issue{font:400 11px/1 var(--serif);letter-spacing:.4em;color:var(--ink-mute);display:block;margin-bottom:14px}
-.fm-masthead h2{font:400 clamp(38px,6vw,84px)/.95 var(--serif);letter-spacing:-.025em;text-transform:uppercase;color:var(--ink)}
-.fm-masthead .fm-tagline{font:italic 300 clamp(14px,1.3vw,17px)/1.4 var(--serif);color:var(--ink-soft);margin-top:12px}
-.fm-masthead .fm-mastrule{width:56px;height:1px;background:var(--accent);margin:20px auto 0}
-.fm-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-bottom:clamp(36px,6vh,60px);border-top:1px solid var(--accent-trans);border-bottom:1px solid var(--accent-trans);padding:16px 0}
-.fm-tab{padding:6px 18px;background:transparent;color:var(--ink-soft);font:500 10.5px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;text-align:center;transition:color .25s;cursor:pointer;position:relative}
-.fm-tab + .fm-tab{border-left:1px solid var(--rule-soft)}
-.fm-tab:hover:not(.on){color:var(--ink)}
-.fm-tab.on{color:var(--accent)}
-.fm-tab.on:after{content:"";position:absolute;left:18px;right:18px;bottom:-17px;height:1px;background:var(--accent)}
-@media(max-width:600px){.fm-tabs{padding:10px 0}.fm-tab{padding:5px 12px;font-size:9.5px;letter-spacing:.22em}.fm-tab + .fm-tab{border-left:0}.fm-tab.on:after{bottom:-11px;left:12px;right:12px}}
-.fm-hero{margin-bottom:36px;overflow:hidden;position:relative}
-.fm-hero img{width:100%;height:clamp(160px,24vh,260px);object-fit:cover;display:block;filter:saturate(.94) contrast(1.03)}
-.fm-key{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:clamp(36px,5vh,60px);font:400 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ink-mute)}
-.fm-key .fm-kitem{display:inline-flex;align-items:center;gap:9px}
-.fm-key .fm-kdot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
-.fm-kdot.sage{background:var(--sage)}
-.fm-kdot.pink{background:var(--accent)}
-.fm-section{margin-bottom:clamp(42px,6vh,64px)}
-.fm-section:last-of-type{margin-bottom:0}
-.fm-heading{font:400 clamp(24px,2.6vw,32px)/1 var(--serif);letter-spacing:-.01em;text-align:center;color:var(--ink);margin:0 0 clamp(20px,3vh,32px);display:flex;align-items:center;justify-content:center;gap:20px}
-.fm-heading:before,.fm-heading:after{content:"";height:1px;background:var(--rule);flex:0 0 40px}
-.fm-heading em{font-style:italic;font-weight:300}
-.fm-lede{font:italic 300 clamp(13px,1.25vw,15px)/1.55 var(--serif);color:var(--ink-soft);text-align:center;max-width:52ch;margin:-8px auto clamp(24px,3.5vh,36px);letter-spacing:.005em}
-.fm-tail{font:italic 300 12px/1.6 var(--serif);color:var(--ink-mute);text-align:center;margin:clamp(20px,3vh,32px) auto 0;letter-spacing:.06em}
-.fm-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(28px,3.6vw,60px);row-gap:0}
-.fm-dish{padding:0 0 14px;margin-bottom:16px;border-bottom:1px solid var(--rule-soft);transition:transform .3s ease}
-.fm-dish:hover{transform:translateX(2px)}
-.fm-dhead{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
-.fm-dname{font-family:var(--serif);font-size:clamp(14px,1.35vw,16.5px);font-weight:500;color:var(--ink);line-height:1.3;letter-spacing:-.005em;flex-shrink:0;max-width:78%}
-.fm-dleader{flex:1;min-width:16px;height:1px;border-bottom:1px dotted var(--accent-trans);position:relative;top:-3px}
-.fm-dprice{font-family:var(--serif);font-size:clamp(13.5px,1.35vw,16px);color:var(--ink);flex-shrink:0;white-space:nowrap;letter-spacing:-.005em}
-.fm-ddesc{font:400 clamp(11px,1.1vw,12.5px)/1.6 var(--sans);color:var(--ink-soft);letter-spacing:.005em;margin:0;max-width:52ch}
-.fm-ddesc .fm-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:6px;position:relative;top:-1px;vertical-align:middle}
-.fm-dot.sage{background:var(--sage)}
-.fm-dot.pink{background:var(--accent)}
-.fm-fine{margin-top:clamp(40px,6vh,70px);padding-top:clamp(20px,3vh,30px);border-top:1px solid var(--rule-soft);font:400 10px/1.85 var(--sans);color:var(--ink-mute);letter-spacing:.12em;text-transform:uppercase;text-align:center}
-.fm-fine p{margin:0 0 8px}
-.fm-close{position:fixed;top:calc(18px + env(safe-area-inset-top,0px));right:var(--pad);z-index:80;display:inline-flex;align-items:center;gap:9px;padding:11px 20px;background:var(--tomato);color:#FFFFFF;border:1px solid var(--tomato);border-radius:0;font:500 10px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .4s cubic-bezier(.16,1,.3,1),visibility .4s cubic-bezier(.16,1,.3,1),transform .4s cubic-bezier(.16,1,.3,1),background .3s,color .3s,border-color .3s}
-.fm-close.visible{opacity:1;visibility:visible;transform:translateY(0)}
-.fm-close:hover{background:var(--deep);border-color:var(--deep);color:#FFFFFF}
-.fm-close svg{width:11px;height:11px;flex:none}
-@media(max-width:720px){.fm-grid{grid-template-columns:1fr;column-gap:0}.fm-dname{max-width:72%}.fm-close{padding:9px 14px;font-size:9.5px;gap:6px;letter-spacing:.22em}}
 .bookmodal{position:fixed;inset:0;z-index:75;display:flex;align-items:center;justify-content:center;padding:clamp(14px,3vw,40px);background:rgba(var(--deep-rgb),.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .45s cubic-bezier(.16,1,.3,1),visibility .45s cubic-bezier(.16,1,.3,1)}
 .bookmodal.open{opacity:1;visibility:visible}
 .bm-card{position:relative;width:min(920px,100%);max-height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:var(--paper-3);color:var(--ink);padding:clamp(26px,4vw,56px);border:1px solid var(--accent-trans);transform:translateY(20px);transition:transform .55s cubic-bezier(.16,1,.3,1)}
@@ -317,7 +268,7 @@ section{position:relative;z-index:1}
          onerror="this.classList.add('is-hidden');var t=this.parentNode.querySelector('.logo-text');if(t)t.classList.add('is-on');">
     <span class="logo-text" aria-hidden="true">Hotel Bostan</span>
   </a>
-  <div><a href="#menu" data-open-menu>Menu</a><a href="press-kit.html" target="_blank" rel="noopener">PRESS KIT</a><a href="#book">Reserve</a></div>
+  <div><a href="menu.html">Menu</a><a href="press-kit.html" target="_blank" rel="noopener">Press Kit</a><a href="#book">Reserve</a></div>
 </nav>
 <main id="top">
 
@@ -415,135 +366,6 @@ section{position:relative;z-index:1}
 
 </main>
 
-<button class="fm-close" id="fmClose" type="button" aria-label="Close menu">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-  Close
-</button>
-
-<section class="fullmenu" id="fullmenu" aria-label="Full menu" aria-hidden="true" data-lenis-prevent>
-  <div class="fm-inner">
-    <div class="fm-logo">
-      <img src="logo.png" alt="Hotel Bostan" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-      <span class="fm-logo-fallback">Hotel Bostan</span>
-    </div>
-    <div class="fm-masthead">
-      <span class="fm-issue">Issued For: Winter 2026 &middot; Issue 45</span>
-      <h2>THE MEHFIL</h2>
-      <p class="fm-tagline">Cook. Nourish. Enjoy.</p>
-      <div class="fm-mastrule"></div>
-    </div>
-
-    <div class="fm-tabs" role="tablist" aria-label="Menu categories">
-      <button class="fm-tab on" role="tab" aria-selected="true" data-filter="all">All</button>
-      <button class="fm-tab" role="tab" aria-selected="false" data-filter="sunday">Sunday</button>
-      <button class="fm-tab" role="tab" aria-selected="false" data-filter="openers">Openers</button>
-      <button class="fm-tab" role="tab" aria-selected="false" data-filter="starters">Starters</button>
-      <button class="fm-tab" role="tab" aria-selected="false" data-filter="mains">Mains</button>
-      <button class="fm-tab" role="tab" aria-selected="false" data-filter="chinese">Chinese</button>
-      <button class="fm-tab" role="tab" aria-selected="false" data-filter="sweet">Sweet</button>
-      <button class="fm-tab" role="tab" aria-selected="false" data-filter="coolers">Coolers</button>
-    </div>
-    <div class="fm-hero">
-  
-    </div>
-    <div class="fm-key">
-      <span class="fm-kitem"><i class="fm-kdot sage"></i>Vegetarian</span>
-      <span class="fm-kitem"><i class="fm-kdot pink"></i>Signature</span>
-    </div>
-
-    <section class="fm-section" data-tab="sunday">
-      <h3 class="fm-heading"><em>Sunday Brunch</em></h3>
-      <p class="fm-lede">One day a week, the kitchen turns Mediterranean &mdash; olive oil, warm bread, slow eggs, mezze. Served Sundays, 12:00 to 16:00. Reservations only.</p>
-      <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Burrata &amp; Roasted Tomato Toast</span><span class="fm-dleader"></span><span class="fm-dprice">₹820</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Vine tomatoes, torn burrata, cold-pressed oil, grilled sourdough. The plate that opens every Sunday.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Shakshuka</span><span class="fm-dleader"></span><span class="fm-dprice">₹720</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Slow eggs poached in tomato and pepper, cumin, coriander. Served with warm pita.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mezze Board</span><span class="fm-dleader"></span><span class="fm-dprice">₹950</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Hummus, muhammara, labneh, olives, pickles, warm bread. Made for the middle of the table.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Halloumi &amp; Za&rsquo;atar Flatbread</span><span class="fm-dleader"></span><span class="fm-dprice">₹650</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Griddled halloumi, wild thyme, a thread of honey, blistered flatbread.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mediterranean Grain Bowl</span><span class="fm-dleader"></span><span class="fm-dprice">₹760</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Farro, roasted vegetables, feta, herb oil, lemon. The green thing on the table.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Orange &amp; Olive Oil Cake</span><span class="fm-dleader"></span><span class="fm-dprice">₹480</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Citrus, cardamom, good oil, a spoon of cr&egrave;me fra&icirc;che. The Sunday ending.</p></div>
-      </div>
-      <p class="fm-tail">Sundays only &middot; 12:00 &ndash; 16:00 &middot; 40 covers &middot; Reservations essential</p>
-    </section>
-
-    <section class="fm-section" data-tab="openers">
-      <h3 class="fm-heading"><em>Openers</em></h3>
-      <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Paya Soup</span><span class="fm-dleader"></span><span class="fm-dprice">₹440</span></div><p class="fm-ddesc">Slow-simmered trotters, a Moghlai classic. Served with butter naan.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Manchow Soup</span><span class="fm-dleader"></span><span class="fm-dprice">₹340</span></div><p class="fm-ddesc">Sichuan in a Moghlai house. Noodles, chicken, a whisper of heat.</p></div>
-      </div>
-    </section>
-
-    <section class="fm-section" data-tab="starters">
-      <h3 class="fm-heading"><em>Starters</em></h3>
-      <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹480</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Six pieces, tandoor-kissed, smoke still rising.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Hot Honey Chicken Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹540</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Kashmiri chilli honey glaze on tandoor-charred tikka. Sweet, spicy, sticky.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Paneer Tikka</span><span class="fm-dleader"></span><span class="fm-dprice">₹520</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Six pieces, charred, bright with spices. The vegetarian anchor.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Seekh Kabab</span><span class="fm-dleader"></span><span class="fm-dprice">₹440</span></div><p class="fm-ddesc">Minced, spiced, grilled on skewers. Six pieces to a plate.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Champaran Mutton Seekh</span><span class="fm-dleader"></span><span class="fm-dprice">₹580</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Bihar&rsquo;s legendary Champaran style. Slow-cooked, hand-pressed, finished on the grill.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Gunpowder Chicken 65</span><span class="fm-dleader"></span><span class="fm-dprice">₹500</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Andhra gunpowder tossed with crispy Chicken 65. Crunchy, fiery, made for sharing.</p></div>
-      </div>
-    </section>
-
-    <section class="fm-section" data-tab="signature">
-      <h3 class="fm-heading"><em>Signature</em></h3>
-      <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Special Bostan</span><span class="fm-dleader"></span><span class="fm-dprice">₹580</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Red gravy, seekh kabab, the house hero. The dish that has led our table since 1980.</p></div>
-      </div>
-    </section>
-
-    <section class="fm-section" data-tab="mains">
-      <h3 class="fm-heading"><em>Mains</em></h3>
-      <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Butter Chicken</span><span class="fm-dleader"></span><span class="fm-dprice">₹520</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Shahi red gravy, the classic. Our most-ordered main.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Truffle Butter Chicken</span><span class="fm-dleader"></span><span class="fm-dprice">₹660</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>The classic, finished with truffle oil. Familiar dish, luxury upgrade.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka Masala</span><span class="fm-dleader"></span><span class="fm-dprice">₹500</span></div><p class="fm-ddesc">Boneless tikka in red gravy.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Dilli-6 Murgh Korma</span><span class="fm-dleader"></span><span class="fm-dprice">₹560</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Awadhi korma reimagined: cashew-almond base, rose water finish, tender chicken.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Afghani Boneless</span><span class="fm-dleader"></span><span class="fm-dprice">₹500</span></div><p class="fm-ddesc">Creamy, mild, boneless. The white-gravy hero.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Kheema</span><span class="fm-dleader"></span><span class="fm-dprice">₹480</span></div><p class="fm-ddesc">Minced, spiced, slow-cooked.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Kolhapuri</span><span class="fm-dleader"></span><span class="fm-dprice">₹540</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Spicy, bold. The heat gap in our menu, filled.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mutton Rogan Josh</span><span class="fm-dleader"></span><span class="fm-dprice">₹500</span></div><p class="fm-ddesc">Kashmiri classic, slow-cooked.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Mutton Bhuna</span><span class="fm-dleader"></span><span class="fm-dprice">₹760</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Slow-roasted, deeply spiced. The highest-margin mutton on the menu.</p></div>
-      </div>
-    </section>
-
-    <section class="fm-section" data-tab="chinese">
-      <h3 class="fm-heading"><em>Chinese</em></h3>
-      <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Lollipop</span><span class="fm-dleader"></span><span class="fm-dprice">₹460</span></div><p class="fm-ddesc">Frenched wings, fried until crisp.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Crispy</span><span class="fm-dleader"></span><span class="fm-dprice">₹580</span></div><p class="fm-ddesc">Golden, crunchy, 500ml.</p></div>
-      </div>
-    </section>
-
-    <section class="fm-section" data-tab="rice">
-      <h3 class="fm-heading"><em>Rice &amp; Bread</em></h3>
-      <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Chicken Tikka Biryani</span><span class="fm-dleader"></span><span class="fm-dprice">₹560</span></div><p class="fm-ddesc">Layered with charred tikka.</p></div>
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Butter Naan</span><span class="fm-dleader"></span><span class="fm-dprice">₹160</span></div><p class="fm-ddesc"><i class="fm-dot sage"></i>Essential for gravy dishes.</p></div>
-      </div>
-    </section>
-
-    <section class="fm-section" data-tab="sweet">
-      <h3 class="fm-heading"><em>Sweet</em></h3>
-      <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Caramel Custard</span><span class="fm-dleader"></span><span class="fm-dprice">₹340</span></div><p class="fm-ddesc">Mumbai&rsquo;s oldest love song, sweetened with petals.</p></div>
-      </div>
-    </section>
-
-    <section class="fm-section" data-tab="coolers">
-      <h3 class="fm-heading"><em>Coolers</em></h3>
-      <div class="fm-grid">
-        <div class="fm-dish"><div class="fm-dhead"><span class="fm-dname">Bostan Matcha</span><span class="fm-dleader"></span><span class="fm-dprice">₹420</span></div><p class="fm-ddesc"><i class="fm-dot pink"></i>Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.</p></div>
-      </div>
-    </section>
-
-    <div class="fm-fine">
-      <p>All prices are exclusive of applicable taxes. A discretionary 10% service charge will be added to your bill.</p>
-      <p>Our kitchen is purely Halal &mdash; we do not serve alcohol or pork. Vegetarian, Jain &amp; allergen menus available on request.</p>
-    </div>
-  </div>
-</section>
-
 <div class="bookmodal" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="bmTitle" aria-hidden="true">
   <div class="bm-card" role="document">
     <button class="bm-x" id="bmClose" type="button" aria-label="Close reservation">
@@ -605,7 +427,7 @@ section{position:relative;z-index:1}
       <div class="sf-group">
         <h4>The Table</h4>
         <ul>
-          <li><a href="#menu" data-open-menu>Menu</a></li>
+          <li><a href="menu.html">Menu</a></li>
           <li><a href="#book" data-open-book>Reserve</a></li>
           <li><a href="mailto:alcove@hotelbostan.in">Private Dining</a></li>
         </ul>
@@ -668,22 +490,6 @@ var lenis=null;if(!reduce&&typeof Lenis!=='undefined'){lenis=new Lenis({lerp:.08
 $$('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var el=$(a.getAttribute('href'));if(!el)return;e.preventDefault();if(lenis)lenis.scrollTo(el,{duration:2.4,easing:function(x){return x===1?1:1-Math.pow(2,-10*x)}});else el.scrollIntoView()})});
 function mask(el){var t=el.textContent;el.setAttribute('aria-label',t);el.textContent='';return t.split(' ').map(function(w,i,a){var m=document.createElement('span'),s=document.createElement('i');m.className='mk';m.setAttribute('aria-hidden','true');s.textContent=w;m.appendChild(s);el.appendChild(m);if(i<a.length-1)el.appendChild(document.createTextNode(' '));return s})}
 var lock={y:0,on:function(){this.y=window.scrollY||window.pageYOffset||0;document.body.style.position='fixed';document.body.style.top=(-this.y)+'px';document.body.style.left='0';document.body.style.right='0';document.body.style.width='100%';document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';if(lenis&&typeof lenis.stop==='function')lenis.stop();},off:function(){document.body.style.position='';document.body.style.top='';document.body.style.left='';document.body.style.right='';document.body.style.width='';document.body.style.overflow='';document.documentElement.style.overflow='';window.scrollTo(0,this.y);if(lenis&&typeof lenis.start==='function')lenis.start();}};
-(function fullMenu(){
-  var overlay=document.getElementById('fullmenu');
-  var closeBtn=document.getElementById('fmClose');
-  var openers=document.querySelectorAll('[data-open-menu]');
-  var isOpen=false;
-  function openMenu(e){if(e)e.preventDefault();if(isOpen)return;isOpen=true;lock.on();overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');closeBtn.classList.add('visible');overlay.scrollTop=0;setTimeout(function(){closeBtn.focus();},100);}
-  function closeMenu(){if(!isOpen)return;isOpen=false;lock.off();overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');closeBtn.classList.remove('visible');}
-  openers.forEach(function(b){b.addEventListener('click',openMenu);});
-  closeBtn.addEventListener('click',closeMenu);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeMenu();});
-  overlay.addEventListener('click',function(e){if(e.target===overlay)closeMenu();});
-  var tabMap={all:['sunday','openers','starters','signature','mains','chinese','rice','sweet','coolers'],sunday:['sunday'],openers:['openers'],starters:['starters','signature'],mains:['mains','chinese','rice'],chinese:['chinese'],sweet:['sweet'],coolers:['coolers']};
-  function applyFilter(key){var allowed=tabMap[key]||tabMap.all;document.querySelectorAll('.fm-section').forEach(function(s){var tab=s.getAttribute('data-tab')||'';s.style.display=(key==='all'||allowed.indexOf(tab)!==-1)?'':'none';});overlay.scrollTop=0;}
-  var tabs=document.querySelectorAll('.fm-tab');
-  tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false');});t.classList.add('on');t.setAttribute('aria-selected','true');applyFilter(t.getAttribute('data-filter')||'all');});});
-})();
 (function booking(){
   var modal=document.getElementById('bookModal');if(!modal) return;
   var openLink=document.getElementById('openBook'),closeBtn=document.getElementById('bmClose'),monthEl=document.getElementById('bmMonth'),daysEl=document.getElementById('bmDays'),prevBtn=document.getElementById('bmPrev'),nextBtn=document.getElementById('bmNext'),timesEl=document.getElementById('bmTimes'),guestsEl=document.getElementById('bmGuests'),minusBtn=document.getElementById('bmMinus'),plusBtn=document.getElementById('bmPlus'),sumEl=document.getElementById('bmSummary'),goBtn=document.getElementById('bmGo');
@@ -691,7 +497,7 @@ var lock={y:0,on:function(){this.y=window.scrollY||window.pageYOffset||0;documen
   var DOW=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var MON3=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var TIMES=['12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30'];
-  var WHATSAPP_NUMBER='919004455115'; /* +91 9004 455 115 */
+  var WHATSAPP_NUMBER='919004455115';
   var today=new Date();today.setHours(0,0,0,0);
   var maxDate=new Date(today.getTime());maxDate.setDate(maxDate.getDate()+90);
   var view=new Date(today.getFullYear(),today.getMonth(),1);
@@ -747,9 +553,9 @@ var D=[
 ];
 var tr=$('#track'),names=['ink'].concat(D.map(function(d){return d[4]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
 tr.innerHTML='<div class="p ink poster">'
-  +'<div class="p-img"><img src="the-table.png" alt="THE MEHFIL at Hotel Bostan — candlelight, exposed brick, and the long marble pass." loading="eager" decoding="async"></div>'
+  +'<div class="p-img"><img src="the-table.png" alt="The mehfil at Hotel Bostan — candlelight, exposed brick, and the marble pass." loading="eager" decoding="async"></div>'
   +'<div class="p-veil" aria-hidden="true"></div>'
-  +'<div class="p-copy"><h2>THE MEHFIL</h2><p class="hint">Forty covers, one long table, and a working marble pass &mdash; candlelight, exposed brick, and the fire never far. Scroll to meet the plates.</p></div>'
+  +'<div class="p-copy"><h2>The Mehfil</h2><p class="hint">Forty covers, one marble pass, and the fire never far &mdash; candlelight, exposed brick, and a welcome that has not closed since 1980. Scroll to meet the plates.</p></div>'
 +'</div>'+D.map(function(d){
   var rotCls=d[6]?' rot':'';
   var drinkCls=/bostan-matcha/i.test(d[5])?' drink':'';
@@ -788,18 +594,23 @@ setTimeout(fitPanels,500);
 (function logoTester(){
   var input=document.getElementById('logoUpload'),navImg=document.getElementById('navLogo'),info=document.getElementById('logoInfo'),reset=document.getElementById('logoReset');
   if(!input||!navImg) return;
-  var fmImgs=document.querySelectorAll('.fm-logo img'),sfImgs=document.querySelectorAll('.sf-brand img');
+  var sfImgs=document.querySelectorAll('.sf-brand img');
   var original=navImg.getAttribute('src')||'logo.png',objectUrl=null;
-  function setSrc(src){
+  function setSrc(src,isCustom){
     navImg.classList.remove('is-hidden');
     var txt=navImg.parentNode.querySelector('.logo-text');
     if(txt) txt.classList.remove('is-on');
     navImg.src=src;
-    fmImgs.forEach(function(i){i.style.display='';if(i.nextElementSibling) i.nextElementSibling.style.display='none';i.src=src;});
-    sfImgs.forEach(function(i){i.style.display='';var f=i.parentNode.querySelector('.sf-brand-fallback');if(f) f.style.display='none';i.src=src;});
+    sfImgs.forEach(function(i){
+      i.style.display='';
+      var f=i.parentNode.querySelector('.sf-brand-fallback');
+      if(f) f.style.display='none';
+      i.src=src;
+      i.style.filter=isCustom?'none':'';
+    });
   }
-  input.addEventListener('change',function(){var f=input.files&&input.files[0];if(!f) return;if(objectUrl) URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(f);setSrc(objectUrl);info.textContent=f.name;});
-  reset.addEventListener('click',function(){if(objectUrl){URL.revokeObjectURL(objectUrl);objectUrl=null;}input.value='';setSrc(original);info.textContent=original;});
+  input.addEventListener('change',function(){var f=input.files&&input.files[0];if(!f) return;if(objectUrl) URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(f);setSrc(objectUrl,true);info.textContent=f.name;});
+  reset.addEventListener('click',function(){if(objectUrl){URL.revokeObjectURL(objectUrl);objectUrl=null;}input.value='';setSrc(original,false);info.textContent=original;});
   window.__setLogo=setSrc;
 })();
 
