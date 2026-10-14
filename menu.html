@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Mehfil — Hotel Bostan</title>
-<meta name="description" content="The full carte at Hotel Bostan — Moghlai, North Indian, Chinese, and Mediterranean, set every night since 1980. Order for delivery within 3 km — ₹999 minimum.">
+<meta name="description" content="The full carte at Hotel Bostan — North Indian, Moghlai, Chinese, Mexican, and Mediterranean, set every night since 1980. Order for delivery within 3 km — ₹999 minimum.">
 <meta name="theme-color" content="#5A4155">
 <link rel="canonical" href="https://hotelbostan.in/menu.html">
 <meta name="robots" content="index,follow">
@@ -19,6 +19,11 @@
   --accent:#A19836;
   --accent-trans:rgba(161,152,54,0.32);
   --mauve:#5A4155;--mauve-rgb:90,65,85;
+  --cuisine-north:#A19836;
+  --cuisine-moghlai:#8A3A2E;
+  --cuisine-chinese:#5A4155;
+  --cuisine-mexican:#A85432;
+  --cuisine-mediterranean:#4E6E5D;
   --ink:#1F1A1F;--ink-rgb:31,26,31;
   --ink-soft:rgba(var(--ink-rgb),.72);
   --ink-mute:rgba(var(--ink-rgb),.48);
@@ -45,9 +50,6 @@ a,button{color:inherit;text-decoration:none;font:inherit;background:none;border:
 a:focus-visible,button:focus-visible{outline:1.5px solid var(--accent);outline-offset:4px}
 img{display:block;max-width:100%;height:auto}
 
-/* ============================================
-   TOP STRIP — frosted glass over mauve
-   ============================================ */
 .top{position:fixed;top:0;left:0;right:0;z-index:40;height:var(--top-h);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:0 var(--pad);background:var(--nav-glass);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid var(--nav-rule)}
 .top .brand{display:inline-flex;align-items:center;justify-content:center;line-height:0;grid-column:2;color:var(--nav-ink)}
 .top .brand img{height:clamp(44px,5.6vw,58px);width:auto;max-width:min(300px,44vw);object-fit:contain;filter:brightness(0) invert(1) opacity(.95)}
@@ -58,16 +60,12 @@ img{display:block;max-width:100%;height:auto}
 .top .back:hover{color:var(--accent)}
 .top .back:hover svg{transform:translateX(-3px)}
 @media(max-width:640px){.top{gap:12px}.top .brand img{height:38px;max-width:44vw}.top .back{font-size:9px;letter-spacing:.24em;gap:7px}.top .back span{display:none}}
-/* Fallback for browsers without backdrop-filter — slightly stronger solid */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
   .top{background:rgba(var(--mauve-rgb),.94)}
   .quick{background:rgba(var(--mauve-rgb),.94)}
   .nav{background:rgba(var(--mauve-rgb),.96)}
 }
 
-/* ============================================
-   QUICK NAV — frosted glass over mauve
-   ============================================ */
 .quick{position:fixed;top:var(--top-h);left:0;right:0;z-index:39;height:var(--quick-h);display:flex;align-items:center;justify-content:center;gap:clamp(24px,4vw,60px);padding:0 var(--pad);background:var(--nav-glass);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid var(--nav-rule)}
 .quick-group{display:inline-flex;align-items:center;gap:clamp(16px,2.2vw,32px);flex:0 0 auto}
 .quick-group .q-k{font:500 9px/1 var(--sans);letter-spacing:.4em;text-transform:uppercase;color:var(--nav-ink-mute);white-space:nowrap}
@@ -83,9 +81,6 @@ img{display:block;max-width:100%;height:auto}
   .quick-sep{display:none}
 }
 
-/* ============================================
-   HERO / MASTHEAD — white
-   ============================================ */
 .hero{position:relative;padding:calc(var(--top-h) + var(--quick-h) + clamp(72px,13vh,150px)) var(--pad) clamp(60px,9vh,100px);text-align:center;max-width:1280px;margin:0 auto}
 .hero-meta{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;max-width:900px;margin:0 auto clamp(48px,7vh,88px);padding-bottom:18px;border-bottom:1px solid var(--rule);font:500 9.5px/1.4 var(--sans);letter-spacing:.42em;text-transform:uppercase;color:var(--ink-mute)}
 .hero-meta span:last-child{text-align:right}
@@ -96,9 +91,6 @@ img{display:block;max-width:100%;height:auto}
 .hero-lede{margin:clamp(36px,5vh,60px) auto 0;max-width:58ch;font:italic 300 clamp(16px,1.35vw,20px)/1.55 var(--serif);letter-spacing:.005em;color:var(--ink-soft)}
 .hero-rule{max-width:120px;height:1px;background:var(--accent);margin:clamp(40px,6vh,68px) auto 0;opacity:.85}
 
-/* ============================================
-   STICKY CHAPTER NAV — frosted glass over mauve
-   ============================================ */
 .nav{position:sticky;top:calc(var(--top-h) + var(--quick-h));z-index:35;background:var(--nav-glass-strong);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border-top:1px solid var(--nav-rule);border-bottom:1px solid var(--nav-rule);padding:0 var(--pad);box-shadow:0 8px 24px rgba(var(--mauve-rgb),.14)}
 .nav-inner{display:flex;justify-content:center;flex-wrap:wrap;gap:0;max-width:1080px;margin:0 auto;min-height:var(--nav-h)}
 .nav button{padding:clamp(14px,1.9vh,20px) clamp(14px,1.9vw,26px);background:transparent;color:var(--nav-ink-mute);font:500 10px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;text-align:center;cursor:pointer;position:relative;transition:color .25s}
@@ -108,9 +100,6 @@ img{display:block;max-width:100%;height:auto}
 .nav button.on:after{content:"";position:absolute;left:50%;bottom:0;width:22px;height:1px;background:var(--accent);transform:translateX(-50%)}
 @media(max-width:640px){.nav button{padding:14px 12px;font-size:9px;letter-spacing:.24em}.nav button + button{border-left:0}}
 
-/* ============================================
-   MENU BODY — white
-   ============================================ */
 .menu{max-width:1240px;margin:0 auto;padding:clamp(72px,11vh,140px) var(--pad) clamp(80px,12vh,160px)}
 .chapter{display:block;margin:0 0 clamp(96px,16vh,180px);scroll-margin-top:calc(var(--top-h) + var(--quick-h) + var(--nav-h) + 20px)}
 .chapter:last-of-type{margin-bottom:clamp(64px,9vh,110px)}
@@ -125,22 +114,23 @@ img{display:block;max-width:100%;height:auto}
 .dish-top{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:12px}
 .dish-tag{font:500 9px/1 var(--sans);letter-spacing:.4em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:10px}
 .dish-tag:before{content:"";display:inline-block;width:16px;height:1px;background:currentColor;opacity:.85}
-.dish-tag.v{color:var(--mauve);opacity:.72}
-.dish-tag.c{color:var(--mauve);opacity:.72}
+.dish-tag.north{color:var(--cuisine-north)}
+.dish-tag.moghlai{color:var(--cuisine-moghlai)}
+.dish-tag.chinese{color:var(--cuisine-chinese)}
+.dish-tag.mexican{color:var(--cuisine-mexican)}
+.dish-tag.mediterranean{color:var(--cuisine-mediterranean)}
 .dish-price{font:400 clamp(15px,1.5vw,19px)/1 var(--serif);color:var(--ink);letter-spacing:-.005em;white-space:nowrap;font-variant-numeric:tabular-nums}
 .dish-name{font:400 clamp(20px,2.1vw,30px)/1.14 var(--serif);letter-spacing:-.014em;color:var(--ink);margin:0 0 12px}
 .dish-desc{font:italic 300 clamp(14px,1.15vw,16px)/1.6 var(--serif);color:var(--ink-soft);letter-spacing:.005em;margin:0;max-width:48ch}
+.dish.hero-dish{grid-column:1/-1}
+.dish.hero-dish .dish-name{font-size:clamp(26px,3vw,42px)}
+.dish.hero-dish .dish-desc{max-width:64ch}
 
-/* ============================================
-   CODA — white
-   ============================================ */
 .coda{max-width:680px;margin:0 auto;padding:clamp(48px,7vh,80px) var(--pad) clamp(60px,9vh,120px);text-align:center;border-top:1px solid var(--rule)}
 .coda-logo{display:flex;justify-content:center;align-items:center;margin:0 auto clamp(28px,4vh,44px);line-height:0}
 .coda-logo img{display:block;height:clamp(56px,6.5vw,78px);width:auto;max-width:min(200px,60vw);object-fit:contain;filter:brightness(0) opacity(.88);margin:0 auto}
 .coda-logo .coda-logo-fb{display:none;font:400 clamp(22px,2.6vw,30px)/1 var(--serif);letter-spacing:-.02em;text-transform:uppercase;color:var(--ink)}
 .coda-logo .coda-logo-fb.on{display:inline-block}
-
-/* PHONE BLOCK — order by call */
 .coda .phone-block{margin:clamp(36px,5.5vh,60px) auto;padding:clamp(38px,5.4vh,60px) clamp(24px,4vw,40px);border:1px solid var(--rule);background:rgba(var(--mauve-rgb),.035);max-width:440px;text-align:center;border-radius:2px}
 .coda .phone-kicker{font:500 9px/1 var(--sans);letter-spacing:.46em;text-transform:uppercase;color:var(--accent);margin:0 0 26px}
 .coda .phone-number{display:inline-flex;align-items:baseline;gap:clamp(8px,1.4vw,14px);text-decoration:none;line-height:1;color:var(--ink);transition:color .3s;font-family:var(--serif);font-variant-numeric:tabular-nums;flex-wrap:wrap;justify-content:center}
@@ -156,7 +146,6 @@ img{display:block;max-width:100%;height:auto}
 .coda .phone-btn svg{width:13px;height:13px;flex:none}
 .coda .phone-note{font:400 9.5px/1.7 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--ink-mute);margin:clamp(24px,3.4vh,32px) 0 0}
 .coda .phone-note strong{color:var(--accent);font-weight:500}
-
 .coda p{font:400 9.5px/2 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 14px}
 .coda p:last-child{margin-bottom:0}
 .coda a{color:var(--mauve);border-bottom:1px solid var(--rule);transition:color .3s,border-color .3s}
@@ -211,18 +200,18 @@ img{display:block;max-width:100%;height:auto}
     <span class="t-the">The</span>
     <span class="t-mehfil">Mehfil</span>
   </h1>
-  <p class="hero-lede">A composition in charcoal and clay &mdash; five fires, forty covers, and forty-five years of Moghlai cooking laid out on one marble pass.</p>
+  <p class="hero-lede">A composition in charcoal and clay &mdash; five fires, forty covers, and forty-five years of cooking laid out on one marble pass.</p>
   <div class="hero-rule" aria-hidden="true"></div>
 </section>
 
 <nav class="nav" aria-label="Menu chapters">
   <div class="nav-inner" role="tablist">
     <button class="on" role="tab" aria-selected="true" data-filter="all">Everything</button>
-    <button role="tab" aria-selected="false" data-filter="sunday">Sunday</button>
-    <button role="tab" aria-selected="false" data-filter="openers">Openers</button>
-    <button role="tab" aria-selected="false" data-filter="starters">Starters</button>
-    <button role="tab" aria-selected="false" data-filter="mains">Mains</button>
+    <button role="tab" aria-selected="false" data-filter="north">North Indian</button>
+    <button role="tab" aria-selected="false" data-filter="moghlai">Moghlai</button>
     <button role="tab" aria-selected="false" data-filter="chinese">Chinese</button>
+    <button role="tab" aria-selected="false" data-filter="mexican">Mexican</button>
+    <button role="tab" aria-selected="false" data-filter="mediterranean">Mediterranean</button>
     <button role="tab" aria-selected="false" data-filter="sweet">Sweet</button>
     <button role="tab" aria-selected="false" data-filter="coolers">Coolers</button>
   </div>
@@ -230,123 +219,117 @@ img{display:block;max-width:100%;height:auto}
 
 <main class="menu">
 
-  <section class="chapter" data-tab="sunday">
+  <!-- I · NORTH INDIAN -->
+  <section class="chapter" data-tab="north">
     <header class="ch-head">
       <span class="ch-n">I</span>
-      <h2 class="ch-t">Sunday Brunch</h2>
-      <p class="ch-d">One day a week, the fire rests and the table turns Mediterranean. Olive oil, warm bread, slow eggs, mezze &mdash; served Sundays only, 12:00 &ndash; 16:00. Reservations essential.</p>
+      <h2 class="ch-t">North Indian</h2>
+      <p class="ch-d">The tandoor's chapter &mdash; charred tikkas, slow gravies, and the classics that have anchored our table since 1980. Bright, generous, and best eaten with bread.</p>
     </header>
     <div class="dishes">
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹820</span></div><h3 class="dish-name">Burrata &amp; Roasted Tomato Toast</h3><p class="dish-desc">Vine tomatoes, torn burrata, cold-pressed oil, grilled sourdough &mdash; the plate that opens every Sunday.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹720</span></div><h3 class="dish-name">Shakshuka</h3><p class="dish-desc">Slow eggs poached in tomato and pepper, cumin, coriander. Served with warm pita.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag v">Vegetarian</span><span class="dish-price">₹950</span></div><h3 class="dish-name">Mezze Board</h3><p class="dish-desc">Hummus, muhammara, labneh, olives, pickles, warm bread. Made for the middle of the table.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag v">Vegetarian</span><span class="dish-price">₹650</span></div><h3 class="dish-name">Halloumi &amp; Za&rsquo;atar Flatbread</h3><p class="dish-desc">Griddled halloumi, wild thyme, a thread of honey, blistered flatbread.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag v">Vegetarian</span><span class="dish-price">₹760</span></div><h3 class="dish-name">Mediterranean Grain Bowl</h3><p class="dish-desc">Farro, roasted vegetables, feta, herb oil, lemon. The green thing on the table.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹480</span></div><h3 class="dish-name">Orange &amp; Olive Oil Cake</h3><p class="dish-desc">Citrus, cardamom, good oil, a spoon of cr&egrave;me fra&icirc;che. The Sunday ending.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹480</span></div><h3 class="dish-name">Chicken Tikka</h3><p class="dish-desc">Six pieces, tandoor-kissed, smoke still rising.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹540</span></div><h3 class="dish-name">Hot Honey Chicken Tikka</h3><p class="dish-desc">Kashmiri chilli honey glaze on tandoor-charred tikka. Sweet, spicy, sticky.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹520</span></div><h3 class="dish-name">Paneer Tikka</h3><p class="dish-desc">Six pieces, charred, bright with spices. The vegetarian anchor.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹440</span></div><h3 class="dish-name">Chicken Seekh Kabab</h3><p class="dish-desc">Minced, spiced, grilled on skewers. Six pieces to a plate.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹500</span></div><h3 class="dish-name">Gunpowder Chicken 65</h3><p class="dish-desc">Andhra gunpowder tossed with crispy Chicken 65. Crunchy, fiery, made for sharing.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹520</span></div><h3 class="dish-name">Butter Chicken</h3><p class="dish-desc">Shahi red gravy, the classic. Our most-ordered main.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹660</span></div><h3 class="dish-name">Truffle Butter Chicken</h3><p class="dish-desc">The classic, finished with truffle oil. Familiar dish, luxury upgrade.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹500</span></div><h3 class="dish-name">Chicken Tikka Masala</h3><p class="dish-desc">Boneless tikka in red gravy.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹480</span></div><h3 class="dish-name">Chicken Kheema</h3><p class="dish-desc">Minced, spiced, slow-cooked.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹540</span></div><h3 class="dish-name">Chicken Kolhapuri</h3><p class="dish-desc">Spicy, bold. The heat gap in our menu, filled.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹560</span></div><h3 class="dish-name">Chicken Tikka Biryani</h3><p class="dish-desc">Layered with charred tikka.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag north">North Indian</span><span class="dish-price">₹160</span></div><h3 class="dish-name">Butter Naan</h3><p class="dish-desc">Essential for gravy dishes.</p></article>
     </div>
   </section>
 
-  <section class="chapter" data-tab="openers">
+  <!-- II · MOGHLAI -->
+  <section class="chapter" data-tab="moghlai">
     <header class="ch-head">
       <span class="ch-n">II</span>
-      <h2 class="ch-t">Openers</h2>
-      <p class="ch-d">The first warm thing to reach the table &mdash; slow-simmered, generous, made to be shared before the main event.</p>
+      <h2 class="ch-t">Moghlai</h2>
+      <p class="ch-d">The royal kitchen &mdash; slow-simmered trotters, hand-pressed seekh, sealed clay handis. Cooking that has always taken its time, and always will.</p>
     </header>
     <div class="dishes">
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹440</span></div><h3 class="dish-name">Paya Soup</h3><p class="dish-desc">Slow-simmered trotters, a Moghlai classic. Served with butter naan.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag c">Chinese</span><span class="dish-price">₹340</span></div><h3 class="dish-name">Chicken Manchow Soup</h3><p class="dish-desc">Sichuan in a Moghlai house. Noodles, chicken, a whisper of heat.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag moghlai">Moghlai</span><span class="dish-price">₹440</span></div><h3 class="dish-name">Paya Soup</h3><p class="dish-desc">Slow-simmered trotters, a Moghlai classic. Served with butter naan.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag moghlai">Moghlai</span><span class="dish-price">₹580</span></div><h3 class="dish-name">Champaran Mutton Seekh</h3><p class="dish-desc">Bihar&rsquo;s legendary Champaran style. Slow-cooked, hand-pressed, finished on the grill.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag moghlai">Moghlai</span><span class="dish-price">₹580</span></div><h3 class="dish-name">Chicken Special Bostan</h3><p class="dish-desc">Red gravy, seekh kabab, the house hero. The dish that has led our table since 1980.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag moghlai">Moghlai</span><span class="dish-price">₹560</span></div><h3 class="dish-name">Dilli-6 Murgh Korma</h3><p class="dish-desc">Awadhi korma reimagined: cashew-almond base, rose water finish, tender chicken.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag moghlai">Moghlai</span><span class="dish-price">₹500</span></div><h3 class="dish-name">Chicken Afghani Boneless</h3><p class="dish-desc">Creamy, mild, boneless. The white-gravy hero.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag moghlai">Moghlai</span><span class="dish-price">₹500</span></div><h3 class="dish-name">Mutton Rogan Josh</h3><p class="dish-desc">Kashmiri classic, slow-cooked.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag moghlai">Moghlai</span><span class="dish-price">₹760</span></div><h3 class="dish-name">Mutton Bhuna</h3><p class="dish-desc">Slow-roasted, deeply spiced. The highest-margin mutton on the menu.</p></article>
     </div>
   </section>
 
-  <section class="chapter" data-tab="starters">
-    <header class="ch-head">
-      <span class="ch-n">III</span>
-      <h2 class="ch-t">Starters</h2>
-      <p class="ch-d">Everything the tandoor and sigri can send in under six minutes &mdash; charred, spiced, and eaten with the fingers.</p>
-    </header>
-    <div class="dishes">
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹480</span></div><h3 class="dish-name">Chicken Tikka</h3><p class="dish-desc">Six pieces, tandoor-kissed, smoke still rising.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹540</span></div><h3 class="dish-name">Hot Honey Chicken Tikka</h3><p class="dish-desc">Kashmiri chilli honey glaze on tandoor-charred tikka. Sweet, spicy, sticky.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag v">Vegetarian</span><span class="dish-price">₹520</span></div><h3 class="dish-name">Paneer Tikka</h3><p class="dish-desc">Six pieces, charred, bright with spices. The vegetarian anchor.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag c">Classic</span><span class="dish-price">₹440</span></div><h3 class="dish-name">Chicken Seekh Kabab</h3><p class="dish-desc">Minced, spiced, grilled on skewers. Six pieces to a plate.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹580</span></div><h3 class="dish-name">Champaran Mutton Seekh</h3><p class="dish-desc">Bihar&rsquo;s legendary Champaran style. Slow-cooked, hand-pressed, finished on the grill.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹500</span></div><h3 class="dish-name">Gunpowder Chicken 65</h3><p class="dish-desc">Andhra gunpowder tossed with crispy Chicken 65. Crunchy, fiery, made for sharing.</p></article>
-    </div>
-  </section>
-
-  <section class="chapter" data-tab="signature">
-    <header class="ch-head">
-      <span class="ch-n">IV</span>
-      <h2 class="ch-t">The Signature</h2>
-      <p class="ch-d">The dish that has led our table since 1980. If you order one thing at Bostan, make it this.</p>
-    </header>
-    <div class="dishes">
-      <article class="dish"><div class="dish-top"><span class="dish-tag">House Hero</span><span class="dish-price">₹580</span></div><h3 class="dish-name">Chicken Special Bostan</h3><p class="dish-desc">Red gravy, seekh kabab, the house hero. The dish that has led our table since 1980.</p></article>
-    </div>
-  </section>
-
-  <section class="chapter" data-tab="mains">
-    <header class="ch-head">
-      <span class="ch-n">V</span>
-      <h2 class="ch-t">Mains</h2>
-      <p class="ch-d">Slow-cooked, generous, and best eaten with bread. Served from the handi and the pass, all evening long.</p>
-    </header>
-    <div class="dishes">
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹520</span></div><h3 class="dish-name">Butter Chicken</h3><p class="dish-desc">Shahi red gravy, the classic. Our most-ordered main.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹660</span></div><h3 class="dish-name">Truffle Butter Chicken</h3><p class="dish-desc">The classic, finished with truffle oil. Familiar dish, luxury upgrade.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag c">Classic</span><span class="dish-price">₹500</span></div><h3 class="dish-name">Chicken Tikka Masala</h3><p class="dish-desc">Boneless tikka in red gravy.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹560</span></div><h3 class="dish-name">Dilli-6 Murgh Korma</h3><p class="dish-desc">Awadhi korma reimagined: cashew-almond base, rose water finish, tender chicken.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag c">Classic</span><span class="dish-price">₹500</span></div><h3 class="dish-name">Chicken Afghani Boneless</h3><p class="dish-desc">Creamy, mild, boneless. The white-gravy hero.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag c">Classic</span><span class="dish-price">₹480</span></div><h3 class="dish-name">Chicken Kheema</h3><p class="dish-desc">Minced, spiced, slow-cooked.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹540</span></div><h3 class="dish-name">Chicken Kolhapuri</h3><p class="dish-desc">Spicy, bold. The heat gap in our menu, filled.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag c">Classic</span><span class="dish-price">₹500</span></div><h3 class="dish-name">Mutton Rogan Josh</h3><p class="dish-desc">Kashmiri classic, slow-cooked.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹760</span></div><h3 class="dish-name">Mutton Bhuna</h3><p class="dish-desc">Slow-roasted, deeply spiced. The highest-margin mutton on the menu.</p></article>
-    </div>
-  </section>
-
+  <!-- III · CHINESE -->
   <section class="chapter" data-tab="chinese">
     <header class="ch-head">
-      <span class="ch-n">VI</span>
+      <span class="ch-n">III</span>
       <h2 class="ch-t">Chinese</h2>
       <p class="ch-d">A chapter from the wok. Fried, tossed, glossed &mdash; the other room in this kitchen.</p>
     </header>
     <div class="dishes">
-      <article class="dish"><div class="dish-top"><span class="dish-tag c">Classic</span><span class="dish-price">₹460</span></div><h3 class="dish-name">Chicken Lollipop</h3><p class="dish-desc">Frenched wings, fried until crisp.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag c">Classic</span><span class="dish-price">₹580</span></div><h3 class="dish-name">Chicken Crispy</h3><p class="dish-desc">Golden, crunchy, 500ml.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag chinese">Chinese</span><span class="dish-price">₹340</span></div><h3 class="dish-name">Chicken Manchow Soup</h3><p class="dish-desc">Sichuan in a Moghlai house. Noodles, chicken, a whisper of heat.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag chinese">Chinese</span><span class="dish-price">₹460</span></div><h3 class="dish-name">Chicken Lollipop</h3><p class="dish-desc">Frenched wings, fried until crisp.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag chinese">Chinese</span><span class="dish-price">₹580</span></div><h3 class="dish-name">Chicken Crispy</h3><p class="dish-desc">Golden, crunchy, 500ml.</p></article>
     </div>
   </section>
 
-  <section class="chapter" data-tab="rice">
+  <!-- IV · MEXICAN -->
+  <section class="chapter" data-tab="mexican">
     <header class="ch-head">
-      <span class="ch-n">VII</span>
-      <h2 class="ch-t">Rice &amp; Bread</h2>
-      <p class="ch-d">The foundations. The tandoor&rsquo;s daily labour &mdash; and the biryani it was built for.</p>
+      <span class="ch-n">IV</span>
+      <h2 class="ch-t">Mexican</h2>
+      <p class="ch-d">The southern chapter of the Americas &mdash; warm tortillas, chipotle crema, cotija, and fire. Bold, layered, and generous. Six plates, built for the middle of the table.</p>
     </header>
     <div class="dishes">
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹560</span></div><h3 class="dish-name">Chicken Tikka Biryani</h3><p class="dish-desc">Layered with charred tikka.</p></article>
-      <article class="dish"><div class="dish-top"><span class="dish-tag v">Vegetarian</span><span class="dish-price">₹160</span></div><h3 class="dish-name">Butter Naan</h3><p class="dish-desc">Essential for gravy dishes.</p></article>
+      <article class="dish hero-dish"><div class="dish-top"><span class="dish-tag mexican">House Hero</span><span class="dish-price">₹720</span></div><h3 class="dish-name">Rosa Mexicano</h3><p class="dish-desc">Loaded corn tortilla, slow-braised chipotle chicken, pink chipotle crema, cotija, torn coriander, pickled red onion, lime. Named for the blush of the plate &mdash; the dish that opens this chapter.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mexican">Mexican</span><span class="dish-price">₹580</span></div><h3 class="dish-name">Carne Asada Tacos</h3><p class="dish-desc">Three soft corn tortillas, char-grilled marinated steak, white onion, coriander, lime, salsa verde. The fire-breathed classic of Northern Mexico.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mexican">Mexican</span><span class="dish-price">₹540</span></div><h3 class="dish-name">Al Pastor Tacos</h3><p class="dish-desc">Chilli-and-achiote marinated pork, slow-turned on the spit, grilled pineapple, onion, coriander. Sweet, smoky, and the most-ordered taco in Mexico.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mexican">Mexican</span><span class="dish-price">₹620</span></div><h3 class="dish-name">Chicken Enchiladas Verdes</h3><p class="dish-desc">Rolled corn tortillas, poached chicken, tomatillo salsa verde, melted queso, crema, pickled jalape&ntilde;o. Served bubbling from the oven.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mexican">Mexican</span><span class="dish-price">₹480</span></div><h3 class="dish-name">Elote Street Corn</h3><p class="dish-desc">Grilled sweet corn, chipotle mayonnaise, cotija, chilli powder, lime, coriander. The street-cart classic of Mexico City, plated for the table.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mexican">Mexican</span><span class="dish-price">₹680</span></div><h3 class="dish-name">Chicken Quesadilla</h3><p class="dish-desc">Griddled flour tortilla, melted Oaxaca cheese, spiced chicken, roasted poblano, served with pico de gallo and crema. Cut into six, made to share.</p></article>
     </div>
   </section>
 
+  <!-- V · MEDITERRANEAN -->
+  <section class="chapter" data-tab="mediterranean">
+    <header class="ch-head">
+      <span class="ch-n">V</span>
+      <h2 class="ch-t">Mediterranean</h2>
+      <p class="ch-d">The southern chapter &mdash; olive oil, heirloom tomato, torn basil, cold cream. The plates that turn this table toward the Mediterranean, and the kitchen that has quietly mastered them.</p>
+    </header>
+    <div class="dishes">
+      <article class="dish"><div class="dish-top"><span class="dish-tag mediterranean">Mediterranean</span><span class="dish-price">₹980</span></div><h3 class="dish-name">Burrata Caprese</h3><p class="dish-desc">Whole burrata torn over heirloom tomato, basil plucked from the roof, Sicilian olive oil, aged balsamic. The plate that leads the southern chapter &mdash; and the most generously made dish on the menu.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mediterranean">Mediterranean</span><span class="dish-price">₹820</span></div><h3 class="dish-name">Burrata &amp; Roasted Tomato Toast</h3><p class="dish-desc">Vine tomatoes, torn burrata, cold-pressed oil, grilled sourdough.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mediterranean">Mediterranean</span><span class="dish-price">₹720</span></div><h3 class="dish-name">Shakshuka</h3><p class="dish-desc">Slow eggs poached in tomato and pepper, cumin, coriander. Served with warm pita.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mediterranean">Mediterranean</span><span class="dish-price">₹950</span></div><h3 class="dish-name">Mezze Board</h3><p class="dish-desc">Hummus, muhammara, labneh, olives, pickles, warm bread. Made for the middle of the table.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mediterranean">Mediterranean</span><span class="dish-price">₹650</span></div><h3 class="dish-name">Halloumi &amp; Za&rsquo;atar Flatbread</h3><p class="dish-desc">Griddled halloumi, wild thyme, a thread of honey, blistered flatbread.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mediterranean">Mediterranean</span><span class="dish-price">₹760</span></div><h3 class="dish-name">Mediterranean Grain Bowl</h3><p class="dish-desc">Farro, roasted vegetables, feta, herb oil, lemon. The green thing on the table.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mediterranean">Mediterranean</span><span class="dish-price">₹480</span></div><h3 class="dish-name">Orange &amp; Olive Oil Cake</h3><p class="dish-desc">Citrus, cardamom, good oil, a spoon of cr&egrave;me fra&icirc;che.</p></article>
+    </div>
+  </section>
+
+  <!-- VI · SWEET -->
   <section class="chapter" data-tab="sweet">
     <header class="ch-head">
-      <span class="ch-n">VIII</span>
+      <span class="ch-n">VI</span>
       <h2 class="ch-t">Sweet</h2>
       <p class="ch-d">One spoonful, well chosen. The oldest love song on the menu.</p>
     </header>
     <div class="dishes">
-      <article class="dish"><div class="dish-top"><span class="dish-tag c">Classic</span><span class="dish-price">₹340</span></div><h3 class="dish-name">Caramel Custard</h3><p class="dish-desc">Mumbai&rsquo;s oldest love song, sweetened with petals.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag mediterranean">Mediterranean</span><span class="dish-price">₹340</span></div><h3 class="dish-name">Caramel Custard</h3><p class="dish-desc">Mumbai&rsquo;s oldest love song, sweetened with petals.</p></article>
     </div>
   </section>
 
+  <!-- VII · COOLERS -->
   <section class="chapter" data-tab="coolers">
     <header class="ch-head">
-      <span class="ch-n">IX</span>
+      <span class="ch-n">VII</span>
       <h2 class="ch-t">Coolers</h2>
       <p class="ch-d">Something cold, poured over something slower. To close, or begin, the evening.</p>
     </header>
     <div class="dishes">
-      <article class="dish"><div class="dish-top"><span class="dish-tag">Signature</span><span class="dish-price">₹420</span></div><h3 class="dish-name">Bostan Matcha</h3><p class="dish-desc">Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.</p></article>
+      <article class="dish"><div class="dish-top"><span class="dish-tag chinese">Chinese</span><span class="dish-price">₹420</span></div><h3 class="dish-name">Bostan Matcha</h3><p class="dish-desc">Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.</p></article>
     </div>
   </section>
 
@@ -358,17 +341,13 @@ img{display:block;max-width:100%;height:auto}
     <span class="coda-logo-fb">Hotel Bostan</span>
   </div>
 
-  <!-- ========== ORDER BY PHONE ========== -->
   <div class="phone-block">
     <p class="phone-kicker">Order for delivery</p>
-
     <a class="phone-number" href="tel:+919004455115" aria-label="Call Hotel Bostan to place your order">
       <span class="phone-prefix">+91</span>
       <span class="phone-digits">9004&nbsp;455&nbsp;115</span>
     </a>
-
     <p class="phone-label">Call or WhatsApp to place your order</p>
-
     <div class="phone-actions">
       <a class="phone-btn call" href="tel:+919004455115">
         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -379,13 +358,11 @@ img{display:block;max-width:100%;height:auto}
         WhatsApp
       </a>
     </div>
-
     <p class="phone-note">Within <strong>3 km</strong> &middot; <strong>₹999</strong> minimum order</p>
   </div>
-  <!-- ============================================= -->
 
   <p>All prices exclusive of applicable taxes &middot; A discretionary 10% service charge will be added</p>
-  <p>Our kitchen is purely Halal &mdash; no alcohol, no pork &middot; Vegetarian, Jain &amp; allergen menus on request</p>
+  <p>Our kitchen is purely Halal &mdash; no alcohol, no pork &middot; Vegetarian, Jain &amp; allergen menus available on request</p>
   <p style="margin-top:clamp(24px,3vh,36px)"><a href="index.html">Return to Hotel Bostan</a></p>
 </footer>
 
@@ -393,7 +370,16 @@ img{display:block;max-width:100%;height:auto}
 (function(){
   var tabs=document.querySelectorAll('.nav button');
   var chapters=document.querySelectorAll('.chapter');
-  var map={all:['sunday','openers','starters','signature','mains','chinese','rice','sweet','coolers'],sunday:['sunday'],openers:['openers'],starters:['starters','signature'],mains:['mains','chinese','rice'],chinese:['chinese'],sweet:['sweet'],coolers:['coolers']};
+  var map={
+    all:['north','moghlai','chinese','mexican','mediterranean','sweet','coolers'],
+    north:['north'],
+    moghlai:['moghlai'],
+    chinese:['chinese'],
+    mexican:['mexican'],
+    mediterranean:['mediterranean'],
+    sweet:['sweet'],
+    coolers:['coolers']
+  };
   function apply(key){
     var allow=map[key]||map.all;
     chapters.forEach(function(c){
@@ -408,6 +394,8 @@ img{display:block;max-width:100%;height:auto}
       apply(b.getAttribute('data-filter')||'all');
     });
   });
+  // Ensure on page load all chapters are visible
+  apply('all');
 })();
 </script>
 
