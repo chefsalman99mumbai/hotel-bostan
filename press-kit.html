@@ -96,15 +96,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-variation-settings:"opsz" 96,"wght" 40
 .boiler-card .bc-n{font:italic 400 13pt/1 var(--serif);color:var(--mauve);margin-bottom:3mm}
 .boiler-card p{font:400 9pt/1.55 var(--sans);letter-spacing:.005em;color:var(--ink-soft);flex:1}
 
-/* MEDIA ASSETS */
-.assets{display:flex;flex-direction:column;gap:0;margin-top:2mm}
-.asset{display:grid;grid-template-columns:1fr 26mm 22mm 20mm;gap:6mm;padding:3.5mm 0;border-bottom:.4mm solid var(--rule-soft);align-items:baseline}
-.asset:first-child{border-top:.4mm solid var(--rule)}
-.asset .a-name{font:500 9.5pt/1.4 var(--sans);color:var(--ink);letter-spacing:.005em}
-.asset .a-file{font:400 8pt/1.4 ui-monospace,'SF Mono',Menlo,monospace;color:var(--mauve);letter-spacing:.02em}
-.asset .a-dim{font:400 8.5pt/1.4 var(--sans);color:var(--ink-mute);font-variant-numeric:tabular-nums}
-.asset .a-cat{font:500 8pt/1.4 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--gold);text-align:right}
-
 /* KITCHEN */
 .kitchen{display:grid;grid-template-columns:1fr 1fr;gap:9mm 12mm}
 .fire{padding-bottom:4mm;border-bottom:.4mm solid var(--rule)}
@@ -197,8 +188,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-variation-settings:"opsz" 96,"wght" 40
   .dl-btn{padding:14px 22px;font-size:10pt}
   .dish.hero .dish-img{padding:8mm;aspect-ratio:1/1}
   .dish.wide .dish-img{padding:8mm;aspect-ratio:4/3}
-  .asset{grid-template-columns:1fr 1fr;row-gap:2mm}
-  .asset .a-cat{text-align:left}
 }
 @page{size:A4;margin:0}
 @media print{
@@ -392,7 +381,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-variation-settings:"opsz" 96,"wght" 40
     <h2 class="sec-t">Tonight&rsquo;s Table</h2>
   </div>
 
-  <p class="lede">Five plates from tonight&rsquo;s kitchen &mdash; photographed at service. Full-resolution files available from the media assets index (page 07) or on request.</p>
+  <p class="lede">Five plates from tonight&rsquo;s kitchen &mdash; photographed at service. Full-resolution files available on request from <a href="mailto:press@hotelbostan.in" style="color:var(--mauve);border-bottom:.4mm solid var(--rule)">press@hotelbostan.in</a>.</p>
 
   <div class="dishes">
     <div class="dish">
@@ -500,30 +489,26 @@ h1,h2,h3,h4{font-family:var(--serif);font-variation-settings:"opsz" 96,"wght" 40
   </div>
 </article>
 
-<!-- ============ PAGE 7 — MEDIA ASSETS + CONTACTS ============ -->
+<!-- ============ PAGE 7 — THE DINING HALL + CONTACTS ============ -->
 <article class="page">
   <header class="run-head">
     <span class="rh-l">Hotel Bostan &mdash; Press Kit</span>
-    <span class="rh-r">Section 06 &middot; Assets &amp; Contacts</span>
+    <span class="rh-r">Section 06 &middot; The Hall &amp; Contacts</span>
   </header>
 
   <div class="sec-head">
     <span class="sec-n">06</span>
-    <h2 class="sec-t">Media assets</h2>
+    <h2 class="sec-t">The Dining Hall</h2>
   </div>
 
-  <p class="lede">Every image used in this press kit, listed by filename. Full-resolution files, in print-ready TIFF or web-ready JPEG, are available by request from <a href="mailto:press@hotelbostan.in" style="color:var(--mauve);border-bottom:.4mm solid var(--rule)">press@hotelbostan.in</a>.</p>
+  <figure class="room-img">
+    <img src="the-table.png" alt="The dining hall at Hotel Bostan"
+         onerror="this.style.display='none'">
+  </figure>
 
-  <div class="assets">
-    <div class="asset"><span class="a-name">Cover &mdash; dining hall, evening service</span><span class="a-file">bost-footer.png</span><span class="a-dim">2400 &times; 1350</span><span class="a-cat">Scene</span></div>
-    <div class="asset"><span class="a-name">Rogan Josh &mdash; Kashmiri classic</span><span class="a-file">rogan-josh.png</span><span class="a-dim">2000 &times; 2000</span><span class="a-cat">Dish</span></div>
-    <div class="asset"><span class="a-name">Murgh Musallam &mdash; whole chicken</span><span class="a-file">murgh-musallam.png</span><span class="a-dim">2000 &times; 2000</span><span class="a-cat">Dish</span></div>
-    <div class="asset"><span class="a-name">Hakka Noodles &mdash; wok-tossed</span><span class="a-file">hakka-noodles.png</span><span class="a-dim">2000 &times; 2000</span><span class="a-cat">Dish</span></div>
-    <div class="asset"><span class="a-name">Rosa Mexicano &mdash; loaded tortilla</span><span class="a-file">rosa-mexicano.png</span><span class="a-dim">2000 &times; 2000</span><span class="a-cat">Dish</span></div>
-    <div class="asset"><span class="a-name">Bostan Matcha &mdash; signature cooler</span><span class="a-file">bostan-matcha.png</span><span class="a-dim">2000 &times; 2000</span><span class="a-cat">Dish</span></div>
-    <div class="asset"><span class="a-name">Burrata Caprese &mdash; feature plate</span><span class="a-file">burrata.png</span><span class="a-dim">2400 &times; 1600</span><span class="a-cat">Dish</span></div>
-    <div class="asset"><span class="a-name">Dining hall &mdash; long table view</span><span class="a-file">the-table.png</span><span class="a-dim">2400 &times; 1350</span><span class="a-cat">Scene</span></div>
-    <div class="asset"><span class="a-name">House mark &mdash; primary logotype</span><span class="a-file">logo.png</span><span class="a-dim">vector SVG</span><span class="a-cat">Brand</span></div>
+  <div class="room-copy">
+    <p>Forty covers across one long table and a run of two-tops, all facing a working marble pass. Candlelight, exposed brick, brass, and a barrel-vaulted ceiling that keeps the noise low and the hall warm.</p>
+    <p>The Alcove &mdash; twelve seats behind a closing door &mdash; is available for private dinners, tastings and press previews. Menus are written to the season and confirmed a week ahead.</p>
   </div>
 
   <div class="contacts">
