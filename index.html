@@ -33,6 +33,7 @@
   --ink-soft:rgba(var(--ink-rgb),.72);--ink-mute:rgba(var(--ink-rgb),.48);
   --rule:rgba(var(--ink-rgb),.26);--rule-soft:rgba(var(--ink-rgb),.13);
   --tomato:#000000;--tomato-2:#000000;--sage:#FFFFFF;--ochre:#FFFFFF;
+  --mediterranean:#4E6E5D;
   --serif:'Bodoni Moda','Times New Roman',serif;
   --sans:'Instrument Sans',system-ui,sans-serif;
   --pad:clamp(22px,5vw,72px);--navh:clamp(64px,8.8vh,82px);
@@ -66,9 +67,12 @@ section{position:relative;z-index:1}
 .jprog{display:none}
 .jplate{flex:1;min-height:0;margin-top:clamp(20px,3.4vh,40px);position:relative;overflow:hidden;background:var(--slate-2);border:1px solid rgba(var(--ink-rgb),.16)}
 .jplate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:saturate(.95) contrast(1.03) brightness(1.02);will-change:transform}
-.
 .js .jtitle-h,.js .jtitle-sub,.js .jnum{opacity:0}
 @media(max-width:700px){.journey{height:100vh;height:100svh}.jtitle-h{font-size:clamp(40px,12vw,84px)}.jtitle-sub{font-size:15px}}
+
+/* ============================================
+   IDEA — "Two Kitchens" (matches reference exactly)
+   ============================================ */
 .idea{position:relative;min-height:100svh;padding:clamp(80px,14vh,140px) var(--pad);display:flex;flex-direction:column;justify-content:center;background:var(--paper);border-top:1px solid var(--accent-trans)}
 .idea-inner{width:100%;max-width:1180px;margin:0 auto}
 .idea-k{display:flex;justify-content:center;align-items:center;gap:14px;font:500 10.5px/1 var(--sans);letter-spacing:.4em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:clamp(36px,6vh,64px)}
@@ -83,6 +87,7 @@ section{position:relative;z-index:1}
 .idea-foot span{position:relative}
 .idea-foot span + span:before{content:"·";position:absolute;left:calc(-1 * clamp(10px,2vw,30px));color:var(--accent);opacity:.6}
 @media(max-width:760px){.idea-split{grid-template-columns:1fr;gap:clamp(32px,6vh,52px);text-align:center}.idea-col{align-items:center;gap:clamp(14px,2vh,20px)}.idea-col-p{font-size:17px;max-width:34ch;margin:0 auto}.idea-still img{max-width:min(240px,62vw)}}
+
 .menu{height:100svh;overflow:hidden}
 .track{display:flex;height:100%}
 .p{position:relative;flex:none;width:100vw;height:100%;padding:0 var(--pad) calc(7vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(16px,3vh,32px);overflow:hidden;background:var(--bg);color:var(--fg)}
@@ -93,6 +98,7 @@ section{position:relative;z-index:1}
 .sage{--bg:var(--sage);--fg:#FFFFFF}
 .ochre{--bg:var(--ochre);--fg:#FFFFFF}
 .gold{--bg:var(--accent);--fg:#FFFFFF}
+.mediterranean{--bg:var(--mediterranean);--fg:#FFFFFF}
 .p h2,.p h3{font:400 clamp(52px,10vw,180px)/.92 var(--serif);letter-spacing:-.028em;text-transform:uppercase;max-width:11em;margin:0 auto;text-align:center;will-change:transform;color:var(--fg,#FFFFFF)}
 .p h3{font-size:clamp(44px,8.4vw,148px)}
 .p h3.long{font-size:clamp(32px,5.4vw,100px)}
@@ -206,13 +212,13 @@ section{position:relative;z-index:1}
 .cm-v{font:300 clamp(13px,1.15vw,15px)/1.4 var(--sans);color:rgba(var(--ink-rgb),.88);letter-spacing:.01em}
 @media(max-width:520px){.cm-row{grid-template-columns:1fr;gap:6px}.cm-k{padding-top:2px}}
 
-/* ===== FOOTER — gold background, black fonts ===== */
+/* ===== FOOTER — gold background, black fonts, ORIGINAL logo ===== */
 .site-footer{position:relative;z-index:2;background:var(--footer-bg);color:#000000;padding:clamp(48px,7vh,88px) var(--pad) calc(36px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--footer-rule)}
 .sf-inner{width:100%;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.15fr 1fr 1.1fr;gap:clamp(32px,5vw,80px);align-items:start}
 @media(max-width:960px){.sf-inner{grid-template-columns:1fr 1fr}.sf-news{grid-column:1/-1;padding-top:36px;border-top:1px solid var(--footer-rule)}}
 @media(max-width:640px){.sf-inner{grid-template-columns:1fr}.sf-news{padding-top:0;border-top:0}}
 .sf-brand{display:inline-flex;align-items:flex-start;justify-content:flex-start;max-width:100%;padding:0;background:none;border:0;line-height:0;margin-bottom:22px}
-.sf-brand img{display:block;width:140px;height:auto;max-width:100%;object-fit:contain;object-position:left top;filter:brightness(0)}
+.sf-brand img{display:block;width:140px;height:auto;max-width:100%;object-fit:contain;object-position:left top}
 .sf-brand .sf-brand-fallback{display:none;font:400 22px/1 var(--serif);letter-spacing:-.02em;text-transform:uppercase;color:#000000;line-height:1}
 .sf-links{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
 .sf-group h4{font:500 9.5px/1 var(--sans);letter-spacing:.4em;text-transform:uppercase;color:#000000;margin-bottom:20px}
@@ -307,7 +313,7 @@ section{position:relative;z-index:1}
   </section>
 
   <section class="menu" id="menu">
-    <div class="hud" aria-hidden="true"><span><span id="cn">01</span> / 06</span></div>
+    <div class="hud" aria-hidden="true"><span><span id="cn">01</span> / 07</span></div>
     <div class="track" id="track"></div>
     <div class="bar" aria-hidden="true"><b id="bar"></b></div>
   </section>
@@ -538,7 +544,7 @@ var lock={y:0,on:function(){this.y=window.scrollY||window.pageYOffset||0;documen
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeBook();});
 })();
 var PAPER='#5A4155',INK='#FFFFFF',PAPER2='#B7535B',SAGE='#FFFFFF',OCHRE='#FFFFFF',TOMATO='#000000',SLATE='#5A4155',DEEP='#1B141A';
-var T={paper:[PAPER,INK],ink:[DEEP,INK],cream:[PAPER2,INK],tomato:[TOMATO,INK],sage:[SAGE,INK],ochre:[OCHRE,INK],slate:[SLATE,INK],gold:['#A19836',INK]},cur='';
+var T={paper:[PAPER,INK],ink:[DEEP,INK],cream:[PAPER2,INK],tomato:[TOMATO,INK],sage:[SAGE,INK],ochre:[OCHRE,INK],slate:[SLATE,INK],gold:['#A19836',INK],mediterranean:['#4E6E5D',INK]},cur='';
 function theme(n){if(!T[n]||n===cur) return;cur=n;gsap.to('body',{backgroundColor:T[n][0],color:T[n][1],duration:1,ease:'power3.inOut',overwrite:true})}
 var dot=$('#cur');
 if(fine&&!reduce){var qx=gsap.quickTo(dot,'x',{duration:.45,ease:'power3'}),qy=gsap.quickTo(dot,'y',{duration:.45,ease:'power3'});addEventListener('pointermove',function(e){dot.style.opacity=1;qx(e.clientX);qy(e.clientY)},{passive:true});document.addEventListener('pointerover',function(e){gsap.to(dot,{scale:e.target.closest('a,button,label')?3:1,duration:.5,ease:'expo.out'})})}
@@ -549,6 +555,7 @@ var D=[
 ['Moghlai','Murgh Musallam','Whole chicken, slow-roasted, stuffed with spiced mince. The royal Moghlai centrepiece.',720,'ochre','murgh-musallam.png',0],
 ['Chinese','Hakka Noodles','Wok-tossed, glossy. Julienned peppers, spring onion, a whisper of soy.',440,'gold','hakka-noodles.png',0],
 ['Mexican','Rosa Mexicano','Loaded tortilla, pink chipotle crema, cotija, coriander. Named for the blush of the plate.',480,'paper','rosa-mexicano.png',-90],
+['Mediterranean','Burrata Caprese','Creamy burrata over heirloom tomato, torn basil, cold-pressed oil. The plate that turns the table south.',520,'mediterranean','burrata.png',0],
 ['Coolers','Bostan Matcha','Ceremonial matcha poured over cold cream. Served in a coupe, stirred at the table.',420,'tomato','bostan-matcha.png',0]
 ];
 var tr=$('#track'),names=['ink'].concat(D.map(function(d){return d[4]})),N=names.length,cn=$('#cn'),bar=gsap.quickSetter('#bar','scaleX');
@@ -606,7 +613,6 @@ setTimeout(fitPanels,500);
       var f=i.parentNode.querySelector('.sf-brand-fallback');
       if(f) f.style.display='none';
       i.src=src;
-      i.style.filter=isCustom?'none':'';
     });
   }
   input.addEventListener('change',function(){var f=input.files&&input.files[0];if(!f) return;if(objectUrl) URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(f);setSrc(objectUrl,true);info.textContent=f.name;});
